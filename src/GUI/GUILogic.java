@@ -28,7 +28,7 @@ public class GUILogic {
 		screen.getMainMenu().addActionListener(new MainMenuActionListener());
 		screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
-		screen.getUserList().addActionListener(new UserListActionListener());
+//		screen.getUserList().addActionListener(new UserListActionListener());
 		screen.getEventlist().addActionListener(new EventListActionListener());
 		screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
@@ -62,7 +62,6 @@ public class GUILogic {
 						screen.show(Screen.MAINMENU);
 					}
 				
-	
 			}	
 			}	
 			catch(Exception e3){
@@ -75,7 +74,7 @@ public class GUILogic {
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnUserlist()){
-				screen.show(Screen.USERLIST);
+//				screen.show(Screen.USERLIST);
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnNotelist()){
 				screen.show(Screen.NOTELIST);
@@ -192,24 +191,24 @@ public class GUILogic {
 		}
 	}
 	
-	private class UserListActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			
-			if (e.getSource() == screen.getUserList().getBtnMainMenu()){
-				screen.show(Screen.MAINMENU);
-			}
-			if (e.getSource() == screen.getUserList().getBtnLogout()){
-				screen.show(Screen.LOGIN);
-			}
-			if (e.getSource() == screen.getUserList().getBtnAdd()){
-			
-			}
-			if (e.getSource() == screen.getUserList().getBtnDelete()){
-				
-			}
-
-		}
-	}
+//	private class UserListActionListener implements ActionListener {
+//		public void actionPerformed(ActionEvent e) {
+//			
+//			if (e.getSource() == screen.getUserList().getBtnMainMenu()){
+//				screen.show(Screen.MAINMENU);
+//			}
+//			if (e.getSource() == screen.getUserList().getBtnLogout()){
+//				screen.show(Screen.LOGIN);
+//			}
+//			if (e.getSource() == screen.getUserList().getBtnAdd()){
+//			
+//			}
+//			if (e.getSource() == screen.getUserList().getBtnDelete()){
+//				
+//			}
+//
+//		}
+//	}
 	
 	private class EventListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {

@@ -6,30 +6,31 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import java.awt.CardLayout;
 
 public class Screen extends JFrame {
 
-	public static final String LOGIN = "name_276091497157488";
-	public static final String MAINMENU = "name_276416022878030";
-	public static final String USERINFO = "name_277892826656058";
-	public static final String ADDUSERGUI = "name_278604525733268";
-	public static final String NOTELIST = "name_278522430661848";
-	public static final String USERLIST = "name_280161954000083";
-	public static final String EVENTLIST = "name_534038022095149";
-	public static final String ADDEVENTGUI = "name_6308445225625";
-	public static final String ADDUSER = "name_10334207821613";
-	
+	public static final String LOGIN = "name_362236793182581";
+	public static final String MAINMENU = "name_362262329408944";
+	public static final String ADDCOURSE = "name_362036683693928";
+	public static final String ADDEVENT = "name_362181513611519";
+	public static final String EVENTLIST = "name_362220577395912";
+	public static final String NOTELIST = "name_362271144977704";
+	public static final String USERINFO = "name_362280744832869";
+	public static final String ADDUSER = "name_362200721529567";
+
 	private JPanel contentPane;
+	private final AddCourse addCourse = new AddCourse();
+	private final AddEventGUI addEventGUI = new AddEventGUI();
+	private final AddUser addUser = new AddUser();
+	private final EventList eventList = new EventList();
 	private final Login login = new Login();
 	private final MainMenu mainMenu = new MainMenu();
-	private final UserInfo userInfo = new UserInfo();
 	private final NoteList noteList = new NoteList();
-	private final UserList userlist = new UserList();
+	private final UserInfo userInfo = new UserInfo();
 	CardLayout c;
-	private final EventList eventList = new EventList();
-	private AddEventGUI addEventGUI;
-	private final AddUser addUser = new AddUser();
+
 
 	/**
 	 * Launch the application.
@@ -47,36 +48,36 @@ public class Screen extends JFrame {
 		});
 	}
 
+	/**
+	 * Create the frame.
+	 */
 	public Screen() {
 		setTitle("Doek4life");
-		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1366, 768);
-		
-		JPanel contentPane = (JPanel) this.getContentPane();
-		contentPane.setBorder(new EmptyBorder(0, 0, 0, 0));
-		this.setContentPane(contentPane);
+		setBounds(100, 100, 1390, 818);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
-		contentPane.add(addUser, "name_10334207821613");
+		contentPane.add(userInfo, "name_362280744832869");
 		
-		addEventGUI = new AddEventGUI();
-		contentPane.add(addEventGUI, "name_6308445225625");
-		login.getBtnLogIn().setContentAreaFilled(false);
-		login.getBtnForgotLogIn().setContentAreaFilled(false);
+		contentPane.add(noteList, "name_362271144977704");
 		
-		contentPane.add(login, "name_276091497157488");
+		contentPane.add(mainMenu, "name_362262329408944");
 		
-		contentPane.add(mainMenu, "name_276416022878030");
+		contentPane.add(login, "name_362236793182581");
 		
-		contentPane.add(userInfo, "name_277892826656058");
+		contentPane.add(eventList, "name_362220577395912");
 		
-		contentPane.add(noteList, "name_278522430661848");
+		contentPane.add(addUser, "name_362200721529567");
 		
-		contentPane.add(eventList, "name_534038022095149");
+		contentPane.add(addEventGUI, "name_362181513611519");
 		
-		contentPane.add(userlist, "name_280161954000083");
+		contentPane.add(addCourse, "name_362036683693928");
+
 		c = (CardLayout) getContentPane().getLayout();
+
 	}
 	
 	public Login getLogin() {
@@ -93,12 +94,7 @@ public class Screen extends JFrame {
 	public NoteList getNoteList() {
 		return noteList;
 	}
-	public UserList getUserList() {
-		return userlist;
-	}
-	public void show(String card) {
-		c.show(getContentPane(),  card);
-	}
+	
 	public EventList getEventlist() {
 		return eventList;
 	}
@@ -107,5 +103,8 @@ public class Screen extends JFrame {
 	}
 	public AddUser getAddUser() {
 		return addUser;
+	}
+	public void show(String card) {
+		c.show(getContentPane(),  card);
 	}
 }
