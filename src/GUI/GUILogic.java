@@ -4,20 +4,24 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 
+import model.QueryBuild.QueryBuilder;
 import GUI.UserInformation;
 import GUI.AuthUser;
 
 import javax.swing.JOptionPane;
 
 import model.QueryBuild.*;
+import model.user.User;
 import GUI.Screen;
 
 public class GUILogic {
 	private Screen screen;
+	private User u2;
+	private model.user.User u3;
 	private boolean u;
 	private boolean full = false;
 	
-	AuthUser a = new AuthUser();
+	model.user.AuthenticateUser a = new model.user.AuthenticateUser();
 	
 
 	public GUILogic(){
@@ -46,18 +50,18 @@ public class GUILogic {
 		public void actionPerformed(ActionEvent e) {
 			try{
 				
-			String userName = screen.getLogin().getTextFieldUsername().getText();
+			String email = screen.getLogin().getTextFieldUsername().getText();
 			String password = screen.getLogin().getTextFieldPassword().getText();
-			u=a.login(userName, password);
+			u3=a.authenticate(email, password);
 			
 			if (e.getSource() == screen.getLogin().getBtnLogIn()){
 				
-				if(u == false){
+				if(u3 == null){
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 			}
 
-			if	(u != true)
+			if	(u3 != null)
 					{
 						screen.show(Screen.MAINMENU);
 					}

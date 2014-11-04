@@ -10,11 +10,11 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class Configurations {
-    private String host;
-    private String port;
-    private String username;
-    private String dbname;
-    private String password;
+    private String host = "localhost";
+    private String port = "3306";
+    private String username = "root";
+    private String dbname = "cbscalendar";
+    private String password = "";
 
     // FFkey is used in Encryption.java
     private String ffcryptkey;
@@ -131,6 +131,7 @@ public class Configurations {
             setPort((String) jsonObject.get("port"));
             setUsername((String) jsonObject.get("username"));
             setDbname((String) jsonObject.get("dbname"));
+            
             setPassword((String) jsonObject.get("password"));
 
             // Getting json values for KEY variables
