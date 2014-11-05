@@ -202,11 +202,6 @@ public class AddEventGUI extends JPanel {
 	public JTextField getTextField_Text() {
 		return textField_Text;
 	}
-	
-
-	public JTextField getTextField_Type() {
-		return textField_Type;
-	}
 
 	public JButton getBtnSubmit() {
 		return btnSubmit;
