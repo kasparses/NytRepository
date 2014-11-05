@@ -1,8 +1,23 @@
 CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
+select * from calender;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Create Tables */
+
+use cbscalendar;
+CREATE TABLE IF NOT EXISTS events
+(
+	eventid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	location varchar(100) NOT NULL,
+	createdby varchar(100) NOT NULL,
+	start_date_time varchar(100) NOT NULL,
+	end_date_time varchar(100) NOT NULL,
+	name varchar(100) NOT NULL,
+	text varchar(100),
+	longitude int,
+	latitude int
+);
 
 CREATE TABLE IF NOT EXISTS Calender
 (
@@ -86,27 +101,28 @@ CREATE TABLE IF NOT EXISTS userevents
 	CalenderID int NOT NULL
 );
 
+use cbscalendar;
 
-CREATE TABLE IF NOT EXISTS users
+CREATE TABLE IF NOT EXISTS user
 (
 	userid int NOT NULL AUTO_INCREMENT,
 	email varchar(40) NOT NULL,
-	active boolean,
-	created datetime NOT NULL DEFAULT NOW(),
+	type varchar (20) NOT NULL,
 	password varchar(200) NOT NULL,
 	PRIMARY KEY (userid)
 );
 
 /* Create Dummy Account */
+use cbscalendar;
 
-INSERT INTO `cbscalendar`.`users`
+INSERT INTO `cbscalendar`.`user`
 (`email`,
-`active`,
+`type`,
 `password`)
 VALUES
-("admin@admin.dk",
-true,
-"d6YSr320JnLXlp8YYxUcNQ==");
+("mani13ar@student.cbs.dk",
+"user",
+"hejhej");
 
 
 
