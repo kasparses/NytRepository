@@ -223,6 +223,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getEventlist().getBtnLogout()){
 				screen.show(Screen.LOGIN);
 			}
+			if (e.getSource() == screen.getEventlist().getBtnAdd()){
+				screen.show(Screen.ADDEVENTGUI);
+			}
 		}
 	}
 	

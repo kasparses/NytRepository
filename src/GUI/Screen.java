@@ -19,6 +19,7 @@ public class Screen extends JFrame {
 	public static final String NOTELIST = "name_362271144977704";
 	public static final String USERINFO = "name_362280744832869";
 	public static final String ADDUSER = "name_362200721529567";
+	public static final String ADDEVENTGUI = "name_362181513611519";
 
 	private JPanel contentPane;
 	private final AddCourse addCourse = new AddCourse();

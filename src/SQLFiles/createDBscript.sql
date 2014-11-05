@@ -198,23 +198,18 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 	PRIMARY KEY (date)
 );
 
-
+use cbscalendar;
 CREATE TABLE IF NOT EXISTS events
 (
-	eventid int NOT NULL AUTO_INCREMENT,
-	type int NOT NULL,
-	location int,
-	createdby int NOT NULL,
-	start datetime NOT NULL,
-	end datetime NOT NULL,
-	name varchar(0) NOT NULL,
-	text text NOT NULL,
-	-- Decides wether the event is an import-event or user created
-	-- 
-	customevent boolean COMMENT 'Decides wether the event is an import-event or user created
-',
-	CalenderID int NOT NULL,
-	PRIMARY KEY (eventid)
+	eventid int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	location varchar(100) NOT NULL,
+	createdby varchar(100) NOT NULL,
+	start_date_time varchar(100) NOT NULL,
+	end_date_time varchar(100) NOT NULL,
+	name varchar(100) NOT NULL,
+	text varchar(100),
+	longitude int,
+	latitude int
 );
 
 
