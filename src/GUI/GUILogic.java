@@ -99,7 +99,6 @@ public class GUILogic {
 				screen.show(Screen.MAINMENU);
 			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
-				String Type = screen.getAddEventGUI().getTextField_Type().getText();
 				String Location = screen.getAddEventGUI().getTextField_Location().getText();
 				String Createdby = screen.getAddEventGUI().getTextField_Createdby().getText();
 				String start = screen.getAddEventGUI().getTextField_Start().getText();
@@ -107,7 +106,7 @@ public class GUILogic {
 				String name = screen.getAddEventGUI().getTextField_Name().getText();
 				String text = screen.getAddEventGUI().getTextField_Text().getText();
 
-				if (Type.equals("")|| Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
+				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
@@ -116,8 +115,8 @@ public class GUILogic {
 				{
 				QueryBuilder qb = new QueryBuilder();
 				
-				String[] kolonner = { "eventid", "type", "location", "createdby", "start", "end", "name", "text"};
-				String[] Values = { Type, Location, Createdby, start, end, name, text};
+				String[] kolonner = { "eventid", "location", "createdby", "start", "end", "name", "text"};
+				String[] Values = { Location, Createdby, start, end, name, text};
 				try {
 					qb.insertInto("events", kolonner ).values(Values).ExecuteQuery();
 				} catch (SQLException e1) {
@@ -222,6 +221,9 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getEventlist().getBtnLogout()){
 				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getEventlist().getBtnAdd()){
+				screen.show(Screen.ADDEVENT);
 			}
 		}
 	}
