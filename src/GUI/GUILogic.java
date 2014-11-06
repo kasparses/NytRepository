@@ -75,7 +75,7 @@ public class GUILogic {
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnUserlist()){
-//				screen.show(Screen.USERLIST);
+				screen.show(Screen.USERLIST);
 			}
 			if (e.getSource() == screen.getMainMenu().getBtnNotelist()){
 				screen.show(Screen.NOTELIST);
