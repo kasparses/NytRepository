@@ -1,5 +1,6 @@
 CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
+select * from events;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Create Tables */
@@ -29,7 +30,7 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 	PRIMARY KEY (date)
 );
 
-
+use cbscalendar;
 CREATE TABLE IF NOT EXISTS events
 (
 	eventid int NOT NULL AUTO_INCREMENT,
@@ -38,12 +39,10 @@ CREATE TABLE IF NOT EXISTS events
 	createdby int NOT NULL,
 	start datetime NOT NULL,
 	end datetime NOT NULL,
-	name varchar(0) NOT NULL,
+	name varchar(30) NOT NULL,
 	text text NOT NULL,
 	-- Decides wether the event is an import-event or user created
 	-- 
-	customevent boolean COMMENT 'Decides wether the event is an import-event or user created
-',
 	CalenderID int NOT NULL,
 	PRIMARY KEY (eventid)
 );
@@ -96,17 +95,26 @@ CREATE TABLE IF NOT EXISTS users
 	password varchar(200) NOT NULL,
 	PRIMARY KEY (userid)
 );
+use cbscalendar;
+CREATE TABLE IF NOT EXISTS user
+(
+	userid int NOT NULL AUTO_INCREMENT,
+	email varchar(40) NOT NULL,
+	type int NOT NULL,
+	password varchar(200) NOT NULL,
+	PRIMARY KEY (userid)
+);
 
 /* Create Dummy Account */
-
-INSERT INTO `cbscalendar`.`users`
+use cbscalendar;
+INSERT INTO `cbscalendar`.`user`
 (`email`,
-`active`,
+`type`,
 `password`)
 VALUES
-("admin@admin.dk",
-true,
-"d6YSr320JnLXlp8YYxUcNQ==");
+("asd",
+1,
+"asd");
 
 
 
@@ -197,7 +205,6 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 	qotd varchar(300) NOT NULL,
 	PRIMARY KEY (date)
 );
-
 
 CREATE TABLE IF NOT EXISTS events
 (

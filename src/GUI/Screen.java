@@ -30,6 +30,7 @@ public class Screen extends JFrame {
 	private final NoteList noteList = new NoteList();
 	private final UserInfo userInfo = new UserInfo();
 	CardLayout c;
+	private final UserList userList = new UserList();
 
 
 	/**
@@ -59,6 +60,8 @@ public class Screen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
+		
+		contentPane.add(userList, "name_480079376033151");
 		
 		contentPane.add(userInfo, "name_362280744832869");
 		

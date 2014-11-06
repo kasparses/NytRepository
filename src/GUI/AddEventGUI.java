@@ -32,8 +32,8 @@ public class AddEventGUI extends JPanel {
 	private JTextField textField_End;
 	private JTextField textField_Name;
 	private JTextField textField_Text;
-	private JLabel lblType;
-	private JTextField textField_Type;
+	private final JLabel lblType = new JLabel("Type");
+	private final JTextField textField_Type = new JTextField();
 
 	/**
 	 * Create the panel.
@@ -160,27 +160,25 @@ public class AddEventGUI extends JPanel {
 								textField_Text.setColumns(10);
 								textField_Text.setBounds(755, 426, 120, 34);
 								add(textField_Text);
-								
-								textField_Type = new JTextField();
-								textField_Type.setForeground(SystemColor.controlDkShadow);
-								textField_Type.setColumns(10);
-								textField_Type.setBounds(755, 473, 120, 34);
-								add(textField_Type);
-								
-								lblType = new JLabel("Type");
 								lblType.setForeground(Color.WHITE);
 								lblType.setFont(new Font("Arial", Font.BOLD, 26));
 								lblType.setBounds(483, 471, 159, 31);
-								add(lblType);
-						//=======
-						
-						//>>>>>>> FETCH_HEAD
 								
-								JLabel lblBackground = new JLabel("");
-								lblBackground.setSize(new Dimension(1366, 768));
-								lblBackground.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/MetalBackground.jpg")));
-								lblBackground.setBounds(0, 0, 1366, 768);
-								add(lblBackground);
+								add(lblType);
+										textField_Type.setForeground(SystemColor.controlDkShadow);
+										textField_Type.setColumns(10);
+										textField_Type.setBounds(755, 471, 120, 34);
+										
+										add(textField_Type);
+										//=======
+										
+										//>>>>>>> FETCH_HEAD
+												
+												JLabel lblBackground = new JLabel("");
+												lblBackground.setSize(new Dimension(1366, 768));
+												lblBackground.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/MetalBackground.jpg")));
+												lblBackground.setBounds(0, 0, 1366, 768);
+												add(lblBackground);
 		
 		
 
@@ -217,7 +215,6 @@ public class AddEventGUI extends JPanel {
 		return textField_Text;
 	}
 	
-
 	public JTextField getTextField_Type() {
 		return textField_Type;
 	}
