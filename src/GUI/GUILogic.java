@@ -3,13 +3,10 @@ package GUI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
-
 import model.QueryBuild.QueryBuilder;
 import GUI.UserInformation;
 import GUI.AuthUser;
-
 import javax.swing.JOptionPane;
-
 import model.QueryBuild.*;
 import model.user.User;
 import GUI.Screen;
@@ -124,9 +121,7 @@ public class GUILogic {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				}
-				
-				
+				}	
 			}
 		}
 	}

@@ -15,6 +15,7 @@ public class TCPClient {
 		CC.setPublicOrPrivate(1);
 		CC.setUserName("John");
 		String gsonString = gson.toJson(CC);
+		System.out.println("hej");
 		System.out.println(CC);
 		System.out.println(gsonString);
 
@@ -26,7 +27,7 @@ public class TCPClient {
 		byte[] encrypted = input;
 		for (int i = 0; i < encrypted.length; i++)
 			encrypted[i] = (byte) (encrypted[i] ^ key);
-
+		
 		outToServer.write(encrypted);
 		outToServer.flush();
 		BufferedReader inFromServer = new BufferedReader(new InputStreamReader(
