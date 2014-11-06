@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -13,15 +14,22 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.swing.border.MatteBorder;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-import model.QueryBuild.QueryBuilder;
+
+import com.mysql.jdbc.ResultSetMetaData;
+
+import model.QueryBuild.*;
  
 public class UserList extends JPanel {
     /**
@@ -35,27 +43,38 @@ public class UserList extends JPanel {
 	private JButton btnLogout;
 	private JButton btnMainMenu;
 	private ResultSet rs;
+	private QueryBuilder qb;
 	
-    public UserList() {
+    public UserList( String email) {
     	setSize(new Dimension(1366, 768));
  
         String[] columnNames = {"UserID",
                                 "Email",
-                                "Active",
-                                "Created datetime",
+                                "type",
                                 "Password"};
  
 
+        String[] keys = {"userid", "email","type", "password"};
+		qb = new QueryBuilder();
+		try {
+			rs = qb.selectFrom(keys, "user").all().ExecuteQuery();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
         	Object[][] data = {
-        		
-        };
+        			
+        			{
+        				keys
+        			}
+        			};
         
 	
     
         try {
 			QueryBuilder qb = new QueryBuilder();
-			rs = qb.selectFrom("users").all().ExecuteQuery();
+			rs = qb.selectFrom("user").all().ExecuteQuery();
 			
 	        int count = 0;
 	        while (rs.next()) {
@@ -78,13 +97,13 @@ public class UserList extends JPanel {
         table.setRowSelectionAllowed(true);
         
  
-        if (DEBUG) {
-            table.addMouseListener(new MouseAdapter() {
-                public void mouseClicked(MouseEvent e) {
-                    printDebugData(table);
-                }
-            });
-        }
+//        if (DEBUG) {
+//            table.addMouseListener(new MouseAdapter() {
+//                public void mouseClicked(MouseEvent e) {
+//                    printDebugData(table);
+//                }
+//            });
+//        }
         setLayout(null);
  
         //Create the scroll pane and add the table to it.
@@ -164,54 +183,54 @@ public class UserList extends JPanel {
         add(lblBackground);
     }
  
-    private void printDebugData(JTable table) {
-        int numRows = table.getRowCount();
-        int numCols = table.getColumnCount();
-        javax.swing.table.TableModel model = table.getModel();
- 
-        System.out.println("Value of data: ");
-        for (int i=0; i < numRows; i++) {
-            System.out.print("    row " + i + ":");
-            for (int j=0; j < numCols; j++) {
-                System.out.print("  " + model.getValueAt(i, j));
-            }
-            System.out.println();
-        }
-        System.out.println("--------------------------");
-    }
+//    private void printDebugData(JTable table) {
+//        int numRows = table.getRowCount();
+//        int numCols = table.getColumnCount();
+//        javax.swing.table.TableModel model = table.getModel();
+// 
+//        System.out.println("Value of data: ");
+//        for (int i=0; i < numRows; i++) {
+//            System.out.print("    row " + i + ":");
+//            for (int j=0; j < numCols; j++) {
+//                System.out.print("  " + model.getValueAt(i, j));
+//            }
+//            System.out.println();
+//        }
+//        System.out.println("--------------------------");
+//    }
  
     /**
      * Create the GUI and show it.  For thread safety,
      * this method should be invoked from the
      * event-dispatching thread.
      */
-    private static void createAndShowGUI() {
-        //Create and set up the window.
-        JFrame frame = new JFrame("SimpleTableDemo");
-        frame.setSize(1366, 768);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//    private static void createAndShowGUI() {
+//        //Create and set up the window.
+//        JFrame frame = new JFrame("SimpleTableDemo");
+//        frame.setSize(1366, 768);
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+// 
+//        //Create and set up the content pane.
+//        UserList newContentPane = new UserList();
+//        newContentPane.setOpaque(true); //content panes must be opaque
+//        frame.setContentPane(newContentPane);
+// 
+//
+//        
+//        frame.setVisible(true);
+//    }
  
-        //Create and set up the content pane.
-        UserList newContentPane = new UserList();
-        newContentPane.setOpaque(true); //content panes must be opaque
-        frame.setContentPane(newContentPane);
- 
-
-        
-        frame.setVisible(true);
-    }
- 
-    public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-     
-
-        }
-        });
-    }
+//    public static void main(String[] args) {
+//        //Schedule a job for the event-dispatching thread:
+//        //creating and showing this application's GUI.
+//        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+//            public void run() {
+//                createAndShowGUI();
+//     
+//
+//        }
+//        });
+//    }
     
     public void addActionListener(ActionListener l) {
 		btnDelete.addActionListener(l);

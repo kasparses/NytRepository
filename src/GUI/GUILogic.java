@@ -105,6 +105,8 @@ public class GUILogic {
 				String end = screen.getAddEventGUI().getTextField_End().getText();
 				String name = screen.getAddEventGUI().getTextField_Name().getText();
 				String text = screen.getAddEventGUI().getTextField_Text().getText();
+				String type = screen.getAddEventGUI().getTextField_Type().getText();
+
 
 				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
 				{
@@ -115,8 +117,8 @@ public class GUILogic {
 				{
 				QueryBuilder qb = new QueryBuilder();
 				
-				String[] kolonner = { "eventid", "location", "createdby", "start", "end", "name", "text"};
-				String[] Values = { Location, Createdby, start, end, name, text};
+				String[] kolonner = { "eventid", "type", "location", "createdby", "start", "end", "name", "text"};
+				String[] Values = { Location, type, Createdby, start, end, name, text};
 				try {
 					qb.insertInto("events", kolonner ).values(Values).ExecuteQuery();
 				} catch (SQLException e1) {
@@ -191,6 +193,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getNoteList().getBtnLogout()){
 				screen.show(Screen.LOGIN);
 			}
+//			if (e.getSource() == screen.getNoteList().getBtnAdd()){
+//				screen.show(Screen.);
+//			}
 		}
 	}
 	
