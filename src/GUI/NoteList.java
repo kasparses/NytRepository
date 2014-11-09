@@ -14,11 +14,17 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.JButton;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
+
+import model.QueryBuild.QueryBuilder;
+
+import com.mysql.jdbc.ResultSetMetaData;
 
 public class NoteList extends JPanel {
 	private JTable table;
@@ -29,6 +35,8 @@ public class NoteList extends JPanel {
 	private JButton btnMainMenu;
 	private JButton btnLogout;
 	private JLabel label;
+	private ResultSet rs;
+	private QueryBuilder qb;
 	
 
 	/**
@@ -39,16 +47,47 @@ public class NoteList extends JPanel {
 		setLayout(null);
 		
 		//Laver tabellen inde i Eventlisten.
-		String[] columnNames = { "Note", "Event", "Date", "Numbers of Notes" };
+		String[] columnNames = { "noteId", "eventId", "createdBy", "text", "dateTime", "active" };
+    	String[][] data = {
+    			
+    			{
+    			
+    			}
+    			};
+   
+    try {
+		QueryBuilder qb = new QueryBuilder();
+		rs = qb.selectFrom("notes").all().ExecuteQuery();
+		int rowSize = rs.getRow();
 
-		Object[][] data = {
+		try {
+            rs.last();
+            rowSize = rs.getRow();
+            rs.beforeFirst();
+        }
+        catch(Exception ex) {
 
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3"},
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3"},
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3"},
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3" },
-				{ "DØK Julefrokost", "11.11.2022", "Game on!","3" } 
-				};
+        }
+
+        ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+        int columnSize = rsmd.getColumnCount();
+       
+
+        data = new String[rowSize][columnSize];
+
+        int i =0;
+        while(rs.next() && i < rowSize)
+        {
+            for(int j=0;j<columnSize;j++){
+                data[i][j] = rs.getString(j+1);
+            }
+            i++;                    
+        }
+       
+        
+	} catch (SQLException e1) {
+		e1.printStackTrace();
+	}
 
 		final JTable table = new JTable(data, columnNames);
 		table.setSurrendersFocusOnKeystroke(true);

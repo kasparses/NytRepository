@@ -5,14 +5,14 @@
 	import java.awt.Dimension;
 
 	import javax.swing.JLabel;
-	import javax.swing.ImageIcon;
-	import javax.swing.JTable;
-	import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 	import java.awt.Font;
 
 	import javax.swing.SwingConstants;
-	import javax.swing.JButton;
+import javax.swing.JButton;
 
 	import java.awt.Color;
 
@@ -21,11 +21,18 @@
 	import java.awt.Component;
 
 	import javax.swing.border.CompoundBorder;
-	import javax.swing.border.BevelBorder;
-	import javax.swing.border.MatteBorder;
-	import javax.swing.JTextPane;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.MatteBorder;
+import javax.swing.JTextPane;
+
+import model.QueryBuild.QueryBuilder;
+
+import com.mysql.jdbc.ResultSetMetaData;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 	public class EventList extends JPanel {
@@ -38,6 +45,8 @@ import java.awt.event.ActionEvent;
 		private JButton btnDelete;
 		private JButton btnLogout;
 		private JButton btnMainMenu;
+		private ResultSet rs;
+		private QueryBuilder qb;
 		
 		
 		public EventList() {
@@ -58,15 +67,47 @@ import java.awt.event.ActionEvent;
 
 			
 			//Laver tabellen inde i Eventlisten.
-			String[] columnNames = { "Event", "Date", "Note", "" };
+			String[] columnNames = { "eventid", "location", "createdby", "start_date_time", "end_date_time", "name", "text" };
+        	String[][] data = {
+        			
+        			{
+        			
+        			}
+        			};
+       
+        try {
+			QueryBuilder qb = new QueryBuilder();
+			rs = qb.selectFrom("events").all().ExecuteQuery();
+			int rowSize = rs.getRow();
 
-			Object[][] data = {
+			try {
+	            rs.last();
+	            rowSize = rs.getRow();
+	            rs.beforeFirst();
+	        }
+	        catch(Exception ex) {
 
-					{ "DØK Julefrokost", "11.11.2022", "Game on!", new Boolean(false) },
-					{ "DØK Julefrokost", "11.11.2022", "Game on!", new Boolean(true) },
-					{ "DØK Julefrokost", "11.11.2022", "Game on!", new Boolean(false) },
-					{ "DØK Julefrokost", "11.11.2022", "Game on!", new Boolean(true) },
-					{ "DØK Julefrokost", "11.11.2022", "Game on!", new Boolean(false) } };
+	        }
+
+	        ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+	        int columnSize = rsmd.getColumnCount();
+	       
+
+	        data = new String[rowSize][columnSize];
+
+	        int i =0;
+	        while(rs.next() && i < rowSize)
+	        {
+	            for(int j=0;j<columnSize;j++){
+	                data[i][j] = rs.getString(j+1);
+	            }
+	            i++;                    
+	        }
+	       
+	        
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 
 			final JTable table = new JTable(data, columnNames);
 			table.setSurrendersFocusOnKeystroke(true);
