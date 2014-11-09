@@ -211,6 +211,7 @@ public class GUILogic {
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getUserList().getBtnAdd()){
+				screen.show(Screen.ADDUSER);
 			
 			}
 			if (e.getSource() == screen.getUserList().getBtnDelete()){
