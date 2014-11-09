@@ -40,21 +40,6 @@ public class UserList extends JPanel {
     public UserList() {
     	setSize(new Dimension(1366, 768));
  
-//        String[] columnNames = {"UserID",
-//                                "Email",
-//                                "type",
-//                                "Password"};
-// 
-//
-//        String[] keys = {"userid", "email","type", "password"};
-//		qb = new QueryBuilder();
-//		try {
-//			rs = qb.selectFrom(keys, "user").all().ExecuteQuery();
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-    	
     	
 		String[] columnNames = { "userid", "email", "type", "password" };
         	String[][] data = {
@@ -68,9 +53,7 @@ public class UserList extends JPanel {
 			QueryBuilder qb = new QueryBuilder();
 			rs = qb.selectFrom("user").all().ExecuteQuery();
 			int rowSize = rs.getRow();
-//	        ResultSetMetaData rsmd = rs.getMetaData();
-//
-//	        int columnSize = rs.getColumnCount();
+
 			try {
 	            rs.last();
 	            rowSize = rs.getRow();
@@ -82,7 +65,7 @@ public class UserList extends JPanel {
 
 	        ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
 	        int columnSize = rsmd.getColumnCount();
-	        /////////////////////////////////////
+	       
 
 	        data = new String[rowSize][columnSize];
 
