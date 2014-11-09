@@ -2,6 +2,12 @@ import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.Socket;
+import JsonClasses.DeleteCalender;
+
+import org.json.simple.JSONObject;
+
+import JsonClasses.DeleteCalender;
+import sun.font.CreatedFontTracker;
 
 
 public class ClientWorker implements  Runnable{
@@ -10,6 +16,7 @@ public class ClientWorker implements  Runnable{
 	private GiantSwitch GS = new GiantSwitch();
 	private encryption cryp = new encryption();
 	private String incomingJson;
+		
 	
 	ClientWorker(Socket connectionSocket){
 		this.connectionSocketConected = connectionSocket;
@@ -31,13 +38,16 @@ public class ClientWorker implements  Runnable{
 			
 			String ny = cryp.decrypt(b);
 			
+			DeleteCalender myJson = new DeleteCalender(ny);
+			
 			//cryp.StringEncryption(inFromClient.readLine());
 			System.out.println("Besked modtaget!");
 			//Sysout recieved message
 			System.out.println("Received: " + ny);
 			String returnSvar = GS.GiantSwitchMethod(ny);		
 			//Sends the capitalized message back to client!!
-			outToClient.writeBytes(returnSvar + "\n");
+			System.out.println("returnSvar: "+returnSvar);
+			outToClient.writeBytes(returnSvar);
 			System.out.println("svar sendt");
 			//BufferedWriter writer = new BufferedWriter(arg0)
 		}catch(Exception exception){

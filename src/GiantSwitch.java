@@ -1,11 +1,14 @@
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import model.QOTD.QOTDModel;
 import model.calendar.Event;
 import model.note.Note;
+import GUI.Screen;
 import JsonClasses.AuthUser;
 import JsonClasses.CalendarInfo;
-//import JsonClasses.CreateCalender;
+import JsonClasses.CreateCalender;
 import JsonClasses.DeleteCalender;
 
 import com.google.gson.*;
@@ -13,6 +16,8 @@ import com.google.gson.*;
 import databaseMethods.SwitchMethods;
 
 public class GiantSwitch {
+	private model.user.User u3;
+	model.user.AuthenticateUser a = new model.user.AuthenticateUser();
 	
 	
 	
@@ -46,12 +51,25 @@ public class GiantSwitch {
 			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
 			System.out.println("Recieved logIn");
 			try {
-				answer = SW.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword(), AU.getAuthUserIsAdmin());
+				System.out.println("userName: "+AU.getAuthUserEmail()+"password: "+AU.getAuthUserPassword());
+				answer =a.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword());
+				System.out.println("answer: "+answer);
+			if(answer.equals("notCorrect")){
+				JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
+						, "Error message",JOptionPane.PLAIN_MESSAGE);
+		}
+
+		if	(answer.equals("correct"))
+				{
+					System.out.println("OMFG DET VIRKER");
+				}
+//				answer = SW.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			break;
+			
 
 		case "logOut":
 			System.out.println("Recieved logOut");
@@ -61,9 +79,9 @@ public class GiantSwitch {
 		 ** CALENDAR **
 		 *************/
 		case "createCalender":
-//			CreateCalender CC = (CreateCalender)gson.fromJson(jsonString, CreateCalender.class);
-//			System.out.println(CC.getCalenderName()+ "Den har lagt det nye ind i klassen");
-//			answer = SW.createNewCalender(CC.getUserName(), CC.getCalenderName(), CC.getPublicOrPrivate());¨
+			CreateCalender CC = (CreateCalender)gson.fromJson(jsonString, CreateCalender.class);
+			System.out.println(CC.getCalenderName()+ "Den har lagt det nye ind i klassen");
+			answer = SW.createNewCalender(CC.getUserName(), CC.getCalenderName(), CC.getPublicOrPrivate());
 			System.out.println("Det virker");
 			break;
 		

@@ -7,6 +7,10 @@ public class DeleteCalender implements java.io.Serializable
 	private String calenderName;
 	private String userName;
 	
+	public DeleteCalender(String ny) {
+		// TODO Auto-generated constructor stub
+	}
+	
 	//Getters and setters for everything, bitch
 	public String getOverallID() {
 		return overallID;
@@ -25,5 +29,10 @@ public class DeleteCalender implements java.io.Serializable
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+
+	public String getString(String string) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

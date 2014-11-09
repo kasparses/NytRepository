@@ -21,10 +21,11 @@ public class AuthenticateUser {
 	 * @throws Exception
 	 */
 
-	public User authenticate(String email, String password)
+	public String authenticate(String email, String password)
 	{
 		ResultSet rs;
 		User u3 = null;
+		String answer = "notCorrect";
 		
 		try
 		{
@@ -42,11 +43,12 @@ public class AuthenticateUser {
 				
 				
 				if(pass.equals(password)){
-					u3 = new User(userid, emailAddress, ty, password);
+//					u3 = new User(userid, emailAddress, ty, password);
+					answer = "correct";
 				}				
 
-				else
-					u3 = null;
+				
+					
 
 			}
 		}
@@ -55,6 +57,6 @@ public class AuthenticateUser {
 			ex.printStackTrace();
 		}
 
-		return u3;
+		return answer;
 	}
 }

@@ -19,7 +19,7 @@ import model.note.*;
 public class GUILogic {
 	private Screen screen;
 	private User u2;
-	private model.user.User u3;
+	private String u3;
 	private model.note.NoteModel nm;
 	private boolean u;
 	private boolean full = false;
@@ -59,13 +59,13 @@ public class GUILogic {
 			u3=a.authenticate(email, password);
 			
 			if (e.getSource() == screen.getLogin().getBtnLogIn()){
-				
-				if(u3 == null){
+				System.out.println(u3);
+				if(u3.equals("notCorrect")){
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 			}
 
-			if	(u3 != null)
+			if	(u3.equals("correct"))
 					{
 						screen.show(Screen.MAINMENU);
 					}
