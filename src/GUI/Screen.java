@@ -20,7 +20,8 @@ public class Screen extends JFrame {
 	public static final String USERINFO = "name_362280744832869";
 	public static final String ADDUSER = "name_362200721529567";
 	public static final String USERLIST = "name_480079376033151";
-	
+	public static final String ADDNOTE = "name_738191050387273";
+
 
 	private JPanel contentPane;
 	private final AddCourse addCourse = new AddCourse();
@@ -33,6 +34,7 @@ public class Screen extends JFrame {
 	private final UserInfo userInfo = new UserInfo();
 	private final UserList userList = new UserList();
 	CardLayout c;
+	private final AddNote addNote = new AddNote();
 
 
 
@@ -67,6 +69,8 @@ public class Screen extends JFrame {
 		contentPane.add(userList, "name_480079376033151");
 		
 		contentPane.add(userInfo, "name_362280744832869");
+		
+		contentPane.add(addNote, "name_738191050387273");
 		
 		contentPane.add(noteList, "name_362271144977704");
 		
@@ -120,6 +124,10 @@ public class Screen extends JFrame {
 
 	public UserList getUserList() {
 		return userList;
+	}
+	
+	public AddNote getAddNote() {
+		return addNote;
 	}
 	
 }

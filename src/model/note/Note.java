@@ -1,13 +1,16 @@
 package model.note;
 
+import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 
+import GUI.Screen;
 import model.Model;
 import model.QueryBuild.*;
 
+
 public class Note extends Model{
 	
-	NoteModel notes = new NoteModel(0, null, null, null, 0, 0);
+	NoteModel notes = new NoteModel(0, null, null, null, 0);
 	QueryBuilder qb = new QueryBuilder(); 
 	
 		public void CreateNote(
@@ -15,14 +18,14 @@ public class Note extends Model{
 			String text, 
 			String dateTime, 
 			String createdBy, 
-			int isActive, 
+//			int isActive, 
 			int eventID)	{
 			
 			String nId = String.valueOf(noteID);
 			String eId = String.valueOf(eventID);
 			
-			String[] fields = {"noteId", "eventId", "createdBy", "text", "dateTime", "active"};
-			String[] values = {nId, eId, createdBy, text, dateTime, String.valueOf(isActive)};
+			String[] fields = {"noteId", "eventId", "createdBy", "text", "dateTime"};
+			String[] values = {nId, eId, createdBy, text, dateTime};
 			try {
 				qb.insertInto("notes", fields).values(values).Execute();
 				
@@ -35,7 +38,7 @@ public class Note extends Model{
 		public void DeleteNote (int noteID) throws SQLException {
 			
 					notes = GetNote(noteID);
-					notes.setActive(0);
+//					notes.setActive(0);
 					SaveNote(notes);
 					
 				}
@@ -54,7 +57,7 @@ public class Note extends Model{
 							resultSet.getString("text"), 
 							resultSet.getString("dateTime"), 
 							resultSet.getString("createdBy"), 
-							resultSet.getInt("Active"), 
+//							resultSet.getInt("Active"), 
 							noteID);
 				}
 					return notes;
@@ -68,13 +71,13 @@ public class Note extends Model{
 			String text = note.getText();
 			String dateTime = note.getDateTime();
 			String createdBy = note.getCreatedBy();
-			int isActive = note.isActive();
+//			int isActive = note.isActive();
 
 			int eventID = note.getEventID();
 			int noteID = note.getNoteID();
 			
-			String[] fields = {"eventID", "createdBy", "text", "dateTime", "Active"};
-			String[] values = {String.valueOf(noteID), text, dateTime, createdBy, String.valueOf(isActive)};
+			String[] fields = {"eventID", "createdBy", "text", "dateTime"};
+			String[] values = {String.valueOf(noteID), text, dateTime, createdBy};
 			qb.update("notes", fields, values).where("noteID", "=", String.valueOf(noteID));
 				
 		}

@@ -18,16 +18,16 @@ public class NoteModel {
 	private String text;
 	private String dateTime;
 	private String createdBy;
-	private int isActive;
+//	private int isActive;
 	private int eventID;
 	
-	public NoteModel(int noteID, String text, String dateTime, String createdBy, int isActive, int eventID) {
+	public NoteModel(int noteID, String text, String dateTime, String createdBy, int eventID) {
 		super();
 		this.noteID = noteID;
 		this.text = text;
 		this.dateTime = dateTime;
 		this.createdBy = createdBy;
-		this.isActive = isActive;
+//		this.isActive = isActive;
 		this.eventID = eventID;
 		
 		
@@ -43,14 +43,14 @@ public class NoteModel {
 	}
 
 
-	public int isActive() {
-		return isActive;
-	}
-
-
-	public void setActive(int isActive) {
-		this.isActive = isActive;
-	}
+//	public int isActive() {
+//		return isActive;
+//	}
+//
+//
+//	public void setActive(int isActive) {
+//		this.isActive = isActive;
+//	}
 
 
 	public String getCreatedBy() {

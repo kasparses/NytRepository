@@ -43,7 +43,6 @@ CREATE TABLE IF NOT EXISTS events
 	text text NOT NULL,
 	-- Decides wether the event is an import-event or user created
 	-- 
-	CalenderID int NOT NULL,
 	PRIMARY KEY (eventid)
 );
 
@@ -56,7 +55,7 @@ CREATE TABLE IF NOT EXISTS locationdata
 	PRIMARY KEY (locationdataid)
 );
 
-
+use cbscalendar;
 CREATE TABLE IF NOT EXISTS notes
 (
 	noteId int NOT NULL AUTO_INCREMENT,
@@ -64,7 +63,6 @@ CREATE TABLE IF NOT EXISTS notes
 	createdBy varchar(255) NOT NULL,
 	text text,
 	dateTime datetime NOT NULL,
-	active bit,
 	PRIMARY KEY (noteid)
 );
 

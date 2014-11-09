@@ -3,23 +3,29 @@ package GUI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+
 import model.QueryBuild.QueryBuilder;
 import GUI.UserInformation;
 import GUI.AuthUser;
+
 import javax.swing.JOptionPane;
+import javax.swing.text.html.HTMLDocument.RunElement;
+
 import model.QueryBuild.*;
 import model.user.User;
 import GUI.Screen;
+import model.note.*;
 
 public class GUILogic {
 	private Screen screen;
 	private User u2;
 	private model.user.User u3;
+	private model.note.NoteModel nm;
 	private boolean u;
 	private boolean full = false;
 	
 	model.user.AuthenticateUser a = new model.user.AuthenticateUser();
-	
+	model.note.Note n = new model.note.Note();
 
 	public GUILogic(){
 		screen = new Screen();
@@ -29,10 +35,11 @@ public class GUILogic {
 		screen.getMainMenu().addActionListener(new MainMenuActionListener());
 		screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
-//		screen.getUserList().addActionListener(new UserListActionListener());
+		screen.getUserList().addActionListener(new UserListActionListener());
 		screen.getEventlist().addActionListener(new EventListActionListener());
 		screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
+		screen.getAddNote().addActionListener(new AddNoteActionListener());
 
 		
 		
@@ -150,10 +157,10 @@ public class GUILogic {
 				
 				String[] kolonner = { "email", "password"};
 				String[] Values = { Email, Password};
-				String[] kolonner2 = { "types"};
-				String[] Values2 = { Type};
+//				String[] kolonner2 = { "types"};
+//				String[] Values2 = { Type};
 				try {
-					qb.insertInto("users", kolonner ).values(Values).ExecuteQuery();
+					qb.insertInto("user", kolonner ).values(Values).ExecuteQuery();
 					qb.insertInto("roles", kolonner ).values(Values).ExecuteQuery();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
@@ -188,30 +195,30 @@ public class GUILogic {
 			if (e.getSource() == screen.getNoteList().getBtnLogout()){
 				screen.show(Screen.LOGIN);
 			}
-//			if (e.getSource() == screen.getNoteList().getBtnAdd()){
-//				screen.show(Screen.);
-//			}
+			if (e.getSource() == screen.getNoteList().getBtnAdd()){
+				screen.show(Screen.ADDNOTE);
+			}
 		}
 	}
 	
-//	private class UserListActionListener implements ActionListener {
-//		public void actionPerformed(ActionEvent e) {
-//			
-//			if (e.getSource() == screen.getUserList().getBtnMainMenu()){
-//				screen.show(Screen.MAINMENU);
-//			}
-//			if (e.getSource() == screen.getUserList().getBtnLogout()){
-//				screen.show(Screen.LOGIN);
-//			}
-//			if (e.getSource() == screen.getUserList().getBtnAdd()){
-//			
-//			}
-//			if (e.getSource() == screen.getUserList().getBtnDelete()){
-//				
-//			}
-//
-//		}
-//	}
+	private class UserListActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+			if (e.getSource() == screen.getUserList().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getUserList().getBtnLogout()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getUserList().getBtnAdd()){
+			
+			}
+			if (e.getSource() == screen.getUserList().getBtnDelete()){
+				
+			}
+
+		}
+	}
 	
 	private class EventListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -228,5 +235,48 @@ public class GUILogic {
 		}
 	}
 	
+	private class AddNoteActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+
+			if (e.getSource() == screen.getAddNote().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getAddNote().getBtnLogout()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getAddNote().getBtnAddNote()){
+				
+				String text = screen.getAddNote().getTextField_text().getText();
+				String createdBy = screen.getAddNote().getTextField_Createdby().getText();
+				int noteID = screen.getAddNote().getTextField_NoteID().getX();
+				int eventID = screen.getAddNote().getTextField_EventID().getX();
+				String dateTime = screen.getAddNote().getTextField_Date().getText();
+//				int isActive = screen.getAddNote().getTextField_Active().getX();
+				n.CreateNote(noteID, text, dateTime, createdBy, eventID);
+				
+				if (text.equals("")|| createdBy.equals(""))
+				{
+					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+				}
+//				else
+//				{
+//				QueryBuilder qb = new QueryBuilder();
+//				
+//				String[] kolonner = { "text", "createdby"};
+//				String[] Values = { text, createdby};
+//				
+//				try {
+//					qb.insertInto("notes", kolonner ).values(Values).ExecuteQuery();
+//				} catch (SQLException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
+					
+//				}
+				
+			}
+		}
+	}
 	
 }

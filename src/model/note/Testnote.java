@@ -9,11 +9,11 @@ public class Testnote {
 		String text = "penis";
 		String date = "1000-01-01 00:00:00";
 		String cb = "createdBy din mor haha";
-		int ia = 1;
+//		int ia = 1;
 		int eID = 11;
 		
 		Note note = new Note();
-		note.CreateNote(nID, text, date, cb, ia, eID);
+		note.CreateNote(nID, text, date, cb, eID);
 		note.DeleteNote(nID);
 	}
 }

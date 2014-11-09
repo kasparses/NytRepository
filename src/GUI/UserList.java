@@ -152,7 +152,7 @@ public class UserList extends JPanel {
         btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
         btnLogout.setContentAreaFilled(false);
         btnLogout.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-        btnLogout.setBounds(642, 688, 152, 44);
+        btnLogout.setBounds(642, 697, 152, 44);
         add(btnLogout);
         
         btnMainMenu = new JButton("Main Menu");
@@ -189,7 +189,7 @@ public class UserList extends JPanel {
         lblBackground.setBackground(new Color(245, 245, 245));
         lblBackground.setForeground(new Color(245, 255, 250));
         lblBackground.setOpaque(true);
-        lblBackground.setBounds(0, 0, 1376, 768);
+        lblBackground.setBounds(0, 0, 1366, 768);
         add(lblBackground);
     }
  
