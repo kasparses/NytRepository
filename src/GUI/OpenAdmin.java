@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.Color;
 
 public class OpenAdmin implements Runnable{
 
@@ -47,13 +49,15 @@ public class OpenAdmin implements Runnable{
 		frmOpenAdminConsole.setBounds(100, 100, 450, 300);
 		frmOpenAdminConsole.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmOpenAdminConsole.getContentPane().setLayout(null);
+		btnOpenAdminConsole.setForeground(Color.BLACK);
+		btnOpenAdminConsole.setFont(new Font("Tahoma", Font.BOLD, 11));
 		btnOpenAdminConsole.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				GUILogic admin = new GUILogic();
 				admin.run();
 			}
 		});
-		btnOpenAdminConsole.setBounds(149, 151, 136, 30);
+		btnOpenAdminConsole.setBounds(136, 148, 177, 33);
 		
 		frmOpenAdminConsole.getContentPane().add(btnOpenAdminConsole);
 		label.setIcon(new ImageIcon(OpenAdmin.class.getResource("/Images/MetalBackground.jpg")));

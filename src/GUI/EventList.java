@@ -161,9 +161,8 @@ import java.sql.SQLException;
 						add(btnAdd);
 			
 						JLabel label = new JLabel("");
-						label.setIcon(new ImageIcon(EventList.class
-								.getResource("/Images/MetalBackground.jpg")));
-						label.setBounds(-26, -28, 1366, 768);
+						label.setIcon(new ImageIcon(EventList.class.getResource("/Images/MetalBackground.jpg")));
+						label.setBounds(0, 0, 1366, 768);
 						add(label);
 
 		}
