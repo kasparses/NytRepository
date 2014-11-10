@@ -8,7 +8,7 @@ import model.note.Note;
 import GUI.Screen;
 import JsonClasses.AuthUser;
 import JsonClasses.CalendarInfo;
-import JsonClasses.CreateCalender;
+//import JsonClasses.CreateCalender;
 import JsonClasses.DeleteCalender;
 
 import com.google.gson.*;
@@ -79,10 +79,10 @@ public class GiantSwitch {
 		 ** CALENDAR **
 		 *************/
 		case "createCalender":
-			CreateCalender CC = (CreateCalender)gson.fromJson(jsonString, CreateCalender.class);
-			System.out.println(CC.getCalenderName()+ "Den har lagt det nye ind i klassen");
-			answer = SW.createNewCalender(CC.getUserName(), CC.getCalenderName(), CC.getPublicOrPrivate());
-			System.out.println("Det virker");
+//			CreateCalender CC = (CreateCalender)gson.fromJson(jsonString, CreateCalender.class);
+//			System.out.println(CC.getCalenderName()+ "Den har lagt det nye ind i klassen");
+//			answer = SW.createNewCalender(CC.getUserName(), CC.getCalenderName(), CC.getPublicOrPrivate());
+//			System.out.println("Det virker");
 			break;
 		
 		case "deleteCalender":
