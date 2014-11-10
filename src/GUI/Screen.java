@@ -59,7 +59,7 @@ public class Screen extends JFrame {
 	 */
 	public Screen() {
 		setTitle("Doek4life");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 1390, 818);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
