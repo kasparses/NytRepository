@@ -8,12 +8,13 @@ import com.google.gson.stream.JsonReader;
 
 class TCPServer{    
 	
+
 	public static void main(String argv[]) throws Exception       {
 
 		
 		OpenAdmin admin = new OpenAdmin();
-		Thread adminthread = new Thread (OpenAdmin, "OpenAdmin");
-		OpenAdmin.run();
+		Thread adminthread = new Thread (admin, "OpenAdmin");
+		adminthread.run();
 		
 		//Creates a socket to send and recieve messages in port 8888
 		ServerSocket welcomeSocket = new ServerSocket(8888);

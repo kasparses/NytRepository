@@ -1,19 +1,19 @@
 package GUI;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionEvent;
 
-public class OpenAdmin extends JFrame {
+public class OpenAdmin implements Runnable{
 
-	
-	private JPanel contentPane;
-	private final JButton btnCloseAdmin = new JButton("Close Admin");
+	private JFrame frmOpenAdminConsole;
+	private final JButton btnOpenAdminConsole = new JButton("Open Admin Console");
+	private final JLabel label = new JLabel("");
 
 	/**
 	 * Launch the application.
@@ -22,8 +22,8 @@ public class OpenAdmin extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OpenAdmin frame = new OpenAdmin();
-					frame.setVisible(true);
+					OpenAdmin window = new OpenAdmin();
+					window.frmOpenAdminConsole.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -32,32 +32,40 @@ public class OpenAdmin extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Create the application.
 	 */
 	public OpenAdmin() {
-		setTitle("Open Admin");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 567, 304);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		btnCloseAdmin.setBounds(215, 179, 132, 33);
-		
-		contentPane.add(btnCloseAdmin);
-	}
-	
-	public void addActionListener(ActionListener l) {
-		btnCloseAdmin.addActionListener(l);
-		
-}
-
-	public JButton getBtnCloseAdmin() {
-		return btnCloseAdmin;
+		initialize();
 	}
 
-	public static void run() {
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmOpenAdminConsole = new JFrame();
+		frmOpenAdminConsole.setTitle("Open Admin Console");
+		frmOpenAdminConsole.setBounds(100, 100, 450, 300);
+		frmOpenAdminConsole.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmOpenAdminConsole.getContentPane().setLayout(null);
+		btnOpenAdminConsole.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GUILogic admin = new GUILogic();
+				admin.run();
+			}
+		});
+		btnOpenAdminConsole.setBounds(149, 151, 136, 30);
 		
+		frmOpenAdminConsole.getContentPane().add(btnOpenAdminConsole);
+		label.setIcon(new ImageIcon(OpenAdmin.class.getResource("/Images/MetalBackground.jpg")));
+		label.setBounds(0, 0, 434, 261);
+		
+		frmOpenAdminConsole.getContentPane().add(label);
 	}
 	
+	@Override
+	public void run() {
+		frmOpenAdminConsole.setVisible(true);
+	}
+
+		
 }
