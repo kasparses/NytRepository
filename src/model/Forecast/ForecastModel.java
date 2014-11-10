@@ -69,9 +69,8 @@ public class ForecastModel {
 	                 String string_date = date.toString();
 	                 
 	                 JSONObject temp = (JSONObject) innerObj.get("temp");
-	                 double celsius = (Double) temp.get("day");
 	                 
-	                 String temperatur = String.valueOf(celsius);
+	                 String temperatur = String.valueOf(temp.get("day"));
 	                 JSONArray subList = (JSONArray) innerObj.get("weather");
 
 	                 Iterator y = subList.iterator();
