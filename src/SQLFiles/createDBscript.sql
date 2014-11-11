@@ -94,25 +94,29 @@ CREATE TABLE IF NOT EXISTS users
 	PRIMARY KEY (userid)
 );
 use cbscalendar;
+select * from user;
 CREATE TABLE IF NOT EXISTS user
 (
 	userid int NOT NULL AUTO_INCREMENT,
 	email varchar(40) NOT NULL,
 	type int NOT NULL,
 	password varchar(200) NOT NULL,
+	CPR varchar(11) NOT NULL,
 	PRIMARY KEY (userid)
 );
 
 /* Create Dummy Account */
 use cbscalendar;
 INSERT INTO `cbscalendar`.`user`
-(`email`,
-`type`,
-`password`)
+(email,
+type,
+password,
+CPR)
 VALUES
-("asd",
-1,
-"asd");
+('asd',
+'1',
+'asd',
+'0403931993');
 
 
 

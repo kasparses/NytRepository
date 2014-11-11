@@ -9,6 +9,7 @@ private String email;
 private String password;
 private int userid;
 private String type;
+private String CPR;
 
 // no-argument constructor
 public User()
@@ -16,7 +17,7 @@ public User()
 } // end no-argument Person constructor
 
 // constructor
-public User( int userid, String emailAddress, String pass, String ty )
+public User( int userid, String emailAddress, String pass, String ty, String cpr )
 {
 	   
 //   setUserid(id);
@@ -24,6 +25,7 @@ public User( int userid, String emailAddress, String pass, String ty )
    setEmail( emailAddress );
    setPassword ( pass );
    setType( ty);
+   setCPR ( cpr );
    
   
 
@@ -61,5 +63,14 @@ public String getType() {
 public void setType(String ty) {
 	this.type = ty;
 }
+
+public String getCPR() {
+	return CPR;
+}
+
+public void setCPR(String cpr) {
+	this.CPR = cpr;
+}
+
 
 } // end class Person

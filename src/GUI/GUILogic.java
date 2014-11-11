@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.text.html.HTMLDocument.RunElement;
 
 import model.QueryBuild.*;
+import model.user.AuthenticateUser;
 import model.user.User;
 import GUI.Screen;
 import model.note.*;
@@ -40,7 +41,7 @@ public class GUILogic {
 		screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
 		screen.getAddNote().addActionListener(new AddNoteActionListener());
-
+		screen.getForgotLogin().addActionListener(new ForgotActionListener());
 		
 		
 	}
@@ -70,12 +71,40 @@ public class GUILogic {
 						screen.show(Screen.MAINMENU);
 					}
 				
-			}	
+			}
+			if (e.getSource() == screen.getLogin().getBtnForgotLogIn()){
+				
+				screen.show(Screen.FORGOT);
+							
+			}
 			}	
 			catch(Exception e3){
 			}
 		}	
 	}
+	
+	private class ForgotActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == screen.getForgotLogin().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getForgotLogin().getBtnGetLogin()){
+				
+				String u4;
+				
+				String CPR = screen.getForgotLogin().getTextField().getText();
+				
+				u4 = a.getLogin(CPR);
+				
+				if (u4.equals("correct")){
+					JOptionPane.showMessageDialog(null, "\nYour username is: "+
+							, "Message",JOptionPane.PLAIN_MESSAGE);
+				}
+			}
+			
+		}
+	}
+	
 	private class MainMenuActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getMainMenu().getBtnLogOut()){

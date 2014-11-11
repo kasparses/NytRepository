@@ -21,6 +21,7 @@ public class Screen extends JFrame {
 	public static final String ADDUSER = "name_362200721529567";
 	public static final String USERLIST = "name_480079376033151";
 	public static final String ADDNOTE = "name_738191050387273";
+	public static final String FORGOT = "name_921186008853499";
 
 
 	private JPanel contentPane;
@@ -35,6 +36,7 @@ public class Screen extends JFrame {
 	private final UserList userList = new UserList();
 	CardLayout c;
 	private final AddNote addNote = new AddNote();
+	private final ForgotLogin forgotLogin = new ForgotLogin();
 
 
 
@@ -65,6 +67,8 @@ public class Screen extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
+		
+		contentPane.add(forgotLogin, "name_921186008853499");
 		
 		contentPane.add(userList, "name_480079376033151");
 		
@@ -128,6 +132,10 @@ public class Screen extends JFrame {
 	
 	public AddNote getAddNote() {
 		return addNote;
+	}
+
+	public ForgotLogin getForgotLogin() {
+		return forgotLogin;
 	}
 	
 }

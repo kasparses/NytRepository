@@ -33,11 +33,11 @@ public class Login extends JPanel {
 	private final JLabel lblUsername = new JLabel("Username");
 	private final JLabel lblPassword = new JLabel("Password");
 	private final JButton btnLogIn = new JButton("Log In");
-	private final JButton btnForgotLogIn = new JButton("Forgot username or password?");
 	private final JTextField textFieldUsername = new JTextField();
 	private final JLabel lblCBSlogo = new JLabel("");
-	private final JLabel lblBackground = new JLabel("");
+	private final JLabel lblBackground = new JLabel("Forgot Login?");
 	private final JPasswordField textFieldPassword = new JPasswordField();
+	private final JButton btnForgotLogin = new JButton("Forgot Login?");
 	
 
 
@@ -86,17 +86,6 @@ public class Login extends JPanel {
 		btnLogIn.setBounds(572, 449, 222, 51);
 		
 		add(btnLogIn);
-		btnForgotLogIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			JOptionPane.showInputDialog("Bad Luck!");
-			}
-		});
-		btnForgotLogIn.setContentAreaFilled(false);
-		btnForgotLogIn.setForeground(new Color(255, 255, 255));
-		btnForgotLogIn.setBorderPainted(false);
-		btnForgotLogIn.setBounds(485, 502, 403, 41);
-		
-		add(btnForgotLogIn);
 		lblCBSlogo.setIcon(new ImageIcon(Login.class.getResource("/Images/CBSLogo3.png")));
 		lblCBSlogo.setBounds(10, 698, 250, 59);
 		
@@ -109,6 +98,14 @@ public class Login extends JPanel {
 		textFieldPassword.setBounds(705, 372, 164, 37);
 		
 		add(textFieldPassword);
+		btnForgotLogin.setForeground(Color.WHITE);
+		btnForgotLogin.setFont(new Font("Arial", Font.BOLD, 30));
+		btnForgotLogin.setContentAreaFilled(false);
+		btnForgotLogin.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
+		btnForgotLogin.setBackground(Color.WHITE);
+		btnForgotLogin.setBounds(562, 589, 242, 51);
+		
+		add(btnForgotLogin);
 		lblBackground.setHorizontalAlignment(SwingConstants.CENTER);
 		lblBackground.setIcon(new ImageIcon(Login.class.getResource("/Images/MetalBackground.jpg")));
 		lblBackground.setSize(new Dimension(1366, 768));
@@ -118,21 +115,16 @@ public class Login extends JPanel {
 
 	}
 
-	public JTextField getTextField() {
-		return textFieldUsername;
-	}
-
-
 	public JButton getBtnLogIn() {
 		return btnLogIn;
 	}
 
 	public JButton getBtnForgotLogIn() {
-		return btnForgotLogIn;
+		return btnForgotLogin;
 	}
 	public void addActionListener(ActionListener l) {
 		btnLogIn.addActionListener(l);
-		btnForgotLogIn.addActionListener(l);
+		btnForgotLogin.addActionListener(l);
 }
 
 	public JTextField getTextFieldUsername() {
@@ -142,6 +134,5 @@ public class Login extends JPanel {
 	public JPasswordField getTextFieldPassword() {
 		return textFieldPassword;
 	}
-
-
+	
 	}
