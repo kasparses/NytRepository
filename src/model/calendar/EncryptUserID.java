@@ -13,8 +13,8 @@ public class EncryptUserID {
      * http://www.miraclesalad.com/webtools/md5.php - Du kan her saette userid foerst og derefter hashkey for at teste
      */
     private static final String HASHKEY = "v.eRyzeKretW0r_t";
-    private static String userId = "caha13ag";
-    private String key;
+    private static String userId = "togr13ab";
+    private static String key;
     private static MessageDigest digester;
 
     static {
@@ -52,8 +52,12 @@ public class EncryptUserID {
 
     }
 
-	public String getKey() {
+	public static String getKey() {
 		return key;
+	}
+
+	public static String getUserId() {
+		return userId;
 	}
     
 }

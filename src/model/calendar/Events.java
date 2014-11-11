@@ -23,8 +23,8 @@ public class Events {
 			while (rs.next())
 			{
 				//String values from SQL database (must be created)
-				int eventID = rs.getInt("eventid");
-				int type = rs.getInt("type");
+				int activityid = rs.getInt("activityid");
+				int eventid = rs.getInt("eventid");
 				int location = rs.getInt("location");
 				int createdby = rs.getInt("createdby");
 				
@@ -35,17 +35,19 @@ public class Events {
 				Date endDate = rs.getDate("end");
 				Time endTime = rs.getTime("end");
 				
-				String nameEvent = rs.getString("name");
+				String titel = rs.getString("titel");
 				String text = rs.getString("text");
 				
-				String stringEventID = String.valueOf(eventID);
-				String stringType = String.valueOf(type);
+				String stringActivityID = String.valueOf(activityid);
+				String stringEventID = String.valueOf(eventid);
 				String stringLocation = String.valueOf(location);
 				String stringCreatedby = String.valueOf(createdby);
 				String stringStartDate = String.valueOf(startDate);
 				String stringStartTime = String.valueOf(startTime);				
 				String stringEndDate = String.valueOf(endDate);
 				String stringEndTime = String.valueOf(endTime);
+				String stringTitel = String.valueOf(titel);
+				String stringText = String.valueOf(text);
 				
 				ArrayList<String> alStart = new ArrayList<String>();
 				alStart.add(stringStartDate + "" + stringStartTime);
@@ -56,7 +58,7 @@ public class Events {
 				
 				System.out.println(String.valueOf(startDate.getTime()));
 				
-				events.add(new Event(stringEventID, stringEventID, stringType, stringLocation, stringLocation,stringCreatedby, alStart, alEnd));				
+				events.add(new Event(stringActivityID, stringEventID, stringTitel, stringLocation, stringText,stringCreatedby, alStart, alEnd));				
 			}
 			
 		} catch (SQLException e) {
