@@ -1,9 +1,10 @@
+package ClientWorker;
 import java.io.*;
 import java.net.*;
 
 import GUI.OpenAdmin;
 import JsonClasses.CalendarInfo;
-
+import ClientWorker.ClientWorker;
 import com.google.gson.stream.JsonReader;
 
 class TCPServer{    

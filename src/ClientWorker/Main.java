@@ -1,3 +1,4 @@
+package ClientWorker;
 import GUI.GUILogic;
 import config.Configurations;
 

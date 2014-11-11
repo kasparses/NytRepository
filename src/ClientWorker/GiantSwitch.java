@@ -1,3 +1,4 @@
+package ClientWorker;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -10,7 +11,8 @@ import JsonClasses.AuthUser;
 import JsonClasses.CalendarInfo;
 //import JsonClasses.CreateCalender;
 import JsonClasses.DeleteCalender;
-
+import JsonClasses.GiantSwitchAnswer;
+import ClientWorker.ClientWorker;
 import com.google.gson.*;
 
 import databaseMethods.SwitchMethods;
@@ -54,15 +56,21 @@ public class GiantSwitch {
 				System.out.println("userName: "+AU.getAuthUserEmail()+"password: "+AU.getAuthUserPassword());
 				answer =a.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword());
 				System.out.println("answer: "+answer);
-			if(answer.equals("notCorrect")){
-				JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
-						, "Error message",JOptionPane.PLAIN_MESSAGE);
-		}
+				
+			
 
 		if	(answer.equals("correct"))
 				{
-					System.out.println("OMFG DET VIRKER");
+					System.out.println("DET VIRKER");
 				}
+		
+//		GiantSwitchAnswer GSA = new GiantSwitchAnswer();
+//		GSA.setAnswer(answer);
+//		GSA.setOverallID("logIn");
+//		ClientWorker CW = new ClientWorker(GSA);
+		
+		
+		
 //				answer = SW.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword());
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
