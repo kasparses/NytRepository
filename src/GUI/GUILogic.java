@@ -97,7 +97,9 @@ public class GUILogic {
 				u4 = a.getLogin(CPR);
 				
 				if (u4.equals("correct")){
-					JOptionPane.showMessageDialog(null, "\nYour username is: "+
+					String email = null;
+					String password = null;
+					JOptionPane.showMessageDialog(null, "\nYour username is: "+a.authenticate(email, password)
 							, "Message",JOptionPane.PLAIN_MESSAGE);
 				}
 			}
