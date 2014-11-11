@@ -62,16 +62,4 @@ public void setType(String ty) {
 	this.type = ty;
 }
 
-
-
-
-
-
-
-
-
-
 } // end class Person
-
-
-
