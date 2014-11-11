@@ -18,7 +18,7 @@ public class Note extends Model{
 			String text, 
 			String dateTime, 
 			String createdBy, 
-//			int isActive, 
+//			int isActive,
 			int eventID)	{
 			
 			String nId = String.valueOf(noteID);

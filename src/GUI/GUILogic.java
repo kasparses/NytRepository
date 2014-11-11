@@ -103,26 +103,33 @@ public class GUILogic {
 				screen.show(Screen.MAINMENU);
 			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
-				String Location = screen.getAddEventGUI().getTextField_Location().getText();
-				String Createdby = screen.getAddEventGUI().getTextField_Createdby().getText();
+				int Location = screen.getAddEventGUI().getTextField_Location().getX();
+				int Createdby = screen.getAddEventGUI().getTextField_Createdby().getX();
 				String start = screen.getAddEventGUI().getTextField_Start().getText();
 				String end = screen.getAddEventGUI().getTextField_End().getText();
 				String name = screen.getAddEventGUI().getTextField_Name().getText();
 				String text = screen.getAddEventGUI().getTextField_Text().getText();
-				String type = screen.getAddEventGUI().getTextField_Type().getText();
+				int type = screen.getAddEventGUI().getTextField_Type().getX();
+				int eventID = screen.getAddEventGUI().getTextField_EventID().getX();
 
 
-				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
-				{
-					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
-							, "Error message",JOptionPane.PLAIN_MESSAGE);
-				}
-				else
-				{
+//				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
+//				{
+//					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
+//							, "Error message",JOptionPane.PLAIN_MESSAGE);
+//				}
+//				else
+//				{
 				QueryBuilder qb = new QueryBuilder();
 				
-				String[] kolonner = { "eventid", "type", "location", "createdby", "start", "end", "name", "text"};
-				String[] Values = { Location, type, Createdby, start, end, name, text};
+				String loc = String.valueOf(Location);
+				String cre = String.valueOf(Createdby);
+				String typ = String.valueOf(type);
+				String eve = String.valueOf(eventID);
+
+				
+				String[] kolonner = { "eventID", "type", "location", "createdby", "start", "end", "name", "text"};
+				String[] Values = { eve, loc, cre, typ, start, end, name, text};
 				try {
 					qb.insertInto("events", kolonner ).values(Values).ExecuteQuery();
 				} catch (SQLException e1) {
@@ -132,7 +139,7 @@ public class GUILogic {
 				}	
 			}
 		}
-	}
+//	}
 	private class AddUserActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getAddUser().getBtnLogout()){
@@ -161,7 +168,7 @@ public class GUILogic {
 //				String[] Values2 = { Type};
 				try {
 					qb.insertInto("user", kolonner ).values(Values).ExecuteQuery();
-					qb.insertInto("roles", kolonner ).values(Values).ExecuteQuery();
+//					qb.insertInto("roles", kolonner ).values(Values).ExecuteQuery();
 				} catch (SQLException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

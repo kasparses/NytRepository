@@ -34,6 +34,8 @@ public class AddEventGUI extends JPanel {
 	private JTextField textField_Text;
 	private final JLabel lblType = new JLabel("Type");
 	private final JTextField textField_Type = new JTextField();
+	private final JLabel lblEventid = new JLabel("EventID");
+	private final JTextField textField_EventID = new JTextField();
 
 	/**
 	 * Create the panel.
@@ -78,7 +80,7 @@ public class AddEventGUI extends JPanel {
 		JLabel lblTeam = new JLabel("Created by");
 		lblTeam.setFont(new Font("Arial", Font.BOLD, 26));
 		lblTeam.setForeground(new Color(255, 255, 255));
-		lblTeam.setBounds(483, 242, 133, 31);
+		lblTeam.setBounds(483, 242, 159, 31);
 		add(lblTeam);
 
 		textField_Start = new JTextField();
@@ -170,6 +172,16 @@ public class AddEventGUI extends JPanel {
 		textField_Type.setBounds(755, 471, 120, 34);
 
 		add(textField_Type);
+		lblEventid.setForeground(Color.WHITE);
+		lblEventid.setFont(new Font("Arial", Font.BOLD, 26));
+		lblEventid.setBounds(483, 513, 159, 31);
+		
+		add(lblEventid);
+		textField_EventID.setForeground(SystemColor.controlDkShadow);
+		textField_EventID.setColumns(10);
+		textField_EventID.setBounds(755, 513, 120, 34);
+		
+		add(textField_EventID);
 		//=======
 
 		//>>>>>>> FETCH_HEAD
@@ -228,6 +240,10 @@ public class AddEventGUI extends JPanel {
 	
 	public JButton getBtnLogout() {
 		return btnLogout;
+	}
+
+	public JTextField getTextField_EventID() {
+		return textField_EventID;
 	}
 	
 }

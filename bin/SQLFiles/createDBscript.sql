@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
-select * from events;
+select * from user;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Create Tables */
