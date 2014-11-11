@@ -26,12 +26,7 @@ public class Event {
 //        return activityid;
 //    }
     
-    private int noteID;
-	private String text;
-	private String dateTime;
-	private String createdBy;
-//	private int isActive;
-	private int eventID;
+	
 	
 	public Event(int noteID, String text, String dateTime, String createdBy, int eventID) {
 		super();
