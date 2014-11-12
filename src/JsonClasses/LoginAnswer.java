@@ -6,7 +6,7 @@ public class LoginAnswer implements java.io.Serializable
 	private String userAdmin = "";
 	private String active = "";
 	
-	//Getters and setters for everything
+	//Getters and setters for everything, bitch
 	
 	public String getAnswer() {
 		return answer;

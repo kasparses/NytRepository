@@ -6,7 +6,7 @@ public class GiantSwitchAnswer implements java.io.Serializable
 	private String overallID = "";
 	private String answer = "";
 	
-	//Getters and setters for everything
+	//Getters and setters for everything, bitch
 	public String getOverallID() {
 		return overallID;
 	}

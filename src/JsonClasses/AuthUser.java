@@ -8,7 +8,7 @@ public class AuthUser implements java.io.Serializable
 	private String password;
 	
 	
-	//Getters and setters for everything
+	//Getters and setters for everything, bitch
 	public String getOverallID() {
 		return overallID;
 	}

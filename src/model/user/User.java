@@ -1,6 +1,8 @@
 package model.user;
 
 
+//Fig. 28.30: Person.java
+//Person class that represents an entry in an address book.
 public class User
 {
 private String email;
@@ -18,6 +20,7 @@ public User()
 public User( int userid, String emailAddress, String pass, String ty, String cpr )
 {
 	   
+//   setUserid(id);
 	setUserid (userid);
    setEmail( emailAddress );
    setPassword ( pass );
@@ -70,4 +73,4 @@ public void setCPR(String cpr) {
 }
 
 
-} 
+} // end class Person
