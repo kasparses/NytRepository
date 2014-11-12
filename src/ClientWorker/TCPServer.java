@@ -1,18 +1,28 @@
 package ClientWorker;
 import java.io.*;
 import java.net.*;
+import java.sql.SQLException;
 
+import model.Model;
+import model.database.DatabaseInit;
 import GUI.OpenAdmin;
 import JsonClasses.CalendarInfo;
 import ClientWorker.ClientWorker;
+
 import com.google.gson.stream.JsonReader;
 
-class TCPServer{    
+class TCPServer extends Model{    
 	
 
 	public static void main(String argv[]) throws Exception       {
+        new TCPServer().go();
+	}
+	
+	public void go() throws SQLException, IOException {
+	
 
-		
+        readfromSqlFile("src/SQLFiles/createDBscript.sql");
+
 		OpenAdmin admin = new OpenAdmin();
 		Thread adminthread = new Thread (admin, "OpenAdmin");
 		adminthread.run();
