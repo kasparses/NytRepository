@@ -9,7 +9,6 @@ public class AuthenticateUser {
 
 	private QueryBuilder qb;
 
-	
 	/**
 	 * Allows the client to log in
 	 * @param email
@@ -19,13 +18,10 @@ public class AuthenticateUser {
 	 * @throws Exception
 	 */
 private LoginAnswer LA = new LoginAnswer();
-//	public String authenticate(String email, String password)
+
 	public Object authenticate(String email, String password)
 	{
 		ResultSet rs;
-		User u3 = null;
-//		String answer = "notCorrect";
-//		Object retun = "";
 		
 		try
 		{
@@ -44,7 +40,6 @@ private LoginAnswer LA = new LoginAnswer();
 				
 				
 				if(pass.equals(password)){
-//					u3 = new User(userid, emailAddress, ty, password);
 					String answer = "correct";
 					LA.setAnswer(answer);
 					
@@ -57,9 +52,6 @@ private LoginAnswer LA = new LoginAnswer();
 					String userAdmin = "user";
 					LA.setUserAdmin(userAdmin);
 				}
-
-				
-					
 
 			}
 		}
@@ -92,9 +84,6 @@ private LoginAnswer LA = new LoginAnswer();
 				if(cpr.equals(CPR)){
 					answer = "correct";
 				}				
-
-				
-					
 
 			}
 		}

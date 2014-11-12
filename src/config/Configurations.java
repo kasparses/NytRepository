@@ -25,10 +25,6 @@ public class Configurations {
     private String weather_lon;
     private String weather_future_in_days;
 
-    // Opret DB name
-    // Opret update time på QOTD
-
-
     public String getHost() {
         return host;
     }
@@ -77,8 +73,6 @@ public class Configurations {
         this.ffcryptkey = ffcryptkey;
     }
 
-
-// Weather settrs and getters.
 
     public String getWeather_expiration_time() {
         return weather_expiration_time;

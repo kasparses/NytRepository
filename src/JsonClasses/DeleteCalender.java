@@ -8,10 +8,10 @@ public class DeleteCalender implements java.io.Serializable
 	private String userName;
 	
 	public DeleteCalender(String ny) {
-		// TODO Auto-generated constructor stub
+		
 	}
 	
-	//Getters and setters for everything, bitch
+	//Getters and setters for everything
 	public String getOverallID() {
 		return overallID;
 	}

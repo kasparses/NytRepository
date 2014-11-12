@@ -1,9 +1,7 @@
 package model;
 
 import com.ibatis.common.jdbc.ScriptRunner;
-
 import config.Configurations;
-
 import java.io.*;
 import java.sql.*;
 
@@ -13,10 +11,7 @@ import java.sql.*;
 public abstract class Model {
 
     private static Configurations cf = new Configurations();
-
     private static String sqlUrl = "jdbc:mysql://" + cf.getHost() + ":" + cf.getPort() + "/";
-//    "jdbc:mysql://localhost:3306/BCBS";
-   
     private static String sqlUser = cf.getUsername();
     private static String sqlPasswd = cf.getPassword();
     private static String dbName = cf.getDbname();
@@ -36,21 +31,6 @@ public abstract class Model {
             sqlUrl += db;
         }
     }
-
-
-//    public boolean doesDatabaseExist() throws SQLException {
-//        getConnection(true);
-//        ResultSet resultSet = getConn().getMetaData().getCatalogs();
-//        while (resultSet.next()) {
-//            String databaseName = resultSet.getString(1);
-//            System.out.println(databaseName);
-//            if(databaseName.equals(dbName)){
-//                return true;
-//            }
-//        }
-//        resultSet.close();
-//        return false;
-//    }
 
     /**
      * Reads and executes SQL from File.

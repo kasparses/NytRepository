@@ -1,6 +1,4 @@
 package ClientWorker;
-import javax.xml.bind.ParseConversionEvent;
-
 import config.Configurations;
 
 
@@ -10,10 +8,10 @@ public class encryption {
 	{
 		Configurations CF = new Configurations();
 //		Defines the decryption value of the byte
-		//The 4 lines below needs to work later on, but for now, it will be hardcode
 		String crypKey = CF.getFfcryptkey();
 		double gladKo = Double.parseDouble(crypKey);
 		byte ff = (byte) gladKo;
+		
 //		Generates for loop containing decryption value
 		for(int i = 0 ; i<b.length ; i++)
 		{

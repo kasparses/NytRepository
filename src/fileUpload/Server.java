@@ -3,7 +3,6 @@ package fileUpload;
 import java.io.*;
 import java.net.*;
 
- 
 class Server
 {
     public void serverUpload () throws IOException
