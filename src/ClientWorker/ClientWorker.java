@@ -8,10 +8,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
 import java.net.UnknownHostException;
+
 import JsonClasses.DeleteCalender;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import org.json.simple.JSONObject;
+
 import JsonClasses.DeleteCalender;
 import sun.font.CreatedFontTracker;
 
@@ -47,16 +51,22 @@ public class ClientWorker implements  Runnable{
 			System.out.println("Besked modtaget!");
 			//Sysout recieved message
 			System.out.println("Received: " + ny);
-			String returnSvar = GS.GiantSwitchMethod(ny);		
-			//Sends the capitalized message back to client!!
-			System.out.println("returnSvar: "+returnSvar);
 			
+//			String returnSvar = GS.GiantSwitchMethod(ny);	
+			Object returnSvar = GS.GiantSwitchMethod(ny);	
 			Gson gson = new GsonBuilder().create();
 			String gsonString = gson.toJson(returnSvar);
 			
+			//Sends the capitalized message back to client!!
+			System.out.println("returnSvar: "+returnSvar);
+			
+//			Gson gson = new GsonBuilder().create();
+//			String gsonString = gson.toJson(returnSvar);
+			
 			DataOutputStream outToClient = new DataOutputStream(connectionSocketConected.getOutputStream());
 			
-			byte[] input = returnSvar.getBytes();
+//			byte[] input = returnSvar.getBytes();
+			byte[] input = gsonString.getBytes();
 			byte key = (byte) 3.1470;
 			byte[] encrypted = input;
 			for (int i = 0; i < encrypted.length; i++)

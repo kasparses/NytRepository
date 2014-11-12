@@ -1,10 +1,8 @@
 package model.user;
 
 import java.sql.ResultSet;
-
-
 import model.QueryBuild.QueryBuilder;
-
+import JsonClasses.LoginAnswer;
 public class AuthenticateUser {
 
 	private ResultSet rs;
@@ -20,17 +18,20 @@ public class AuthenticateUser {
 	 * @return
 	 * @throws Exception
 	 */
-
-	public String authenticate(String email, String password)
+private LoginAnswer LA = new LoginAnswer();
+//	public String authenticate(String email, String password)
+	public Object authenticate(String email, String password)
 	{
 		ResultSet rs;
 		User u3 = null;
-		String answer = "notCorrect";
+//		String answer = "notCorrect";
+//		Object retun = "";
 		
 		try
 		{
 
-			String[] keys = {"userid", "email","type", "password", "CPR"};
+//			String[] keys = {"userid", "email","type", "password", "CPR"};
+			String[] keys = {"userid", "email","type", "password"};
 			qb = new QueryBuilder();
 			rs = qb.selectFrom(keys, "user").where("email", "=", email).ExecuteQuery();
 			while(rs.next())
@@ -44,8 +45,18 @@ public class AuthenticateUser {
 				
 				if(pass.equals(password)){
 //					u3 = new User(userid, emailAddress, ty, password);
-					answer = "correct";
-				}				
+					String answer = "correct";
+					LA.setAnswer(answer);
+					
+				}
+				else if (!pass.equals(password)){
+					String answer = "notCorrect";
+					LA.setAnswer(answer);
+				}
+				if (ty.equals("user")){
+					String userAdmin = "user";
+					LA.setUserAdmin(userAdmin);
+				}
 
 				
 					
@@ -57,7 +68,7 @@ public class AuthenticateUser {
 			ex.printStackTrace();
 		}
 
-		return answer;
+		return LA;
 	}
 	
 	public String getLogin(String CPR)

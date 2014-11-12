@@ -21,7 +21,7 @@ class TCPServer extends Model{
 	public void go() throws SQLException, IOException {
 	
 
-        readfromSqlFile("src/SQLFiles/createDBscript.sql");
+//        readfromSqlFile("src/SQLFiles/createDBscript.sql");
 
 		OpenAdmin admin = new OpenAdmin();
 		Thread adminthread = new Thread (admin, "OpenAdmin");

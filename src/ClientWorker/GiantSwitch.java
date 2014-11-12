@@ -12,6 +12,7 @@ import JsonClasses.CalendarInfo;
 //import JsonClasses.CreateCalender;
 import JsonClasses.DeleteCalender;
 import JsonClasses.GiantSwitchAnswer;
+import JsonClasses.LoginAnswer;
 import ClientWorker.ClientWorker;
 import com.google.gson.*;
 
@@ -23,7 +24,7 @@ public class GiantSwitch {
 	
 	
 	
-	public String GiantSwitchMethod(String jsonString) throws SQLException {
+	public Object GiantSwitchMethod(String jsonString) throws SQLException {
 
 		//Events eventsKlasse = new Events(0, 0, 0, jsonString, jsonString, jsonString, jsonString, jsonString);
 
@@ -33,7 +34,10 @@ public class GiantSwitch {
 		SwitchMethods SW = new SwitchMethods();
 		
 		Gson gson = new GsonBuilder().create();
-		String answer = "";	
+//		String answer = "";	
+		
+		Object answer = "";	
+//		Object LA = ""
 		//Creates a switch which determines which method should be used. Methods will be applied later on
 		switch (Determine(jsonString)) {
 		//If the Json String contains one of the keywords below, run the relevant method.
@@ -68,6 +72,11 @@ public class GiantSwitch {
 //		GSA.setAnswer(answer);
 //		GSA.setOverallID("logIn");
 //		ClientWorker CW = new ClientWorker(GSA);
+		
+//		LoginAnswer LA = new LoginAnswer();
+//		LA.setUserAdmin("user");
+//		LA.setAnswer("correct");
+//		LA.setActive("active");
 		
 		
 		
@@ -158,6 +167,7 @@ public class GiantSwitch {
 			break;
 		}
 		return answer;
+		
 		
 	}
 
