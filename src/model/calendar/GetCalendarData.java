@@ -74,15 +74,15 @@ public class GetCalendarData {
         Events events = gson.fromJson(json, Events.class);
         QueryBuilder queryBuilder = new QueryBuilder();
  
-        String[] fields = {"activityID", "eventID", "type", "title", "description", "start", "end", "location"};
-        
+        String[] fields = {"activity_id", "event_id", "location", "createdby", "start", "end", "title", "text", "customevent", "CalenderID"};
+ 
         Date dateStart, dateEnd;
         long time;
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy hh:mm");
  
         for (int i = 0; i < 1; i++) {
  
-            int monthStart = Integer.parseInt(events.getEvents().get(i).getStart().get(1)) + 1; //0 = år, 1 = måned, 2 = dag, 3 = timer, 4 = minutter
+            int monthStart = Integer.parseInt(events.getEvents().get(i).getStart().get(1)) + 1;
             String start =
                     events.getEvents().get(i).getStart().get(2) + "-" +
                             monthStart + "-" +
