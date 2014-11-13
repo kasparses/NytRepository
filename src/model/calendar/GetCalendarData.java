@@ -58,11 +58,18 @@ public class GetCalendarData {
     }
  
     public static void main(String[] args) throws Exception {
+    	 EncryptUserID EU = new EncryptUserID();
+         String key = EU.keyUdregner();
+         System.out.println(key);
  
-        String json = readUrl("http://calendar.cbs.dk/events.php/" + EncryptUserID.getUserId() + "/" + EncryptUserID.getKey() + ".json");
+        String json = readUrl("http://calendar.cbs.dk/events.php/" + EncryptUserID.getUserId() + "/" +key + ".json");
 //        String json = readUrl("http://calendar.cbs.dk/events.php/caha13ag/02a24d4e002e6e3571227c39e2f63784.json");
+      
+        
+       
+        
  
- 
+        System.out.println(json);
         Gson gson = new Gson();
         Events events = gson.fromJson(json, Events.class);
         QueryBuilder queryBuilder = new QueryBuilder();
