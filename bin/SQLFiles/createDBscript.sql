@@ -34,18 +34,21 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 
 CREATE TABLE IF NOT EXISTS events
 (
-	eventID int NOT NULL AUTO_INCREMENT,
-	type tinyint NOT NULL COMMENT '1 = HA IT,  2 = brugerdefineret. kun type 2 kan slettes.',
-	location int,
-	createdby varchar(30) NOT NULL,
+	ID int NOT NULL AUTO_INCREMENT,
+	activityID varchar(20) NOT NULL,
+	eventID varchar(200) NOT NULL,
+	type varchar(20) NOT NULL COMMENT 'Lecture or exercise',
+	title varchar(50) NOT NULL,
+	description varchar(30) NOT NULL,
 	start datetime NOT NULL,
 	end datetime NOT NULL,
-	name varchar(30) NOT NULL UNIQUE,
-	text text NOT NULL,
-	calendarID int Not Null,
+	location varchar(50) NOT NULL,
+	--name varchar(30) NOT NULL UNIQUE,
+	--text text NOT NULL,
+	--calendarID int Not Null,
 	-- Decides wether the event is an import-event or user created
 	-- 
-	PRIMARY KEY (eventID)
+	PRIMARY KEY (ID)
 );
 
 CREATE TABLE IF NOT EXISTS locationdata
@@ -80,7 +83,6 @@ CREATE TABLE IF NOT EXISTS users
 
 
 /* Create Dummy Account */
-use cbscalendar;
 INSERT INTO `cbscalendar`.`users`
 (email,
 Active,
@@ -101,13 +103,13 @@ VALUES
 /* Create Foreign Keys */
 
 ALTER TABLE events
-	ADD FOREIGN KEY (CalendarID)
+	ADD FOREIGN KEY (ID)
 	REFERENCES Calendar (CalendarID)
 	ON UPDATE RESTRICT
 ;
 
 ALTER TABLE notes
-	ADD FOREIGN KEY (eventID)
-	REFERENCES events (eventID)
+	ADD FOREIGN KEY (noteID)
+	REFERENCES events (ID)
 	ON UPDATE RESTRICT
 ;
