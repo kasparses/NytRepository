@@ -31,13 +31,12 @@ private LoginAnswer LA = new LoginAnswer();
 		{
 
 //			String[] keys = {"userid", "email","type", "password", "CPR"};
-			String[] keys = {"userid", "email","type", "password"};
+			String[] keys = {"userID", "email", "Active", "created", "type", "password", "CPR"};
 			qb = new QueryBuilder();
-			rs = qb.selectFrom(keys, "user").where("email", "=", email).ExecuteQuery();
+			rs = qb.selectFrom(keys, "users").where("email", "=", email).ExecuteQuery();
 			while(rs.next())
 			{
-				int userid = rs.getInt("userid");
-				System.out.println(userid);
+				int userid = rs.getInt("userID");
 				String emailAddress = rs.getString("email");
 				String ty = rs.getString("type");
 				String pass = rs.getString("password");
