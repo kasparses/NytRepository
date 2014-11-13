@@ -9,13 +9,14 @@ import java.util.ArrayList;
 public class Event {
     private String activityid;
     private String eventid;
+    private String type;
+    private String title;
+    private String description;
     private String location;
     private String createdby;
-    private String title;
-    private String text;
     private ArrayList<String> start;
     private ArrayList<String> end;
-    
+
     // Settere og gettere for Event objektet 
     public void setActivityid(String activityid){
         this.activityid = activityid;
@@ -31,6 +32,13 @@ public class Event {
         return eventid;
     }
 
+    public void setType(String type){
+        this.type = type;
+    }
+    public String getType(){
+        return type;
+    }
+
     public void setTitle(String title){
         this.title = title;
     }
@@ -39,10 +47,10 @@ public class Event {
     }
 
     public void setDescription(String description){
-        this.text = description;
+        this.description = description;
     }
     public String getDescription(){
-        return text;
+        return description;
     }
 
     public void setLocation(String location){
@@ -72,14 +80,15 @@ public class Event {
     public ArrayList<String> getEnd(){
         return end;
     }
-	public Event(String activityid, String eventid, String title,
-			String text, String location, String createdby, ArrayList<String> start,
+	public Event(String activityid, String eventid, String type, String title,
+			String description, String location, String createdby, ArrayList<String> start,
 			ArrayList<String> end) {
 		super();
 		this.activityid = activityid;
 		this.eventid = eventid;
+		this.type = type;
 		this.title = title;
-		this.text = text;
+		this.description = description;
 		this.location = location;
 		this.createdby = createdby;
 		this.start = start;
