@@ -99,27 +99,32 @@ public class Execute extends Model {
     public boolean Execute() throws SQLException {
         String sql = "";
 
-        if (getQueryBuilder().isSoftDelete()) {
-            sql = UPDATE + getQueryBuilder().getTableName() + " SET active = 0" +
-                    WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " " + getWhere().getWhereValue() + ";  ";
+//        if (getQueryBuilder().isSoftDelete()) {
+//            sql = UPDATE + getQueryBuilder().getTableName() + " SET active = 0" +
+//                    WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " " + getWhere().getWhereValue() + ";  ";
+//            try {
+//                getConnection(false);
+//                getConn();
+//                String cleanSql = StringEscapeUtils.escapeSql(sql);
+//                sqlStatement = getConn().prepareStatement(cleanSql);
+//
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+
+//        }  else
+        if(getQueryBuilder().isUpdate()) {
+            sql = UPDATE + getQueryBuilder().getTableName() + " SET " + getQueryBuilder().getFields() + "" + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + "'"+ getWhere().getWhereValue()+"'"+ " ;";
+            System.out.println("sql: "+sql);
             try {
                 getConnection(false);
                 getConn();
-                String cleanSql = StringEscapeUtils.escapeSql(sql);
-                sqlStatement = getConn().prepareStatement(cleanSql);
+                // escape sql hjælper med at klargøre java koden til sql brug. for eksempel med '' og ""
+//                String cleanSql = StringEscapeUtils.escapeSql(sql); 
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        } else if(getQueryBuilder().isUpdate()) {
-            sql = UPDATE + getQueryBuilder().getTableName() + " SET " + getQueryBuilder().getFields() + "" + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ;";
-            try {
-                getConnection(false);
-                getConn();
-                String cleanSql = StringEscapeUtils.escapeSql(sql);
-                sqlStatement = getConn().prepareStatement(cleanSql);
-                sqlStatement.setString(1, getWhere().getWhereValue());
+//                sqlStatement = getConn().prepareStatement(cleanSql);
+                sqlStatement = getConn().prepareStatement(sql);
+//                sqlStatement.setString(0, getWhere().getWhereValue());
 
             } catch (SQLException e) {
                 e.printStackTrace();

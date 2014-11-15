@@ -6,12 +6,6 @@ import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-
-
-
-
-
 import java.util.Date;
 
 import model.Forecast.Forecast;
@@ -25,7 +19,7 @@ public class QOTDModel {
 	private ArrayList<QOTD> qotdlist = new ArrayList<>();
 	
 	QOTD qotdlist2 = new QOTD(null, null, null);
-    QueryBuilder qb = new QueryBuilder();
+	QueryBuilder qb = new QueryBuilder();
     
     private ResultSet resultSet;
     
@@ -51,8 +45,10 @@ public class QOTDModel {
  
     }
     
-     	public void saveQuote() {
-
+//     	public void saveQuote() {
+    public static void main(String[] args) {
+    	
+    	QueryBuilder qb = new QueryBuilder();
             /**
              * getting text from website and putiing into string
              * Making a new object of JSON, and prints out quote
@@ -60,25 +56,28 @@ public class QOTDModel {
             String json;
 			try {
 				json = readUrl("http://dist-sso.it-kartellet.dk/quote/");
-			
-            
+			           
     			JSONParser jsonParser = new JSONParser();
     			JSONObject jsonObject = (JSONObject) jsonParser.parse(json);
     			
     			String quote = (String) jsonObject.get("quote");
     			String author = (String) jsonObject.get("author");
     			String topic = (String) jsonObject.get("topic");
+    			System.out.println("wuote:"+quote);
 
+    			//hvis man gerne vil opdatere flere værdier på samme tid gør man det sådan her. i dette tilfælde vil "qotd" tabellen blive opdate
+    			//ret til quote og "blabla" blive opdateret til bla
+//    			String[] keys = {"qotd", "blabla" };
+//    			String[] keys2 = {quote, bla};
     			
-    			String[] keys = {"qotd"};
-    			String[] keys2 = {quote};
+    			String[] keys = {"qotd" };
+    			String[] keys2 = {quote };
     			
     			
-    			qb.update("dailyupdate", keys, keys2).where("msg_type", "=", "1").Execute();
-    			
+    			qb.update("dailyupdate", keys, keys2).where("msg_type", "=", "hej").Execute();
+    			System.out.println("hrjehj");
     	
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			

@@ -21,9 +21,6 @@ public class ForecastTest {
         for (int i = 0; i < forecastList.size(); i++) {
         	System.out.println(forecastList.get(i).toString());
         	
-        	
-        	
-        	
         	 String[] values = {
                      forecastList.get(i).getDate(),
                      forecastList.get(i).getCelsius(),
