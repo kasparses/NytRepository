@@ -101,16 +101,14 @@ public class GetCalendarData {
             dateEnd = formatter.parse(end);
  
             String[] values = {
-                    events.getEvents().get(i).getActivityid(),  //Activity ID
-                    events.getEvents().get(i).getEventid(),     //EventID
-                    events.getEvents().get(i).getLocation(),    //Location
-                    "1",                                        //CreatedBy
-                    dateStart.toString(),                       //Start
-                    dateEnd.toString(),                         //End
-                    events.getEvents().get(i).getTitle(),       //Title
-                    "Text - text",
-                    "1",
-                    "1",
+                    events.getEvents().get(i).getActivityid(),
+                    events.getEvents().get(i).getEventid(),
+                    events.getEvents().get(i).getType(),
+                    events.getEvents().get(i).getTitle(),
+                    events.getEvents().get(i).getDescription(),
+                    dateStart.toString(),
+                    dateEnd.toString(),
+                    events.getEvents().get(i).getLocation()
             };
         queryBuilder.insertInto("events", fields).values(values).Execute();
         }

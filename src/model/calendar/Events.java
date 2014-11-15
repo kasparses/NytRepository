@@ -23,11 +23,11 @@ public class Events {
 			while (rs.next())
 			{
 				//String values from SQL database (must be created)
-				int eventID = rs.getInt("eventid");
+				int activityID = rs.getInt("activityID");
+				int eventID = rs.getInt("eventID");
 				int type = rs.getInt("type");
-				int location = rs.getInt("location");
-				int createdby = rs.getInt("createdby");
-				
+				int title = rs.getInt("title");
+				int describtion = rs.getInt("description");
 				
 				Date startDate = rs.getDate("start");
 				Time startTime = rs.getTime("start");
@@ -35,17 +35,18 @@ public class Events {
 				Date endDate = rs.getDate("end");
 				Time endTime = rs.getTime("end");
 				
-				String nameEvent = rs.getString("name");
-				String text = rs.getString("text");
+				int location = rs.getInt("location");
 				
+				String stringActivityID = String.valueOf(activityID);
 				String stringEventID = String.valueOf(eventID);
 				String stringType = String.valueOf(type);
-				String stringLocation = String.valueOf(location);
-				String stringCreatedby = String.valueOf(createdby);
+				String stringTitle = String.valueOf(title);
+				String stringDescribtion = String.valueOf(describtion);
 				String stringStartDate = String.valueOf(startDate);
 				String stringStartTime = String.valueOf(startTime);				
 				String stringEndDate = String.valueOf(endDate);
 				String stringEndTime = String.valueOf(endTime);
+				String stringLocation = String.valueOf(location);
 				
 				ArrayList<String> alStart = new ArrayList<String>();
 				alStart.add(stringStartDate + "" + stringStartTime);
@@ -56,7 +57,7 @@ public class Events {
 				
 				System.out.println(String.valueOf(startDate.getTime()));
 				
-				events.add(new Event(stringEventID, stringEventID, stringType, stringType, stringLocation, stringLocation,stringCreatedby, alStart, alEnd));				
+				events.add(new Event(stringActivityID, stringEventID, stringType, stringTitle, stringDescribtion, alStart, alEnd, stringLocation));				
 			}
 			
 		} catch (SQLException e) {
