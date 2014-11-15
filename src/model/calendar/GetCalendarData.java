@@ -76,29 +76,29 @@ public class GetCalendarData {
  
         String[] fields = {"activityID", "eventID", "type", "title", "description", "start", "end", "location"};
         
-        Date dateStart, dateEnd;
-        long time;
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy hh:mm");
+        //Date dateStart, dateEnd;
+        //long time;
+        //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy hh:mm");
  
         for (int i = 0; i < 1; i++) {
  
             int monthStart = Integer.parseInt(events.getEvents().get(i).getStart().get(1)) + 1; //0 = år, 1 = måned, 2 = dag, 3 = timer, 4 = minutter
             String start =
-                    events.getEvents().get(i).getStart().get(2) + "-" +
+                    events.getEvents().get(i).getStart().get(0) + "-" +
                             monthStart + "-" +
-                            events.getEvents().get(i).getStart().get(0) + " " +
+                            events.getEvents().get(i).getStart().get(2) + " " +
                             events.getEvents().get(i).getStart().get(3) + ":" +
-                            events.getEvents().get(i).getStart().get(4);
-            dateStart = formatter.parse(start);
+                            events.getEvents().get(i).getStart().get(4) + ":00";
+            //dateStart = formatter.parse(start);
  
             int monthEnd = Integer.parseInt(events.getEvents().get(i).getEnd().get(1)) + 1;
             String end =
-                    events.getEvents().get(i).getEnd().get(2) + "-" +
+                    events.getEvents().get(i).getEnd().get(0) + "-" +
                             monthEnd + "-" +
-                            events.getEvents().get(i).getEnd().get(0) + " " +
+                            events.getEvents().get(i).getEnd().get(2) + " " +
                             events.getEvents().get(i).getEnd().get(3) + ":" +
-                            events.getEvents().get(i).getEnd().get(4);
-            dateEnd = formatter.parse(end);
+                            events.getEvents().get(i).getEnd().get(4) + ":00";
+            //dateEnd = formatter.parse(end);
  
             String[] values = {
                     events.getEvents().get(i).getActivityid(),
@@ -106,8 +106,8 @@ public class GetCalendarData {
                     events.getEvents().get(i).getType(),
                     events.getEvents().get(i).getTitle(),
                     events.getEvents().get(i).getDescription(),
-                    dateStart.toString(),
-                    dateEnd.toString(),
+                    start.toString(),
+                    end.toString(),
                     events.getEvents().get(i).getLocation()
             };
         queryBuilder.insertInto("events", fields).values(values).Execute();

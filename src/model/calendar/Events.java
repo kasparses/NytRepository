@@ -28,13 +28,10 @@ public class Events {
 				int type = rs.getInt("type");
 				int title = rs.getInt("title");
 				int describtion = rs.getInt("description");
-				
 				Date startDate = rs.getDate("start");
 				Time startTime = rs.getTime("start");
-				
 				Date endDate = rs.getDate("end");
 				Time endTime = rs.getTime("end");
-				
 				int location = rs.getInt("location");
 				
 				String stringActivityID = String.valueOf(activityID);
@@ -75,12 +72,5 @@ public class Events {
     @Override
     public String toString() {
         return Arrays.toString(events.toArray());
-    }
-    
-    public static void main(String []args){
-    	Events Hej = new Events();
-    	
-    	Hej.getEvents();
-    	System.out.println(Hej.toString());
     }
 }

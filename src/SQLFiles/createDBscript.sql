@@ -1,6 +1,7 @@
-
+--drop DATABASE IF EXISTS cbscalendar;
 CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
+--select * from events;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Create Tables */
@@ -42,7 +43,7 @@ CREATE TABLE IF NOT EXISTS events
 	description varchar(30) NOT NULL,
 	start datetime NOT NULL,
 	end datetime NOT NULL,
-	location varchar(50) NOT NULL,
+	location varchar(50) NOT NULL,	
 	--name varchar(30) NOT NULL UNIQUE,
 	--text text NOT NULL,
 	--calendarID int Not Null,
@@ -50,6 +51,7 @@ CREATE TABLE IF NOT EXISTS events
 	-- 
 	PRIMARY KEY (ID)
 );
+
 
 CREATE TABLE IF NOT EXISTS locationdata
 (
@@ -102,14 +104,14 @@ VALUES
 
 /* Create Foreign Keys */
 
-ALTER TABLE events
-	ADD FOREIGN KEY (ID)
-	REFERENCES Calendar (CalendarID)
-	ON UPDATE RESTRICT
-;
+--ALTER TABLE events
+	--ADD FOREIGN KEY (ID)
+	--REFERENCES Calendar (CalendarID)
+	--ON UPDATE RESTRICT
+--;
 
-ALTER TABLE notes
-	ADD FOREIGN KEY (noteID)
-	REFERENCES events (ID)
-	ON UPDATE RESTRICT
-;
+--ALTER TABLE notes
+	--ADD FOREIGN KEY (noteID)
+	--REFERENCES events (ID)
+	--ON UPDATE RESTRICT
+--;

@@ -44,10 +44,8 @@ public class EncryptUserID {
         return hexString.toString();
     }
 
-    //Quick example of how to get the hash.
     public String keyUdregner () {
 
-        System.out.print("Secret key: " + crypt(userId + HASHKEY));
         String key = crypt(userId+ HASHKEY);
         return key;
 
