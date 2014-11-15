@@ -21,7 +21,7 @@ import java.util.Iterator;
 public class ForecastModel {
 
 	     // Json parser to retrieve and map data from openweathermap.org
-	     private ArrayList<Forecast> forecastList = new ArrayList();
+	     private ArrayList<Forecast> forecastList = new ArrayList<Forecast>();
 	     private String weatherDescription = "";
 	     QueryBuilder qb = new QueryBuilder();
 	     
@@ -44,7 +44,8 @@ public class ForecastModel {
 	             while ((line = rd.readLine()) != null) {
 	             	
 	             	//vi skal ligge alle linjerne oven i hinanden
-	                 result += line;
+	                 result += line; //result er en Json string der indeholder alt data. 
+	     
 	             }
 	             rd.close();
 	         } catch (IOException e) {
@@ -54,7 +55,6 @@ public class ForecastModel {
 	         try {
 	             JSONParser jsonParser = new JSONParser();
 	             JSONObject jsonObject = (JSONObject) jsonParser.parse(result);
-
 	             // get an array from the JSON object
 	             JSONArray list = (JSONArray) jsonObject.get("list");
 
@@ -71,6 +71,7 @@ public class ForecastModel {
 	                 JSONObject temp = (JSONObject) innerObj.get("temp");
 	                 
 	                 String temperatur = String.valueOf(temp.get("day"));
+	                 
 	                 JSONArray subList = (JSONArray) innerObj.get("weather");
 
 	                 Iterator y = subList.iterator();

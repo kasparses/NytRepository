@@ -20,6 +20,15 @@ CREATE TABLE IF NOT EXISTS Calendar
 	PRIMARY KEY (CalendarID)
 );
 
+CREATE TABLE IF NOT EXISTS Forecast
+(
+	ForecastID int NOT NULL AUTO_INCREMENT,
+	date varchar(114) NOT NULL,
+	celcius varchar(255) NOT NULL,
+	description varchar(234) not null,
+	PRIMARY KEY (ForecastID)
+);
+
 
 CREATE TABLE IF NOT EXISTS dailyupdate
 (
@@ -36,14 +45,14 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 CREATE TABLE IF NOT EXISTS events
 (
 	ID int NOT NULL AUTO_INCREMENT,
-	activityID varchar(20) NOT NULL,
+	activityID varchar(200) NOT NULL,
 	eventID varchar(200) NOT NULL,
-	type varchar(20) NOT NULL COMMENT 'Lecture or exercise',
-	title varchar(50) NOT NULL,
-	description varchar(30) NOT NULL,
+	type varchar(200) NOT NULL COMMENT 'Lecture or exercise',
+	title varchar(500) NOT NULL,
+	description varchar(200) NOT NULL,
 	start datetime NOT NULL,
 	end datetime NOT NULL,
-	location varchar(50) NOT NULL,	
+	location varchar(500) NOT NULL,	
 	--name varchar(30) NOT NULL UNIQUE,
 	--text text NOT NULL,
 	--calendarID int Not Null,

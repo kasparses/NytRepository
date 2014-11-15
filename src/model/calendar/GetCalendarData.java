@@ -1,11 +1,16 @@
 package model.calendar;
  
 import com.google.gson.Gson;
+
 import model.QueryBuild.QueryBuilder;
  
+
+
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,12 +62,15 @@ public class GetCalendarData {
         //}
     }
  
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
     	 EncryptUserID EU = new EncryptUserID();
          String key = EU.keyUdregner();
-         System.out.println(key);
+//         System.out.println(key);
  
-        String json = readUrl("http://calendar.cbs.dk/events.php/" + EncryptUserID.getUserId() + "/" +key + ".json");
+        String json;
+		try {
+			json = readUrl("http://calendar.cbs.dk/events.php/" + EncryptUserID.getUserId() + "/" +key + ".json");
+		
 //        String json = readUrl("http://calendar.cbs.dk/events.php/caha13ag/02a24d4e002e6e3571227c39e2f63784.json");
       
         
@@ -79,22 +87,20 @@ public class GetCalendarData {
         //Date dateStart, dateEnd;
         //long time;
         //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy hh:mm");
- 
-        for (int i = 0; i < 1; i++) {
+ //.size
+        System.out.println(events.getEvents().size());
+        for (int i = 0; i <events.getEvents().size() ; i++) {
+        	
  
             int monthStart = Integer.parseInt(events.getEvents().get(i).getStart().get(1)) + 1; //0 = år, 1 = måned, 2 = dag, 3 = timer, 4 = minutter
-            String start =
-                    events.getEvents().get(i).getStart().get(0) + "-" +
-                            monthStart + "-" +
+            String start = events.getEvents().get(i).getStart().get(0) + "-" +  monthStart + "-" +
                             events.getEvents().get(i).getStart().get(2) + " " +
                             events.getEvents().get(i).getStart().get(3) + ":" +
                             events.getEvents().get(i).getStart().get(4) + ":00";
             //dateStart = formatter.parse(start);
  
             int monthEnd = Integer.parseInt(events.getEvents().get(i).getEnd().get(1)) + 1;
-            String end =
-                    events.getEvents().get(i).getEnd().get(0) + "-" +
-                            monthEnd + "-" +
+            String end = events.getEvents().get(i).getEnd().get(0) + "-" + monthEnd + "-" +
                             events.getEvents().get(i).getEnd().get(2) + " " +
                             events.getEvents().get(i).getEnd().get(3) + ":" +
                             events.getEvents().get(i).getEnd().get(4) + ":00";
@@ -112,7 +118,11 @@ public class GetCalendarData {
             };
         queryBuilder.insertInto("events", fields).values(values).Execute();
         }
- 
+		} catch (Exception e) {
+			
+			
+		}
     }
+		
  
 }
