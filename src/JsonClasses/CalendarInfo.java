@@ -2,10 +2,12 @@ package JsonClasses;
 public class CalendarInfo implements java.io.Serializable {
 
 		private  final long serialVersionUID = 1L;
-		private String overallID = "createCalender";
+		private String overallID = "getCalendar";
 		private String calenderName;
 		private String userName;
 		private int publicOrPrivate;
+		private int type;
+		private int Active;
 		
 		//Getters and setters for everything, bitch
 		public String getOverallID() {
@@ -32,4 +34,17 @@ public class CalendarInfo implements java.io.Serializable {
 		public void setPublicOrPrivate(int publicPrivate) {
 			this.publicOrPrivate = publicPrivate;
 		}
+		public int getType() {
+			return type;
+		}
+		public void setType(int type) {
+			this.type = type;
+		}
+		public int getActive() {
+			return Active;
+		}
+		public void setActive(int active) {
+			Active = active;
+		}
+		
 }

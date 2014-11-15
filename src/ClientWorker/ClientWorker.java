@@ -9,14 +9,14 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
-import JsonClasses.DeleteCalender;
+import JsonClasses.DeleteCalendar;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.json.simple.JSONObject;
 
-import JsonClasses.DeleteCalender;
+import JsonClasses.DeleteCalendar;
 import sun.font.CreatedFontTracker;
 
 

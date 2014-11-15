@@ -55,8 +55,8 @@ import java.awt.Dimension;
 			add(lblUpcomingEvent);
 
 			
-			//Laver tabellen inde i Eventlisten.
-			String[] columnNames = { "Course", "Place", "Time", "" };
+			//Laver tabellen inde i Courselisten.
+			String[] columnNames = { "Course", "Location", "Time", "Active" };
 
 			Object[][] data = {
 

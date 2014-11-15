@@ -113,7 +113,7 @@ public class Execute extends Model {
             }
 
         } else if(getQueryBuilder().isUpdate()) {
-            sql = UPDATE + getQueryBuilder().getTableName() + " SET " + getQueryBuilder().getFields() + "" + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
+            sql = UPDATE + getQueryBuilder().getTableName() + " SET " + getQueryBuilder().getFields() + "" + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ;";
             try {
                 getConnection(false);
                 getConn();
