@@ -90,25 +90,26 @@ CREATE TABLE IF NOT EXISTS users
 	type varchar(20) not null,
 	password varchar(30) NOT NULL,
 	CPR varchar(11) not null,
+	LastUpdateTime Bigint(50),
 	PRIMARY KEY (userID)
 );
 
 
 /* Create Dummy Account */
-INSERT INTO `cbscalendar`.`users`
-(email,
-Active,
-created,
-type,
-password,
-CPR)
-VALUES
-('1234',
-'1',
-'2014-11-13 14:38:00',
-'user',
-'hej',
-'111111-1111');
+--INSERT INTO `cbscalendar`.`users`
+--(email,
+--Active,
+--created,
+--type,
+--password,
+--CPR)
+--VALUES
+--('1234',
+--'1',
+--'2014-11-13 14:38:00',
+--'user',
+--'hej',
+--'111111-1111');
 
 
 

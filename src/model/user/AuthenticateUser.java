@@ -26,7 +26,7 @@ private LoginAnswer LA = new LoginAnswer();
 		try
 		{
 
-			String[] keys = {"userID", "email", "Active", "created", "type", "password", "CPR"};
+			String[] keys = {"userID", "email", "Active", "created", "type", "password", "CPR","LastUpdateTime"};
 			qb = new QueryBuilder();
 			rs = qb.selectFrom(keys, "users").where("email", "=", email).ExecuteQuery();
 			while(rs.next())

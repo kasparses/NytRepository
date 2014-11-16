@@ -2,22 +2,19 @@ package model.QOTD;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import model.Forecast.Forecast;
 import model.QueryBuild.QueryBuilder;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import JsonClasses.DailyUpdate;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 public class QOTDModel {
 	DailyUpdate DU = new DailyUpdate();
@@ -91,8 +88,7 @@ public class QOTDModel {
   	public Object getQuote(){
   		String qotd = "";
   		String author = "";
-  		String topic = "";
-  		String[] key = {"qotd"};
+  		String topic = "";	
   		try {
   			resultSet = qb.selectFrom("dailyupdate").all().ExecuteQuery();
 			while(resultSet.next()) {
@@ -103,9 +99,6 @@ public class QOTDModel {
 				DU.setQotd(qotd);
 				DU.setTopic(topic);
 				DU.setAuthor(author);
-				Gson gson = new GsonBuilder().create();
-
-				String gsonString = gson.toJson(DU);
 				
 			}
 		} catch (SQLException e) {
@@ -115,18 +108,34 @@ public class QOTDModel {
   	}
   	
  
-  	 public void updateQuote(){
+  	 public Object updateQuote(String userName){
+  		 Object noReturn = "";
+  		 long lastUpdateTime = 0;
+  		try {
+  			resultSet= qb.selectFrom("users").where("email", "=", userName).ExecuteQuery();
+  			while (resultSet.next()){
+  	  			lastUpdateTime = resultSet.getLong("LastUpdateTime");
+
+  			}
+  			System.out.println("lastUpdateTime: "+lastUpdateTime);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+  		//bigInteger
+  		 
 	     	Date date = new Date(); // Current date & time
 	     	long maxTimeNoUpdate = 86400; // Maximum one day with no update
-	     	long date1 = date.getTime();
+	     	long date1 = date.getTime(); //getTime method show how many milliseconds that have passed since January 1 1970 00:00:00
 	     	long date2 = date.getTime() - maxTimeNoUpdate; // minus 1 hour -- should be fetched from database
-	     	long timeSinceUpdate = date1 - date2; 
+	     	long timeSinceUpdate = date1 - lastUpdateTime; 
+	     	System.out.println("timeSinceUpdate: "+timeSinceUpdate);
 	      	
 	     	// if more than 1 hour ago, do update
 	     	if(timeSinceUpdate > 864000){
 	     		// return fresh weather data
 	     		saveQuote();	
-	     	} 
+	     	}
+			return noReturn; 
 	     }
   	
 }
