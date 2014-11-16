@@ -6,7 +6,10 @@ import JsonClasses.AuthUser;
 import JsonClasses.CalendarInfo;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
+import JsonClasses.UpdateLoginTime;
+import JsonClasses.Update;
 import com.google.gson.*;
+import model.QOTD.QOTDModel;
 import databaseMethods.SwitchMethods;
 
 public class GiantSwitch {
@@ -18,10 +21,9 @@ public class GiantSwitch {
 	public Object GiantSwitchMethod(String jsonString) throws SQLException {
 
 		QOTDModel QOTDKlasse = new QOTDModel();
-		SwitchMethods SW = new SwitchMethods();
-		
+		SwitchMethods SW = new SwitchMethods();	
 		Gson gson = new GsonBuilder().create();
-
+		QOTDModel qotdmodel = new QOTDModel();
 		
 		Object answer = "";	
 
@@ -114,11 +116,24 @@ public class GiantSwitch {
 		 ** QUOTE **
 		 **********/
 		case "getQuote":
+			
 
 			answer = QOTDKlasse.getQuote();
 			
 			break;
+		
+		case "LoginTime":
+			UpdateLoginTime ULT = (UpdateLoginTime)gson.fromJson(jsonString, UpdateLoginTime.class);
+			answer = SW.UpdateLoginTime(ULT.getLoginTime(),ULT.getUserName());
+			System.out.println("blalb");
+			break;
+			
+		case "UpdateInfo":
+			Update UD = (Update)gson.fromJson(jsonString, Update.class);
+			answer = qotdmodel.updateQuote(UD.getUserName());
 
+			
+			break;
 		/************
 		 ** WEATHER **
 		 ************/
@@ -174,6 +189,10 @@ public class GiantSwitch {
 			return "deleteEvent"; 
 		} else if (ID.contains("createCalendar")) {
 			return "createCalendar";
+		} else if (ID.contains("LoginTime")) {
+			return "LoginTime";
+		} else if (ID.contains("UpdateInfo")) {
+			return "UpdateInfo";
 		}
 
 		else

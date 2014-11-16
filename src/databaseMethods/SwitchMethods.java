@@ -1,5 +1,6 @@
 package databaseMethods;
 import java.sql.SQLException;
+
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
@@ -20,6 +21,22 @@ public class SwitchMethods extends Model
 	 * @throws SQLException
 	 */
 
+	public String UpdateLoginTime (long LoginTime, String userName){
+		System.out.println("LoginTime: "+LoginTime+ " UserName: "+userName);
+		String noReturn = "";
+		String[] keys = {"LastUpdateTime" };
+		String[] keys2 = {Long.toString(LoginTime) };
+		
+		try {
+			qb.update("users", keys, keys2).where("email", "=", userName).Execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return noReturn;
+		
+	}
+	
+	
 	public String createNewCalendar (int type, String newcalendarName, int Active, String userName, int privatePublic) throws SQLException
 	{
 		String stringToBeReturned = "";
