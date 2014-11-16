@@ -14,7 +14,13 @@ import model.QueryBuild.QueryBuilder;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import JsonClasses.DailyUpdate;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 public class QOTDModel {
+	DailyUpdate DU = new DailyUpdate();
 
 	private ArrayList<QOTD> qotdlist = new ArrayList<>();
 	
@@ -45,8 +51,8 @@ public class QOTDModel {
  
     }
     
-//     	public void saveQuote() {
-    public static void main(String[] args) {
+     	public void saveQuote() {
+//    public static void main(String []args) {
     	
     	QueryBuilder qb = new QueryBuilder();
             /**
@@ -63,57 +69,59 @@ public class QOTDModel {
     			String quote = (String) jsonObject.get("quote");
     			String author = (String) jsonObject.get("author");
     			String topic = (String) jsonObject.get("topic");
-    			System.out.println("wuote:"+quote);
+    			System.out.println("quote:"+quote);
+    			System.out.println("author:"+author);
+    			System.out.println("topic:"+topic);
 
-    			//hvis man gerne vil opdatere flere værdier på samme tid gør man det sådan her. i dette tilfælde vil "qotd" tabellen blive opdate
-    			//ret til quote og "blabla" blive opdateret til bla
-//    			String[] keys = {"qotd", "blabla" };
-//    			String[] keys2 = {quote, bla};
     			
-    			String[] keys = {"qotd" };
-    			String[] keys2 = {quote };
-    			
+    			String[] keys = {"qotd", ",author", ",topic" };
+    			String[] keys2 = {quote, author, topic };
     			
     			qb.update("dailyupdate", keys, keys2).where("msg_type", "=", "hej").Execute();
-    			System.out.println("hrjehj");
-    	
+    			
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			
-    			
+			}			
     }
      
     /**
      * Retrieve Quote from a website and put it into a String, 
      * Afterwards we will make it into a json object so it can be printed out to the client.
      */
-  	public String getQuote(){
-  		String q = "";
+  	public Object getQuote(){
+  		String qotd = "";
+  		String author = "";
+  		String topic = "";
   		String[] key = {"qotd"};
   		try {
   			resultSet = qb.selectFrom("dailyupdate").all().ExecuteQuery();
 			while(resultSet.next()) {
-				q = resultSet.getString("qotd");
+				qotd = resultSet.getString("qotd");
+				author = resultSet.getString("author");
+				topic = resultSet.getString("topic");
+				
+				DU.setQotd(qotd);
+				DU.setTopic(topic);
+				DU.setAuthor(author);
+				Gson gson = new GsonBuilder().create();
+
+				String gsonString = gson.toJson(DU);
+				
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return q;
+		return DU;
   	}
   	
-  	
+ 
   	 public void updateQuote(){
 	     	Date date = new Date(); // Current date & time
 	     	long maxTimeNoUpdate = 86400; // Maximum one day with no update
-	     	
 	     	long date1 = date.getTime();
 	     	long date2 = date.getTime() - maxTimeNoUpdate; // minus 1 hour -- should be fetched from database
-	     	
 	     	long timeSinceUpdate = date1 - date2; 
-	     	
-	     	
+	      	
 	     	// if more than 1 hour ago, do update
 	     	if(timeSinceUpdate > 864000){
 	     		// return fresh weather data

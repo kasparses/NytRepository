@@ -1,22 +1,12 @@
 package ClientWorker;
 import java.sql.SQLException;
-
-import javax.swing.JOptionPane;
-
 import model.QOTD.QOTDModel;
-import model.calendar.Event;
 import model.note.Note;
-import GUI.Screen;
 import JsonClasses.AuthUser;
 import JsonClasses.CalendarInfo;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
-import JsonClasses.GiantSwitchAnswer;
-import JsonClasses.LoginAnswer;
-import ClientWorker.ClientWorker;
 import com.google.gson.*;
-import JsonClasses.CalendarInfo;
-
 import databaseMethods.SwitchMethods;
 
 public class GiantSwitch {
@@ -27,18 +17,14 @@ public class GiantSwitch {
 	
 	public Object GiantSwitchMethod(String jsonString) throws SQLException {
 
-		//Events eventsKlasse = new Events(0, 0, 0, jsonString, jsonString, jsonString, jsonString, jsonString);
-
-		Note noteKlasse = new Note();
-		//ForecastModel forecastKlasse = new ForecastModel();
 		QOTDModel QOTDKlasse = new QOTDModel();
 		SwitchMethods SW = new SwitchMethods();
 		
 		Gson gson = new GsonBuilder().create();
-//		String answer = "";	
+
 		
 		Object answer = "";	
-//		Object LA = ""
+
 		//Creates a switch which determines which method should be used. Methods will be applied later on
 		switch (Determine(jsonString)) {
 		//If the Json String contains one of the keywords below, run the relevant method.
@@ -60,32 +46,10 @@ public class GiantSwitch {
 			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
 			System.out.println("Recieved logIn");
 			try {
-				System.out.println("userName: "+AU.getAuthUserEmail()+"password: "+AU.getAuthUserPassword());
 				answer =a.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword());
-				System.out.println("answer: "+answer);
-				
-			
-
-		if	(answer.equals("correct"))
-				{
-					System.out.println("DET VIRKER");
-				}
-		
-//		GiantSwitchAnswer GSA = new GiantSwitchAnswer();
-//		GSA.setAnswer(answer);
-//		GSA.setOverallID("logIn");
-//		ClientWorker CW = new ClientWorker(GSA);
-		
-//		LoginAnswer LA = new LoginAnswer();
-//		LA.setUserAdmin("user");
-//		LA.setAnswer("correct");
-//		LA.setActive("active");
-		
-		
-		
-//				answer = SW.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword());
+	
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+
 				e.printStackTrace();
 			}
 			break;
@@ -100,15 +64,12 @@ public class GiantSwitch {
 		 *************/
 		case "createCalendar":
 			CreateCalendar CC = (CreateCalendar)gson.fromJson(jsonString, CreateCalendar.class);
-			System.out.println(CC.getCalenderName()+ "Den har lagt det nye ind i klassen");
-			answer = SW.createNewCalendar(CC.getType(),CC.getUserName(), CC.getActive(), CC.getCalenderName(), CC.getPublicOrPrivate());
-			System.out.println("Det virker");
+			answer = SW.createNewCalendar(CC.getType(),CC.getCalenderName(),CC.getActive(),CC.getUserName(), CC.getPublicOrPrivate());
 			break;
 		
 		case "deleteCalendar":
 			DeleteCalendar DC = (DeleteCalendar)gson.fromJson(jsonString, DeleteCalendar.class);
-			System.out.println(DC.getCalenderName()+ "Den har lagt det nye ind i klassen");
-			answer = SW.deleteCalendar(DC.getUserName(), DC.getCalenderName());
+			answer = SW.deleteCalendar(DC.getUserName(), DC.getCalendarName());
 			break;
 		
 		case "saveImportedCalendar":
@@ -154,8 +115,7 @@ public class GiantSwitch {
 		 **********/
 		case "getQuote":
 
-		answer = QOTDKlasse.getQuote();
-			System.out.println(answer);
+			answer = QOTDKlasse.getQuote();
 			
 			break;
 

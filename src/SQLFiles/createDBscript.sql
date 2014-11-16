@@ -11,12 +11,11 @@ CREATE TABLE IF NOT EXISTS Calendar
 	CalendarID int NOT NULL AUTO_INCREMENT,
 	type tinyint NOT NULL COMMENT '1 = HA IT 2 = brugerdefineret. kun type 2 kan slettes.',
 	Name varchar(255) NOT NULL UNIQUE,
-	Active tinyint, 
+	Active tinyint not null comment '1 = active 2 = notActive' ,
 	CreatedBy varchar(255) NOT NULL,
 	-- 1 = public
 	-- 2 = private
-	PrivatePublic tinyint NOT NULL COMMENT '1 = public
-	2 = private',
+	PrivatePublic tinyint NOT NULL COMMENT '1 = public 2 = private',
 	PRIMARY KEY (CalendarID)
 );
 
@@ -36,6 +35,8 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 	apparentTemperature double,
 	summary text,
 	qotd varchar(300) NOT NULL,
+	author varchar(100) not null ,
+	topic varchar(80) not null ,
 	msg_type varchar (100) NOT NULL COMMENT 'Hvad er dette?',
 	update_timestamp TIMESTAMP DEFAULT NOW() ON UPDATE NOW(),
 	PRIMARY KEY (date)
