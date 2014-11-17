@@ -29,8 +29,8 @@ DailyUpdate DU = new DailyUpdate();
 		}
 	     	Date date = new Date(); // Current date & time
 	     	long currentTime = date.getTime(); //getTime method show how many milliseconds that have passed since January 1 1970 00:00:00
-//	     	long timeSinceUpdate = currentTime - lastUpdateTime; 
-	     	long timeSinceUpdate = 86500000; 
+	     	long timeSinceUpdate = currentTime - lastUpdateTime; 
+	     	
 	     ;
 	     	//86400000 milliseconds on a day
 	     	System.out.println("timeSinceUpdate: "+timeSinceUpdate);
