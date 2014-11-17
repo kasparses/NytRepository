@@ -97,7 +97,6 @@ public class GUILogic {
 							, "Message",JOptionPane.PLAIN_MESSAGE);
 				}
 			}
-			
 		}
 	}
 	
@@ -150,13 +149,7 @@ public class GUILogic {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-				
-				
-				
-				
-				
-				
-				
+							
 				
 //
 ////				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
@@ -166,18 +159,8 @@ public class GUILogic {
 ////				}
 ////				else
 ////				{
-//				QueryBuilder qb = new QueryBuilder();
-//				
-//				
-//				String[] kolonner = { "activityID", "eventID", "type", "title", "description", "start", "end", "location"};
-//				String[] Values = { activityID, eventID, type, title, description, start, end, location};
-//				try {
-//					qb.insertInto("events", kolonner ).values(Values).ExecuteQuery();
-//				} catch (SQLException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-//				}	
+			
+	
 			}
 		}
 	}
