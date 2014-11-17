@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 	author varchar(100) not null ,
 	topic varchar(80) not null ,
 	msg_type varchar (100) NOT NULL COMMENT 'Hvad er dette?',
-	update_timestamp TIMESTAMP DEFAULT NOW() ON UPDATE NOW(),
+	LastUpdateTime Bigint(50),
 	PRIMARY KEY (date)
 );
 
@@ -96,6 +96,7 @@ CREATE TABLE IF NOT EXISTS users
 
 
 /* Create Dummy Account */
+
 --INSERT INTO `cbscalendar`.`users`
 --(email,
 --Active,

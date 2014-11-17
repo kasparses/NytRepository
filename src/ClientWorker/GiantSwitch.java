@@ -10,6 +10,7 @@ import JsonClasses.UpdateLoginTime;
 import JsonClasses.Update;
 import com.google.gson.*;
 import model.QOTD.QOTDModel;
+import model.DailyUpdate.*;
 import databaseMethods.SwitchMethods;
 
 public class GiantSwitch {
@@ -24,6 +25,7 @@ public class GiantSwitch {
 		SwitchMethods SW = new SwitchMethods();	
 		Gson gson = new GsonBuilder().create();
 		QOTDModel qotdmodel = new QOTDModel();
+		DailyUpdateController DUC = new DailyUpdateController();
 		
 		Object answer = "";	
 
@@ -121,16 +123,15 @@ public class GiantSwitch {
 			answer = QOTDKlasse.getQuote();
 			
 			break;
-		
+		                                                                                                                                              
 		case "LoginTime":
 			UpdateLoginTime ULT = (UpdateLoginTime)gson.fromJson(jsonString, UpdateLoginTime.class);
 			answer = SW.UpdateLoginTime(ULT.getLoginTime(),ULT.getUserName());
 			System.out.println("blalb");
 			break;
 			
-		case "UpdateInfo":
-			Update UD = (Update)gson.fromJson(jsonString, Update.class);
-			answer = qotdmodel.updateQuote(UD.getUserName());
+		case "DailyUpdate":
+			answer = DUC.dailyUpdate();
 
 			
 			break;
@@ -191,8 +192,8 @@ public class GiantSwitch {
 			return "createCalendar";
 		} else if (ID.contains("LoginTime")) {
 			return "LoginTime";
-		} else if (ID.contains("UpdateInfo")) {
-			return "UpdateInfo";
+		} else if (ID.contains("DailyUpdate")) {
+			return "DailyUpdate";
 		}
 
 		else
