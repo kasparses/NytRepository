@@ -6,7 +6,9 @@ import java.util.ArrayList;
  * Created by jesperbruun on 10/10/14.
  * Til hver specifik event bliver de defineret saaledes.
  */
-public class Event {
+public class Event implements java.io.Serializable{
+	private  final long serialVersionUID = 1L;
+	private int ID;
     private String activityid;
     private String eventid;
     private String type;
@@ -72,10 +74,18 @@ public class Event {
     public ArrayList<String> getEnd(){
         return end;
     }
-	public Event(String activityid, String eventid, String type, String title,
+    
+	public int getID() {
+		return ID;
+	}
+	public void setID(int iD) {
+		ID = iD;
+	}
+	public Event( int ID, String activityid, String eventid, String type, String title,
 			String description, ArrayList<String> start,
 			ArrayList<String> end, String location) {
 		super();
+		this.ID = ID;
 		this.activityid = activityid;
 		this.eventid = eventid;
 		this.type = type;

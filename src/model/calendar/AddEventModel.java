@@ -7,7 +7,7 @@ import model.QueryBuild.*;
 import model.note.NoteModel;
 import model.calendar.*;
 
-public class AddEvent {
+public class AddEventModel {
 	
 //	Event event = new Event(0, null, null, null, 0);
 	QueryBuilder qb = new QueryBuilder(); 
@@ -24,10 +24,10 @@ public class AddEvent {
 			String end,
 			String location)	{
 			
-			String nId = String.valueOf(ID);
+			String Id = String.valueOf(ID);
 			
 			String[] fields = {"ID", "activityID", "eventID", "type", "title", "description", "start", "end", "location"};
-			String[] values = {nId};
+			String[] values = {Id, activityID, eventID, type, title, description, start, end, location};
 			try {
 				qb.insertInto("events", fields).values(values).Execute();
 				

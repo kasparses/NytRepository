@@ -4,6 +4,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 
+import ClientWorker.ClientWorker;
+import ClientWorker.GiantSwitch;
 import model.QueryBuild.QueryBuilder;
 import GUI.UserInformation;
 import GUI.AuthUser;
@@ -11,10 +13,12 @@ import GUI.AuthUser;
 import javax.swing.JOptionPane;
 import javax.swing.text.html.HTMLDocument.RunElement;
 
+import model.calendar.*;
 import model.QueryBuild.*;
 import model.user.AuthenticateUser;
 import model.user.User;
 import GUI.Screen;
+import JsonClasses.CreateEvent;
 import model.note.*;
 
 public class GUILogic {
@@ -24,6 +28,8 @@ public class GUILogic {
 	private model.note.NoteModel nm;
 	private boolean u;
 	private boolean full = false;
+	
+	GiantSwitch GS = new GiantSwitch();
 	
 	model.user.AuthenticateUser a = new model.user.AuthenticateUser();
 	model.note.Note n = new model.note.Note();
@@ -57,7 +63,9 @@ public class GUILogic {
 				
 			String email = screen.getLogin().getTextFieldUsername().getText();
 			String password = screen.getLogin().getTextFieldPassword().getText();
-			u3=a.authenticate(email, password);
+			u3 = "correct";
+					
+					//a.authenticate(email, password);
 			
 			if (e.getSource() == screen.getLogin().getBtnLogIn()){
 				System.out.println(u3);
@@ -133,43 +141,41 @@ public class GUILogic {
 				screen.show(Screen.MAINMENU);
 			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
-				int Location = screen.getAddEventGUI().getTextField_Location().getX();
-				int Createdby = screen.getAddEventGUI().getTextField_Createdby().getX();
-				String start = screen.getAddEventGUI().getTextField_Start().getText();
-				String end = screen.getAddEventGUI().getTextField_End().getText();
-				String name = screen.getAddEventGUI().getTextField_Name().getText();
-				String text = screen.getAddEventGUI().getTextField_Text().getText();
-				int type = screen.getAddEventGUI().getTextField_Type().getX();
-				int eventID = screen.getAddEventGUI().getTextField_EventID().getX();
-
-
-//				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
-//				{
-//					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
-//							, "Error message",JOptionPane.PLAIN_MESSAGE);
+				 
+				GS.Determine("createEvent");
+				
+//				String description = screen.getAddEventGUI().getTextField_Description().getText();
+//				String start = screen.getAddEventGUI().getTextField_Start().getText();
+//				String location = screen.getAddEventGUI().getTextField_Location().getText();
+//				String end = screen.getAddEventGUI().getTextField_End().getText();
+//				String title = screen.getAddEventGUI().getTextField_Title().getText();
+//				String type = screen.getAddEventGUI().getTextField_Type().getText();
+//				String eventID = screen.getAddEventGUI().getTextField_EventID().getText();
+//				String activityID = screen.getAddEventGUI().getTextField_ActivityID().getText();
+//
+//
+////				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
+////				{
+////					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
+////							, "Error message",JOptionPane.PLAIN_MESSAGE);
+////				}
+////				else
+////				{
+//				QueryBuilder qb = new QueryBuilder();
+//				
+//				
+//				String[] kolonner = { "activityID", "eventID", "type", "title", "description", "start", "end", "location"};
+//				String[] Values = { activityID, eventID, type, title, description, start, end, location};
+//				try {
+//					qb.insertInto("events", kolonner ).values(Values).ExecuteQuery();
+//				} catch (SQLException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
 //				}
-//				else
-//				{
-				QueryBuilder qb = new QueryBuilder();
-				
-				String loc = String.valueOf(Location);
-				String cre = String.valueOf(Createdby);
-				String typ = String.valueOf(type);
-				String eve = String.valueOf(eventID);
-
-				
-				String[] kolonner = { "eventID", "type", "location", "createdby", "start", "end", "name", "text"};
-				String[] Values = { eve, loc, cre, typ, start, end, name, text};
-				try {
-					qb.insertInto("events", kolonner ).values(Values).ExecuteQuery();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				}	
+//				}	
 			}
 		}
-//	}
+	}
 	private class AddUserActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getAddUser().getBtnLogout()){

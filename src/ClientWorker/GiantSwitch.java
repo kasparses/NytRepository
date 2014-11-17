@@ -30,7 +30,7 @@ public class GiantSwitch {
 		QOTDModel QOTDKlasse = new QOTDModel();
 		SwitchMethods SW = new SwitchMethods();	
 		Note N = new Note();
-		AddEvent AE = new AddEvent();
+		AddEventModel AE = new AddEventModel();
 		Gson gson = new GsonBuilder().create();
 		QOTDModel qotdmodel = new QOTDModel();
 		DailyUpdateController DUC = new DailyUpdateController();
@@ -100,8 +100,8 @@ public class GiantSwitch {
 			break;
 
 		case "createEvent":
-			CreateEvent CE = (CreateEvent)gson.fromJson(jsonString, CreateEvent.class);
-			answer = AE.CreateEvent(CE.getID(), CE.getActivityID(), CE.getEventID(), CE.getType(), CE.getTitle(),
+			Event CE = (Event)gson.fromJson(jsonString, Event.class);
+			answer = AE.CreateEvent(CE.getID(), CE.getActivityid(), CE.getEventid(), CE.getType(), CE.getTitle(),
 					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation());
 			System.out.println("Recieved saveEvent");
 			break;
