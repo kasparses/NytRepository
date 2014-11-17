@@ -2,18 +2,14 @@ package model.QOTD;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.math.BigDecimal;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-
 import model.QueryBuild.QueryBuilder;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
 import JsonClasses.DailyUpdate;
 
 public class QOTDModel {
@@ -48,7 +44,7 @@ public class QOTDModel {
  
     }
     
-     	public void saveQuote() {
+     	public void saveQuote(long lastUpdateTime, int days) {
 //    public static void main(String []args) {
     	
     	QueryBuilder qb = new QueryBuilder();
@@ -58,6 +54,7 @@ public class QOTDModel {
              */
             String json;
 			try {
+				int days * 
 				json = readUrl("http://dist-sso.it-kartellet.dk/quote/");
 			           
     			JSONParser jsonParser = new JSONParser();
@@ -70,7 +67,6 @@ public class QOTDModel {
     			System.out.println("author:"+author);
     			System.out.println("topic:"+topic);
 
-    			
     			String[] keys = {"qotd", ",author", ",topic" };
     			String[] keys2 = {quote, author, topic };
     			
@@ -112,7 +108,7 @@ public class QOTDModel {
   		 Object noReturn = "";
   		 long lastUpdateTime = 0;
   		try {
-  			resultSet= qb.selectFrom("users").where("email", "=", userName).ExecuteQuery();
+  			resultSet= qb.selectFrom("dailyupdate").where("msg_type", "=", "hej").ExecuteQuery();
   			while (resultSet.next()){
   	  			lastUpdateTime = resultSet.getLong("LastUpdateTime");
 
@@ -121,7 +117,7 @@ public class QOTDModel {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-  		//bigInteger
+  	
   		 
 	     	Date date = new Date(); // Current date & time
 	     	long maxTimeNoUpdate = 86400; // Maximum one day with no update
