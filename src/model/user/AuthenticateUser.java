@@ -72,7 +72,7 @@ private LoginAnswer LA = new LoginAnswer();
 
 			String[] keys = {"userid", "email","type", "password", "CPR"};
 			qb = new QueryBuilder();
-			rs = qb.selectFrom(keys, "user").where("CPR", "=", CPR).ExecuteQuery();
+			rs = qb.selectFrom(keys, "users").where("CPR", "=", CPR).ExecuteQuery();
 			while(rs.next())
 			{
 				

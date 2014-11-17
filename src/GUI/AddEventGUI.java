@@ -19,7 +19,7 @@ import java.awt.SystemColor;
 
 public class AddEventGUI extends JPanel {
 	private JTextField textField_Location;
-	private JTextField textField_Createdby;
+	private JTextField textField_ActivityID;
 	private JTextField textField_Start;
 	private JButton btnSubmit;
 	private JButton btnLogout;
@@ -30,12 +30,14 @@ public class AddEventGUI extends JPanel {
 	private JLabel lblName;
 	private JLabel lblText;
 	private JTextField textField_End;
-	private JTextField textField_Name;
+	private JTextField textField_Title;
 	private JTextField textField_Text;
 	private final JLabel lblType = new JLabel("Type");
 	private final JTextField textField_Type = new JTextField();
 	private final JLabel lblEventid = new JLabel("EventID");
 	private final JTextField textField_EventID = new JTextField();
+	private final JLabel lblDescription = new JLabel("Description");
+	private final JTextField textField_Description = new JTextField();
 
 	/**
 	 * Create the panel.
@@ -56,7 +58,7 @@ public class AddEventGUI extends JPanel {
 		btnLogout.setForeground(new Color(255, 255, 255));
 		btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
 		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBounds(611, 666, 143, 59);
+		btnLogout.setBounds(611, 684, 143, 59);
 		add(btnLogout);
 
 		textField_Location = new JTextField();
@@ -71,13 +73,13 @@ public class AddEventGUI extends JPanel {
 		lblEmail.setBounds(483, 195, 109, 30);
 		add(lblEmail);
 
-		textField_Createdby = new JTextField();
-		textField_Createdby.setForeground(new Color(105, 105, 105));
-		textField_Createdby.setColumns(10);
-		textField_Createdby.setBounds(755, 238, 120, 34);
-		add(textField_Createdby);
+		textField_ActivityID = new JTextField();
+		textField_ActivityID.setForeground(new Color(105, 105, 105));
+		textField_ActivityID.setColumns(10);
+		textField_ActivityID.setBounds(755, 238, 120, 34);
+		add(textField_ActivityID);
 
-		JLabel lblTeam = new JLabel("Created by");
+		JLabel lblTeam = new JLabel("ActivityID");
 		lblTeam.setFont(new Font("Arial", Font.BOLD, 26));
 		lblTeam.setForeground(new Color(255, 255, 255));
 		lblTeam.setBounds(483, 242, 159, 31);
@@ -108,7 +110,7 @@ public class AddEventGUI extends JPanel {
 			}
 		}
 		);
-		btnSubmit.setBounds(553, 566, 239, 43);
+		btnSubmit.setBounds(570, 600, 239, 43);
 		add(btnSubmit);
 
 		
@@ -118,7 +120,7 @@ public class AddEventGUI extends JPanel {
 		btnMainMenu.setFont(new Font("Arial", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
 		btnMainMenu.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnMainMenu.setBounds(601, 620, 164, 44);
+		btnMainMenu.setBounds(611, 641, 164, 44);
 		add(btnMainMenu);
 
 		lblUserInfo = new JLabel("Create event");
@@ -133,7 +135,7 @@ public class AddEventGUI extends JPanel {
 		lblEnd.setBounds(483, 337, 159, 31);
 		add(lblEnd);
 
-		lblName = new JLabel("Name");
+		lblName = new JLabel("Title");
 		lblName.setForeground(Color.WHITE);
 		lblName.setFont(new Font("Arial", Font.BOLD, 26));
 		lblName.setBounds(483, 379, 159, 31);
@@ -151,11 +153,11 @@ public class AddEventGUI extends JPanel {
 		textField_End.setBounds(755, 332, 120, 34);
 		add(textField_End);
 
-		textField_Name = new JTextField();
-		textField_Name.setForeground(SystemColor.controlDkShadow);
-		textField_Name.setColumns(10);
-		textField_Name.setBounds(755, 379, 120, 34);
-		add(textField_Name);
+		textField_Title = new JTextField();
+		textField_Title.setForeground(SystemColor.controlDkShadow);
+		textField_Title.setColumns(10);
+		textField_Title.setBounds(755, 379, 120, 34);
+		add(textField_Title);
 
 		textField_Text = new JTextField();
 		textField_Text.setForeground(SystemColor.controlDkShadow);
@@ -182,6 +184,16 @@ public class AddEventGUI extends JPanel {
 		textField_EventID.setBounds(755, 513, 120, 34);
 		
 		add(textField_EventID);
+		lblDescription.setForeground(Color.WHITE);
+		lblDescription.setFont(new Font("Arial", Font.BOLD, 26));
+		lblDescription.setBounds(483, 558, 159, 31);
+		
+		add(lblDescription);
+		textField_Description.setForeground(SystemColor.controlDkShadow);
+		textField_Description.setColumns(10);
+		textField_Description.setBounds(755, 555, 120, 34);
+		
+		add(textField_Description);
 		//=======
 
 		//>>>>>>> FETCH_HEAD
@@ -202,48 +214,52 @@ public class AddEventGUI extends JPanel {
 		btnMainMenu.addActionListener(l);
 	}
 
-	
 	public JTextField getTextField_Location() {
 		return textField_Location;
 	}
 
-	public JTextField getTextField_Createdby() {
-		return textField_Createdby;
+	public JTextField getTextField_ActivityID() {
+		return textField_ActivityID;
 	}
 
 	public JTextField getTextField_Start() {
 		return textField_Start;
 	}
 
+	public JButton getBtnSubmit() {
+		return btnSubmit;
+	}
+
+	public JButton getBtnLogout() {
+		return btnLogout;
+	}
+
+	public JButton getBtnMainMenu() {
+		return btnMainMenu;
+	}
+
 	public JTextField getTextField_End() {
 		return textField_End;
 	}
 
-	public JTextField getTextField_Name() {
-		return textField_Name;
+	public JTextField getTextField_Title() {
+		return textField_Title;
 	}
 
 	public JTextField getTextField_Text() {
 		return textField_Text;
 	}
-	
+
 	public JTextField getTextField_Type() {
 		return textField_Type;
 	}
 
-	public JButton getBtnSubmit() {
-		return btnSubmit;
-	}
-	public JButton getBtnMainMenu() {
-		return btnMainMenu;
-	}
-	
-	public JButton getBtnLogout() {
-		return btnLogout;
-	}
-
 	public JTextField getTextField_EventID() {
 		return textField_EventID;
+	}
+
+	public JTextField getTextField_Description() {
+		return textField_Description;
 	}
 	
 }

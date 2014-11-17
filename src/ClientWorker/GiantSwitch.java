@@ -1,17 +1,23 @@
 package ClientWorker;
 import java.sql.SQLException;
+
 import model.QOTD.QOTDModel;
-import model.note.Note;
+import model.note.*;
+import JsonClasses.CreateEvent;
+import JsonClasses.CreateNoteJson;
 import JsonClasses.AuthUser;
 import JsonClasses.CalendarInfo;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
 import JsonClasses.UpdateLoginTime;
 import JsonClasses.Update;
+
 import com.google.gson.*;
+
 import model.QOTD.QOTDModel;
 import model.DailyUpdate.*;
 import databaseMethods.SwitchMethods;
+import model.calendar.*;
 
 public class GiantSwitch {
 	private model.user.User u3;
@@ -23,6 +29,8 @@ public class GiantSwitch {
 
 		QOTDModel QOTDKlasse = new QOTDModel();
 		SwitchMethods SW = new SwitchMethods();	
+		Note N = new Note();
+		AddEvent AE = new AddEvent();
 		Gson gson = new GsonBuilder().create();
 		QOTDModel qotdmodel = new QOTDModel();
 		DailyUpdateController DUC = new DailyUpdateController();
@@ -92,6 +100,9 @@ public class GiantSwitch {
 			break;
 
 		case "createEvent":
+			CreateEvent CE = (CreateEvent)gson.fromJson(jsonString, CreateEvent.class);
+			answer = AE.CreateEvent(CE.getID(), CE.getActivityID(), CE.getEventID(), CE.getType(), CE.getTitle(),
+					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation());
 			System.out.println("Recieved saveEvent");
 			break;
 
@@ -102,7 +113,15 @@ public class GiantSwitch {
 		case "deleteEvent":
 			System.out.println("Recieved deleteEvent");
 		
+			
+		case "createNote":
+			CreateNoteJson CNJ = (CreateNoteJson)gson.fromJson(jsonString, CreateNoteJson.class);
+			answer = N.CreateNote(CNJ.getNoteID(), CNJ.getText(), CNJ.getDateTime(), CNJ.getCreatedBy(), CNJ.getEventID());
+			System.out.println("Recieved saveNote");
+			break;
+			
 		case "saveNote":
+						
 			System.out.println("Recieved saveNote");
 			break;
 
