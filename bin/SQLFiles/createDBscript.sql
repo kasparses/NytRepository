@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS Forecast
 
 CREATE TABLE IF NOT EXISTS dailyupdate
 (
-	date datetime NOT NULL UNIQUE,
+	date varchar(50) NOT NULL UNIQUE,
 	apparentTemperature double,
 	summary text,
 	qotd varchar(300) NOT NULL,

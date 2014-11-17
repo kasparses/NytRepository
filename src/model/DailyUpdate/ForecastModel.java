@@ -1,10 +1,12 @@
 package model.DailyUpdate;
 
 import model.QueryBuild.QueryBuilder;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -73,6 +75,12 @@ public class ForecastModel {
 	                 JSONArray subList = (JSONArray) innerObj.get("weather");
 
 	                 Iterator y = subList.iterator();
+	                 
+	                 
+//	                String[] keys = {"qotd", ",author", ",topic", ",LastUpdateTime" };
+//	     			String[] keys2 = {quote, author, topic, Long.toString(newUpdateTime)};
+//	     			
+//	     			qb.update("dailyupdate", keys, keys2).where("msg_type", "=", "hej").Execute();
 
 	                 while (y.hasNext()) {
 	                     JSONObject childObj = (JSONObject) y.next();
