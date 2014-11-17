@@ -126,10 +126,9 @@ public class GiantSwitch {
 			break;
 
 		case "createEvent":
-			Event CE = (Event)gson.fromJson(jsonString, Event.class);
-			answer = AE.CreateEvent(CE.getID(), CE.getActivityid(), CE.getEventid(), CE.getType(), CE.getTitle(),
+			CreateEvent CE = (CreateEvent)gson.fromJson(jsonString, CreateEvent.class);
+			answer = AE.CreateEvent(CE.getID(), CE.getActivityID(), CE.getEventID(), CE.getType(), CE.getTitle(),
 					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation());
-			System.out.println("Recieved saveEvent");
 			break;
 
 		case "getEventInfo":

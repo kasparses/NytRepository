@@ -3,31 +3,18 @@ package GUI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
-
-import ClientWorker.ClientWorker;
 import ClientWorker.GiantSwitch;
 import model.QueryBuild.QueryBuilder;
-import GUI.UserInformation;
-import GUI.AuthUser;
-
 import javax.swing.JOptionPane;
-import javax.swing.text.html.HTMLDocument.RunElement;
-
-import model.calendar.*;
-import model.QueryBuild.*;
-import model.user.AuthenticateUser;
-import model.user.User;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import GUI.Screen;
 import JsonClasses.CreateEvent;
-import model.note.*;
+
 
 public class GUILogic {
 	private Screen screen;
-	private User u2;
 	private String u3;
-	private model.note.NoteModel nm;
-	private boolean u;
-	private boolean full = false;
 	
 	GiantSwitch GS = new GiantSwitch();
 	
@@ -142,17 +129,35 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
 				 
-				GS.Determine("createEvent");
+			
+		
+				String description = screen.getAddEventGUI().getTextField_Description().getText();
+				String start = screen.getAddEventGUI().getTextField_Start().getText();
+				String location = screen.getAddEventGUI().getTextField_Location().getText();
+				String end = screen.getAddEventGUI().getTextField_End().getText();
+				String title = screen.getAddEventGUI().getTextField_Title().getText();
+				String type = screen.getAddEventGUI().getTextField_Type().getText();
+				String eventID = screen.getAddEventGUI().getTextField_EventID().getText();
+				String activityID = screen.getAddEventGUI().getTextField_ActivityID().getText();
 				
-//				String description = screen.getAddEventGUI().getTextField_Description().getText();
-//				String start = screen.getAddEventGUI().getTextField_Start().getText();
-//				String location = screen.getAddEventGUI().getTextField_Location().getText();
-//				String end = screen.getAddEventGUI().getTextField_End().getText();
-//				String title = screen.getAddEventGUI().getTextField_Title().getText();
-//				String type = screen.getAddEventGUI().getTextField_Type().getText();
-//				String eventID = screen.getAddEventGUI().getTextField_EventID().getText();
-//				String activityID = screen.getAddEventGUI().getTextField_ActivityID().getText();
-//
+				CreateEvent CE = new CreateEvent("createEvent", 0,activityID , eventID, type, title, description, start, end, location );
+							
+				Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(CE);
+				
+				try {
+					Object hejhej = GS.GiantSwitchMethod(gsonString);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+				
+				
+				
+				
+				
+				
+				
+				
 //
 ////				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
 ////				{

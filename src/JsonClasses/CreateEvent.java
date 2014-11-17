@@ -14,6 +14,20 @@ public class CreateEvent implements java.io.Serializable
 	private String end;
 	private String location;
 	
+	public CreateEvent(String _overallID, int _ID, String _activityID, String _eventID, String _type, String _title, String _description, String _start, String _end, String _location){
+		setOverallID(_overallID);
+		setID(_ID);
+		setActivityID(_activityID);
+		setEventID(_eventID);
+		setType(_type);
+		setTitle(_title);
+		setDescription(_description);
+		setStart(_start);
+		setEnd(_end);
+		setLocation(_location);
+		
+	}
+	 
 	
 	//Getters and setters for everything, bitch
 
