@@ -12,8 +12,9 @@ public class Note extends Model{
 	
 	NoteModel notes = new NoteModel(0, null, null, null, 0);
 	QueryBuilder qb = new QueryBuilder(); 
+	String stringToBeReturned = "";
 	
-		public void CreateNote(
+		public String CreateNote(
 			int noteID,
 			String text, 
 			String dateTime, 
@@ -29,10 +30,14 @@ public class Note extends Model{
 			try {
 				qb.insertInto("notes", fields).values(values).Execute();
 				
+				stringToBeReturned = "The note has been created!!!";
+				
 			} catch (SQLException e) {
+				stringToBeReturned = "The note could NOT be created!!! (Does not work)";
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			return stringToBeReturned;
 		}
 
 		public void DeleteNote (int noteID) throws SQLException {

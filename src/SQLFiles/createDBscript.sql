@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS users
 
 
 /* Create Dummy Account */
---INSERT INTO `cbscalendar`.`users`
+--INSERT INTO `cbscalendar`,`users`
 --(email,
 --Active,
 --created,

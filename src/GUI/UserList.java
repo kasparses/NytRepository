@@ -51,7 +51,7 @@ public class UserList extends JPanel {
        
         try {
 			QueryBuilder qb = new QueryBuilder();
-			rs = qb.selectFrom("user").all().ExecuteQuery();
+			rs = qb.selectFrom("users").all().ExecuteQuery();
 			int rowSize = rs.getRow();
 
 			try {
