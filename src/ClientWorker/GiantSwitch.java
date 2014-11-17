@@ -52,32 +52,9 @@ public class GiantSwitch {
 			break;
 
 			
-			
-			
-			
-			
-			
-			
 		/**********
 		 ** LOGIN **
 		 **********/
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		case "logIn":
