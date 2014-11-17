@@ -3,13 +3,18 @@ package GUI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+
 import ClientWorker.GiantSwitch;
 import model.QueryBuild.QueryBuilder;
+
 import javax.swing.JOptionPane;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import GUI.Screen;
 import JsonClasses.CreateEvent;
+import JsonClasses.EstablishUser;
 
 
 public class GUILogic {
@@ -193,27 +198,43 @@ public class GUILogic {
 				String Email = screen.getAddUser().getTextField_Email().getText();
 				String Type = screen.getAddUser().getTextField_Type().getText();
 				String Password = screen.getAddUser().getTextField_Password().getText();
+				String CPR = screen.getAddUser().getTextField_CPR().getText();
+				int Active = 1;
+				String created = "17-11-2014 17:33:00";
 				
-				if (Email.equals("")|| Type.equals("")|| Password.equals(""))
+				
+				if (Email.equals("")|| Type.equals("")|| Password.equals("") || CPR.equals(""))
 				{
-					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
+					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 				}
 				else
 				{
-				QueryBuilder qb = new QueryBuilder();
-				
-				String[] kolonner = { "email", "password"};
-				String[] Values = { Email, Password};
-//				String[] kolonner2 = { "types"};
-//				String[] Values2 = { Type};
-				try {
-					qb.insertInto("user", kolonner ).values(Values).ExecuteQuery();
-//					qb.insertInto("roles", kolonner ).values(Values).ExecuteQuery();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+					EstablishUser EU = new EstablishUser("establishUser", 0, Email , Active, created, Type, Password, CPR );
+					
+					Gson gson = new GsonBuilder().create();
+					String gsonString = gson.toJson(EU);
+					
+					try {
+						Object hejhej = GS.GiantSwitchMethod(gsonString);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+					
+					
+//				QueryBuilder qb = new QueryBuilder();
+//				
+//				String[] kolonner = { "email", "password"};
+//				String[] Values = { Email, Password};
+////				String[] kolonner2 = { "types"};
+////				String[] Values2 = { Type};
+//				try {
+//					qb.insertInto("user", kolonner ).values(Values).ExecuteQuery();
+////					qb.insertInto("roles", kolonner ).values(Values).ExecuteQuery();
+//				} catch (SQLException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
 				}
 				
 				

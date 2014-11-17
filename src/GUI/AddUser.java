@@ -26,6 +26,8 @@ public class AddUser extends JPanel {
 	private JLabel lblCBSlogo;
 	private JButton btnMainMenu;
 	private JLabel lblUserInfo;
+	private JLabel lblCpr;
+	private JTextField textField_CPR;
 
 	/**
 	 * Create the panel.
@@ -52,36 +54,36 @@ public class AddUser extends JPanel {
 		textField_Email = new JTextField();
 		textField_Email.setForeground(new Color(105, 105, 105));
 		textField_Email.setName("");
-		textField_Email.setBounds(755, 213, 120, 34);
+		textField_Email.setBounds(755, 213, 174, 34);
 		add(textField_Email);
 		textField_Email.setColumns(10);
 
 		JLabel lblUserID = new JLabel("Email");
 		lblUserID.setForeground(new Color(255, 255, 255));
-		lblUserID.setFont(new Font("Arial", Font.BOLD, 26));
+		lblUserID.setFont(new Font("Arial", Font.BOLD, 20));
 		lblUserID.setBounds(483, 211, 104, 30);
 		add(lblUserID);
 
 		textField_Type = new JTextField();
 		textField_Type.setForeground(new Color(105, 105, 105));
 		textField_Type.setColumns(10);
-		textField_Type.setBounds(755, 259, 120, 34);
+		textField_Type.setBounds(755, 259, 174, 34);
 		add(textField_Type);
 
-		JLabel lblEmail = new JLabel("Type");
+		JLabel lblEmail = new JLabel("Type (1=admin 2=bruger)");
 		lblEmail.setForeground(new Color(255, 255, 255));
-		lblEmail.setFont(new Font("Arial", Font.BOLD, 26));
-		lblEmail.setBounds(483, 257, 109, 30);
+		lblEmail.setFont(new Font("Arial", Font.BOLD, 20));
+		lblEmail.setBounds(483, 257, 264, 30);
 		add(lblEmail);
 
 		textField_Password = new JTextField();
 		textField_Password.setForeground(new Color(105, 105, 105));
 		textField_Password.setColumns(10);
-		textField_Password.setBounds(755, 305, 120, 34);
+		textField_Password.setBounds(755, 305, 174, 34);
 		add(textField_Password);
 
 		JLabel lblTeam = new JLabel("Password");
-		lblTeam.setFont(new Font("Arial", Font.BOLD, 26));
+		lblTeam.setFont(new Font("Arial", Font.BOLD, 20));
 		lblTeam.setForeground(new Color(255, 255, 255));
 		lblTeam.setBounds(483, 303, 127, 30);
 		add(lblTeam);
@@ -117,7 +119,19 @@ public class AddUser extends JPanel {
 				lblUserInfo.setFont(new Font("Arial", Font.BOLD, 78));
 				lblUserInfo.setBounds(451, 90, 464, 90);
 				add(lblUserInfo);
-								
+				
+				lblCpr = new JLabel("CPR");
+				lblCpr.setForeground(Color.WHITE);
+				lblCpr.setFont(new Font("Arial", Font.BOLD, 20));
+				lblCpr.setBounds(483, 348, 127, 30);
+				add(lblCpr);
+				
+				textField_CPR = new JTextField();
+				textField_CPR.setForeground(SystemColor.controlDkShadow);
+				textField_CPR.setColumns(10);
+				textField_CPR.setBounds(755, 350, 174, 34);
+				add(textField_CPR);
+				
 				JLabel lblBackground = new JLabel("");
 				lblBackground.setSize(new Dimension(1366, 768));
 				lblBackground.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/MetalBackground.jpg")));
@@ -147,8 +161,11 @@ public class AddUser extends JPanel {
 	public JTextField getTextField_Password() {
 		return textField_Password;
 	}
-
 	
+	public JTextField getTextField_CPR() {
+		return textField_CPR;
+	}
+
 	public JButton getBtnSubmit() {
 		return btnSubmit;
 	}
