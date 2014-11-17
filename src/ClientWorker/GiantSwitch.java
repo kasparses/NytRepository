@@ -3,12 +3,14 @@ import java.sql.SQLException;
 
 import model.QOTD.QOTDModel;
 import model.note.*;
+import model.user.*;
 import JsonClasses.CreateEvent;
 import JsonClasses.CreateNoteJson;
 import JsonClasses.AuthUser;
 import JsonClasses.CalendarInfo;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
+import JsonClasses.EstablishUser;
 import JsonClasses.UpdateLoginTime;
 import JsonClasses.Update;
 
@@ -31,6 +33,7 @@ public class GiantSwitch {
 		SwitchMethods SW = new SwitchMethods();	
 		Note N = new Note();
 		AddEventModel AE = new AddEventModel();
+		EstablishUserModel EUM = new EstablishUserModel();
 		Gson gson = new GsonBuilder().create();
 		QOTDModel qotdmodel = new QOTDModel();
 		DailyUpdateController DUC = new DailyUpdateController();
@@ -72,6 +75,19 @@ public class GiantSwitch {
 
 		case "logOut":
 			System.out.println("Recieved logOut");
+			break;
+			
+			
+		/**********
+		 ** USERS **
+		 **********/
+			
+		case "establishUser":
+			
+			EstablishUser EU = (EstablishUser)gson.fromJson(jsonString, EstablishUser.class);
+			answer = EUM.EstablishUser(EU.getUserID(),EU.getEmail(),EU.getActive(),EU.getCreated(),EU.getType(),
+					EU.getPassword(),EU.getCPR());
+		
 			break;
 
 		/*************

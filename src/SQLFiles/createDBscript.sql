@@ -1,7 +1,7 @@
 --drop DATABASE IF EXISTS cbscalendar;
 CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
---select * from events;
+--select * from users;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Create Tables */
@@ -86,11 +86,11 @@ CREATE TABLE IF NOT EXISTS users
 	userID int NOT NULL AUTO_INCREMENT,
 	email varchar(40) NOT NULL,
 	Active tinyint, 
-	created datetime NOT NULL,
-	type varchar(20) not null,
+	created varchar(30) NOT NULL COMMENT '--TIMESTAMP DEFAULT CURRENT_TIMESTAMP,',
+	type varchar(20) not null COMMENT '1 = admin 2 = bruger',
 	password varchar(30) NOT NULL,
 	CPR varchar(11) not null,
-	LastUpdateTime Bigint(50),
+	--LastUpdateTime Bigint(50),
 	PRIMARY KEY (userID)
 );
 
