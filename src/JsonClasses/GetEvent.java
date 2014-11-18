@@ -1,9 +1,9 @@
 package JsonClasses;
 
-public class CreateEvent implements java.io.Serializable
+public class GetEvent implements java.io.Serializable
 {
 	private  final long serialVersionUID = 1L;
-	private String overallID = "createEvent";
+	private String overallID = "getEvents";
 	private int ID;
 	private String activityID;
 	private String eventID;
@@ -14,19 +14,19 @@ public class CreateEvent implements java.io.Serializable
 	private String end;
 	private String location;
 	
-	public CreateEvent(String _overallID, int _ID, String _activityID, String _eventID, String _type, String _title, String _description, String _start, String _end, String _location){
-		setOverallID(_overallID);
-		setID(_ID);
-		setActivityID(_activityID);
-		setEventID(_eventID);
-		setType(_type);
-		setTitle(_title);
-		setDescription(_description);
-		setStart(_start);
-		setEnd(_end);
-		setLocation(_location);
-		
-	}
+//	public GetEvent(String _overallID, int _ID, String _activityID, String _eventID, String _type, String _title, String _description, String _start, String _end, String _location){
+//		getOverallID(_overallID);
+//		getID(_ID);
+//		getActivityID(_activityID);
+//		getEventID(_eventID);
+//		getType(_type);
+//		getTitle(_title);
+//		getDescription(_description);
+//		getStart(_start);
+//		getEnd(_end);
+//		getLocation(_location);
+//		
+//	}
 	
 	 
 	

@@ -139,6 +139,15 @@ public class SwitchMethods extends Model
 
 	
 	}
+	public String getEvents (String userName, String calendarName) throws SQLException
+	{
+		String stringToBeReturend = "";
+		qb.selectFrom("events").all().Execute();
+		
+		return stringToBeReturend;
+
+	
+	}
 	
 		/**
 	 * Allows the client to log in
