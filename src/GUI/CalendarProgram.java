@@ -3,13 +3,8 @@ package GUI;
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
-
-import model.QueryBuild.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
 import java.util.*;
 
 public class CalendarProgram{
@@ -23,8 +18,6 @@ public class CalendarProgram{
     static JScrollPane stblCalendar; //The scrollpane
     static JPanel pnlCalendar;
     static int realYear, realMonth, realDay, currentYear, currentMonth;
-	private ResultSet rs;
-
     
     public static void main (String args[]){
         //Look and feel
@@ -211,49 +204,5 @@ public class CalendarProgram{
             }
         }
     }
-    public CalendarProgram(){
-    String[][][] data = {
-			
-			{
-			
-			}
-			};
-
-try {
-	QueryBuilder qb = new QueryBuilder();
-	rs = qb.selectFrom("events").all().ExecuteQuery();
-	int rowSize = rs.getRow();
-
-	try {
-        rs.last();
-        rowSize = rs.getRow();
-        rs.beforeFirst();
-    }
-    catch(Exception ex) {
-
-    }
-
-    ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-//    int columnSize = rsmd.getColumnCount();
-    int columnSize = mtblCalendar.getColumnCount();
-    int rowCount = mtblCalendar.getRowCount();
-    int rowHeight = tblCalendar.getRowHeight();
     
-
-    data = new String[rowCount][columnSize][rowHeight];
-
-    int i =0;
-    while(rs.next() && i < rowSize)
-    {
-        for(int j=0;j<columnSize;j++){
-            data[i][j][i] = rs.getString(j+1);
-        }
-        i++;                    
-    }
-   
-    
-} catch (SQLException e1) {
-	e1.printStackTrace();
-}
-    }
 }
