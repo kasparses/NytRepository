@@ -5,6 +5,7 @@ import model.QOTD.QOTDModel;
 import model.note.*;
 import model.user.*;
 import JsonClasses.CreateEvent;
+import JsonClasses.GetEvent;
 import JsonClasses.CreateNoteJson;
 import JsonClasses.AuthUser;
 import JsonClasses.CalendarInfo;
@@ -73,9 +74,9 @@ public class GiantSwitch {
 			break;
 			
 
-		case "logOut":
-			System.out.println("Recieved logOut");
-			break;
+//		case "logOut":
+//			System.out.println("Recieved logOut");
+//			break;
 			
 			
 		/**********
@@ -115,6 +116,10 @@ public class GiantSwitch {
 			break;
 
 		case "getEvents":
+			
+			CalendarInfo CI2 = (CalendarInfo)gson.fromJson(jsonString, CalendarInfo.class);
+			answer = SW.getEvents(CI2.getCalenderName(), CI2.getUserName());
+			
 			System.out.println("Recieved getEvents");
 			break;
 
