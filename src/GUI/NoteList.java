@@ -47,7 +47,7 @@ public class NoteList extends JPanel {
 		setLayout(null);
 		
 		//Laver tabellen inde i Eventlisten.
-		String[] columnNames = { "noteId", "eventId", "createdBy", "text", "dateTime" };
+		String[] columnNames = { "NoteID", "EventID", "Created by", "Text", "Datetime" };
     	String[][] data = {
     			
     			{

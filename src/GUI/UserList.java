@@ -41,7 +41,7 @@ public class UserList extends JPanel {
     	setSize(new Dimension(1366, 768));
  
     	
-		String[] columnNames = { "userid", "email", "type", "password" };
+		String[] columnNames = { "UserID", "Email", "Active", "Created", "Type", "Password","CPR" };
         	String[][] data = {
         			
         			{

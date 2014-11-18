@@ -67,7 +67,7 @@ import java.sql.SQLException;
 
 			
 			//Laver tabellen inde i Eventlisten.
-			String[] columnNames = { "eventid", "location", "createdby", "start_date_time", "end_date_time", "name", "text" };
+			String[] columnNames = { "ID","ActivityID", "EventID", "Type", "Title", "Description", "Start", "End", "Location" };
         	String[][] data = {
         			
         			{
