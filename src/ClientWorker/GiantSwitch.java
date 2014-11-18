@@ -116,10 +116,8 @@ public class GiantSwitch {
 			break;
 
 		case "getEvents":
-			
 			CalendarInfo CI2 = (CalendarInfo)gson.fromJson(jsonString, CalendarInfo.class);
 			answer = SW.getEvents(CI2.getCalenderName(), CI2.getUserName());
-			
 			System.out.println("Recieved getEvents");
 			break;
 
