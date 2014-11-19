@@ -97,16 +97,15 @@ CREATE TABLE IF NOT EXISTS users
 
 /* Create Dummy Account */
 
---INSERT INTO `cbscalendar`.`users`
---(email,
+--INSERT INTO `cbscalendar`.`Calendar`
+--(type,
+--Name,
 --Active,
---created,
---type,
---password,
---CPR)
+--CreatedBy,
+--PrivatePublic)
 --VALUES
---('1234',
---'1',
+--('1',
+--'Hej',
 --'2014-11-13 14:38:00',
 --'user',
 --'hej',

@@ -40,7 +40,8 @@ public class GUILogic {
 		screen.getAddUser().addActionListener(new AddUserActionListener());
 		screen.getAddNote().addActionListener(new AddNoteActionListener());
 		screen.getForgotLogin().addActionListener(new ForgotActionListener());
-		
+		screen.getCalendarList().addActionListener(new CalendarListActionListener());
+
 		
 	}
 	public void run() {
@@ -119,7 +120,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getBtnEventlist()){
 				screen.show(Screen.EVENTLIST);
 			}
-			
+			if (e.getSource() == screen.getMainMenu().getBtnCalendarList()){
+				screen.show(Screen.CALENDARLIST);
+			}
 
 		}
 	}
@@ -336,6 +339,26 @@ public class GUILogic {
 					
 //				}
 				
+			}
+		}
+	}
+	
+	private class CalendarListActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == screen.getCalendarList().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getCalendarList().getBtnLogOut()){
+				
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getCalendarList().getBtnAdd()){
+				
+//				GS.Determine("")
+			}
+			if (e.getSource() == screen.getCalendarList().getBtnDelete()){
+				
+				GS.Determine("deleteCalendar");
 			}
 		}
 	}

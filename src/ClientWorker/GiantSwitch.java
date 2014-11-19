@@ -14,7 +14,7 @@ import JsonClasses.DeleteCalendar;
 import JsonClasses.EstablishUser;
 import JsonClasses.UpdateLoginTime;
 import JsonClasses.Update;
-
+import model.QueryBuild.*;
 import com.google.gson.*;
 
 import model.QOTD.QOTDModel;
@@ -38,6 +38,7 @@ public class GiantSwitch {
 		Gson gson = new GsonBuilder().create();
 		QOTDModel qotdmodel = new QOTDModel();
 		DailyUpdateController DUC = new DailyUpdateController();
+		QueryBuilder qb = new QueryBuilder();
 		
 		Object answer = "";	
 
@@ -96,12 +97,16 @@ public class GiantSwitch {
 		 *************/
 		case "createCalendar":
 			CreateCalendar CC = (CreateCalendar)gson.fromJson(jsonString, CreateCalendar.class);
-			answer = SW.createNewCalendar(CC.getType(),CC.getCalenderName(),CC.getActive(),CC.getUserName(), CC.getPublicOrPrivate());
+			answer = SW.createNewCalendar(CC.getType(),CC.getCalendarName(),CC.getActive(),CC.getUserName(), CC.getPublicOrPrivate());
 			break;
 		
 		case "deleteCalendar":
 			DeleteCalendar DC = (DeleteCalendar)gson.fromJson(jsonString, DeleteCalendar.class);
-			answer = SW.deleteCalendar(DC.getUserName(), DC.getCalendarName());
+
+			answer = SW.removeCalendar(DC.getUserName(), DC.getCalendarName());
+			if(answer.equals(u3.getEmail()) && answer.equals(DC.getCalendarName())){
+			qb.deleteFrom(DC.getCalendarName());
+			}
 			break;
 		
 		case "saveImportedCalendar":
