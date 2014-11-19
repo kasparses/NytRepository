@@ -83,9 +83,9 @@ public class GiantSwitch {
 		 **********/
 			
 		case "establishUser":
-			
+			System.out.println("establishUser");
 			EstablishUser EU = (EstablishUser)gson.fromJson(jsonString, EstablishUser.class);
-			answer = EUM.EstablishUser(EU.getUserID(),EU.getEmail(),EU.getActive(),EU.getCreated(),EU.getType(),
+			answer = EUM.EstablishUser(EU.getEmail(),EU.getActive(),EU.getCreated(),EU.getType(),
 					EU.getPassword(),EU.getCPR());
 		
 			break;
@@ -231,6 +231,8 @@ public class GiantSwitch {
 			return "LoginTime";
 		} else if (ID.contains("DailyUpdate")) {
 			return "DailyUpdate";
+		}  else if (ID.contains("establishUser")) {
+			return "establishUser";
 		}
 
 		else

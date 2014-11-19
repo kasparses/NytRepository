@@ -14,7 +14,6 @@ public class EstablishUserModel {
 	String stringToBeReturned = "";
 
 	public String EstablishUser(
-			int userID,
 			String email,
 			int Active,
 			String created,
@@ -23,14 +22,14 @@ public class EstablishUserModel {
 			String CPR){
 //			String LastUpdateTime)	{
 			
-			String Id = String.valueOf(userID);
 			String ac = String.valueOf(Active);
 
 			
-			String[] fields = {"userID", "email", "Active", "created", "type", "password", "CPR"};
-			String[] values = {Id, email, ac, created, type, password, CPR};
+			String[] keys = { "email", "Active", "created", "type", "password", "CPR"};
+			String[] values = { email, ac, created, type, password, CPR};
 			try {
-				qb.insertInto("users", fields).values(values).Execute();
+				qb.insertInto("users", keys).values(values).Execute();
+				
 				
 				stringToBeReturned = "The user has been succesfully established!!";
 				

@@ -178,49 +178,57 @@ public class GUILogic {
 				screen.show(Screen.MAINMENU);
 			}
 			if (e.getSource() == screen.getAddUser().getBtnSubmit()){
+				
+				
 				String Email = screen.getAddUser().getTextField_Email().getText();
-				String Type = screen.getAddUser().getTextField_Type().getText();
 				String Password = screen.getAddUser().getTextField_Password().getText();
 				String CPR = screen.getAddUser().getTextField_CPR().getText();
 				int Active = 1;
-				String created = "17-11-2014 17:33:00";
+				String created = "2014-11-11 11:00:00";
+				
+				boolean adminOrUser = false;
+				String adMinOrUserValue = "";
+				
+
+				if (screen.getAddUser().getRdbtnAdmin().isSelected())
+				{
+					adMinOrUserValue = "1"; 
+					adminOrUser = true;
+				}
+				if (screen.getAddUser().getRdbtnUser().isSelected())
+				{
+					adMinOrUserValue = "2"; 
+					adminOrUser = true;
+				}
+
+
+				if( adminOrUser == false){
+					JOptionPane.showMessageDialog(null, "Please select whether the account is an admin or a user"
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+
+				}
 				
 				
-				if (Email.equals("")|| Type.equals("")|| Password.equals("") || CPR.equals(""))
+				if (Email.equals("")|| Password.equals("") || CPR.equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 				}
 				else
 				{
-					EstablishUser EU = new EstablishUser("establishUser", 0, Email , Active, created, Type, Password, CPR );
+					EstablishUser EU = new EstablishUser("establishUser", Email , Active, created, adMinOrUserValue, Password, CPR );
 					
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(EU);
 					
 					try {
-						Object hejhej = GS.GiantSwitchMethod(gsonString);
+						Object hejhej22 = GS.GiantSwitchMethod(gsonString);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
 					
-					
-//				QueryBuilder qb = new QueryBuilder();
-//				
-//				String[] kolonner = { "email", "password"};
-//				String[] Values = { Email, Password};
-////				String[] kolonner2 = { "types"};
-////				String[] Values2 = { Type};
-//				try {
-//					qb.insertInto("user", kolonner ).values(Values).ExecuteQuery();
-////					qb.insertInto("roles", kolonner ).values(Values).ExecuteQuery();
-//				} catch (SQLException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
 				}
-				
-				
+
 			}
 		}
 	}

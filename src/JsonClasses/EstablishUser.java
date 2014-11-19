@@ -4,7 +4,6 @@ public class EstablishUser implements java.io.Serializable
 {
 	private  final long serialVersionUID = 1L;
 	private String overallID = "establishUser";
-	private int userID;
 	private String email;
 	private int Active;
 	private String created;
@@ -13,12 +12,12 @@ public class EstablishUser implements java.io.Serializable
 	private String CPR;
 //	private String LastUpdateTime;
 	
-	public EstablishUser(String overallID, int userID, String email, int Active, String created,
+	public EstablishUser(String overallID, String email, int Active, String created,
 			String type, String password, String CPR){
 		setOverallID(overallID);
-		setUserID(userID);
+		setEmail(email);
 		setActive(Active);
-		setType(created);
+		setCreated(created);
 		setType(type);
 		setPassword(password);
 		setCPR(CPR);
@@ -34,14 +33,6 @@ public class EstablishUser implements java.io.Serializable
 
 	public void setOverallID(String overallID) {
 		this.overallID = overallID;
-	}
-
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
 	}
 
 	public String getEmail() {

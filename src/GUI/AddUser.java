@@ -1,25 +1,30 @@
 package GUI;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.SystemColor;
 
 public class AddUser extends JPanel {
 	private JTextField textField_Email;
-	private JTextField textField_Type;
 	private JTextField textField_Password;
 	private JButton btnSubmit;
 	private JButton btnLogout;
@@ -28,6 +33,8 @@ public class AddUser extends JPanel {
 	private JLabel lblUserInfo;
 	private JLabel lblCpr;
 	private JTextField textField_CPR;
+	private JRadioButton rdbtnAdmin;
+	private JRadioButton rdbtnUser;
 
 	/**
 	 * Create the panel.
@@ -64,16 +71,10 @@ public class AddUser extends JPanel {
 		lblUserID.setBounds(483, 211, 104, 30);
 		add(lblUserID);
 
-		textField_Type = new JTextField();
-		textField_Type.setForeground(new Color(105, 105, 105));
-		textField_Type.setColumns(10);
-		textField_Type.setBounds(755, 259, 174, 34);
-		add(textField_Type);
-
-		JLabel lblEmail = new JLabel("Type (1=admin 2=bruger)");
+		JLabel lblEmail = new JLabel("Type");
 		lblEmail.setForeground(new Color(255, 255, 255));
 		lblEmail.setFont(new Font("Arial", Font.BOLD, 20));
-		lblEmail.setBounds(483, 257, 264, 30);
+		lblEmail.setBounds(483, 257, 47, 24);
 		add(lblEmail);
 
 		textField_Password = new JTextField();
@@ -132,11 +133,23 @@ public class AddUser extends JPanel {
 				textField_CPR.setBounds(755, 350, 174, 34);
 				add(textField_CPR);
 				
+				rdbtnUser = new JRadioButton("User");
+				rdbtnUser.setBounds(783, 261, 109, 23);
+				add(rdbtnUser);
+				
+				rdbtnAdmin = new JRadioButton("Admin");
+				rdbtnAdmin.setBounds(622, 261, 109, 23);
+				add(rdbtnAdmin);
+				
 				JLabel lblBackground = new JLabel("");
 				lblBackground.setSize(new Dimension(1366, 768));
 				lblBackground.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/MetalBackground.jpg")));
 				lblBackground.setBounds(0, 0, 1366, 768);
 				add(lblBackground);
+				
+				ButtonGroup group = new ButtonGroup();
+				group.add(getRdbtnAdmin());
+				group.add(getRdbtnUser());
 		
 		
 
@@ -154,8 +167,14 @@ public class AddUser extends JPanel {
 		return textField_Email;
 	}
 
-	public JTextField getTextField_Type() {
-		return textField_Type;
+	
+
+	public JRadioButton getRdbtnAdmin() {
+		return rdbtnAdmin;
+	}
+
+	public JRadioButton getRdbtnUser() {
+		return rdbtnUser;
 	}
 
 	public JTextField getTextField_Password() {

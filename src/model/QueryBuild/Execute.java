@@ -1,6 +1,7 @@
 package model.QueryBuild;
 
 import model.Model;
+
 import org.apache.commons.lang.StringEscapeUtils;
 
 import java.sql.ResultSet;
@@ -73,9 +74,19 @@ public class Execute extends Model {
                 e.printStackTrace();
             }
         } else {
-            sql = SELECT + getQueryBuilder().getSelectValue() +
-                    FROM + getQueryBuilder().getTableName() +
-                    WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
+        	
+            try {
+				sql = SELECT + getQueryBuilder().getSelectValue() +
+				        FROM + getQueryBuilder().getTableName() +
+				        WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
+				  System.out.println("sql: "+sql);
+				
+				
+			} catch (Exception e1) {
+				  System.out.println("sql: "+sql);
+				e1.printStackTrace();
+			}
+          
             try {
                 getConnection(false);
                 getConn();
@@ -140,6 +151,7 @@ public class Execute extends Model {
             }
             sql += sb.toString();
             sql += " );";
+            System.out.println("sql: "+sql);
             try {
                 getConnection(false);
                 getConn();
