@@ -15,8 +15,11 @@ import JsonClasses.EstablishUser;
 import JsonClasses.UpdateLoginTime;
 import JsonClasses.Update;
 import model.QueryBuild.*;
+
 import com.google.gson.*;
 
+import JsonClasses.GetCbsCalendar;
+import model.calendar.*;
 import model.QOTD.QOTDModel;
 import model.DailyUpdate.*;
 import databaseMethods.SwitchMethods;
@@ -39,6 +42,7 @@ public class GiantSwitch {
 		QOTDModel qotdmodel = new QOTDModel();
 		DailyUpdateController DUC = new DailyUpdateController();
 		QueryBuilder qb = new QueryBuilder();
+		model.calendar.GetCalendarData GCD = new model.calendar.GetCalendarData();
 		
 		Object answer = "";	
 
@@ -53,7 +57,7 @@ public class GiantSwitch {
 		case "importCalendar":
 			
 			
-			System.out.println("Recieved importCourse");
+			System.out.println("Recieved importCalendar");
 			break;
 
 			
@@ -63,6 +67,7 @@ public class GiantSwitch {
 		
 		
 		case "logIn":
+			System.out.println("Recieved Login");
 			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
 			System.out.println("Recieved logIn");
 			try {
@@ -85,7 +90,7 @@ public class GiantSwitch {
 		 **********/
 			
 		case "establishUser":
-			System.out.println("establishUser");
+			System.out.println("Recieved establishUser");
 			EstablishUser EU = (EstablishUser)gson.fromJson(jsonString, EstablishUser.class);
 			answer = EUM.EstablishUser(EU.getEmail(),EU.getActive(),EU.getCreated(),EU.getType(),
 					EU.getPassword(),EU.getCPR());
@@ -96,11 +101,13 @@ public class GiantSwitch {
 		 ** CALENDAR **
 		 *************/
 		case "createCalendar":
+			System.out.println("Recieved createCalendar");
 			CreateCalendar CC = (CreateCalendar)gson.fromJson(jsonString, CreateCalendar.class);
 			answer = SW.createNewCalendar(CC.getType(),CC.getCalendarName(),CC.getActive(),CC.getUserName(), CC.getPublicOrPrivate());
 			break;
 		
 		case "deleteCalendar":
+			System.out.println("Recieved deleteCalendar");
 			DeleteCalendar DC = (DeleteCalendar)gson.fromJson(jsonString, DeleteCalendar.class);
 
 			answer = SW.removeCalendar(DC.getUserName(), DC.getCalendarName());
@@ -115,18 +122,21 @@ public class GiantSwitch {
 			break;
 			
 		case "getCalendar":
+			System.out.println("Recieved getCalendar");
 			CalendarInfo CI = (CalendarInfo)gson.fromJson(jsonString, CalendarInfo.class);
 			answer = SW.getCalendar(CI.getType(), CI.getCalenderName(), CI.getActive(), CI.getUserName(), CI.getPublicOrPrivate());
 			System.out.println("Recieved getCalendar");
 			break;
 
 		case "getEvents":
+			System.out.println("Recieved getEvents");
 			CalendarInfo CI2 = (CalendarInfo)gson.fromJson(jsonString, CalendarInfo.class);
 			answer = SW.getEvents(CI2.getCalenderName(), CI2.getUserName());
 			System.out.println("Recieved getEvents");
 			break;
 
 		case "createEvent":
+			System.out.println("Recieved createEvent");
 			CreateEvent CE = (CreateEvent)gson.fromJson(jsonString, CreateEvent.class);
 			answer = AE.CreateEvent(CE.getID(), CE.getActivityID(), CE.getEventID(), CE.getType(), CE.getTitle(),
 					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation());
@@ -138,12 +148,25 @@ public class GiantSwitch {
 			
 		case "deleteEvent":
 			System.out.println("Recieved deleteEvent");
+			
+			
+		case "GetCbsCalendar":
+			System.out.println("Rcieved GetCbsCalendar");
+			GetCbsCalendar GCBS = (GetCbsCalendar)gson.fromJson(jsonString, GetCbsCalendar.class);
+			try {
+				answer = GCD.getDataFromCalendar(GCBS.getUserName());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+			
 		
 			
 		case "createNote":
-			CreateNoteJson CNJ = (CreateNoteJson)gson.fromJson(jsonString, CreateNoteJson.class);
-			answer = N.CreateNote(CNJ.getNoteID(), CNJ.getText(), CNJ.getDateTime(), CNJ.getCreatedBy(), CNJ.getEventID());
-			System.out.println("Recieved saveNote");
+//			CreateNoteJson CNJ = (CreateNoteJson)gson.fromJson(jsonString, CreateNoteJson.class);
+//			answer = N.CreateNote(CNJ.getNoteID(), CNJ.getText(), CNJ.getDateTime(), CNJ.getCreatedBy(), CNJ.getEventID());
+			System.out.println("Recieved createNote");
 			break;
 			
 		case "saveNote":
@@ -176,6 +199,7 @@ public class GiantSwitch {
 			break;
 			
 		case "DailyUpdate":
+			System.out.println("recieved DailyUpDate");
 			answer = DUC.dailyUpdate();
 
 			
@@ -239,7 +263,9 @@ public class GiantSwitch {
 			return "LoginTime";
 		} else if (ID.contains("DailyUpdate")) {
 			return "DailyUpdate";
-		}  else if (ID.contains("establishUser")) {
+		} else if (ID.contains("GetCbsCalendar")) {
+			return "GetCbsCalendar";
+		} else if (ID.contains("establishUser")) {
 			return "establishUser";
 		}
 

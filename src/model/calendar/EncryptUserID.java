@@ -44,9 +44,9 @@ public class EncryptUserID {
         return hexString.toString();
     }
 
-    public String keyUdregner () {
+    public String keyUdregner (String userName) {
 
-        String key = crypt(userId+ HASHKEY);
+        String key = crypt(userName+ HASHKEY);
         return key;
 
     }

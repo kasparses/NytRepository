@@ -43,13 +43,14 @@ public class ClientWorker implements  Runnable{
 					
 			String ny = cryp.decrypt(b);
 		
-			Object returnSvar = GS.GiantSwitchMethod(ny);	
-			Gson gson = new GsonBuilder().create();
-			String gsonString = gson.toJson(returnSvar);
+			String returnSvar = (String) GS.GiantSwitchMethod(ny);
+			
+//			Gson gson = new GsonBuilder().create();
+//			String gsonString = gson.toJson(returnSvar);
 			
 			DataOutputStream outToClient = new DataOutputStream(connectionSocketConected.getOutputStream());
 
-			byte[] input = gsonString.getBytes();
+			byte[] input = returnSvar.getBytes();
 			byte key = (byte) 3.1470;
 			byte[] encrypted = input;
 			for (int i = 0; i < encrypted.length; i++)

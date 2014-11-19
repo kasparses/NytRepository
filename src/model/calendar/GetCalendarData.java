@@ -48,8 +48,20 @@ public class GetCalendarData {
      *
      * @throws Exception
      */
-    public void getDataFromCalendar() throws Exception {
- 
+    public String getDataFromCalendar(String userName) throws Exception {
+    	EncryptUserID EU = new EncryptUserID();
+        String key = EU.keyUdregner(userName);
+//        System.out.println(key);
+
+       String json = "";
+		try {
+			json = readUrl("http://calendar.cbs.dk/events.php/" + userName + "/" +key + ".json");
+		} catch (Exception e) {
+			
+			
+		}
+		return json;
+    	
         /**
          * Get URL From calendar.cbs.dk -> Subscribe -> change URL to end with .json
          * Encrypt hash from
@@ -63,65 +75,66 @@ public class GetCalendarData {
     }
  
     public static void main(String[] args) {
-    	 EncryptUserID EU = new EncryptUserID();
-         String key = EU.keyUdregner();
-//         System.out.println(key);
- 
-        String json;
-		try {
-			json = readUrl("http://calendar.cbs.dk/events.php/" + EncryptUserID.getUserId() + "/" +key + ".json");
-		
-//        String json = readUrl("http://calendar.cbs.dk/events.php/caha13ag/02a24d4e002e6e3571227c39e2f63784.json");
-      
-        
-       
-        
- 
-        System.out.println(json);
-        Gson gson = new Gson();
-        Events events = gson.fromJson(json, Events.class);
-        QueryBuilder queryBuilder = new QueryBuilder();
- 
-        String[] fields = {"activityID", "eventID", "type", "title", "description", "start", "end", "location"};
-        
-        //Date dateStart, dateEnd;
-        //long time;
-        //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy hh:mm");
- //.size
-        System.out.println(events.getEvents().size());
-        for (int i = 0; i <events.getEvents().size() ; i++) {
-        	
- 
-            int monthStart = Integer.parseInt(events.getEvents().get(i).getStart().get(1)) + 1; //0 = år, 1 = måned, 2 = dag, 3 = timer, 4 = minutter
-            String start = events.getEvents().get(i).getStart().get(0) + "-" +  monthStart + "-" +
-                            events.getEvents().get(i).getStart().get(2) + " " +
-                            events.getEvents().get(i).getStart().get(3) + ":" +
-                            events.getEvents().get(i).getStart().get(4) + ":00";
-            //dateStart = formatter.parse(start);
- 
-            int monthEnd = Integer.parseInt(events.getEvents().get(i).getEnd().get(1)) + 1;
-            String end = events.getEvents().get(i).getEnd().get(0) + "-" + monthEnd + "-" +
-                            events.getEvents().get(i).getEnd().get(2) + " " +
-                            events.getEvents().get(i).getEnd().get(3) + ":" +
-                            events.getEvents().get(i).getEnd().get(4) + ":00";
-            //dateEnd = formatter.parse(end);
- 
-            String[] values = {
-                    events.getEvents().get(i).getActivityid(),
-                    events.getEvents().get(i).getEventid(),
-                    events.getEvents().get(i).getType(),
-                    events.getEvents().get(i).getTitle(),
-                    events.getEvents().get(i).getDescription(),
-                    start.toString(),
-                    end.toString(),
-                    events.getEvents().get(i).getLocation()
-            };
-        queryBuilder.insertInto("events", fields).values(values).Execute();
-        }
-		} catch (Exception e) {
-			
-			
-		}
+//    	 EncryptUserID EU = new EncryptUserID();
+//    	 String userName = "kabj13ab";
+//         String key = EU.keyUdregner(userName);
+////         System.out.println(key);
+// 
+//        String json2;
+//		try {
+//			json2 = readUrl("http://calendar.cbs.dk/events.php/" + userName + "/" +key + ".json");
+//		
+////        String json2 = readUrl("http://calendar.cbs.dk/events.php/caha13ag/02a24d4e002e6e3571227c39e2f63784.json");
+//      
+//        
+//       
+//        
+// 
+//        System.out.println(json2);
+//        Gson gson = new Gson();
+//        Events events = gson.fromJson(json2, Events.class);
+//        QueryBuilder queryBuilder = new QueryBuilder();
+// 
+//        String[] fields = {"activityID", "eventID", "type", "title", "description", "start", "end", "location"};
+//        
+//        //Date dateStart, dateEnd;
+//        //long time;
+//        //SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yy hh:mm");
+// //.size
+//        System.out.println(events.getEvents().size());
+//        for (int i = 0; i <events.getEvents().size() ; i++) {
+//        	
+// 
+//            int monthStart = Integer.parseInt(events.getEvents().get(i).getStart().get(1)) + 1; //0 = år, 1 = måned, 2 = dag, 3 = timer, 4 = minutter
+//            String start = events.getEvents().get(i).getStart().get(0) + "-" +  monthStart + "-" +
+//                            events.getEvents().get(i).getStart().get(2) + " " +
+//                            events.getEvents().get(i).getStart().get(3) + ":" +
+//                            events.getEvents().get(i).getStart().get(4) + ":00";
+//            //dateStart = formatter.parse(start);
+// 
+//            int monthEnd = Integer.parseInt(events.getEvents().get(i).getEnd().get(1)) + 1;
+//            String end = events.getEvents().get(i).getEnd().get(0) + "-" + monthEnd + "-" +
+//                            events.getEvents().get(i).getEnd().get(2) + " " +
+//                            events.getEvents().get(i).getEnd().get(3) + ":" +
+//                            events.getEvents().get(i).getEnd().get(4) + ":00";
+//            //dateEnd = formatter.parse(end);
+// 
+//            String[] values = {
+//                    events.getEvents().get(i).getActivityid(),
+//                    events.getEvents().get(i).getEventid(),
+//                    events.getEvents().get(i).getType(),
+//                    events.getEvents().get(i).getTitle(),
+//                    events.getEvents().get(i).getDescription(),
+//                    start.toString(),
+//                    end.toString(),
+//                    events.getEvents().get(i).getLocation()
+//            };
+//        queryBuilder.insertInto("events", fields).values(values).Execute();
+//        }
+//		} catch (Exception e) {
+//			
+//			
+//		}
     }
 		
  
