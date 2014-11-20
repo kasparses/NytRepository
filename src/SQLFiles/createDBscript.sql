@@ -97,6 +97,12 @@ CREATE TABLE IF NOT EXISTS users
 
 /* Create Dummy Account */
 
+
+
+
+
+
+
 --INSERT INTO `cbscalendar`.`Calendar`
 --(type,
 --Name,

@@ -4,6 +4,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import JsonClasses.DailyUpdate;
 import model.Forecast.Forecast;
 import model.Forecast.ForecastModel;
@@ -13,10 +17,11 @@ import model.QueryBuild.QueryBuilder;
 public class DailyUpdateController {
 QueryBuilder qb = new QueryBuilder();
 DailyUpdate DU = new DailyUpdate();
+Gson gson = new GsonBuilder().create();
     
     private ResultSet resultSet;
     
-    public Object dailyUpdate(){
+    public String dailyUpdate(){
  		 long lastUpdateTime = 0;
  		try {
  			resultSet= qb.selectFrom("dailyupdate").where("msg_type", "=", "hej").ExecuteQuery();
@@ -65,11 +70,11 @@ DailyUpdate DU = new DailyUpdate();
 
 	     		qotdModel.saveQuote(lastUpdateTime, days);	
 	     	}
-	     	Object answer = returnDailyUpdate();
+	     	String answer = returnDailyUpdate();
 			return answer; 
 	     }
     
-    public Object returnDailyUpdate(){
+    public String returnDailyUpdate(){
     	String date = "";
     	String apparentTemperature = "";
     	String summary = "";
@@ -97,7 +102,8 @@ DailyUpdate DU = new DailyUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return DU;
+  		String gsonString = gson.toJson(DU);
+		return gsonString;
   	}
 
 }

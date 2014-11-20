@@ -1,9 +1,16 @@
 package model.user;
 
 import java.sql.ResultSet;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import model.QueryBuild.QueryBuilder;
 import JsonClasses.LoginAnswer;
 public class AuthenticateUser {
+	Gson gson = new GsonBuilder().create();
+
+	
 
 	private ResultSet rs;
 
@@ -20,7 +27,7 @@ public class AuthenticateUser {
 	 */
 private LoginAnswer LA = new LoginAnswer();
 
-	public Object authenticate(String email, String password)
+	public String authenticate(String email, String password)
 	{
 		ResultSet rs;
 		try
@@ -52,13 +59,15 @@ private LoginAnswer LA = new LoginAnswer();
 				}		
 
 			}
+			
 		}
+		
 		catch(Exception ex)
 		{
 			ex.printStackTrace();
 		}
-
-		return LA;
+		String gsonString = gson.toJson(LA);
+		return gsonString;
 	}
 	
 	public String getLogin(String CPR)
