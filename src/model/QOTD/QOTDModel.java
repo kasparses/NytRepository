@@ -54,7 +54,7 @@ public class QOTDModel {
              */
             String json;
 			try {
-				int days * 
+				
 				json = readUrl("http://dist-sso.it-kartellet.dk/quote/");
 			           
     			JSONParser jsonParser = new JSONParser();
@@ -129,7 +129,7 @@ public class QOTDModel {
 	     	// if more than 1 hour ago, do update
 	     	if(timeSinceUpdate > 864000){
 	     		// return fresh weather data
-	     		saveQuote();	
+//	     		saveQuote();	
 	     	}
 			return noReturn; 
 	     }
