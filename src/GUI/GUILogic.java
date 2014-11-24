@@ -15,11 +15,17 @@ import com.google.gson.GsonBuilder;
 import GUI.Screen;
 import JsonClasses.CreateEvent;
 import JsonClasses.EstablishUser;
+import JsonClasses.Login;
+import JsonClasses.LoginAnswer;
 
 
 public class GUILogic {
 	private Screen screen;
 	private String u3;
+	Login L = new Login();
+	Gson gson = new GsonBuilder().create();
+
+
 	
 	GiantSwitch GS = new GiantSwitch();
 	
@@ -54,25 +60,42 @@ public class GUILogic {
 		public void actionPerformed(ActionEvent e) {
 			try{
 				
-			String email = screen.getLogin().getTextFieldUsername().getText();
-			String password = screen.getLogin().getTextFieldPassword().getText();
-			u3 = "correct";
-					
-					//a.authenticate(email, password);
-			
-			if (e.getSource() == screen.getLogin().getBtnLogIn()){
-				System.out.println(u3);
-				if(u3.equals("notCorrect")){
+//			String email = screen.getLogin().getTextFieldUsername().getText();
+//			String password = screen.getLogin().getTextFieldPassword().getText();
+//			u3 = "correct";
+//					
+//					//a.authenticate(email, password);
+//			
+//			if (e.getSource() == screen.getLogin().getBtnLogIn()){
+//				System.out.println(u3);
+//				if(u3.equals("notCorrect")){
+//					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
+//							, "Error message",JOptionPane.PLAIN_MESSAGE);
+//			}
+//
+//			if	(u3.equals("correct"))
+//					{
+//						screen.show(Screen.MAINMENU);
+//					}
+//				
+//			}
+				String email = screen.getLogin().getTextFieldUsername().getText();
+				String password = screen.getLogin().getTextFieldPassword().getText();
+				
+				L.setEmail(email);
+				L.setPassword(password);
+
+				String JsonString=tcp.bla(L);
+
+				LoginAnswer LA = gson.fromJson(JsonString, LoginAnswer.class);  
+
+				if (LA.getAnswer().equals("correct")){
+					screen.show(Screen.MAINMENU);
+				}
+				if(!LA.getAnswer().equals("correct")){
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
-			}
-
-			if	(u3.equals("correct"))
-					{
-						screen.show(Screen.MAINMENU);
-					}
-				
-			}
+				}
 			if (e.getSource() == screen.getLogin().getBtnForgotLogIn()){
 				
 				screen.show(Screen.FORGOT);

@@ -56,7 +56,11 @@ private LoginAnswer LA = new LoginAnswer();
 				if (ty.equals("user")){
 					String userAdmin = "user";
 					LA.setUserAdmin(userAdmin);
-				}		
+				}
+				else if (ty.equals("admin")){
+					String userAdmin = "admin";
+					LA.setAnswer(userAdmin);
+				}
 
 			}
 			
