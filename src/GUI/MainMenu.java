@@ -18,7 +18,6 @@ public class MainMenu extends JPanel {
 	private JLabel lblMainMenu;
 	private JButton btnLogOut;
 	private JButton btnUserlist;
-	private JButton btnEventlist;
 	private JLabel lblCBSlogo;
 	private JButton btnCalendarList;
 	private final JButton btnNotelist = new JButton("Note List");
@@ -38,15 +37,6 @@ public class MainMenu extends JPanel {
 		
 		btnUserlist = new JButton("Userlist");
 		btnUserlist.setContentAreaFilled(false);
-		
-		btnEventlist = new JButton("Eventlist");
-		btnEventlist.setContentAreaFilled(false);
-		btnEventlist.setForeground(Color.WHITE);
-		btnEventlist.setFont(new Font("Arial", Font.BOLD, 30));
-		btnEventlist.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnEventlist.setBackground(Color.WHITE);
-		btnEventlist.setBounds(610, 422, 145, 50);
-		add(btnEventlist);
 		
 		btnLogOut = new JButton("Log Out");
 		btnLogOut.setContentAreaFilled(false);
@@ -82,6 +72,13 @@ public class MainMenu extends JPanel {
 		btnUserlist_1.setBounds(587, 329, 191, 50);
 		
 		add(btnUserlist_1);
+		
+		JButton btnEventlist = new JButton("Event List");
+		btnEventlist.setForeground(Color.WHITE);
+		btnEventlist.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnEventlist.setContentAreaFilled(false);
+		btnEventlist.setBounds(583, 402, 191, 50);
+		add(btnEventlist);
 		
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(new ImageIcon(MainMenu.class.getResource("/Images/MetalBackground.jpg")));
