@@ -118,8 +118,8 @@ public class GUILogic {
 	
 	private class ForgotActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == screen.getForgotLogin().getBtnMainMenu()){
-				screen.show(Screen.MAINMENU);
+			if (e.getSource() == screen.getForgotLogin().getBtnLogin()){
+				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getForgotLogin().getBtnGetLogin()){
 				try {

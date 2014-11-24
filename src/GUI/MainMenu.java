@@ -21,7 +21,7 @@ public class MainMenu extends JPanel {
 	private JButton btnEventlist;
 	private JLabel lblCBSlogo;
 	private JButton btnCalendarList;
-	private final JButton btnNotelist = new JButton("Notelist");
+	private final JButton btnNotelist = new JButton("Note List");
 	private final JButton btnUserlist_1 = new JButton("User List");
 	
 

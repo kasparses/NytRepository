@@ -17,7 +17,7 @@ public class ForgotLogin extends JPanel {
 	private final JTextField textField_CPR = new JTextField();
 	private final JButton btnGetLogin = new JButton("Get Login");
 	private final JLabel label = new JLabel("");
-	private final JButton btnMainMenu = new JButton("Main Menu");
+	private final JButton btnLogin = new JButton("Login");
 
 	/**
 	 * Create the panel.
@@ -44,12 +44,12 @@ public class ForgotLogin extends JPanel {
 		btnGetLogin.setBounds(642, 475, 186, 57);
 		
 		add(btnGetLogin);
-		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setForeground(Color.WHITE);
-		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnMainMenu.setBounds(642, 570, 186, 57);
+		btnLogin.setContentAreaFilled(false);
+		btnLogin.setForeground(Color.WHITE);
+		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnLogin.setBounds(642, 570, 186, 57);
 		
-		add(btnMainMenu);
+		add(btnLogin);
 		label.setIcon(new ImageIcon(ForgotLogin.class.getResource("/Images/MetalBackground.jpg")));
 		label.setBounds(0, 0, 1366, 768);
 		
@@ -58,7 +58,7 @@ public class ForgotLogin extends JPanel {
 	}
 	public void addActionListener(ActionListener l) {
 		btnGetLogin.addActionListener(l);
-		btnMainMenu.addActionListener(l);
+		btnLogin.addActionListener(l);
 		
 	}
 	public JTextField getTextField_CPR() {
@@ -67,8 +67,8 @@ public class ForgotLogin extends JPanel {
 	public JButton getBtnGetLogin() {
 		return btnGetLogin;
 	}
-	public JButton getBtnMainMenu() {
-		return btnMainMenu;
+	public JButton getBtnLogin() {
+		return btnLogin;
 	}
 	
 }
