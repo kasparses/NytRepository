@@ -20,6 +20,7 @@ public class MainMenu extends JPanel {
 	private JButton btnUserlist;
 	private JLabel lblCBSlogo;
 	private JButton btnCalendarList;
+	private JButton btnEventlist;
 	private final JButton btnNotelist = new JButton("Note List");
 	private final JButton btnUserlist_1 = new JButton("User List");
 	
@@ -73,7 +74,7 @@ public class MainMenu extends JPanel {
 		
 		add(btnUserlist_1);
 		
-		JButton btnEventlist = new JButton("Event List");
+		btnEventlist = new JButton("Event List");
 		btnEventlist.setForeground(Color.WHITE);
 		btnEventlist.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnEventlist.setContentAreaFilled(false);
