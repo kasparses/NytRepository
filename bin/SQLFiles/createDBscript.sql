@@ -5,6 +5,7 @@ use cbscalendar;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Create Tables */
+use cbscalendar;
 
 CREATE TABLE IF NOT EXISTS Calendar
 (
