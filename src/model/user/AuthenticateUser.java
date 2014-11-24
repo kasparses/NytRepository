@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 
 import model.QueryBuild.QueryBuilder;
 import JsonClasses.LoginAnswer;
+import JsonClasses.ForgotLogin;
 public class AuthenticateUser {
 	Gson gson = new GsonBuilder().create();
 
@@ -26,6 +27,8 @@ public class AuthenticateUser {
 	 * @throws Exception
 	 */
 private LoginAnswer LA = new LoginAnswer();
+private ForgotLogin FL = new ForgotLogin();
+
 
 	public String authenticate(String email, String password)
 	{
@@ -78,22 +81,29 @@ private LoginAnswer LA = new LoginAnswer();
 	{
 		ResultSet rs;
 		User u4 = null;
-		String answer = "notCorrect";
 		
 		try
 		{
 
-			String[] keys = {"userid", "email","type", "password", "CPR"};
+			String[] keys = {"userid", "email", "Active", "created", "type", "password", "CPR"};
 			qb = new QueryBuilder();
 			rs = qb.selectFrom(keys, "users").where("CPR", "=", CPR).ExecuteQuery();
 			while(rs.next())
 			{
 				
 				String cpr = rs.getString("CPR");
+				String email = rs.getString("email");
+				String password = rs.getString("password");
+
+				
+				
 				
 				
 				if(cpr.equals(CPR)){
-					answer = "correct";
+					String answer = "correct";
+					FL.setAnswer(answer);
+					FL.setEmail(email);
+					FL.setPassword(password);
 				}				
 
 				
@@ -105,7 +115,9 @@ private LoginAnswer LA = new LoginAnswer();
 		{
 			ex.printStackTrace();
 		}
-
-		return answer;
+		String gsonString = gson.toJson(FL);
+		return gsonString;
+//		return answer;
 	}
+	
 }

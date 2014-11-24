@@ -5,9 +5,10 @@ import model.QOTD.QOTDModel;
 import model.note.*;
 import model.user.*;
 import JsonClasses.CreateEvent;
+import JsonClasses.ForgotLogin;
 import JsonClasses.GetEvent;
 import JsonClasses.CreateNoteJson;
-import JsonClasses.AuthUser;
+import JsonClasses.AuthUserJson;
 import JsonClasses.CalendarInfo;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
@@ -68,10 +69,23 @@ public class GiantSwitch {
 		
 		case "logIn":
 			System.out.println("Recieved Login");
-			AuthUser AU = (AuthUser)gson.fromJson(jsonString, AuthUser.class);
+			AuthUserJson AU = (AuthUserJson)gson.fromJson(jsonString, AuthUserJson.class);
 			System.out.println("Recieved logIn");
 			try {
-				answer =a.authenticate(AU.getAuthUserEmail(), AU.getAuthUserPassword());
+				answer =a.authenticate(AU.getEmail(), AU.getPassword());
+	
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
+			break;
+			
+		case "forgotLogin":
+			System.out.println("Recieved Login");
+			ForgotLogin FL = (ForgotLogin)gson.fromJson(jsonString, ForgotLogin.class);
+			System.out.println("Recieved logIn");
+			try {
+				answer =a.getLogin(FL.getCPR());
 	
 			} catch (Exception e) {
 
@@ -267,6 +281,8 @@ public class GiantSwitch {
 			return "GetCbsCalendar";
 		} else if (ID.contains("establishUser")) {
 			return "establishUser";
+		} else if (ID.contains("forgotLogin")) {
+			return "forgotLogin";
 		}
 
 		else

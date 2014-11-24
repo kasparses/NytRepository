@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class ForgotLogin extends JPanel {
 	private final JLabel lblForgotLogin = new JLabel("Forgot Login");
 	private final JLabel lblEnterYourSocial = new JLabel("Enter your social secruity number:");
-	private final JTextField textField = new JTextField();
+	private final JTextField textField_CPR = new JTextField();
 	private final JButton btnGetLogin = new JButton("Get Login");
 	private final JLabel label = new JLabel("");
 	private final JButton btnMainMenu = new JButton("Main Menu");
@@ -23,8 +23,8 @@ public class ForgotLogin extends JPanel {
 	 * Create the panel.
 	 */
 	public ForgotLogin() {
-		textField.setBounds(700, 370, 289, 25);
-		textField.setColumns(10);
+		textField_CPR.setBounds(700, 370, 289, 25);
+		textField_CPR.setColumns(10);
 		setLayout(null);
 		lblForgotLogin.setForeground(Color.WHITE);
 		lblForgotLogin.setFont(new Font("Tahoma", Font.BOLD, 68));
@@ -37,7 +37,7 @@ public class ForgotLogin extends JPanel {
 		
 		add(lblEnterYourSocial);
 		
-		add(textField);
+		add(textField_CPR);
 		btnGetLogin.setContentAreaFilled(false);
 		btnGetLogin.setForeground(Color.WHITE);
 		btnGetLogin.setFont(new Font("Tahoma", Font.BOLD, 20));
@@ -61,8 +61,8 @@ public class ForgotLogin extends JPanel {
 		btnMainMenu.addActionListener(l);
 		
 	}
-	public JTextField getTextField() {
-		return textField;
+	public JTextField getTextField_CPR() {
+		return textField_CPR;
 	}
 	public JButton getBtnGetLogin() {
 		return btnGetLogin;

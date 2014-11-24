@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import ClientWorker.GiantSwitch;
 import model.QueryBuild.QueryBuilder;
+import model.user.AuthenticateUser;
 
 import javax.swing.JOptionPane;
 
@@ -13,17 +14,22 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import GUI.Screen;
+import JsonClasses.AuthUserJson;
 import JsonClasses.CreateEvent;
 import JsonClasses.EstablishUser;
-import JsonClasses.Login;
+import JsonClasses.ForgotLogin;
 import JsonClasses.LoginAnswer;
 
 
 public class GUILogic {
 	private Screen screen;
 	private String u3;
-	Login L = new Login();
+	private AuthenticateUser u4;
+	AuthUserJson AU = new AuthUserJson();
+	ForgotLogin FL = new ForgotLogin();
 	Gson gson = new GsonBuilder().create();
+	LoginAnswer LA = new LoginAnswer();
+	AuthenticateUser ForgotU = new AuthenticateUser();
 
 
 	
@@ -82,12 +88,15 @@ public class GUILogic {
 				String email = screen.getLogin().getTextFieldUsername().getText();
 				String password = screen.getLogin().getTextFieldPassword().getText();
 				
-				L.setEmail(email);
-				L.setPassword(password);
+				AU.setEmail(email);
+				AU.setPassword(password);
 
-				String JsonString=tcp.bla(L);
 
-				LoginAnswer LA = gson.fromJson(JsonString, LoginAnswer.class);  
+				Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(AU);
+				String hejhej33 = (String)GS.GiantSwitchMethod(gsonString);
+				LoginAnswer LA = gson.fromJson(hejhej33, LoginAnswer.class);  
+
 
 				if (LA.getAnswer().equals("correct")){
 					screen.show(Screen.MAINMENU);
@@ -113,20 +122,44 @@ public class GUILogic {
 				screen.show(Screen.MAINMENU);
 			}
 			if (e.getSource() == screen.getForgotLogin().getBtnGetLogin()){
+				try {
+//				String CPR = screen.getForgotLogin().getTextField_CPR().getText();
+//				String answer = "";
+//
+////				CPR = AU.getCPR();
+//
+//				if (answer.equals("correct")){
+////					String cpr = null;
+//					JOptionPane.showMessageDialog(null, "\nYour username is: "+AU.getEmail()
+//							, "Message",JOptionPane.PLAIN_MESSAGE);
+//				}
+				String cPR = screen.getForgotLogin().getTextField_CPR().getText();
 				
-				String u4;
+				FL.setCPR(cPR);
 				
-				String CPR = screen.getForgotLogin().getTextField().getText();
 				
-				u4 = a.getLogin(CPR);
-				
-				if (u4.equals("correct")){
-					String cpr = null;
-					JOptionPane.showMessageDialog(null, "\nYour username is: "+a.getLogin(cpr)
+				Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(FL);
+				String hejhej35 = (String)GS.GiantSwitchMethod(gsonString);
+				ForgotLogin FL = gson.fromJson(hejhej35, ForgotLogin.class);
+
+
+				if (FL.getAnswer().equals("correct")){
+					JOptionPane.showMessageDialog(null, "\nYour username is: "+FL.getEmail()+"\nYour password is: "+FL.getPassword()
 							, "Message",JOptionPane.PLAIN_MESSAGE);
 				}
+				else if(FL.getAnswer().equals("notCorrect")){
+					JOptionPane.showMessageDialog(null, "\nIt did not work!...."
+							, "Error",JOptionPane.PLAIN_MESSAGE);
+				}
+				
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
+				
 		}
+			
 	}
 	
 	private class MainMenuActionListener implements ActionListener {
