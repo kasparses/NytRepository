@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.io.IOException;
+import java.net.UnknownHostException;
 import java.sql.SQLException;
 
 import ClientWorker.GiantSwitch;
@@ -15,9 +17,12 @@ import com.google.gson.GsonBuilder;
 
 import GUI.Screen;
 import JsonClasses.AuthUserJson;
+import JsonClasses.CreateCalendar;
 import JsonClasses.CreateEvent;
+import JsonClasses.DeleteCalendar;
 import JsonClasses.EstablishUser;
 import JsonClasses.ForgotLogin;
+import JsonClasses.Login;
 import JsonClasses.LoginAnswer;
 
 
@@ -27,9 +32,13 @@ public class GUILogic {
 	private AuthenticateUser u4;
 	AuthUserJson AU = new AuthUserJson();
 	ForgotLogin FL = new ForgotLogin();
+	DeleteCalendar DC = new DeleteCalendar();
 	Gson gson = new GsonBuilder().create();
 	LoginAnswer LA = new LoginAnswer();
 	AuthenticateUser ForgotU = new AuthenticateUser();
+	CreateCalendar CC = new CreateCalendar();
+	JsonClasses.Login L = new Login();
+
 
 
 	
@@ -53,6 +62,8 @@ public class GUILogic {
 		screen.getAddNote().addActionListener(new AddNoteActionListener());
 		screen.getForgotLogin().addActionListener(new ForgotActionListener());
 		screen.getCalendarList().addActionListener(new CalendarListActionListener());
+		screen.getDeleteCalendar().addActionListener(new DeleteCalendarActionListener());
+		screen.getCreateCalendar().addActionListener(new CreateCalendarActionListener());
 
 		
 	}
@@ -410,13 +421,124 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getCalendarList().getBtnAdd()){
 				
-//				GS.Determine("")
+				screen.show(Screen.CREATECALENDAR);
+				
 			}
 			if (e.getSource() == screen.getCalendarList().getBtnDelete()){
 				
-				GS.Determine("deleteCalendar");
+				screen.show(Screen.DELETECALENDAR);
 			}
 		}
+	}
+	private class DeleteCalendarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == screen.getDeleteCalendar().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getDeleteCalendar().getBtnLogOut()){
+				
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getDeleteCalendar().getBtnCalendarList()){
+				
+				screen.show(Screen.CALENDARLIST);
+			}
+			if (e.getSource() == screen.getDeleteCalendar().getBtnDelete()){
+				try {
+				String userName = screen.getDeleteCalendar().getTextField_Username().getText();
+				String calendarName = screen.getDeleteCalendar().getTextField_CalendarName().getText();
+
+				DC.setUserName(userName);
+				DC.setCalendarName(calendarName);
+				
+				Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(DC);
+				String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
+				DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
+
+				System.out.println(DC.getAnswer());
+				
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+		}
+	}
+	private class CreateCalendarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+			if (e.getSource() == screen.getCreateCalendar().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getCreateCalendar().getBtnLogOut()){
+
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getCreateCalendar().getBtnCalendarList()){
+
+				screen.show(Screen.CALENDARLIST);
+
+			}
+			if (e.getSource() == screen.getCreateCalendar().getBtnCreateCalendar()){
+				boolean empty = false;
+				String name = screen.getCreateCalendar().getTextField_Name().getText();
+				String CreatedBy = AU.getEmail();
+				int type = 2; //2 betyder er det er en brugerskabt kalender og ikke den som er hentet fra CBS.
+				int active = 1; // 1 betyder at den er aktiv. 2 betyder at den ikke er aktiv.
+				
+				if( name.equals("")) {
+
+					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+					empty = true;
+				}
+
+				boolean PrivateOrPublic = false;
+				int PrivateOrPublicValue = 0;
+				
+
+				if (screen.getCreateCalendar().getRdbtnPrivateCalendar().isSelected())
+				{
+					PrivateOrPublicValue = 2; //2 er lig med private.
+					PrivateOrPublic = true;
+				}
+				if (screen.getCreateCalendar().getRdbtnPublicCalendar().isSelected())
+				{
+					PrivateOrPublicValue = 1; //1 er lig med public.
+					PrivateOrPublic = true;
+				}
+
+
+				if( PrivateOrPublic == false){
+					JOptionPane.showMessageDialog(null, "Please select whether your database is a public or a private database"
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+
+				}
+				
+				if (empty == false && PrivateOrPublic == true){
+					CC.setCalendarName(name);
+					CC.setPublicOrPrivate(PrivateOrPublicValue);
+					CC.setType(type);
+					CC.setActive(active);
+					CC.setUserName(CreatedBy);
+					
+					try {
+						Gson gson = new GsonBuilder().create();
+						String gsonString = gson.toJson(CC);
+						String CreateCalendar = (String)GS.GiantSwitchMethod(gsonString);
+						DC = gson.fromJson(CreateCalendar, DeleteCalendar.class);
+						
+						JOptionPane.showMessageDialog(null, "It worked!"
+								, "Return message",JOptionPane.PLAIN_MESSAGE);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+										
+				}
+				
+			}
+		}
+
 	}
 	
 }

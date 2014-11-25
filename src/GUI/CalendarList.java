@@ -145,7 +145,7 @@ public class CalendarList extends JPanel {
 		add(btnLogOut);
 		
 		
-		label.setBounds(10, 11, 1366, 768);
+		label.setBounds(0, 0, 1366, 768);
 		label.setIcon(new ImageIcon(CalendarList.class.getResource("/Images/MetalBackground.jpg")));
 		
 		add(label);

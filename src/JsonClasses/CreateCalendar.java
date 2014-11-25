@@ -9,7 +9,7 @@ public class CreateCalendar implements java.io.Serializable
 	private int publicOrPrivate;
 	private int type;
 	private int Active;
-	
+	private String answer = "";
 	
 	//Getters and setters for everything, bitch
 	public String getOverallID() {
@@ -47,6 +47,12 @@ public class CreateCalendar implements java.io.Serializable
 	}
 	public void setActive(int active) {
 		Active = active;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 	
 

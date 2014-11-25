@@ -1,14 +1,23 @@
 package databaseMethods;
 import java.sql.SQLException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
+import JsonClasses.CreateCalendar;
+import JsonClasses.DeleteCalendar;
 
 public class SwitchMethods extends Model
 {
 	QueryBuilder qb = new QueryBuilder();
 	QOTDModel qm = new QOTDModel();
+	DeleteCalendar DC = new DeleteCalendar();
+	CreateCalendar CC = new CreateCalendar();
+	Gson gson = new GsonBuilder().create();
+
 	
 
 	
@@ -44,16 +53,16 @@ public class SwitchMethods extends Model
 		if(authenticateNewCalendar(newcalendarName) == false)
 		{
 			addNewCalendar(type, newcalendarName, Active, userName, privatePublic);
-			stringToBeReturned = "The new calender has been created!";
+			CC.setAnswer("The new calender has been created!");
 		}
 		else
 		{
-			stringToBeReturned = "The new calender has not been created!";
+			CC.setAnswer("The new calender has not been created!");
 		}
 		
 		
-		return stringToBeReturned;
-	}
+		String gsonString = gson.toJson(CC);
+		return gsonString;	}
 	
 	public boolean authenticateNewCalendar(String newCalendarName) throws SQLException
 	{
@@ -94,7 +103,7 @@ public class SwitchMethods extends Model
 	
 	public String removeCalendar (String userName, String calendarName) throws SQLException
 	{
-		String stringToBeReturend = "";
+//		String stringToBeReturend = "";
 		String usernameOfCreator ="";
 		String calendarExists = "";
 		resultSet = qb.selectFrom("Calendar").where("Name", "=", calendarName).ExecuteQuery();
@@ -109,25 +118,25 @@ public class SwitchMethods extends Model
 
 			if(!usernameOfCreator.equals(userName))
 			{
-				stringToBeReturend = "Only the creator of the calendar is able to delete it.";
+				DC.setAnswer("Only the creator of the calendar is able to delete it.");
 			}
 			else
 			{
 				String [] keys = {"Active"};
 				String [] values = {"2"};
 				qb.update("Calendar", keys, values).where("Name", "=", calendarName).Execute();
-				stringToBeReturend = "Calendar has been set inactive";
+				DC.setAnswer("Calendar has been set inactive"); 
 			}
 
 		}
 		else
 		{
-			stringToBeReturend = "The calendar you are trying to delete, does not exists.";
+			DC.setAnswer("The calendar you are trying to delete, does not exists.");
 		}
 		
+		String gsonString = gson.toJson(DC);
+		return gsonString;
 		
-		
-		return stringToBeReturend;
 	}
 	
 	public String getCalendar (int type, String newCalendarName, int Active, String userName, int publicOrPrivate) throws SQLException
