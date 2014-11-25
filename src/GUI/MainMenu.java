@@ -34,7 +34,7 @@ public class MainMenu extends JPanel {
 		lblMainMenu = new JLabel("Main Menu");
 		lblMainMenu.setForeground(Color.WHITE);
 		lblMainMenu.setFont(new Font("Arial", Font.BOLD, 78));
-		lblMainMenu.setBounds(473, 90, 404, 90);
+		lblMainMenu.setBounds(481, 90, 404, 90);
 		add(lblMainMenu);
 		
 		btnUserlist = new JButton("Userlist");
@@ -47,13 +47,13 @@ public class MainMenu extends JPanel {
 		btnNotelist.setForeground(Color.WHITE);
 		btnNotelist.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnNotelist.setContentAreaFilled(false);
-		btnNotelist.setBounds(555, 262, 250, 50);
+		btnNotelist.setBounds(558, 262, 250, 50);
 		
 		add(btnNotelist);
 		btnUserlist_1.setForeground(Color.WHITE);
 		btnUserlist_1.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnUserlist_1.setContentAreaFilled(false);
-		btnUserlist_1.setBounds(555, 327, 250, 50);
+		btnUserlist_1.setBounds(558, 327, 250, 50);
 		
 		add(btnUserlist_1);
 		
@@ -61,14 +61,14 @@ public class MainMenu extends JPanel {
 		btnEventlist.setForeground(Color.WHITE);
 		btnEventlist.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnEventlist.setContentAreaFilled(false);
-		btnEventlist.setBounds(555, 392, 250, 50);
+		btnEventlist.setBounds(558, 392, 250, 50);
 		add(btnEventlist);
 		
 		btnCalendarList = new JButton("Calendar Test");
 		btnCalendarList.setForeground(Color.WHITE);
 		btnCalendarList.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnCalendarList.setContentAreaFilled(false);
-		btnCalendarList.setBounds(555, 457, 250, 50);
+		btnCalendarList.setBounds(558, 457, 250, 50);
 		add(btnCalendarList);
 		
 		btnLogOut = new JButton("Log Out");
