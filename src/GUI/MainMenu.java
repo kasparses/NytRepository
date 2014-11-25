@@ -87,7 +87,7 @@ public class MainMenu extends JPanel {
 		
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(new ImageIcon(MainMenu.class.getResource("/Images/MetalBackground.jpg")));
-		lblBackground.setBounds(121, 82, 1366, 768);
+		lblBackground.setBounds(0, 0, 1366, 768);
 		add(lblBackground);
 
 	}
