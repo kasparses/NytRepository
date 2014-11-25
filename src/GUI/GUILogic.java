@@ -213,11 +213,13 @@ public class GUILogic {
 				Object startMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
 				
 				String startTime = startHour.toString()+ ":"+ startMinutes.toString();
+				System.out.println("startTime: "+startTime);
 				
 				Object endHour = screen.getAddEventGUI().getComboBox_StartHour().getSelectedItem();
 				Object endMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
 				
 				String endTime = endHour.toString()+ ":"+ endMinutes.toString();
+				System.out.println("endTime");
 				
 				System.out.println("fafaf "+startHour);
 				
