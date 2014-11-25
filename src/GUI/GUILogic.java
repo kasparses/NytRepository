@@ -21,6 +21,7 @@ import JsonClasses.AuthUserJson;
 import JsonClasses.CreateCalendar;
 import JsonClasses.CreateEvent;
 import JsonClasses.DeleteCalendar;
+import JsonClasses.DeleteEvent;
 import JsonClasses.EstablishUser;
 import JsonClasses.ForgotLogin;
 import JsonClasses.Login;
@@ -39,6 +40,7 @@ public class GUILogic {
 	AuthenticateUser ForgotU = new AuthenticateUser();
 	CreateCalendar CC = new CreateCalendar();
 	JsonClasses.Login L = new Login();
+	DeleteEvent DE = new DeleteEvent();
 
 
 
@@ -63,6 +65,7 @@ public class GUILogic {
 		screen.getAddNote().addActionListener(new AddNoteActionListener());
 		screen.getForgotLogin().addActionListener(new ForgotActionListener());
 		screen.getCalendarList().addActionListener(new CalendarListActionListener());
+		screen.getDeleteEvent().addActionListener(new DeleteEventActionListener());
 
 //		screen.getAddEventGUI().addActionListener(new CalendarListActionListener());
 
@@ -397,6 +400,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getEventlist().getBtnAdd()){
 				screen.show(Screen.ADDEVENT);
 			}
+			if (e.getSource() == screen.getEventlist().getBtnDelete()){
+				screen.show(Screen.DELETEEVENT);
+			}
 		}
 	}
 	
@@ -573,6 +579,45 @@ public class GUILogic {
 			}
 		}
 
+	}
+	private class DeleteEventActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+			if (e.getSource() == screen.getDeleteEvent().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getDeleteEvent().getBtnLogOut()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getDeleteEvent().getBtnEventList()){
+				screen.show(Screen.EVENTLIST);
+			
+			}
+			if (e.getSource() == screen.getDeleteEvent().getBtnDelete()){
+				
+				try {
+					String userName = screen.getDeleteEvent().getTextField_Username().getText();
+					String title = screen.getDeleteEvent().getTextField_Title().getText();
+
+					DE.setUserName(userName);
+					DE.setTitle(title);
+					
+					Gson gson = new GsonBuilder().create();
+					String gsonString = gson.toJson(DE);
+					String DeleteEvent = (String)GS.GiantSwitchMethod(gsonString);
+					DC = gson.fromJson(DeleteEvent, DeleteCalendar.class);
+
+					System.out.println(DE.getAnswer());
+					
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				
+				
+				
+			}
+
+		}
 	}
 	
 }

@@ -16,7 +16,7 @@ import JsonClasses.EstablishUser;
 import JsonClasses.UpdateLoginTime;
 import JsonClasses.Update;
 import model.QueryBuild.*;
-
+import JsonClasses.DeleteEvent;
 import com.google.gson.*;
 
 import JsonClasses.GetCbsCalendar;
@@ -44,6 +44,7 @@ public class GiantSwitch {
 		DailyUpdateController DUC = new DailyUpdateController();
 		QueryBuilder qb = new QueryBuilder();
 		model.calendar.GetCalendarData GCD = new model.calendar.GetCalendarData();
+		DeleteEvent DE = new DeleteEvent();
 		
 		Object answer = "";	
 
@@ -161,9 +162,10 @@ public class GiantSwitch {
 			break;
 			
 		case "deleteEvent":
-			
 			System.out.println("Recieved deleteEvent");
-			
+			DE = (DeleteEvent)gson.fromJson(jsonString, DeleteEvent.class);
+			answer = SW.removeEvent(DE.getEventID(), DE.getTitle());
+			break;
 			
 		case "GetCbsCalendar":
 			System.out.println("Rcieved GetCbsCalendar");

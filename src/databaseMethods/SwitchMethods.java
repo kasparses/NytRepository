@@ -17,6 +17,7 @@ public class SwitchMethods extends Model
 	DeleteCalendar DC = new DeleteCalendar();
 	CreateCalendar CC = new CreateCalendar();
 	Gson gson = new GsonBuilder().create();
+	DeleteCalendar DE = new DeleteCalendar();
 
 	
 
@@ -135,6 +136,44 @@ public class SwitchMethods extends Model
 		}
 		
 		String gsonString = gson.toJson(DC);
+		return gsonString;
+		
+	}
+	
+	public String removeEvent (String eventID, String title) throws SQLException
+	{
+//		String stringToBeReturend = "";
+		String eventIDOfCreator ="";
+		String eventExists = "";
+		resultSet = qb.selectFrom("events").where("title", "=", title).ExecuteQuery();
+				
+		while(resultSet.next())
+		{
+			eventExists = resultSet.toString();
+			eventIDOfCreator = resultSet.getString("eventID");
+		}
+		if(!eventExists.equals(""))
+		{
+
+			if(!eventIDOfCreator.equals(title))
+			{
+				DE.setAnswer("Only the creator of the event is able to delete it.");
+			}
+			else
+			{
+//				String [] keys = {"Active"};
+//				String [] values = {"2"};
+				qb.deleteFrom("events");//("Calendar", keys, values).where("Name", "=", calendarName).Execute();
+				DE.setAnswer("Event has been deleted"); 
+			}
+
+		}
+		else
+		{
+			DE.setAnswer("The event you are trying to delete, does not exists.");
+		}
+		
+		String gsonString = gson.toJson(DE);
 		return gsonString;
 		
 	}
