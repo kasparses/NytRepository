@@ -25,6 +25,7 @@ public class Screen extends JFrame {
 	public static final String CALENDARLIST = "name_493897513062219";
 	public static final String DELETECALENDAR = "name_496088936866551";
 	public static final String CREATECALENDAR = "name_508229372553648";
+	public static final String DELETEEVENT = "name_516948600749136";
 
 
 	private JPanel contentPane;
@@ -43,6 +44,7 @@ public class Screen extends JFrame {
 	private final CalendarList calendarList = new CalendarList();
 	private final DeleteCalendar deleteCalendar = new DeleteCalendar();
 	private final CreateCalendar createCalendar = new CreateCalendar();
+	private final DeleteEvent deleteEvent = new DeleteEvent();
 
 
 
@@ -93,6 +95,8 @@ public class Screen extends JFrame {
 		contentPane.add(mainMenu, "name_362262329408944");
 		
 		contentPane.add(login, "name_362236793182581");
+		
+		contentPane.add(deleteEvent, "name_516948600749136");
 		
 		contentPane.add(eventList, "name_362220577395912");
 		
@@ -160,6 +164,10 @@ public class Screen extends JFrame {
 
 	public CreateCalendar getCreateCalendar() {
 		return createCalendar;
+	}
+
+	public DeleteEvent getDeleteEvent() {
+		return deleteEvent;
 	}
 	
 }

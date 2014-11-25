@@ -5,6 +5,7 @@ import model.QOTD.QOTDModel;
 import model.note.*;
 import model.user.*;
 import JsonClasses.CreateEvent;
+import JsonClasses.DeleteEvent;
 import JsonClasses.ForgotLogin;
 import JsonClasses.GetEvent;
 import JsonClasses.CreateNoteJson;
@@ -161,9 +162,10 @@ public class GiantSwitch {
 			break;
 			
 		case "deleteEvent":
-			
 			System.out.println("Recieved deleteEvent");
-			
+			DeleteEvent DE = (DeleteEvent)gson.fromJson(jsonString, DeleteEvent.class);
+			answer = SW.removeEvent(DE.getUserName(), DE.getTitle());
+			break;
 			
 		case "GetCbsCalendar":
 			System.out.println("Rcieved GetCbsCalendar");
