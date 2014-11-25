@@ -26,14 +26,14 @@ import java.awt.Dimension;
 	import javax.swing.border.BevelBorder;
 	import javax.swing.border.MatteBorder;
 	import javax.swing.JTextPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 	public class AddCourse extends JPanel {
 		private JTable table;
 		private final JButton btnAdd = new JButton("Add");
 		private final JButton btnDelete = new JButton("Delete");
-		private final JButton btnMainMenu = new JButton("Main Menu");
-		private final JButton btnLogout = new JButton("Log out");
 
 		/**
 		 * Create the panel.
@@ -104,24 +104,28 @@ import java.awt.Dimension;
 			btnDelete.setBounds(1043, 257, 118, 29);
 			
 			add(btnDelete);
-			btnMainMenu.setForeground(Color.WHITE);
-			btnMainMenu.setFont(new Font("Arial", Font.BOLD, 30));
-			btnMainMenu.setContentAreaFilled(false);
-			btnMainMenu.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-			btnMainMenu.setBounds(601, 620, 163, 43);
 			
-			add(btnMainMenu);
+			JButton btnLogout = new JButton("Log Out");
 			btnLogout.setForeground(Color.WHITE);
-			btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
+			btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
 			btnLogout.setContentAreaFilled(false);
-			btnLogout.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-			btnLogout.setBounds(624, 694, 117, 43);
-			
+			btnLogout.setBounds(602, 690, 191, 50);
 			add(btnLogout);
+			
+			JButton btnMainMenu = new JButton("Main Menu");
+			btnMainMenu.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+				}
+			});
+			btnMainMenu.setForeground(Color.WHITE);
+			btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
+			btnMainMenu.setContentAreaFilled(false);
+			btnMainMenu.setBounds(602, 625, 191, 50);
+			add(btnMainMenu);
 			
 			JLabel label_1 = new JLabel("");
 			label_1.setIcon(new ImageIcon(AddCourse.class.getResource("/Images/MetalBackground.jpg")));
-			label_1.setBounds(0, 0, 1366, 768);
+			label_1.setBounds(89, 6, 1366, 768);
 			add(label_1);
 			
 
