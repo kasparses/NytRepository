@@ -5,14 +5,21 @@ import java.sql.SQLException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import model.QOTD.QOTDModel;
+import model.QueryBuild.QueryBuilder;
+import model.Model;
+import JsonClasses.Answer;
+import java.sql.SQLException;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import model.Model;
 import model.QueryBuild.*;
 import model.note.NoteModel;
 import model.calendar.*;
 import JsonClasses.DeleteCalendar;
 
-public class AddEventModel {
+public class AddEventModel extends Model {
 	
 //	Event event = new Event(0, null, null, null, 0);
 	QueryBuilder qb = new QueryBuilder(); 
@@ -20,6 +27,9 @@ public class AddEventModel {
 	private DeleteCalendar DC = new DeleteCalendar();
 	Gson gson = new GsonBuilder().create();
 	ResultSet rs;
+Answer A = new Answer();
+	
+	QOTDModel qm = new QOTDModel();
 
 	public String CreateEvent(
 			int ID,
@@ -30,24 +40,44 @@ public class AddEventModel {
 			String description,
 			String start,
 			String end,
-			String location)	{
+			String location,
+			String calendarName)	{
 			
 			String Id = String.valueOf(ID);
 			
-			String[] fields = {"ID", "activityID", "eventID", "type", "title", "description", "start", "end", "location"};
-			String[] values = {Id, activityID, eventID, type, title, description, start, end, location};
 			try {
-				qb.insertInto("events", fields).values(values).Execute();
+				resultSet = qb.selectFrom("Calendar").where("Name", "=", calendarName).ExecuteQuery();
+			} catch (SQLException e1) {
 				
-				stringToBeReturned = "The event has been succesfully created!!";
+				e1.printStackTrace();
+			}
+			String calendarID = "";
+			try {
+				while(resultSet.next())
+				{
+					 calendarID = resultSet.toString();
+					
+				}
+			} catch (SQLException e1) {
+				
+				e1.printStackTrace();
+			}
+			String[] fields = {"ID", "activityID", "eventID", "type", "title", "description", "start", "end", "location"};
+			String[] values = {calendarID, activityID, eventID, type, title, description, start, end, location};			try {
+				qb.insertInto("events", fields).values(values).Execute();
+				A.setAnswer("The event has been succesfully created!!");
+//				stringToBeReturned = "The event has been succesfully created!!";
 				
 			} catch (SQLException e) {
-				stringToBeReturned = "The event has NOT been created!!";
+				A.setAnswer("The event has NOT been created!!");
+//				stringToBeReturned = "The event has NOT been created!!";
 
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return stringToBeReturned;
+			String gsonString = gson.toJson(A);
+			return gsonString;
+			
 		}
 	
 	public String DeleteCalendar(
