@@ -153,7 +153,7 @@ public class GiantSwitch {
 			System.out.println("Recieved createEvent");
 			CreateEvent CE = (CreateEvent)gson.fromJson(jsonString, CreateEvent.class);
 			answer = AE.CreateEvent(CE.getID(), CE.getActivityID(), CE.getEventID(), CE.getType(), CE.getTitle(),
-					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation());
+					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation(), CE.getCalendarName());
 			break;
 
 		case "getEventInfo":
