@@ -123,11 +123,11 @@ public class GiantSwitch {
 		case "deleteCalendar":
 			System.out.println("Recieved deleteCalendar");
 			DeleteCalendar DC = (DeleteCalendar)gson.fromJson(jsonString, DeleteCalendar.class);
-
+//			answer = AE.DeleteCalendar(DC.getActive());
 			answer = SW.removeCalendar(DC.getUserName(), DC.getCalendarName());
-			if(answer.equals(u3.getEmail()) && answer.equals(DC.getCalendarName())){
-			qb.deleteFrom(DC.getCalendarName());
-			}
+//			if(answer.equals(DC.getUserName()) && answer.equals(DC.getCalendarName())){
+//			qb.deleteFrom(DC.getCalendarName());
+//			}
 			break;
 		
 		case "saveImportedCalendar":
@@ -153,7 +153,7 @@ public class GiantSwitch {
 			System.out.println("Recieved createEvent");
 			CreateEvent CE = (CreateEvent)gson.fromJson(jsonString, CreateEvent.class);
 			answer = AE.CreateEvent(CE.getID(), CE.getActivityID(), CE.getEventID(), CE.getType(), CE.getTitle(),
-					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation());
+					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation(), CE.getCalendarName());
 			break;
 
 		case "getEventInfo":
@@ -161,6 +161,7 @@ public class GiantSwitch {
 			break;
 			
 		case "deleteEvent":
+			
 			System.out.println("Recieved deleteEvent");
 			
 			
