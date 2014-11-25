@@ -26,7 +26,6 @@ import java.awt.SystemColor;
 public class AddUser extends JPanel {
 	private JTextField textField_Email;
 	private JTextField textField_Password;
-	private JButton btnSubmit;
 	private JButton btnLogout;
 	private JLabel lblCBSlogo;
 	private JButton btnMainMenu;
@@ -35,6 +34,7 @@ public class AddUser extends JPanel {
 	private JTextField textField_CPR;
 	private JRadioButton rdbtnAdmin;
 	private JRadioButton rdbtnUser;
+	private JButton btnCreateUser;
 
 	/**
 	 * Create the panel.
@@ -89,22 +89,6 @@ public class AddUser extends JPanel {
 		lblTeam.setBounds(483, 303, 127, 30);
 		add(lblTeam);
 
-		btnSubmit = new JButton("Create User");
-		btnSubmit.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		btnSubmit.setContentAreaFilled(false);
-		btnSubmit.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnSubmit.setForeground(new Color(255, 255, 255));
-		btnSubmit.setFont(new Font("Arial", Font.BOLD, 30));
-		btnSubmit.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			//Submit changes to databases
-			//hvad sker der n�r �ndringer ved en bruger submittes
-			}
-		}
-		);
-		btnSubmit.setBounds(570, 425, 239, 43);
-		add(btnSubmit);
-
 		
 				
 				btnMainMenu = new JButton("Main menu");
@@ -141,15 +125,16 @@ public class AddUser extends JPanel {
 				rdbtnAdmin.setBounds(622, 261, 109, 23);
 				add(rdbtnAdmin);
 				
-				JLabel lblBackground = new JLabel("");
-				lblBackground.setSize(new Dimension(1366, 768));
-				lblBackground.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/MetalBackground.jpg")));
-				lblBackground.setBounds(0, 0, 1366, 768);
-				add(lblBackground);
-				
 				ButtonGroup group = new ButtonGroup();
 				group.add(getRdbtnAdmin());
 				group.add(getRdbtnUser());
+				
+				btnCreateUser = new JButton("Create User");
+				btnCreateUser.setForeground(Color.WHITE);
+				btnCreateUser.setFont(new Font("Tahoma", Font.BOLD, 30));
+				btnCreateUser.setContentAreaFilled(false);
+				btnCreateUser.setBounds(557, 415, 250, 50);
+				add(btnCreateUser);
 		
 		
 
