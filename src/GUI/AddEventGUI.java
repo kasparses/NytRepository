@@ -164,21 +164,21 @@ public class AddEventGUI extends JPanel {
 		btnSubmit.setForeground(Color.WHITE);
 		btnSubmit.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnSubmit.setContentAreaFilled(false);
-		btnSubmit.setBounds(550, 545, 250, 50);
+		btnSubmit.setBounds(558, 545, 250, 50);
 		add(btnSubmit);
 		
 		JButton btnMainMenu = new JButton("Main Menu");
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBounds(584, 625, 191, 50);
+		btnMainMenu.setBounds(587, 625, 191, 50);
 		add(btnMainMenu);
 		
 		JButton btnLogout = new JButton("Log Out");
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBounds(584, 690, 191, 50);
+		btnLogout.setBounds(587, 690, 191, 50);
 		add(btnLogout);
 		
 		JLabel label = new JLabel("");
