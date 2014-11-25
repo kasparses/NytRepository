@@ -23,6 +23,7 @@ public class MainMenu extends JPanel {
 	private final JButton btnUserlist_1 = new JButton("User List");
 	private JButton btnCalendarList;
 	private JButton btnLogOut;
+	private JButton btnCreateevent;
 	
 
 	
@@ -77,6 +78,13 @@ public class MainMenu extends JPanel {
 		btnLogOut.setBounds(587, 537, 191, 50);
 		add(btnLogOut);
 		
+		btnCreateevent = new JButton("CreateEvent");
+		btnCreateevent.setForeground(Color.WHITE);
+		btnCreateevent.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnCreateevent.setContentAreaFilled(false);
+		btnCreateevent.setBounds(555, 201, 250, 50);
+		add(btnCreateevent);
+		
 		JLabel lblBackground = new JLabel("");
 		lblBackground.setIcon(new ImageIcon(MainMenu.class.getResource("/Images/MetalBackground.jpg")));
 		lblBackground.setBounds(121, 82, 1366, 768);
@@ -89,7 +97,15 @@ public class MainMenu extends JPanel {
 		btnNotelist.addActionListener(l);
 		btnUserlist_1.addActionListener(l);
 		btnCalendarList.addActionListener(l);
+		btnCreateevent.addActionListener(l);
 		
+	}
+	
+	public JButton getBtnCreateevent() {
+		return btnCreateevent;
+	}
+	public void setBtnCreateevent(JButton btnCreateevent) {
+		this.btnCreateevent = btnCreateevent;
 	}
 	public JButton getBtnUserlist() {
 		return btnUserlist_1;

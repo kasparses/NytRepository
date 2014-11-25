@@ -4,18 +4,27 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
+
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.GridLayout;
+
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.TitledBorder;
+
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.awt.SystemColor;
+
+import javax.swing.JComboBox;
 
 public class AddEventGUI extends JPanel {
 	private JTextField textField_Location;
@@ -38,6 +47,14 @@ public class AddEventGUI extends JPanel {
 	private JButton btnSubmit;
 	private JButton btnLogout;
 	private JButton btnMainMenu;
+	private JLabel lblNewLabel;
+	private JTextField textField_CalendarName;
+	private JComboBox comboBox_StartMinutes;
+	private JComboBox comboBox_StartHour;
+	private JComboBox comboBox_EndHour;
+	private JComboBox comboBox_EndMinutes;
+	private JComboBox<Integer> comboBox;
+	private JComboBox comboBox_1;
 
 	/**
 	 * Create the panel.
@@ -160,32 +177,92 @@ public class AddEventGUI extends JPanel {
 		
 		add(textField_Description);
 		
-		JButton btnSubmit = new JButton("Create Event");
+		btnSubmit = new JButton("Create Event");
 		btnSubmit.setForeground(Color.WHITE);
 		btnSubmit.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnSubmit.setContentAreaFilled(false);
 		btnSubmit.setBounds(550, 545, 250, 50);
 		add(btnSubmit);
 		
-		JButton btnMainMenu = new JButton("Main Menu");
+		btnMainMenu = new JButton("Main Menu");
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
 		btnMainMenu.setBounds(584, 625, 191, 50);
 		add(btnMainMenu);
 		
-		JButton btnLogout = new JButton("Log Out");
+		btnLogout = new JButton("Log Out");
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogout.setContentAreaFilled(false);
 		btnLogout.setBounds(584, 690, 191, 50);
 		add(btnLogout);
 		
+		lblNewLabel = new JLabel("CalendarName");
+		lblNewLabel.setBounds(959, 280, 70, 14);
+		add(lblNewLabel);
+		
+		textField_CalendarName = new JTextField();
+		textField_CalendarName.setBounds(1062, 280, 86, 20);
+		add(textField_CalendarName);
+		textField_CalendarName.setColumns(10);
+		
+		
+		
+//	     
+//	    
+//	      String[] str = {"top","left","bottom","right"};
+//	      int n = str.length;
+//	      setLayout(new GridLayout(n,2));
+//	      setBorder(new TitledBorder("Thickness"));
+//	      combos = new JComboBox[n];
+//	      for (int i=0;i<n;i++) {
+//	        combos[i] = new JComboBox(new Object[]{"0","1","2","3"});
+//	        add(new JLabel(str[i]));
+//	        add(combos[i]);
+//	      }
+//	    
+		
+		
+		
+		comboBox_StartMinutes = new JComboBox();
+		comboBox_StartMinutes.setBounds(177, 290, 48, 20);
+		add(comboBox_StartMinutes);
+		
+		comboBox_StartHour = new JComboBox();
+		comboBox_StartHour.setBounds(107, 290, 48, 20);
+		add(comboBox_StartHour);
+		
+		comboBox_EndHour = new JComboBox();
+		comboBox_EndHour.setBounds(250, 290, 58, 20);
+		add(comboBox_EndHour);
+		
+		comboBox_EndMinutes = new JComboBox();
+		comboBox_EndMinutes.setBounds(332, 290, 70, 20);
+		add(comboBox_EndMinutes);
+		
+		
+		
+		
 		JLabel label = new JLabel("");
 		label.setIcon(new ImageIcon(AddEventGUI.class.getResource("/Images/MetalBackground.jpg")));
 		label.setBounds(0, 0, 1360, 762);
 		add(label);
+		
+		;
 
+		 for (int c=0; c<=24; c++){
+			 comboBox_StartHour.addItem(c);
+	        }
+		 for (int c2=0; c2<=60; c2++){
+			 comboBox_StartMinutes.addItem(c2);
+	        }
+		 for (int c3=0; c3<=24; c3++){
+			 comboBox_EndHour.addItem(c3);
+	        }
+		 for (int c4=0; c4<=60; c4++){
+			 comboBox_EndMinutes.addItem(c4);
+	        }
 
 
 	}
@@ -194,6 +271,31 @@ public class AddEventGUI extends JPanel {
 		btnSubmit.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
+		comboBox_StartHour.addActionListener(l);
+		comboBox_StartMinutes.addActionListener(l);
+		comboBox_EndHour.addActionListener(l);
+		comboBox_EndMinutes.addActionListener(l);
+	}
+	
+
+	public JComboBox getComboBox_StartMinutes() {
+		return comboBox_StartMinutes;
+	}
+
+	public JComboBox getComboBox_StartHour() {
+		return comboBox_StartHour;
+	}
+
+	public JComboBox getComboBox_EndHour() {
+		return comboBox_EndHour;
+	}
+
+	public JComboBox getComboBox_EndMinutes() {
+		return comboBox_EndMinutes;
+	}
+
+	public JTextField getTextField_CalendarName() {
+		return textField_CalendarName;
 	}
 
 	public JTextField getTextField_Location() {

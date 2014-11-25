@@ -8,6 +8,7 @@ import ClientWorker.GiantSwitch;
 import model.QueryBuild.QueryBuilder;
 import model.user.AuthenticateUser;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import com.google.gson.Gson;
@@ -49,10 +50,11 @@ public class GUILogic {
 		screen.getUserList().addActionListener(new UserListActionListener());
 		screen.getEventlist().addActionListener(new EventListActionListener());
 		screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
-		screen.getAddUser().addActionListener(new AddUserActionListener());
+//		screen.getAddUser().addActionListener(new AddUserActionListener());
 		screen.getAddNote().addActionListener(new AddNoteActionListener());
 		screen.getForgotLogin().addActionListener(new ForgotActionListener());
 		screen.getCalendarList().addActionListener(new CalendarListActionListener());
+//		screen.getAddEventGUI().addActionListener(new CalendarListActionListener());
 
 		
 	}
@@ -179,6 +181,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getBtnCalendarList()){
 				screen.show(Screen.CALENDARLIST);
 			}
+			if (e.getSource() == screen.getMainMenu().getBtnCreateevent()){
+				screen.show(Screen.ADDEVENT);
+			}
 
 		}
 	}
@@ -202,14 +207,38 @@ public class GUILogic {
 				String type = screen.getAddEventGUI().getTextField_Type().getText();
 				String eventID = screen.getAddEventGUI().getTextField_EventID().getText();
 				String activityID = screen.getAddEventGUI().getTextField_ActivityID().getText();
+				String calendarName =  screen.getAddEventGUI().getTextField_CalendarName().getText();
 				
-				CreateEvent CE = new CreateEvent("createEvent", 0,activityID , eventID, type, title, description, start, end, location );
+				Object startHour = screen.getAddEventGUI().getComboBox_StartHour().getSelectedItem();
+				Object startMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
+				
+				String startTime = startHour.toString()+ ":"+ startMinutes.toString();
+				
+				Object endHour = screen.getAddEventGUI().getComboBox_StartHour().getSelectedItem();
+				Object endMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
+				
+				String endTime = endHour.toString()+ ":"+ endMinutes.toString();
+				
+				System.out.println("fafaf "+startHour);
+				
+//				  (cmbYear.getSelectedItem() != null){
+//		                String b = cmbYear.getSelectedItem().toString();
+//		                d.setCurrentYear(Integer.parseInt(b));
+//		                refreshCalendar(d.getWeekofYear(), d.getCurrentYear(), d.getJsonString());
+//		                
+		                
+				
+				
+				CreateEvent CE = new CreateEvent("createEvent", 0,activityID , eventID, type, title, description, start, end, location, calendarName );
 							
 				Gson gson = new GsonBuilder().create();
 				String gsonString = gson.toJson(CE);
 				
 				try {
 					Object hejhej = GS.GiantSwitchMethod(gsonString);
+					
+					JOptionPane.showMessageDialog(null, hejhej
+							, "Return message",JOptionPane.PLAIN_MESSAGE);
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
