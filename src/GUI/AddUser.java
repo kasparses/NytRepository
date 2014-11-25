@@ -26,15 +26,16 @@ import java.awt.SystemColor;
 public class AddUser extends JPanel {
 	private JTextField textField_Email;
 	private JTextField textField_Password;
-	private JButton btnLogout;
 	private JLabel lblCBSlogo;
-	private JButton btnMainMenu;
 	private JLabel lblUserInfo;
 	private JLabel lblCpr;
 	private JTextField textField_CPR;
 	private JRadioButton rdbtnAdmin;
 	private JRadioButton rdbtnUser;
 	private JButton btnCreateUser;
+	private JButton btnMainMenu;
+	private JButton btnLogout;
+	private JButton btnSubmit;
 
 	/**
 	 * Create the panel.
@@ -48,15 +49,6 @@ public class AddUser extends JPanel {
 		lblCBSlogo.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/CBSLogo3.png")));
 		lblCBSlogo.setBounds(10, 698, 250, 59);
 		add(lblCBSlogo);
-		
-
-		btnLogout = new JButton("Log out");
-		btnLogout.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnLogout.setForeground(new Color(255, 255, 255));
-		btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
-		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBounds(630, 506, 117, 43);
-		add(btnLogout);
 
 		textField_Email = new JTextField();
 		textField_Email.setForeground(new Color(105, 105, 105));
@@ -88,16 +80,6 @@ public class AddUser extends JPanel {
 		lblTeam.setForeground(new Color(255, 255, 255));
 		lblTeam.setBounds(483, 303, 127, 30);
 		add(lblTeam);
-
-		
-				
-				btnMainMenu = new JButton("Main menu");
-				btnMainMenu.setForeground(Color.WHITE);
-				btnMainMenu.setFont(new Font("Arial", Font.BOLD, 30));
-				btnMainMenu.setContentAreaFilled(false);
-				btnMainMenu.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-				btnMainMenu.setBounds(609, 467, 164, 44);
-				add(btnMainMenu);
 				
 				lblUserInfo = new JLabel("Create user");
 				lblUserInfo.setForeground(Color.WHITE);
@@ -133,8 +115,22 @@ public class AddUser extends JPanel {
 				btnCreateUser.setForeground(Color.WHITE);
 				btnCreateUser.setFont(new Font("Tahoma", Font.BOLD, 30));
 				btnCreateUser.setContentAreaFilled(false);
-				btnCreateUser.setBounds(557, 415, 250, 50);
+				btnCreateUser.setBounds(558, 415, 250, 50);
 				add(btnCreateUser);
+				
+				btnMainMenu = new JButton("Main Menu");
+				btnMainMenu.setForeground(Color.WHITE);
+				btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
+				btnMainMenu.setContentAreaFilled(false);
+				btnMainMenu.setBounds(587, 495, 191, 50);
+				add(btnMainMenu);
+				
+				btnLogout = new JButton("Log Out");
+				btnLogout.setForeground(Color.WHITE);
+				btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
+				btnLogout.setContentAreaFilled(false);
+				btnLogout.setBounds(587, 560, 191, 50);
+				add(btnLogout);
 		
 		
 
