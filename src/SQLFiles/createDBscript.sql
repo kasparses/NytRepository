@@ -45,21 +45,21 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 
 CREATE TABLE IF NOT EXISTS events
 (
-	ID int NOT NULL AUTO_INCREMENT,
+	ID int NOT NULL,
 	activityID varchar(200) NOT NULL,
 	eventID varchar(200) NOT NULL,
 	type varchar(200) NOT NULL COMMENT 'Lecture or exercise',
 	title varchar(500) NOT NULL,
 	description varchar(200) NOT NULL,
-	start datetime NOT NULL,
-	end datetime NOT NULL,
+	start varchar(30) NOT NULL,
+	end varchar(15) NOT NULL,
 	location varchar(500) NOT NULL,	
 	--name varchar(30) NOT NULL UNIQUE,
 	--text text NOT NULL,
 	--calendarID int Not Null,
 	-- Decides wether the event is an import-event or user created
 	-- 
-	PRIMARY KEY (ID)
+	PRIMARY KEY (title)
 );
 
 
@@ -121,11 +121,11 @@ CREATE TABLE IF NOT EXISTS users
 
 /* Create Foreign Keys */
 
---ALTER TABLE events
-	--ADD FOREIGN KEY (ID)
-	--REFERENCES Calendar (CalendarID)
-	--ON UPDATE RESTRICT
---;
+ALTER TABLE events
+	ADD FOREIGN KEY (ID)
+	REFERENCES Calendar (CalendarID)
+	ON UPDATE RESTRICT
+;
 
 --ALTER TABLE notes
 	--ADD FOREIGN KEY (noteID)
