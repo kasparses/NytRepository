@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.UnknownHostException;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import ClientWorker.GiantSwitch;
 import model.QueryBuild.QueryBuilder;
@@ -219,7 +217,9 @@ public class GUILogic {
 			
 		
 				String description = screen.getAddEventGUI().getTextField_Description().getText();
+				String start = screen.getAddEventGUI().getTextField_Start().getText();
 				String location = screen.getAddEventGUI().getTextField_Location().getText();
+				String end = screen.getAddEventGUI().getTextField_End().getText();
 				String title = screen.getAddEventGUI().getTextField_Title().getText();
 				String type = screen.getAddEventGUI().getTextField_Type().getText();
 				String eventID = screen.getAddEventGUI().getTextField_EventID().getText();
@@ -229,19 +229,26 @@ public class GUILogic {
 				Object startHour = screen.getAddEventGUI().getComboBox_StartHour().getSelectedItem();
 				Object startMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
 				
-		        	
-				
 				String startTime = startHour.toString()+ ":"+ startMinutes.toString();
 				System.out.println("startTime: "+startTime);
 				
-				Object endHour = screen.getAddEventGUI().getComboBox_EndHour().getSelectedItem();
-				Object endMinutes = screen.getAddEventGUI().getComboBox_EndMinutes().getSelectedItem();
+				Object endHour = screen.getAddEventGUI().getComboBox_StartHour().getSelectedItem();
+				Object endMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
 				
 				String endTime = endHour.toString()+ ":"+ endMinutes.toString();
-				System.out.println("endTime: "+endTime);
-			
+				System.out.println("endTime");
 				
-				CreateEvent CE = new CreateEvent("createEvent", 0,activityID , eventID, type, title, description, startTime, endTime, location, calendarName );
+				System.out.println("fafaf "+startHour);
+				
+//				  (cmbYear.getSelectedItem() != null){
+//		                String b = cmbYear.getSelectedItem().toString();
+//		                d.setCurrentYear(Integer.parseInt(b));
+//		                refreshCalendar(d.getWeekofYear(), d.getCurrentYear(), d.getJsonString());
+//		                
+		                
+				
+				
+				CreateEvent CE = new CreateEvent("createEvent", 0,activityID , eventID, type, title, description, start, end, location, calendarName );
 							
 				Gson gson = new GsonBuilder().create();
 				String gsonString = gson.toJson(CE);

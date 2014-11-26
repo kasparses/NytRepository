@@ -5,17 +5,14 @@ import java.sql.SQLException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
 import model.Model;
 import JsonClasses.Answer;
-
 import java.sql.SQLException;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import model.Model;
 import model.QueryBuild.*;
 import model.note.NoteModel;
@@ -54,11 +51,11 @@ Answer A = new Answer();
 				
 				e1.printStackTrace();
 			}
-			int calendarID = 0;
+			String calendarID = "";
 			try {
 				while(resultSet.next())
 				{
-					 calendarID = resultSet.getInt("CalendarID");
+					 calendarID = resultSet.toString();
 					
 				}
 			} catch (SQLException e1) {
@@ -66,7 +63,7 @@ Answer A = new Answer();
 				e1.printStackTrace();
 			}
 			String[] fields = {"ID", "activityID", "eventID", "type", "title", "description", "start", "end", "location"};
-			String[] values = {Integer.toString(calendarID), activityID, eventID, type, title, description, start, end, location};			try {
+			String[] values = {calendarID, activityID, eventID, type, title, description, start, end, location};			try {
 				qb.insertInto("events", fields).values(values).Execute();
 				A.setAnswer("The event has been succesfully created!!");
 //				stringToBeReturned = "The event has been succesfully created!!";
