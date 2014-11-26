@@ -32,11 +32,11 @@ public class Login extends JPanel {
 	private final JLabel lblWelcome = new JLabel("Welcome");
 	private final JLabel lblUsername = new JLabel("Username");
 	private final JLabel lblPassword = new JLabel("Password");
-	private final JButton btnLogIn = new JButton("Log In");
 	private final JTextField textFieldUsername = new JTextField();
 	private final JLabel lblCBSlogo = new JLabel("");
 	private final JLabel lblBackground = new JLabel("Forgot Login?");
 	private final JPasswordField textFieldPassword = new JPasswordField();
+	private final JButton btnLogIn = new JButton("Log In");
 	private final JButton btnForgotLogin = new JButton("Forgot Login?");
 	
 
@@ -65,15 +65,6 @@ public class Login extends JPanel {
 		lblPassword.setBounds(499, 378, 123, 30);
 		
 		add(lblPassword);
-		btnLogIn.setContentAreaFilled(false);
-		btnLogIn.setFont(new Font("Arial", Font.BOLD, 30));
-		btnLogIn.setForeground(new Color(255, 255, 255));
-		btnLogIn.setBackground(Color.WHITE);
-		btnLogIn.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnLogIn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
 		textFieldUsername.setOpaque(false);
 		textFieldUsername.setHorizontalAlignment(SwingConstants.CENTER);
 		textFieldUsername.setForeground(Color.BLACK);
@@ -83,9 +74,6 @@ public class Login extends JPanel {
 		textFieldUsername.setBounds(705, 334, 164, 37);
 		
 		add(textFieldUsername);
-		btnLogIn.setBounds(572, 449, 222, 51);
-		
-		add(btnLogIn);
 		lblCBSlogo.setIcon(new ImageIcon(Login.class.getResource("/Images/CBSLogo3.png")));
 		lblCBSlogo.setBounds(10, 698, 250, 59);
 		
@@ -98,12 +86,16 @@ public class Login extends JPanel {
 		textFieldPassword.setBounds(705, 372, 164, 37);
 		
 		add(textFieldPassword);
+		btnLogIn.setContentAreaFilled(false);
+		btnLogIn.setForeground(Color.WHITE);
+		btnLogIn.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnLogIn.setBounds(563, 492, 240, 59);
+		
+		add(btnLogIn);
 		btnForgotLogin.setForeground(Color.WHITE);
-		btnForgotLogin.setFont(new Font("Arial", Font.BOLD, 30));
+		btnForgotLogin.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnForgotLogin.setContentAreaFilled(false);
-		btnForgotLogin.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnForgotLogin.setBackground(Color.WHITE);
-		btnForgotLogin.setBounds(562, 589, 242, 51);
+		btnForgotLogin.setBounds(563, 595, 240, 59);
 		
 		add(btnForgotLogin);
 		lblBackground.setHorizontalAlignment(SwingConstants.CENTER);
