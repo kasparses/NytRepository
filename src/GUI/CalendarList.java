@@ -27,11 +27,11 @@ import javax.swing.border.MatteBorder;
 
 public class CalendarList extends JPanel {
 	private final JLabel lblCalendarList = new JLabel("Calendar List");
-	private final JButton btnAdd = new JButton("Add");
-	private final JButton btnDelete = new JButton("Delete");
 	private final JLabel label = new JLabel("");
 	private ResultSet rs;
 	private final JScrollPane scrollPane = new JScrollPane();
+	private final JButton btnDelete = new JButton("Delete");
+	private final JButton btnAdd = new JButton("Add");
 	private final JButton btnMainMenu = new JButton("Main Menu");
 	private final JButton btnLogOut = new JButton("Log Out");
 
@@ -84,27 +84,11 @@ public class CalendarList extends JPanel {
 		e1.printStackTrace();
 	}
 		setLayout(null);
-		lblCalendarList.setBounds(486, 31, 413, 73);
+		lblCalendarList.setBounds(436, 11, 517, 90);
 		lblCalendarList.setForeground(Color.WHITE);
-		lblCalendarList.setFont(new Font("Tahoma", Font.BOLD, 60));
+		lblCalendarList.setFont(new Font("Arial", Font.BOLD, 78));
 		
 		add(lblCalendarList);
-		btnAdd.setBounds(1075, 238, 176, 43);
-		btnAdd.setForeground(Color.WHITE);
-		btnAdd.setFont(new Font("Arial", Font.BOLD, 30));
-		btnAdd.setContentAreaFilled(false);
-		btnAdd.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnAdd.setBackground(Color.WHITE);
-		
-		add(btnAdd);
-		btnDelete.setBounds(1075, 306, 176, 43);
-		btnDelete.setForeground(Color.WHITE);
-		btnDelete.setFont(new Font("Arial", Font.BOLD, 30));
-		btnDelete.setContentAreaFilled(false);
-		btnDelete.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnDelete.setBackground(Color.WHITE);
-		
-		add(btnDelete);
 		
 		final JTable table = new JTable(data, columnNames);
 		table.setSurrendersFocusOnKeystroke(true);
@@ -123,24 +107,32 @@ public class CalendarList extends JPanel {
 				BevelBorder.LOWERED, new Color(0, 0, 205), new Color(255, 255,
 						255), new Color(0, 0, 205), new Color(255, 255, 255)),
 						null));
-		scrollPane.setBounds(387, 194, 591, 361);
+		scrollPane.setBounds(152, 171, 1062, 376);
 
 		// Add the scroll pane to this panel.
 		add(scrollPane);
+		btnDelete.setOpaque(true);
+		btnDelete.setForeground(new Color(0, 0, 205));
+		btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+		btnDelete.setBounds(1224, 211, 118, 29);
+		
+		add(btnDelete);
+		btnAdd.setOpaque(true);
+		btnAdd.setForeground(new Color(0, 0, 205));
+		btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+		btnAdd.setBounds(1224, 171, 118, 29);
+		
+		add(btnAdd);
 		btnMainMenu.setForeground(Color.WHITE);
-		btnMainMenu.setFont(new Font("Arial", Font.BOLD, 30));
+		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnMainMenu.setBackground(Color.WHITE);
-		btnMainMenu.setBounds(645, 609, 176, 43);
+		btnMainMenu.setBounds(575, 579, 216, 56);
 		
 		add(btnMainMenu);
 		btnLogOut.setForeground(Color.WHITE);
-		btnLogOut.setFont(new Font("Arial", Font.BOLD, 30));
+		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnLogOut.setContentAreaFilled(false);
-		btnLogOut.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnLogOut.setBackground(Color.WHITE);
-		btnLogOut.setBounds(645, 661, 176, 43);
+		btnLogOut.setBounds(575, 662, 216, 56);
 		
 		add(btnLogOut);
 		

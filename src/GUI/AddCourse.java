@@ -50,10 +50,6 @@ import java.awt.event.ActionEvent;
 			lblEvents.setBounds(461, 90, 444, 95);
 			add(lblEvents);
 
-			JLabel lblUpcomingEvent = new JLabel("Courses:");
-			lblUpcomingEvent.setBounds(149, 132, 124, 33);
-			add(lblUpcomingEvent);
-
 			
 			//Laver tabellen inde i Courselisten.
 			String[] columnNames = { "Course", "Location", "Time", "Active" };
@@ -125,7 +121,7 @@ import java.awt.event.ActionEvent;
 			
 			JLabel label_1 = new JLabel("");
 			label_1.setIcon(new ImageIcon(AddCourse.class.getResource("/Images/MetalBackground.jpg")));
-			label_1.setBounds(89, 6, 1366, 768);
+			label_1.setBounds(0, 0, 1366, 768);
 			add(label_1);
 			
 
