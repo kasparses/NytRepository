@@ -195,6 +195,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getBtnCalendarList()){
 				screen.show(Screen.CALENDARLIST);
 			}
+			if (e.getSource() == screen.getMainMenu().getBtnUserInfo()){
+				screen.show(Screen.USERINFO);
+			}
 			
 
 		}
