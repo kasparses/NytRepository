@@ -236,8 +236,8 @@ public class GUILogic {
 				String title = screen.getAddEventGUI().getTextField_Title().getText();
 				String type = screen.getAddEventGUI().getTextField_Type().getText();
 				
-				String eventID = "";
-				String activityID = "";
+				String eventID = "1";
+				String activityID = "1";
 				String calendarName =  screen.getAddEventGUI().getTextField_CalendarName().getText();
 				
 				Object startYear = screen.getAddEventGUI().getComboBox_StartYear().getSelectedItem();
@@ -265,7 +265,7 @@ public class GUILogic {
 				String start = startYear.toString()+ "-"+ startMonth.toString()+ "-"+ startDay.toString()+ " "+startHour.toString()+":"+startMinutes+":00";
 				String end = endYear.toString()+ "-"+ endMonth.toString()+ "-"+ endDay.toString()+ " "+endHour.toString()+":"+endMinutes+":00";
 				        
-				String EventID = "";
+				String EventID = "1";
 				
 				CreateEvent CE = new CreateEvent("createEvent", 0,activityID,EventID , type, title, description, start, end, location, calendarName );
 							
@@ -714,10 +714,10 @@ public class GUILogic {
 			if (e.getSource() == screen.getDeleteEvent().getBtnDelete()){
 				
 				try {
-					String userName = screen.getDeleteEvent().getTextField_Username().getText();
+					String eventID = screen.getDeleteEvent().getTextField_EventID().getText();
 					String title = screen.getDeleteEvent().getTextField_Title().getText();
 
-					DE.setUserName(userName);
+					DE.setEventID(eventID);
 					DE.setTitle(title);
 					
 					Gson gson = new GsonBuilder().create();

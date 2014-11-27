@@ -13,9 +13,9 @@ import javax.swing.ImageIcon;
 
 public class DeleteEvent extends JPanel {
 	private final JLabel lblDeleteEvent = new JLabel("Delete Event");
-	private final JLabel lbl_Username = new JLabel("Enter your username:");
+	private final JLabel lbl_EventID = new JLabel("Enter the event ID:");
 	private final JLabel lbl_title = new JLabel("Enter the events title:");
-	private final JTextField textField_Username = new JTextField();
+	private final JTextField textField_EventID = new JTextField();
 	private final JTextField textField_Title = new JTextField();
 	private final JButton btnDelete = new JButton("Delete");
 	private final JLabel label = new JLabel("");
@@ -38,20 +38,20 @@ public class DeleteEvent extends JPanel {
 		lblDeleteEvent.setBounds(434, 11, 497, 95);
 		
 		add(lblDeleteEvent);
-		lbl_Username.setForeground(Color.WHITE);
-		lbl_Username.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lbl_Username.setBounds(406, 208, 243, 25);
+		lbl_EventID.setForeground(Color.WHITE);
+		lbl_EventID.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lbl_EventID.setBounds(406, 208, 243, 25);
 		
-		add(lbl_Username);
+		add(lbl_EventID);
 		lbl_title.setForeground(Color.WHITE);
 		lbl_title.setFont(new Font("Tahoma", Font.BOLD, 20));
 		lbl_title.setBounds(406, 270, 263, 25);
 		
 		add(lbl_title);
-		textField_Username.setColumns(10);
-		textField_Username.setBounds(677, 208, 271, 25);
+		textField_EventID.setColumns(10);
+		textField_EventID.setBounds(677, 208, 271, 25);
 		
-		add(textField_Username);
+		add(textField_EventID);
 		textField_Title.setColumns(10);
 		textField_Title.setBounds(677, 270, 271, 25);
 		
@@ -145,8 +145,8 @@ public class DeleteEvent extends JPanel {
 		return btnCalendarList;
 	}
 
-	public JTextField getTextField_Username() {
-		return textField_Username;
+	public JTextField getTextField_EventID() {
+		return textField_EventID;
 	}
 
 	public JTextField getTextField_Title() {

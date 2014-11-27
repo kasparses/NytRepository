@@ -18,6 +18,7 @@ public class Execute extends Model {
     private final String INSERTINTO = "INSERT INTO ";
     private final String UPDATE = "UPDATE ";
     private final String VALUES = " VALUES ";
+    private final String DELETE = " DELETE ";
 
     private QueryBuilder queryBuilder;
     private Where where;
@@ -98,6 +99,7 @@ public class Execute extends Model {
                 e.printStackTrace();
             }
         }
+        
         return sqlStatement.executeQuery();
     }
 
@@ -140,7 +142,27 @@ public class Execute extends Model {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        } else {
+        } 
+        else if(getQueryBuilder().isSoftDelete()) {
+        	System.out.println("Det virker næsten!!!!!");
+            sql = DELETE + FROM + getQueryBuilder().getTableName() + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
+            		//getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + "'"+ getWhere().getWhereValue()+"'"+ " ;";
+            System.out.println("sql: "+sql);
+            try {
+                getConnection(false);
+                getConn();
+                // escape sql hjælper med at klargøre java koden til sql brug. for eksempel med '' og ""
+//                String cleanSql = StringEscapeUtils.escapeSql(sql); 
+
+//                sqlStatement = getConn().prepareStatement(cleanSql);
+                sqlStatement = getConn().prepareStatement(sql);
+                sqlStatement.setString(1, getWhere().getWhereValue());
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
             System.out.println(sql);
             
             sql = INSERTINTO + getQueryBuilder().getTableName() + " (" + getQueryBuilder().getFields() + ")" + VALUES + "(";
@@ -168,7 +190,9 @@ public class Execute extends Model {
             }
         }
 
+        
         return sqlStatement.execute();
+        
     }
 
 
