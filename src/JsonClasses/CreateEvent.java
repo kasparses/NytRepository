@@ -43,6 +43,18 @@ public class CreateEvent implements java.io.Serializable
 
 
 
+	public String getEventID() {
+		return eventID;
+	}
+
+
+
+	public void setEventID(String eventID) {
+		this.eventID = eventID;
+	}
+
+
+
 	public void setCalendarName(String calendarName) {
 		this.calendarName = calendarName;
 	}
@@ -64,12 +76,7 @@ public class CreateEvent implements java.io.Serializable
 	public void setActivityID(String activityID) {
 		this.activityID = activityID;
 	}
-	public String getEventID() {
-		return eventID;
-	}
-	public void setEventID(String eventID) {
-		this.eventID = eventID;
-	}
+	
 	public String getType() {
 		return type;
 	}

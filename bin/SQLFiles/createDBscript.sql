@@ -45,21 +45,22 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 
 CREATE TABLE IF NOT EXISTS events
 (
-	ID int NOT NULL AUTO_INCREMENT,
-	activityID varchar(200) NOT NULL,
-	eventID varchar(200) NOT NULL,
+	ID int NOT NULL,
+	activityID varchar(500),
+	eventID varchar(500) not null,
 	type varchar(200) NOT NULL COMMENT 'Lecture or exercise',
 	title varchar(500) NOT NULL,
 	description varchar(200) NOT NULL,
 	start datetime NOT NULL,
 	end datetime NOT NULL,
 	location varchar(500) NOT NULL,	
+	superID int not null AUTO_INCREMENT,
 	--name varchar(30) NOT NULL UNIQUE,
 	--text text NOT NULL,
 	--calendarID int Not Null,
 	-- Decides wether the event is an import-event or user created
 	-- 
-	PRIMARY KEY (ID)
+	PRIMARY KEY (superID)
 );
 
 
@@ -90,36 +91,10 @@ CREATE TABLE IF NOT EXISTS users
 	type varchar(20) not null COMMENT '1 = admin 2 = bruger',
 	password varchar(30) NOT NULL,
 	CPR varchar(11) not null,
-	--LastUpdateTime Bigint(50),
+	
 	PRIMARY KEY (userID)
 );
 
-
-/* Create Dummy Account */
-
-
-
-
-
-
-
---INSERT INTO `cbscalendar`.`Calendar`
---(type,
---Name,
---Active,
---CreatedBy,
---PrivatePublic)
---VALUES
---('1',
---'Hej',
---'2014-11-13 14:38:00',
---'user',
---'hej',
---'111111-1111');
-
-
-
-/* Create Foreign Keys */
 
 --ALTER TABLE events
 	--ADD FOREIGN KEY (ID)
@@ -127,8 +102,8 @@ CREATE TABLE IF NOT EXISTS users
 	--ON UPDATE RESTRICT
 --;
 
---ALTER TABLE notes
-	--ADD FOREIGN KEY (noteID)
-	--REFERENCES events (ID)
-	--ON UPDATE RESTRICT
---;
+ALTER TABLE notes
+	ADD FOREIGN KEY (noteID)
+	REFERENCES events (superID)
+	ON UPDATE RESTRICT
+;

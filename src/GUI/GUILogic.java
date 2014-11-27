@@ -217,38 +217,44 @@ public class GUILogic {
 			
 		
 				String description = screen.getAddEventGUI().getTextField_Description().getText();
-				String start = screen.getAddEventGUI().getTextField_Start().getText();
+				
 				String location = screen.getAddEventGUI().getTextField_Location().getText();
-				String end = screen.getAddEventGUI().getTextField_End().getText();
+				
 				String title = screen.getAddEventGUI().getTextField_Title().getText();
 				String type = screen.getAddEventGUI().getTextField_Type().getText();
-				String eventID = screen.getAddEventGUI().getTextField_EventID().getText();
-				String activityID = screen.getAddEventGUI().getTextField_ActivityID().getText();
+				
+				String eventID = "";
+				String activityID = "";
 				String calendarName =  screen.getAddEventGUI().getTextField_CalendarName().getText();
 				
+				Object startYear = screen.getAddEventGUI().getComboBox_StartYear().getSelectedItem();
+				Object startMonth = screen.getAddEventGUI().getComboBox_StartMonth().getSelectedItem();
+				Object startDay = screen.getAddEventGUI().getComboBox_StartDay().getSelectedItem();
 				Object startHour = screen.getAddEventGUI().getComboBox_StartHour().getSelectedItem();
 				Object startMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
 				
-				String startTime = startHour.toString()+ ":"+ startMinutes.toString();
-				System.out.println("startTime: "+startTime);
-				
-				Object endHour = screen.getAddEventGUI().getComboBox_StartHour().getSelectedItem();
-				Object endMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
-				
-				String endTime = endHour.toString()+ ":"+ endMinutes.toString();
-				System.out.println("endTime");
-				
-				System.out.println("fafaf "+startHour);
-				
-//				  (cmbYear.getSelectedItem() != null){
-//		                String b = cmbYear.getSelectedItem().toString();
-//		                d.setCurrentYear(Integer.parseInt(b));
-//		                refreshCalendar(d.getWeekofYear(), d.getCurrentYear(), d.getJsonString());
-//		                
-		                
 				
 				
-				CreateEvent CE = new CreateEvent("createEvent", 0,activityID , eventID, type, title, description, start, end, location, calendarName );
+				if(startMinutes.equals("0")){
+					startMinutes = "00";
+				}
+				
+				Object endYear = screen.getAddEventGUI().getComboBox_EndYear().getSelectedItem();
+				Object endMonth = screen.getAddEventGUI().getComboBox_EndMonth().getSelectedItem();
+				Object endDay = screen.getAddEventGUI().getComboBox_EndDay().getSelectedItem();
+				Object endHour = screen.getAddEventGUI().getComboBox_EndHour().getSelectedItem();
+				Object endMinutes = screen.getAddEventGUI().getComboBox_EndMinutes().getSelectedItem();
+				
+				if(endMinutes.equals("0")){
+					endMinutes = "00";
+				}
+			
+				String start = startYear.toString()+ "-"+ startMonth.toString()+ "-"+ startDay.toString()+ " "+startHour.toString()+":"+startMinutes+":00";
+				String end = endYear.toString()+ "-"+ endMonth.toString()+ "-"+ endDay.toString()+ " "+endHour.toString()+":"+endMinutes+":00";
+				        
+				String EventID = "";
+				
+				CreateEvent CE = new CreateEvent("createEvent", 0,activityID,EventID , type, title, description, start, end, location, calendarName );
 							
 				Gson gson = new GsonBuilder().create();
 				String gsonString = gson.toJson(CE);

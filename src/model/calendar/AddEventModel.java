@@ -34,7 +34,7 @@ Answer A = new Answer();
 	public String CreateEvent(
 			int ID,
 			String activityID,
-			String eventID,
+			String EventID,
 			String type,
 			String title,
 			String description,
@@ -51,19 +51,19 @@ Answer A = new Answer();
 				
 				e1.printStackTrace();
 			}
-			String calendarID = "";
+			int calendarID = 0;
 			try {
 				while(resultSet.next())
 				{
-					 calendarID = resultSet.toString();
+					 calendarID = resultSet.getInt("CalendarID");
 					
 				}
 			} catch (SQLException e1) {
 				
 				e1.printStackTrace();
 			}
-			String[] fields = {"ID", "activityID", "eventID", "type", "title", "description", "start", "end", "location"};
-			String[] values = {calendarID, activityID, eventID, type, title, description, start, end, location};			try {
+			String[] fields = {"ID", "activityID","eventID", "type", "title", "description", "start", "end", "location"};
+			String[] values = {Integer.toString(calendarID),  activityID,EventID, type, title, description, start, end, location};			try {
 				qb.insertInto("events", fields).values(values).Execute();
 				A.setAnswer("The event has been succesfully created!!");
 //				stringToBeReturned = "The event has been succesfully created!!";
