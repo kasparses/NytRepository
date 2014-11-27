@@ -91,6 +91,7 @@ CREATE TABLE IF NOT EXISTS users
 	type varchar(20) not null COMMENT '1 = admin 2 = bruger',
 	password varchar(30) NOT NULL,
 	CPR varchar(11) not null,
+	UpdatedCbsEvents varchar(24) not null comment 'Updated, notUpdated.', 
 	
 	PRIMARY KEY (userID)
 );
