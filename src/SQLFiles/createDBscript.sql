@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS Forecast
 	date varchar(114) NOT NULL,
 	celcius varchar(255) NOT NULL,
 	description varchar(234) not null,
+	count varchar (10) not null,
 	PRIMARY KEY (ForecastID)
 );
 

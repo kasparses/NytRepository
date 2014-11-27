@@ -25,7 +25,7 @@ import model.QOTD.QOTDModel;
 import model.DailyUpdate.*;
 import databaseMethods.SwitchMethods;
 import model.calendar.*;
-
+import model.Forecast.ForecastTest;
 public class GiantSwitch {
 	private model.user.User u3;
 	model.user.AuthenticateUser a = new model.user.AuthenticateUser();
@@ -45,6 +45,7 @@ public class GiantSwitch {
 		QueryBuilder qb = new QueryBuilder();
 		model.calendar.GetCalendarData GCD = new model.calendar.GetCalendarData();
 		DeleteEvent DE = new DeleteEvent();
+		ForecastTest FT = new ForecastTest();
 		
 		Object answer = "";	
 
@@ -227,6 +228,7 @@ public class GiantSwitch {
 
 		case "getClientForecast":
 			System.out.println("Recieved getClientForecast");
+			answer = FT.getForeCastFromDatabase();
 			break;
 		
 		default:

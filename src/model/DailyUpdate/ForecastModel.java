@@ -101,44 +101,5 @@ public class ForecastModel {
 	     }
 	     
 	     // Henter vejrudsigten og gemmer de hentede data i en ArrayList
-	     public ArrayList<Forecast> getForecast() throws SQLException{
-	     	QueryBuilder qb = new QueryBuilder();
-	     	Date date = new Date(); // Current date & time
-	     	long maxTimeNoUpdate = 3600; // Maximum one hour with no update
-	     	ArrayList<Forecast> forecastFromDB = new ArrayList();
-	     	
-	     	long date1 = date.getTime();
-	     	long date2 = date.getTime() - maxTimeNoUpdate; // minus 1 hour -- should be fetched from database
-	     	
-	     	long timeSinceUpdate = 3601; 
-	     	
-	     	// if more than 1 hour ago, do update
-	     	if(timeSinceUpdate > 3600){
-	     		// return fresh weather data
-	     		return this.requestForecast();
-	     	} else {
-	     		// Query database and fetch existing weather data from db
-	     		ResultSet forecast = null;
-	     		try {
-	     			forecast = qb.selectFrom("dailyupdate").where("msg_type", "=", "forecast").ExecuteQuery();
-					// Method to add these ResultSet values to ArrayList needs to be created
-					return (ArrayList<Forecast>) forecastFromDB;
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	     		
-	     		//Do something nice with ResultSet in order to make it into an ArrayList
-	     		try {
-					while(forecast.next()){
-						//forecastFromDB.add("xx");
-						return forecastFromDB;
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-	     		return null;
-	     	}
-	     } 
+	     
 }
