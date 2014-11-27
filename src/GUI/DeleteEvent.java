@@ -26,6 +26,7 @@ public class DeleteEvent extends JPanel {
 	private final JButton btnEventList = new JButton("Event List");
 	private final JButton btnCalendarList = new JButton("Calendar List");
 	private final JLabel label_1 = new JLabel("");
+	private final JButton btnUserInfo = new JButton("User Info");
 
 	/**
 	 * Create the panel.
@@ -64,13 +65,13 @@ public class DeleteEvent extends JPanel {
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBounds(49, 427, 225, 45);
+		btnMainMenu.setBounds(49, 522, 225, 45);
 		
 		add(btnMainMenu);
 		btnLogOut.setForeground(Color.WHITE);
 		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogOut.setContentAreaFilled(false);
-		btnLogOut.setBounds(49, 502, 225, 45);
+		btnLogOut.setBounds(49, 603, 225, 45);
 		
 		add(btnLogOut);
 		btnNoteList.setForeground(Color.WHITE);
@@ -101,6 +102,12 @@ public class DeleteEvent extends JPanel {
 		label_1.setBounds(0, 709, 250, 59);
 		
 		add(label_1);
+		btnUserInfo.setForeground(Color.WHITE);
+		btnUserInfo.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnUserInfo.setContentAreaFilled(false);
+		btnUserInfo.setBounds(49, 438, 225, 45);
+		
+		add(btnUserInfo);
 		label.setIcon(new ImageIcon(DeleteEvent.class.getResource("/Images/MetalBackground.jpg")));
 		label.setBounds(0, 0, 1366, 768);
 		
@@ -116,9 +123,15 @@ public class DeleteEvent extends JPanel {
 		btnCalendarList.addActionListener(l);
 		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
+		btnUserInfo.addActionListener(l);
 
 }
 	
+	
+
+	public JButton getBtnUserInfo() {
+		return btnUserInfo;
+	}
 
 	public JButton getBtnNoteList() {
 		return btnNoteList;

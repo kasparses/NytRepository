@@ -219,6 +219,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getAddEventGUI().getBtnUserList()){
 				screen.show(Screen.USERLIST);
 			}
+			if (e.getSource() == screen.getAddEventGUI().getBtnUserInfo()){
+				screen.show(Screen.USERINFO);
+			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
 				 
 			
@@ -309,6 +312,9 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getAddUser().getBtnUserList()){
 				screen.show(Screen.USERLIST);
+			}
+			if (e.getSource() == screen.getAddUser().getBtnUserInfo()){
+				screen.show(Screen.USERINFO);
 			}
 			if (e.getSource() == screen.getAddUser().getBtnCreateUser()){
 				
@@ -469,6 +475,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getAddNote().getBtnUserList()){
 				screen.show(Screen.USERLIST);
 			}
+			if (e.getSource() == screen.getAddNote().getBtnUserInfo()){
+				screen.show(Screen.USERINFO);
+			}
 			if (e.getSource() == screen.getAddNote().getBtnAddNote()){
 				
 				String text = screen.getAddNote().getTextField_text().getText();
@@ -549,6 +558,10 @@ public class GUILogic {
 
 				screen.show(Screen.USERLIST);
 			}
+			if (e.getSource() == screen.getDeleteCalendar().getBtnUserInfo()){
+
+				screen.show(Screen.USERINFO);
+			}
 			if (e.getSource() == screen.getDeleteCalendar().getBtnDelete()){
 				try {
 				String userName = screen.getDeleteCalendar().getTextField_Username().getText();
@@ -598,6 +611,11 @@ public class GUILogic {
 			if (e.getSource() == screen.getCreateCalendar().getBtnUserList()){
 
 				screen.show(Screen.USERLIST);
+
+			}
+			if (e.getSource() == screen.getCreateCalendar().getBtnUserInfo()){
+
+				screen.show(Screen.USERINFO);
 
 			}
 			if (e.getSource() == screen.getCreateCalendar().getBtnCreateCalendar()){
@@ -684,6 +702,10 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnUserList()){
 				screen.show(Screen.USERLIST);
+			
+			}
+			if (e.getSource() == screen.getDeleteEvent().getBtnUserInfo()){
+				screen.show(Screen.USERINFO);
 			
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnDelete()){

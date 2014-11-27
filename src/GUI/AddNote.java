@@ -34,6 +34,7 @@ public class AddNote extends JPanel {
 	private final JButton btnEventList = new JButton("Event List");
 	private final JButton btnCalendarList = new JButton("Calendar List");
 	private final JButton btnAddNote = new JButton("Add Note");
+	private final JButton btnUserInfo = new JButton("User Info");
 
 	/**
 	 * Create the panel.
@@ -97,13 +98,13 @@ public class AddNote extends JPanel {
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBounds(48, 437, 225, 45);
+		btnMainMenu.setBounds(48, 511, 225, 45);
 		
 		add(btnMainMenu);
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBounds(48, 512, 225, 45);
+		btnLogout.setBounds(48, 586, 225, 45);
 		
 		add(btnLogout);
 		btnNoteList.setForeground(Color.WHITE);
@@ -136,6 +137,12 @@ public class AddNote extends JPanel {
 		btnAddNote.setBounds(570, 456, 225, 45);
 		
 		add(btnAddNote);
+		btnUserInfo.setForeground(Color.WHITE);
+		btnUserInfo.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnUserInfo.setContentAreaFilled(false);
+		btnUserInfo.setBounds(48, 434, 225, 45);
+		
+		add(btnUserInfo);
 		label.setIcon(new ImageIcon(AddNote.class.getResource("/Images/MetalBackground.jpg")));
 		label.setBounds(0, 0, 1366, 768);
 		
@@ -151,7 +158,13 @@ public class AddNote extends JPanel {
 		btnEventList.addActionListener(l);
 		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
+		btnUserInfo.addActionListener(l);
 
+	}
+	
+
+	public JButton getBtnUserInfo() {
+		return btnUserInfo;
 	}
 
 	public JButton getBtnLogout() {

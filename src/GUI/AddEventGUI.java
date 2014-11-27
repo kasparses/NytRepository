@@ -71,6 +71,7 @@ public class AddEventGUI extends JPanel {
 	private JButton btnUserList;
 	private JButton btnEventList;
 	private JButton btnCalendarList;
+	private JButton btnUserInfo;
 
 	/**
 	 * Create the panel.
@@ -170,14 +171,14 @@ public class AddEventGUI extends JPanel {
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBounds(47, 432, 225, 45);
+		btnMainMenu.setBounds(47, 509, 225, 45);
 		add(btnMainMenu);
 		
 		btnLogout = new JButton("Log Out");
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBounds(47, 507, 225, 45);
+		btnLogout.setBounds(47, 584, 225, 45);
 		add(btnLogout);
 		
 		lblNewLabel = new JLabel("Calendar Name");
@@ -323,6 +324,13 @@ public class AddEventGUI extends JPanel {
 		btnCalendarList.setBounds(47, 357, 234, 45);
 		add(btnCalendarList);
 		
+		btnUserInfo = new JButton("User Info");
+		btnUserInfo.setForeground(Color.WHITE);
+		btnUserInfo.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnUserInfo.setContentAreaFilled(false);
+		btnUserInfo.setBounds(49, 432, 225, 45);
+		add(btnUserInfo);
+		
 		
 		
 		
@@ -387,9 +395,13 @@ public class AddEventGUI extends JPanel {
 		btnEventList.addActionListener(l);
 		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
-
+		btnUserInfo.addActionListener(l);
 	}
 	
+
+	public JButton getBtnUserInfo() {
+		return btnUserInfo;
+	}
 
 	public JComboBox getComboBox_StartMinutes() {
 		return comboBox_StartMinutes;
