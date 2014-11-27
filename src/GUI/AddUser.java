@@ -33,9 +33,14 @@ public class AddUser extends JPanel {
 	private JRadioButton rdbtnAdmin;
 	private JRadioButton rdbtnUser;
 	private JButton btnCreateUser;
+	private JButton btnSubmit;
+	private JLabel label;
 	private JButton btnMainMenu;
 	private JButton btnLogout;
-	private JButton btnSubmit;
+	private JButton btnNoteList;
+	private JButton btnUserList;
+	private JButton btnEventList;
+	private JButton btnCalendarList;
 
 	/**
 	 * Create the panel.
@@ -81,10 +86,10 @@ public class AddUser extends JPanel {
 		lblTeam.setBounds(483, 303, 127, 30);
 		add(lblTeam);
 				
-				lblUserInfo = new JLabel("Create user");
+				lblUserInfo = new JLabel("Create User");
 				lblUserInfo.setForeground(Color.WHITE);
 				lblUserInfo.setFont(new Font("Arial", Font.BOLD, 78));
-				lblUserInfo.setBounds(451, 90, 464, 90);
+				lblUserInfo.setBounds(469, 11, 446, 90);
 				add(lblUserInfo);
 				
 				lblCpr = new JLabel("CPR");
@@ -100,10 +105,12 @@ public class AddUser extends JPanel {
 				add(textField_CPR);
 				
 				rdbtnUser = new JRadioButton("User");
+				rdbtnUser.setContentAreaFilled(false);
 				rdbtnUser.setBounds(783, 261, 109, 23);
 				add(rdbtnUser);
 				
 				rdbtnAdmin = new JRadioButton("Admin");
+				rdbtnAdmin.setContentAreaFilled(false);
 				rdbtnAdmin.setBounds(622, 261, 109, 23);
 				add(rdbtnAdmin);
 				
@@ -122,33 +129,86 @@ public class AddUser extends JPanel {
 				btnMainMenu.setForeground(Color.WHITE);
 				btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 				btnMainMenu.setContentAreaFilled(false);
-				btnMainMenu.setBounds(587, 495, 191, 50);
+				btnMainMenu.setBounds(47, 438, 225, 45);
 				add(btnMainMenu);
 				
 				btnLogout = new JButton("Log Out");
 				btnLogout.setForeground(Color.WHITE);
 				btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
 				btnLogout.setContentAreaFilled(false);
-				btnLogout.setBounds(587, 560, 191, 50);
+				btnLogout.setBounds(47, 513, 225, 45);
 				add(btnLogout);
+				
+				btnNoteList = new JButton("Note List");
+				btnNoteList.setForeground(Color.WHITE);
+				btnNoteList.setFont(new Font("Tahoma", Font.BOLD, 30));
+				btnNoteList.setContentAreaFilled(false);
+				btnNoteList.setBounds(47, 138, 225, 45);
+				add(btnNoteList);
+				
+				btnUserList = new JButton("User List");
+				btnUserList.setForeground(Color.WHITE);
+				btnUserList.setFont(new Font("Tahoma", Font.BOLD, 30));
+				btnUserList.setContentAreaFilled(false);
+				btnUserList.setBounds(47, 213, 225, 45);
+				add(btnUserList);
+				
+				btnEventList = new JButton("Event List");
+				btnEventList.setForeground(Color.WHITE);
+				btnEventList.setFont(new Font("Tahoma", Font.BOLD, 30));
+				btnEventList.setContentAreaFilled(false);
+				btnEventList.setBounds(47, 288, 225, 45);
+				add(btnEventList);
+				
+				btnCalendarList = new JButton("Calendar List");
+				btnCalendarList.setForeground(Color.WHITE);
+				btnCalendarList.setFont(new Font("Tahoma", Font.BOLD, 30));
+				btnCalendarList.setContentAreaFilled(false);
+				btnCalendarList.setBounds(47, 363, 234, 45);
+				add(btnCalendarList);
+				
+				label = new JLabel("");
+				label.setIcon(new ImageIcon(AddUser.class.getResource("/Images/MetalBackground.jpg")));
+				label.setBounds(0, 0, 1366, 770);
+				add(label);
 		
 		
 
 	}
 	
 	public void addActionListener(ActionListener l) {
-		btnSubmit.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
+		btnCalendarList.addActionListener(l);
+		btnEventList.addActionListener(l);
+		btnNoteList.addActionListener(l);
+		btnUserList.addActionListener(l);
+		btnCreateUser.addActionListener(l);
 	}
 
 	
+
+	public JButton getBtnNoteList() {
+		return btnNoteList;
+	}
+
+
+	public JButton getBtnUserList() {
+		return btnUserList;
+	}
+
+	public JButton getBtnEventList() {
+		return btnEventList;
+	}
+
+
+	public JButton getBtnCalendarList() {
+		return btnCalendarList;
+	}
 
 	public JTextField getTextField_Email() {
 		return textField_Email;
 	}
-
-	
 
 	public JRadioButton getRdbtnAdmin() {
 		return rdbtnAdmin;
@@ -166,9 +226,6 @@ public class AddUser extends JPanel {
 		return textField_CPR;
 	}
 
-	public JButton getBtnSubmit() {
-		return btnSubmit;
-	}
 	public JButton getBtnMainMenu() {
 		return btnMainMenu;
 	}
@@ -176,4 +233,12 @@ public class AddUser extends JPanel {
 	public JButton getBtnLogout() {
 		return btnLogout;
 	}
+
+	public JButton getBtnCreateUser() {
+		return btnCreateUser;
+	}
+
+	
+
+	
 }

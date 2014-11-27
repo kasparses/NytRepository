@@ -20,10 +20,14 @@ public class CreateCalendar extends JPanel {
 	private final JRadioButton rdbtnPrivateCalendar = new JRadioButton("Private Calendar");
 	private final JRadioButton rdbtnPublicCalendar = new JRadioButton("Public Calendar");
 	private final JButton btnCreateCalendar = new JButton("Create Calendar");
+	private final JLabel label = new JLabel("");
+	private final JButton btnNoteList = new JButton("Note List");
+	private final JButton btnUserList = new JButton("User List");
+	private final JButton btnEventList = new JButton("Event List");
 	private final JButton btnCalendarList = new JButton("Calendar List");
 	private final JButton btnMainMenu = new JButton("Main Menu");
 	private final JButton btnLogOut = new JButton("Log Out");
-	private final JLabel label = new JLabel("");
+	private final JLabel label_1 = new JLabel("");
 
 	/**
 	 * Create the panel.
@@ -58,32 +62,54 @@ public class CreateCalendar extends JPanel {
 		add(rdbtnPublicCalendar);
 		btnCreateCalendar.setContentAreaFilled(false);
 		btnCreateCalendar.setForeground(Color.WHITE);
-		btnCreateCalendar.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnCreateCalendar.setBounds(555, 444, 256, 60);
+		btnCreateCalendar.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnCreateCalendar.setBounds(533, 444, 299, 60);
 		
 		add(btnCreateCalendar);
-		btnCalendarList.setContentAreaFilled(false);
-		btnCalendarList.setForeground(Color.WHITE);
-		btnCalendarList.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnCalendarList.setBounds(555, 527, 256, 60);
-		
-		add(btnCalendarList);
-		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setForeground(Color.WHITE);
-		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnMainMenu.setBounds(555, 605, 256, 60);
-		
-		add(btnMainMenu);
-		btnLogOut.setContentAreaFilled(false);
-		btnLogOut.setForeground(Color.WHITE);
-		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnLogOut.setBounds(555, 685, 256, 60);
-		
-		add(btnLogOut);
 		
 		ButtonGroup group = new ButtonGroup();
 		group.add(getRdbtnPrivateCalendar());
 		group.add(getRdbtnPublicCalendar());
+		btnNoteList.setForeground(Color.WHITE);
+		btnNoteList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnNoteList.setContentAreaFilled(false);
+		btnNoteList.setBounds(45, 139, 225, 45);
+		
+		add(btnNoteList);
+		btnUserList.setForeground(Color.WHITE);
+		btnUserList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnUserList.setContentAreaFilled(false);
+		btnUserList.setBounds(45, 214, 225, 45);
+		
+		add(btnUserList);
+		btnEventList.setForeground(Color.WHITE);
+		btnEventList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnEventList.setContentAreaFilled(false);
+		btnEventList.setBounds(45, 289, 225, 45);
+		
+		add(btnEventList);
+		btnCalendarList.setForeground(Color.WHITE);
+		btnCalendarList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnCalendarList.setContentAreaFilled(false);
+		btnCalendarList.setBounds(45, 364, 234, 45);
+		
+		add(btnCalendarList);
+		btnMainMenu.setForeground(Color.WHITE);
+		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnMainMenu.setContentAreaFilled(false);
+		btnMainMenu.setBounds(45, 439, 225, 45);
+		
+		add(btnMainMenu);
+		btnLogOut.setForeground(Color.WHITE);
+		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnLogOut.setContentAreaFilled(false);
+		btnLogOut.setBounds(45, 514, 225, 45);
+		
+		add(btnLogOut);
+		label_1.setIcon(new ImageIcon(CreateCalendar.class.getResource("/Images/CBSLogo3.png")));
+		label_1.setBounds(0, 709, 250, 59);
+		
+		add(label_1);
 		label.setIcon(new ImageIcon(CreateCalendar.class.getResource("/Images/MetalBackground.jpg")));
 		label.setBounds(0, 0, 1366, 768);
 		
@@ -97,7 +123,24 @@ public class CreateCalendar extends JPanel {
 		btnCalendarList.addActionListener(l);
 		btnLogOut.addActionListener(l);
 		btnMainMenu.addActionListener(l);
+		btnEventList.addActionListener(l);
+		btnNoteList.addActionListener(l);
+		btnUserList.addActionListener(l);
+
 }
+	
+
+	public JButton getBtnNoteList() {
+		return btnNoteList;
+	}
+
+	public JButton getBtnUserList() {
+		return btnUserList;
+	}
+
+	public JButton getBtnEventList() {
+		return btnEventList;
+	}
 
 	public JTextField getTextField_Name() {
 		return textField_Name;

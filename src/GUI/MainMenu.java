@@ -41,7 +41,7 @@ public class MainMenu extends JPanel {
 		
 		lblCBSlogo = new JLabel("");
 		lblCBSlogo.setIcon(new ImageIcon(MainMenu.class.getResource("/Images/CBSLogo3.png")));
-		lblCBSlogo.setBounds(10, 698, 250, 59);
+		lblCBSlogo.setBounds(0, 709, 250, 59);
 		add(lblCBSlogo);
 		btnNotelist.setForeground(Color.WHITE);
 		btnNotelist.setFont(new Font("Tahoma", Font.BOLD, 30));
@@ -89,13 +89,10 @@ public class MainMenu extends JPanel {
 		btnNotelist.addActionListener(l);
 		btnUserlist_1.addActionListener(l);
 		btnCalendarList.addActionListener(l);
-		btn_CreateEvent.addActionListener(l);
 		
 	}
 	
-	public JButton getBtn_CreateEvent() {
-		return btn_CreateEvent;
-	}
+	
 	public JButton getBtnUserlist() {
 		return btnUserlist_1;
 	}

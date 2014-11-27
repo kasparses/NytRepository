@@ -75,7 +75,7 @@ public class Login extends JPanel {
 		
 		add(textFieldUsername);
 		lblCBSlogo.setIcon(new ImageIcon(Login.class.getResource("/Images/CBSLogo3.png")));
-		lblCBSlogo.setBounds(10, 698, 250, 59);
+		lblCBSlogo.setBounds(0, 709, 250, 59);
 		
 		add(lblCBSlogo);
 		setFont(new Font("Lucida Grande", Font.PLAIN, 17));
@@ -89,13 +89,13 @@ public class Login extends JPanel {
 		btnLogIn.setContentAreaFilled(false);
 		btnLogIn.setForeground(Color.WHITE);
 		btnLogIn.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnLogIn.setBounds(563, 492, 240, 59);
+		btnLogIn.setBounds(552, 492, 262, 59);
 		
 		add(btnLogIn);
 		btnForgotLogin.setForeground(Color.WHITE);
 		btnForgotLogin.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnForgotLogin.setContentAreaFilled(false);
-		btnForgotLogin.setBounds(563, 595, 240, 59);
+		btnForgotLogin.setBounds(552, 595, 262, 59);
 		
 		add(btnForgotLogin);
 		lblBackground.setHorizontalAlignment(SwingConstants.CENTER);

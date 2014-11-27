@@ -43,10 +43,11 @@ import java.sql.SQLException;
 		
 		private JButton btnAdd;
 		private JButton btnDelete;
-		private JButton btnLogout;
-		private JButton btnMainMenu;
 		private ResultSet rs;
 		private QueryBuilder qb;
+		private JButton btnMainMenu;
+		private JButton btnLogout;
+		private JLabel label_1;
 		
 		
 		public EventList() {
@@ -56,14 +57,8 @@ import java.sql.SQLException;
 			JLabel lblEvents = new JLabel("Eventlist");
 			lblEvents.setForeground(Color.WHITE);
 			lblEvents.setFont(new Font("Arial", Font.BOLD, 78));
-			lblEvents.setBounds(521, 90, 323, 90);
+			lblEvents.setBounds(521, 11, 333, 90);
 			add(lblEvents);
-
-			JLabel lblUpcomingEvent = new JLabel("Upcomming Events:");
-			lblUpcomingEvent.setFont(new Font("Arial", Font.BOLD, 27));
-			lblUpcomingEvent.setForeground(Color.WHITE);
-			lblUpcomingEvent.setBounds(51, 140, 309, 33);
-			add(lblUpcomingEvent);
 
 			
 			//Laver tabellen inde i Eventlisten.
@@ -125,45 +120,48 @@ import java.sql.SQLException;
 					BevelBorder.LOWERED, new Color(0, 0, 205), new Color(255, 255,
 							255), new Color(0, 0, 205), new Color(255, 255, 255)),
 					null));
-			scrollPane.setBounds(387, 194, 591, 361);
+			scrollPane.setBounds(149, 171, 1062, 376);
 
 			// Add the scroll pane to this panel.
 			add(scrollPane);
-			
-			btnMainMenu = new JButton("Main Menu");
-			btnMainMenu.setForeground(Color.WHITE);
-			btnMainMenu.setFont(new Font("Arial", Font.BOLD, 30));
-			btnMainMenu.setContentAreaFilled(false);
-			btnMainMenu.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-			btnMainMenu.setBounds(601, 612, 163, 43);
-			add(btnMainMenu);
-			
-			btnLogout = new JButton("Log out");
-			btnLogout.setForeground(Color.WHITE);
-			btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
-			btnLogout.setContentAreaFilled(false);
-			btnLogout.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-			btnLogout.setBounds(624, 667, 117, 43);
-			add(btnLogout);
 						
 						btnDelete = new JButton("Delete");
 						btnDelete.setOpaque(true);
 						btnDelete.setForeground(new Color(0, 0, 205));
 						btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
-						btnDelete.setBounds(988, 194, 118, 29);
+						btnDelete.setBounds(1221, 209, 118, 29);
 						add(btnDelete);
 						
 						btnAdd = new JButton("Add");
 						btnAdd.setOpaque(true);
 						btnAdd.setForeground(new Color(0, 0, 205));
 						btnAdd.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
-						btnAdd.setBounds(988, 234, 118, 29);
+						btnAdd.setBounds(1221, 169, 118, 29);
 						add(btnAdd);
-			
-						JLabel label = new JLabel("");
-						label.setIcon(new ImageIcon(EventList.class.getResource("/Images/MetalBackground.jpg")));
-						label.setBounds(0, 0, 1366, 768);
-						add(label);
+						
+						btnMainMenu = new JButton("Main Menu");
+						btnMainMenu.setForeground(Color.WHITE);
+						btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
+						btnMainMenu.setContentAreaFilled(false);
+						btnMainMenu.setBounds(581, 558, 203, 59);
+						add(btnMainMenu);
+						
+						btnLogout = new JButton("Log Out");
+						btnLogout.setForeground(Color.WHITE);
+						btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
+						btnLogout.setContentAreaFilled(false);
+						btnLogout.setBounds(581, 629, 203, 59);
+						add(btnLogout);
+									
+									label_1 = new JLabel("");
+									label_1.setIcon(new ImageIcon(EventList.class.getResource("/Images/CBSLogo3.png")));
+									label_1.setBounds(0, 709, 250, 59);
+									add(label_1);
+									
+												JLabel label = new JLabel("");
+												label.setIcon(new ImageIcon(EventList.class.getResource("/Images/MetalBackground.jpg")));
+												label.setBounds(0, 0, 1366, 768);
+												add(label);
 
 		}
 		

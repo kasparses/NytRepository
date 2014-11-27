@@ -61,14 +61,11 @@ public class GUILogic {
 		screen.getUserList().addActionListener(new UserListActionListener());
 		screen.getEventlist().addActionListener(new EventListActionListener());
 		screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
-//		screen.getAddUser().addActionListener(new AddUserActionListener());
+		screen.getAddUser().addActionListener(new AddUserActionListener());
 		screen.getAddNote().addActionListener(new AddNoteActionListener());
 		screen.getForgotLogin().addActionListener(new ForgotActionListener());
 		screen.getCalendarList().addActionListener(new CalendarListActionListener());
 		screen.getDeleteEvent().addActionListener(new DeleteEventActionListener());
-
-//		screen.getAddEventGUI().addActionListener(new CalendarListActionListener());
-
 		screen.getDeleteCalendar().addActionListener(new DeleteCalendarActionListener());
 		screen.getCreateCalendar().addActionListener(new CreateCalendarActionListener());
 
@@ -198,9 +195,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getBtnCalendarList()){
 				screen.show(Screen.CALENDARLIST);
 			}
-			if (e.getSource() == screen.getMainMenu().getBtn_CreateEvent()){
-				screen.show(Screen.ADDEVENT);
-			}
+			
 
 		}
 	}
@@ -211,6 +206,18 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnMainMenu()){
 				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getAddEventGUI().getBtnCalendarList()){
+				screen.show(Screen.CALENDARLIST);
+			}
+			if (e.getSource() == screen.getAddEventGUI().getBtnEventList()){
+				screen.show(Screen.EVENTLIST);
+			}
+			if (e.getSource() == screen.getAddEventGUI().getBtnNoteList()){
+				screen.show(Screen.NOTELIST);
+			}
+			if (e.getSource() == screen.getAddEventGUI().getBtnUserList()){
+				screen.show(Screen.USERLIST);
 			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
 				 
@@ -290,7 +297,20 @@ public class GUILogic {
 			if (e.getSource() == screen.getAddUser().getBtnMainMenu()){
 				screen.show(Screen.MAINMENU);
 			}
-			if (e.getSource() == screen.getAddUser().getBtnSubmit()){
+			if (e.getSource() == screen.getAddUser().getBtnCalendarList()){
+				screen.show(Screen.CALENDARLIST);
+			}
+			if (e.getSource() == screen.getAddUser().getBtnEventList()){
+			
+				screen.show(Screen.EVENTLIST);
+			}
+			if (e.getSource() == screen.getAddUser().getBtnNoteList()){
+				screen.show(Screen.NOTELIST);
+			}
+			if (e.getSource() == screen.getAddUser().getBtnUserList()){
+				screen.show(Screen.USERLIST);
+			}
+			if (e.getSource() == screen.getAddUser().getBtnCreateUser()){
 				
 				
 				String Email = screen.getAddUser().getTextField_Email().getText();
@@ -353,8 +373,24 @@ public class GUILogic {
 			if (e.getSource() == screen.getUserInfo().getBtnLogout()){
 				screen.show(Screen.LOGIN);
 			}
+			if (e.getSource() == screen.getUserInfo().getBtnCalendarList()){
+				screen.show(Screen.CALENDARLIST);
+
+			}
+			if (e.getSource() == screen.getUserInfo().getBtnEventList()){
+				screen.show(Screen.EVENTLIST);
+
+			}
+			if (e.getSource() == screen.getUserInfo().getBtnNoteList()){
+				screen.show(Screen.NOTELIST);
+
+			}
+			if (e.getSource() == screen.getUserInfo().getBtnUserList()){
+				screen.show(Screen.USERLIST);
+
+			}
 			if (e.getSource() == screen.getUserInfo().getBtnSubmit()){
-				
+
 			}
 		}
 	}
@@ -420,6 +456,18 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getAddNote().getBtnLogout()){
 				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getAddNote().getBtnCalendarList()){
+				screen.show(Screen.CALENDARLIST);
+			}
+			if (e.getSource() == screen.getAddNote().getBtnEventList()){
+				screen.show(Screen.EVENTLIST);
+			}
+			if (e.getSource() == screen.getAddNote().getBtnNoteList()){
+				screen.show(Screen.NOTELIST);
+			}
+			if (e.getSource() == screen.getAddNote().getBtnUserList()){
+				screen.show(Screen.USERLIST);
 			}
 			if (e.getSource() == screen.getAddNote().getBtnAddNote()){
 				
@@ -489,6 +537,18 @@ public class GUILogic {
 				
 				screen.show(Screen.CALENDARLIST);
 			}
+			if (e.getSource() == screen.getDeleteCalendar().getBtnEventList()){
+
+				screen.show(Screen.EVENTLIST);
+			}
+			if (e.getSource() == screen.getDeleteCalendar().getBtnNoteList()){
+
+				screen.show(Screen.NOTELIST);
+			}
+			if (e.getSource() == screen.getDeleteCalendar().getBtnUserList()){
+
+				screen.show(Screen.USERLIST);
+			}
 			if (e.getSource() == screen.getDeleteCalendar().getBtnDelete()){
 				try {
 				String userName = screen.getDeleteCalendar().getTextField_Username().getText();
@@ -523,6 +583,21 @@ public class GUILogic {
 			if (e.getSource() == screen.getCreateCalendar().getBtnCalendarList()){
 
 				screen.show(Screen.CALENDARLIST);
+
+			}
+			if (e.getSource() == screen.getCreateCalendar().getBtnEventList()){
+
+				screen.show(Screen.EVENTLIST);
+
+			}
+			if (e.getSource() == screen.getCreateCalendar().getBtnNoteList()){
+
+				screen.show(Screen.NOTELIST);
+
+			}
+			if (e.getSource() == screen.getCreateCalendar().getBtnUserList()){
+
+				screen.show(Screen.USERLIST);
 
 			}
 			if (e.getSource() == screen.getCreateCalendar().getBtnCreateCalendar()){
@@ -597,6 +672,18 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnEventList()){
 				screen.show(Screen.EVENTLIST);
+			
+			}
+			if (e.getSource() == screen.getDeleteEvent().getBtnCalendarList()){
+				screen.show(Screen.CALENDARLIST);
+			
+			}
+			if (e.getSource() == screen.getDeleteEvent().getBtnNoteList()){
+				screen.show(Screen.NOTELIST);
+			
+			}
+			if (e.getSource() == screen.getDeleteEvent().getBtnUserList()){
+				screen.show(Screen.USERLIST);
 			
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnDelete()){

@@ -18,10 +18,14 @@ public class DeleteCalendar extends JPanel {
 	private final JLabel lblEnterThe = new JLabel("Enter the calendar name:");
 	private final JTextField textField_CalendarName = new JTextField();
 	private final JButton btnDelete = new JButton("Delete");
-	private final JButton btnCalendarList = new JButton("Calendar List");
-	private final JButton btnMainMenu = new JButton("Main Menu");
 	private final JLabel label = new JLabel("");
+	private final JButton btnMainMenu = new JButton("Main Menu");
 	private final JButton btnLogOut = new JButton("Log Out");
+	private final JButton btnNoteList = new JButton("Note List");
+	private final JButton btnUserList = new JButton("User List");
+	private final JButton btnEventList = new JButton("Event List");
+	private final JButton btnCalendarList = new JButton("Calendar List");
+	private final JLabel label_1 = new JLabel("");
 
 	/**
 	 * Create the panel.
@@ -53,28 +57,50 @@ public class DeleteCalendar extends JPanel {
 		add(textField_CalendarName);
 		btnDelete.setContentAreaFilled(false);
 		btnDelete.setForeground(Color.WHITE);
-		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnDelete.setBounds(566, 435, 233, 50);
 		
 		add(btnDelete);
-		btnCalendarList.setForeground(Color.WHITE);
-		btnCalendarList.setFont(new Font("Tahoma", Font.BOLD, 20));
-		btnCalendarList.setContentAreaFilled(false);
-		btnCalendarList.setBounds(566, 520, 233, 50);
-		
-		add(btnCalendarList);
 		btnMainMenu.setForeground(Color.WHITE);
-		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBounds(566, 604, 233, 50);
+		btnMainMenu.setBounds(46, 431, 225, 45);
 		
 		add(btnMainMenu);
 		btnLogOut.setForeground(Color.WHITE);
-		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogOut.setContentAreaFilled(false);
-		btnLogOut.setBounds(566, 682, 233, 50);
+		btnLogOut.setBounds(46, 506, 225, 45);
 		
 		add(btnLogOut);
+		btnNoteList.setForeground(Color.WHITE);
+		btnNoteList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnNoteList.setContentAreaFilled(false);
+		btnNoteList.setBounds(46, 131, 225, 45);
+		
+		add(btnNoteList);
+		btnUserList.setForeground(Color.WHITE);
+		btnUserList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnUserList.setContentAreaFilled(false);
+		btnUserList.setBounds(46, 206, 225, 45);
+		
+		add(btnUserList);
+		btnEventList.setForeground(Color.WHITE);
+		btnEventList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnEventList.setContentAreaFilled(false);
+		btnEventList.setBounds(46, 281, 225, 45);
+		
+		add(btnEventList);
+		btnCalendarList.setForeground(Color.WHITE);
+		btnCalendarList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnCalendarList.setContentAreaFilled(false);
+		btnCalendarList.setBounds(46, 356, 234, 45);
+		
+		add(btnCalendarList);
+		label_1.setIcon(new ImageIcon(DeleteCalendar.class.getResource("/Images/CBSLogo3.png")));
+		label_1.setBounds(0, 709, 250, 59);
+		
+		add(label_1);
 		label.setIcon(new ImageIcon(DeleteCalendar.class.getResource("/Images/MetalBackground.jpg")));
 		label.setBounds(0, 0, 1366, 768);
 		
@@ -87,7 +113,24 @@ public class DeleteCalendar extends JPanel {
 		btnCalendarList.addActionListener(l);
 		btnMainMenu.addActionListener(l);
 		btnDelete.addActionListener(l);
+		btnEventList.addActionListener(l);
+		btnNoteList.addActionListener(l);
+		btnUserList.addActionListener(l);
+
 }
+	
+
+	public JButton getBtnNoteList() {
+		return btnNoteList;
+	}
+
+	public JButton getBtnUserList() {
+		return btnUserList;
+	}
+
+	public JButton getBtnEventList() {
+		return btnEventList;
+	}
 
 	public JTextField getTextField_Username() {
 		return textField_Username;

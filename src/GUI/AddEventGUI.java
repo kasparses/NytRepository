@@ -67,6 +67,10 @@ public class AddEventGUI extends JPanel {
 	private final JLabel lblTime_1 = new JLabel("Time:");
 	private final JLabel label_1 = new JLabel(":");
 	private final JLabel label_2 = new JLabel(":");
+	private JButton btnNoteList;
+	private JButton btnUserList;
+	private JButton btnEventList;
+	private JButton btnCalendarList;
 
 	/**
 	 * Create the panel.
@@ -78,7 +82,7 @@ public class AddEventGUI extends JPanel {
 		
 		lblCBSlogo = new JLabel("");
 		lblCBSlogo.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/CBSLogo3.png")));
-		lblCBSlogo.setBounds(10, 698, 250, 59);
+		lblCBSlogo.setBounds(0, 703, 250, 59);
 		add(lblCBSlogo);
 
 		textField_Location = new JTextField();
@@ -159,21 +163,21 @@ public class AddEventGUI extends JPanel {
 		btnSubmit.setForeground(Color.WHITE);
 		btnSubmit.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnSubmit.setContentAreaFilled(false);
-		btnSubmit.setBounds(570, 574, 225, 45);
+		btnSubmit.setBounds(558, 578, 250, 59);
 		add(btnSubmit);
 		
 		btnMainMenu = new JButton("Main Menu");
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBounds(570, 630, 225, 45);
+		btnMainMenu.setBounds(47, 432, 225, 45);
 		add(btnMainMenu);
 		
 		btnLogout = new JButton("Log Out");
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBounds(570, 686, 225, 45);
+		btnLogout.setBounds(47, 507, 225, 45);
 		add(btnLogout);
 		
 		lblNewLabel = new JLabel("Calendar Name");
@@ -291,6 +295,34 @@ public class AddEventGUI extends JPanel {
 		
 		add(label_2);
 		
+		btnNoteList = new JButton("Note List");
+		btnNoteList.setForeground(Color.WHITE);
+		btnNoteList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnNoteList.setContentAreaFilled(false);
+		btnNoteList.setBounds(47, 132, 225, 45);
+		add(btnNoteList);
+		
+		btnUserList = new JButton("User List");
+		btnUserList.setForeground(Color.WHITE);
+		btnUserList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnUserList.setContentAreaFilled(false);
+		btnUserList.setBounds(47, 207, 225, 45);
+		add(btnUserList);
+		
+		btnEventList = new JButton("Event List");
+		btnEventList.setForeground(Color.WHITE);
+		btnEventList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnEventList.setContentAreaFilled(false);
+		btnEventList.setBounds(47, 282, 225, 45);
+		add(btnEventList);
+		
+		btnCalendarList = new JButton("Calendar List");
+		btnCalendarList.setForeground(Color.WHITE);
+		btnCalendarList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnCalendarList.setContentAreaFilled(false);
+		btnCalendarList.setBounds(47, 357, 234, 45);
+		add(btnCalendarList);
+		
 		
 		
 		
@@ -351,6 +383,11 @@ public class AddEventGUI extends JPanel {
 		comboBox_EndYear.addActionListener(l);
 		comboBox_EndMonth.addActionListener(l);
 		comboBox_EndDay.addActionListener(l);
+		btnCalendarList.addActionListener(l);
+		btnEventList.addActionListener(l);
+		btnNoteList.addActionListener(l);
+		btnUserList.addActionListener(l);
+
 	}
 	
 
@@ -429,4 +466,37 @@ public class AddEventGUI extends JPanel {
 	public JTextField getTextField_Description() {
 		return textField_Description;
 	}
+
+	public JButton getBtnNoteList() {
+		return btnNoteList;
+	}
+
+	public void setBtnNoteList(JButton btnNoteList) {
+		this.btnNoteList = btnNoteList;
+	}
+
+	public JButton getBtnUserList() {
+		return btnUserList;
+	}
+
+	public void setBtnUserList(JButton btnUserList) {
+		this.btnUserList = btnUserList;
+	}
+
+	public JButton getBtnEventList() {
+		return btnEventList;
+	}
+
+	public void setBtnEventList(JButton btnEventList) {
+		this.btnEventList = btnEventList;
+	}
+
+	public JButton getBtnCalendarList() {
+		return btnCalendarList;
+	}
+
+	public void setBtnCalendarList(JButton btnCalendarList) {
+		this.btnCalendarList = btnCalendarList;
+	}
+	
 }

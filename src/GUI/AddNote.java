@@ -14,14 +14,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 
 public class AddNote extends JPanel {
-	private final JButton btnLogout = new JButton("Log out");
-	private final JButton btnMainMenu = new JButton("Main menu");
 	private final JLabel lblAddNote = new JLabel("Add Note");
 	private final JLabel label = new JLabel("");
 	private final JLabel lblCreatedBy = new JLabel("Created by:");
 	private final JTextField textField_Createdby = new JTextField();
 	private final JTextField textField_text = new JTextField();
-	private final JButton btnAddNote = new JButton("Add note");
 	private final JLabel label_1 = new JLabel("");
 	private final JLabel lblText = new JLabel("Text:");
 	private final JLabel lblNoteId = new JLabel("Note ID:");
@@ -30,6 +27,13 @@ public class AddNote extends JPanel {
 	private final JTextField textField_NoteID = new JTextField();
 	private final JTextField textField_EventID = new JTextField();
 	private final JTextField textField_Date = new JTextField();
+	private final JButton btnMainMenu = new JButton("Main Menu");
+	private final JButton btnLogout = new JButton("Log Out");
+	private final JButton btnNoteList = new JButton("Note List");
+	private final JButton btnUserList = new JButton("User List");
+	private final JButton btnEventList = new JButton("Event List");
+	private final JButton btnCalendarList = new JButton("Calendar List");
+	private final JButton btnAddNote = new JButton("Add Note");
 
 	/**
 	 * Create the panel.
@@ -46,23 +50,9 @@ public class AddNote extends JPanel {
 		textField_Createdby.setBounds(606, 184, 265, 22);
 		textField_Createdby.setColumns(10);
 		setLayout(null);
-		btnLogout.setForeground(Color.WHITE);
-		btnLogout.setFont(new Font("Arial", Font.BOLD, 30));
-		btnLogout.setContentAreaFilled(false);
-		btnLogout.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnLogout.setBounds(607, 673, 152, 44);
-		
-		add(btnLogout);
-		btnMainMenu.setForeground(Color.WHITE);
-		btnMainMenu.setFont(new Font("Arial", Font.BOLD, 30));
-		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnMainMenu.setBounds(598, 619, 169, 43);
-		
-		add(btnMainMenu);
 		lblAddNote.setForeground(Color.WHITE);
 		lblAddNote.setFont(new Font("Tahoma", Font.BOLD, 68));
-		lblAddNote.setBounds(521, 66, 324, 82);
+		lblAddNote.setBounds(521, 11, 324, 82);
 		
 		add(lblAddNote);
 		lblCreatedBy.setFont(new Font("Tahoma", Font.BOLD, 18));
@@ -74,13 +64,6 @@ public class AddNote extends JPanel {
 		add(textField_Createdby);
 		
 		add(textField_text);
-		btnAddNote.setForeground(Color.WHITE);
-		btnAddNote.setFont(new Font("Arial", Font.BOLD, 30));
-		btnAddNote.setContentAreaFilled(false);
-		btnAddNote.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0)), new BevelBorder(BevelBorder.LOWERED, new Color(255, 255, 255), new Color(0, 0, 0), new Color(255, 255, 255), new Color(0, 0, 0))));
-		btnAddNote.setBounds(598, 486, 169, 43);
-		
-		add(btnAddNote);
 		label_1.setIcon(new ImageIcon(AddNote.class.getResource("/Images/CBSLogo3.png")));
 		label_1.setBounds(0, 709, 250, 59);
 		
@@ -111,6 +94,48 @@ public class AddNote extends JPanel {
 		add(textField_EventID);
 		
 		add(textField_Date);
+		btnMainMenu.setForeground(Color.WHITE);
+		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnMainMenu.setContentAreaFilled(false);
+		btnMainMenu.setBounds(48, 437, 225, 45);
+		
+		add(btnMainMenu);
+		btnLogout.setForeground(Color.WHITE);
+		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnLogout.setContentAreaFilled(false);
+		btnLogout.setBounds(48, 512, 225, 45);
+		
+		add(btnLogout);
+		btnNoteList.setForeground(Color.WHITE);
+		btnNoteList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnNoteList.setContentAreaFilled(false);
+		btnNoteList.setBounds(48, 137, 225, 45);
+		
+		add(btnNoteList);
+		btnUserList.setForeground(Color.WHITE);
+		btnUserList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnUserList.setContentAreaFilled(false);
+		btnUserList.setBounds(48, 212, 225, 45);
+		
+		add(btnUserList);
+		btnEventList.setForeground(Color.WHITE);
+		btnEventList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnEventList.setContentAreaFilled(false);
+		btnEventList.setBounds(48, 287, 225, 45);
+		
+		add(btnEventList);
+		btnCalendarList.setForeground(Color.WHITE);
+		btnCalendarList.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnCalendarList.setContentAreaFilled(false);
+		btnCalendarList.setBounds(48, 362, 234, 45);
+		
+		add(btnCalendarList);
+		btnAddNote.setForeground(Color.WHITE);
+		btnAddNote.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnAddNote.setContentAreaFilled(false);
+		btnAddNote.setBounds(570, 456, 225, 45);
+		
+		add(btnAddNote);
 		label.setIcon(new ImageIcon(AddNote.class.getResource("/Images/MetalBackground.jpg")));
 		label.setBounds(0, 0, 1366, 768);
 		
@@ -122,7 +147,11 @@ public class AddNote extends JPanel {
 		btnAddNote.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
-		
+		btnCalendarList.addActionListener(l);
+		btnEventList.addActionListener(l);
+		btnNoteList.addActionListener(l);
+		btnUserList.addActionListener(l);
+
 	}
 
 	public JButton getBtnLogout() {
@@ -155,6 +184,23 @@ public class AddNote extends JPanel {
 
 	public JTextField getTextField_Date() {
 		return textField_Date;
+	}
+
+	public JButton getBtnNoteList() {
+		return btnNoteList;
+	}
+
+	public JButton getBtnUserList() {
+		return btnUserList;
+	}
+
+	public JButton getBtnEventList() {
+		return btnEventList;
+	}
+
+	public JButton getBtnCalendarList() {
+		return btnCalendarList;
 	}	
+	
 	
 }

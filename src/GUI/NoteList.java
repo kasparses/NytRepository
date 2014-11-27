@@ -132,16 +132,16 @@ public class NoteList extends JPanel {
 		
 		label = new JLabel("");
 		label.setIcon(new ImageIcon(NoteList.class.getResource("/Images/CBSLogo3.png")));
-		label.setBounds(10, 698, 250, 59);
+		label.setBounds(0, 709, 250, 59);
 		add(label);
 		btnMainMenu.setContentAreaFilled(false);
 		btnMainMenu.setForeground(Color.WHITE);
-		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setBounds(581, 558, 203, 59);
 		
 		add(btnMainMenu);
 		btnLogout.setForeground(Color.WHITE);
-		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 20));
+		btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogout.setContentAreaFilled(false);
 		btnLogout.setBounds(581, 629, 203, 59);
 		
