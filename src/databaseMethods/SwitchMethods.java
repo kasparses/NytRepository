@@ -150,7 +150,7 @@ public class SwitchMethods extends Model
 		while(resultSet.next())
 		{
 			eventExists = resultSet.toString();
-			eventIDOfCreator = resultSet.getString("eventID");
+			eventIDOfCreator = resultSet.getString("title");
 		}
 		if(!eventExists.equals(""))
 		{
@@ -161,10 +161,11 @@ public class SwitchMethods extends Model
 			}
 			else
 			{
-//				String [] keys = {"Active"};
+
+//				String [] keys = {"superID"};
 //				String [] values = {"2"};
-				qb.deleteFrom("events");//("Calendar", keys, values).where("Name", "=", calendarName).Execute();
-				DE.setAnswer("Event has been deleted"); 
+				qb.deleteFrom("events").where("title", "=", title).Execute();
+				DE.setAnswer("Event has been set inactive"); 
 			}
 
 		}
