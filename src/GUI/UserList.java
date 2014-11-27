@@ -36,6 +36,7 @@ public class UserList extends JPanel {
 	private JButton btnMainMenu;
 	private ResultSet rs;
 	private QueryBuilder qb;
+	private final JLabel lblUserlist = new JLabel("User List");
 	
     public UserList() {
     	setSize(new Dimension(1366, 768));
@@ -104,7 +105,7 @@ public class UserList extends JPanel {
         scrollPane.setBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 205), new Color(255, 255, 255), new Color(0, 0, 205), new Color(255, 255, 255)), new MatteBorder(1, 1, 1, 1, (Color) new Color(255, 255, 255))));
         scrollPane.setViewportBorder(new CompoundBorder(new BevelBorder(BevelBorder.LOWERED, new Color(0, 0, 205), new Color(255, 255, 255), new Color(0, 0, 205), new Color(255, 255, 255)), null));
 
-        scrollPane.setBounds(417, 225, 590, 360);
+        scrollPane.setBounds(367, 190, 612, 396);
 
         scrollPane.setBounds(388, 225, 591, 361);
 
@@ -117,7 +118,7 @@ public class UserList extends JPanel {
         btnAdd.setForeground(new Color(0, 0, 205));
         btnAdd.setOpaque(true);
         
-        btnAdd.setBounds(1019, 556, 118, 29);
+        btnAdd.setBounds(1221, 205, 118, 29);
         add(btnAdd);
         
         btnLogout = new JButton("Log out");
@@ -140,30 +141,25 @@ public class UserList extends JPanel {
         btnMainMenu.setBounds(622, 646, 194, 44);
         add(btnMainMenu);
         
-        JLabel lblUserlist = new JLabel("Userlist");
-        lblUserlist.setForeground(Color.WHITE);
-        lblUserlist.setFont(new Font("Arial", Font.BOLD, 78));
-
-        lblUserlist.setBounds(549, 118, 298, 90);
-
-        lblUserlist.setBounds(534, 90, 298, 90);
-
-        add(lblUserlist);
-        
         btnDelete = new JButton("Delete");
         btnDelete.setOpaque(true);
         btnDelete.setForeground(new Color(0, 0, 205));
         btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
-        btnDelete.setBounds(1019, 515, 118, 29);
+        btnDelete.setBounds(1221, 245, 118, 29);
         add(btnDelete);
-    
-        JLabel lblBackground = new JLabel("Background");
-        lblBackground.setIcon(new ImageIcon(UserList.class.getResource("/Images/MetalBackground.jpg")));
-        lblBackground.setBackground(new Color(245, 245, 245));
-        lblBackground.setForeground(new Color(245, 255, 250));
-        lblBackground.setOpaque(true);
-        lblBackground.setBounds(0, 0, 1366, 768);
-        add(lblBackground);
+        lblUserlist.setForeground(Color.WHITE);
+        lblUserlist.setFont(new Font("Arial", Font.BOLD, 78));
+        lblUserlist.setBounds(516, 11, 333, 90);
+        
+        add(lblUserlist);
+        
+            JLabel lblBackground = new JLabel("Background");
+            lblBackground.setIcon(new ImageIcon(UserList.class.getResource("/Images/MetalBackground.jpg")));
+            lblBackground.setBackground(new Color(245, 245, 245));
+            lblBackground.setForeground(new Color(245, 255, 250));
+            lblBackground.setOpaque(true);
+            lblBackground.setBounds(0, 0, 1366, 768);
+            add(lblBackground);
     }
  
 //    private void printDebugData(JTable table) {
@@ -242,5 +238,4 @@ public class UserList extends JPanel {
 	public JButton getBtnLogout() {
 		return btnLogout;
 	}
-	
 }
