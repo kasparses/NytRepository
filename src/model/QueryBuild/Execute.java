@@ -188,13 +188,7 @@ public class Execute extends Model {
 
             } catch (SQLException e) {
                 e.printStackTrace();
-            }finally{
-            	 /*This block should be added to your code
-            	  * You need to release the resources like connections
-            	  */
-            	 if(getConn()!=null)
-            		 getConn().close();
-            	}
+            }
         }
 
         
