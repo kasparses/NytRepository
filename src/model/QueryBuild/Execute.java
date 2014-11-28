@@ -80,11 +80,11 @@ public class Execute extends Model {
 				sql = SELECT + getQueryBuilder().getSelectValue() +
 				        FROM + getQueryBuilder().getTableName() +
 				        WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
-				  System.out.println("sql: "+sql);
+				  
 				
 				
 			} catch (Exception e1) {
-				  System.out.println("sql: "+sql);
+				 
 				e1.printStackTrace();
 			}
           
@@ -129,7 +129,7 @@ public class Execute extends Model {
 //        }  else
         if(getQueryBuilder().isUpdate()) {
             sql = UPDATE + getQueryBuilder().getTableName() + " SET " + getQueryBuilder().getFields() + "" + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + "'"+ getWhere().getWhereValue()+"'"+ " ;";
-            System.out.println("sql: "+sql);
+            
             try {
                 getConnection(false);
                 getConn();
@@ -145,7 +145,7 @@ public class Execute extends Model {
             }
         } 
         else if(getQueryBuilder().isSoftDelete()) {
-        	System.out.println("Det virker næsten!!!!!");
+        	
             sql = DELETE + FROM + getQueryBuilder().getTableName() + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
             		//getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + "'"+ getWhere().getWhereValue()+"'"+ " ;";
             System.out.println("sql: "+sql);
@@ -164,7 +164,7 @@ public class Execute extends Model {
             }
         }
         else {
-            System.out.println(sql);
+            
             
             sql = INSERTINTO + getQueryBuilder().getTableName() + " (" + getQueryBuilder().getFields() + ")" + VALUES + "(";
             StringBuilder sb = new StringBuilder();
@@ -174,7 +174,7 @@ public class Execute extends Model {
             }
             sql += sb.toString();
             sql += " );";
-            System.out.println("sql: "+sql);
+           
             try {
                 getConnection(false);
                 getConn();

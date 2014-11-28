@@ -11,6 +11,7 @@ import JsonClasses.AuthUserJson;
 import JsonClasses.BlockUser;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
+import JsonClasses.SaveNote;
 
 public class SwitchMethods extends Model
 {
@@ -22,6 +23,7 @@ public class SwitchMethods extends Model
 	DeleteCalendar DE = new DeleteCalendar();
 	AuthUserJson AU = new AuthUserJson();
 	BlockUser BU = new BlockUser();
+	SaveNote SN = new SaveNote();
 	
 
 	
@@ -232,6 +234,28 @@ public class SwitchMethods extends Model
 		return stringToBeReturend;
 
 	
+	}
+	
+	public String AddNote (String superID, String note) throws SQLException
+	{
+			
+			System.out.println("hejhejhejhej");
+				try {
+					String [] keys = {"note"};
+					String [] values = {note};
+					qb.update("events", keys, values).where("superID", "=", superID).Execute();
+					SN.setAnswer("The Note has been added");
+					
+				} catch (Exception e) {
+					SN.setAnswer("The Note has Not been added");
+					
+					e.printStackTrace();
+				}
+				
+		System.out.println(SN.getAnswer());
+		String gsonString = gson.toJson(SN);
+		return gsonString;
+		
 	}
 	
 		/**

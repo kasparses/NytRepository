@@ -14,6 +14,7 @@ import JsonClasses.CalendarInfo;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
 import JsonClasses.EstablishUser;
+import JsonClasses.SaveNote;
 import JsonClasses.UpdateLoginTime;
 import JsonClasses.Update;
 import model.QueryBuild.*;
@@ -198,9 +199,14 @@ public class GiantSwitch {
 			System.out.println("Recieved createNote");
 			break;
 			
-		case "saveNote":
-						
+		case "saveNote":						
 			System.out.println("Recieved saveNote");
+			SaveNote SN = (SaveNote)gson.fromJson(jsonString, SaveNote.class);
+			try {
+				answer = SW.AddNote(Integer.toString(SN.getSuperID()),SN.getNote());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			
 			break;
 
