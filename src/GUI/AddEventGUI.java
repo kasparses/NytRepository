@@ -49,7 +49,7 @@ public class AddEventGUI extends JPanel {
 	private JComboBox comboBox_StartHour;
 	private JComboBox comboBox_EndHour;
 	private JComboBox comboBox_EndMinutes;
-	private JComboBox<Integer> comboBox;
+	private JComboBox comboBox;
 	private JComboBox comboBox_1;
 	private JLabel lblYear;
 	private JLabel lblYear_1;

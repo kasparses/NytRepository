@@ -15,6 +15,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import javax.swing.JButton;
@@ -23,8 +24,6 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
 
 import model.QueryBuild.QueryBuilder;
-
-import com.mysql.jdbc.ResultSetMetaData;
 
 public class NoteList extends JPanel {
 	private JTable table;
