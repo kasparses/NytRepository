@@ -96,7 +96,26 @@ CREATE TABLE IF NOT EXISTS users
 	
 	PRIMARY KEY (userID)
 );
+use cbscalendar;
+insert into dailyupdate (date, apparentTemperature, summary, qotd, author, topic, msg_type, LastUpdateTime)
+values ('2014-11-11 16:55:00', 1, 'hje', 'afa', 'fa', 'faf', 'hej', 1416351614539);
 
+
+use cbscalendar;
+insert into users (userID, email, Active, created, type, password, CPR, UpdatedCbsEvents)
+values (2, 'kabj13ab', 1,'2014-11-11  10:37:00', 1, 'hej', '111111-1111', 'notUpdated');
+
+
+
+use cbscalendar;
+insert into forecast (date, celcius, description, count)
+values ('2014-11-11 14:20:00', '1', '1','0'),
+('2014-11-11 14:20:00', '1', '1','1'),
+('2014-11-11 14:20:00', '1', '1','2'),
+('2014-11-11 14:20:00', '1', '1','3'),
+('2014-11-11 14:20:00', '1', '1','4'),
+('2014-11-11 14:20:00', '1', '1','5'),
+('2014-11-11 14:20:00', '1', '1','6');
 
 --ALTER TABLE events
 	--ADD FOREIGN KEY (ID)
