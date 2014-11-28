@@ -765,11 +765,9 @@ public class GUILogic {
 			if (e.getSource() == screen.getBlockUser().getBtnBlockUser()){
 				
 				try {
-					System.out.println("dtfjgkuh");
+					BU.setBlocked(true);
 					String userName = screen.getBlockUser().getTextField_Username().getText();
-					System.out.println(userName);
 					BU.setEmail(userName);
-					System.out.println(BU.getEmail());
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(BU);
 					String BlockUser = (String)GS.GiantSwitchMethod(gsonString);
@@ -778,6 +776,28 @@ public class GUILogic {
 					System.out.println(BU.getAnswer());
 					
 					JOptionPane.showMessageDialog(null, "The user has now been blocked."
+							, "Return message",JOptionPane.PLAIN_MESSAGE);
+					
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				
+			
+			}
+			if (e.getSource() == screen.getBlockUser().getBtnUnblockUser()){
+				
+				try {
+					BU.setBlocked(false);
+					String userName = screen.getBlockUser().getTextField_Username().getText();
+					BU.setEmail(userName);
+					Gson gson = new GsonBuilder().create();
+					String gsonString = gson.toJson(BU);
+					String BlockUser = (String)GS.GiantSwitchMethod(gsonString);
+					BU = gson.fromJson(BlockUser, BlockUser.class);
+
+					System.out.println(BU.getAnswer());
+					
+					JOptionPane.showMessageDialog(null, "The user has now been unblocked."
 							, "Return message",JOptionPane.PLAIN_MESSAGE);
 					
 					} catch (SQLException e1) {
