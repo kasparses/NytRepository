@@ -17,6 +17,7 @@ import JsonClasses.UpdateLoginTime;
 import JsonClasses.Update;
 import model.QueryBuild.*;
 import JsonClasses.DeleteEvent;
+
 import com.google.gson.*;
 
 import JsonClasses.GetCbsCalendar;
@@ -154,8 +155,9 @@ public class GiantSwitch {
 		case "createEvent":
 			System.out.println("Recieved createEvent");
 			CreateEvent CE = (CreateEvent)gson.fromJson(jsonString, CreateEvent.class);
+			System.out.println(" GiantSwitch note: "+CE.getNote());
 			answer = AE.CreateEvent(CE.getID(), CE.getActivityID(),CE.getEventID(), CE.getType(), CE.getTitle(),
-					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation(), CE.getCalendarName());
+					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation(),CE.getNote(), CE.getCalendarName());
 			break;
 
 		case "getEventInfo":
@@ -190,6 +192,7 @@ public class GiantSwitch {
 		case "saveNote":
 						
 			System.out.println("Recieved saveNote");
+			
 			break;
 
 		case "getNote":

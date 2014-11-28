@@ -47,6 +47,7 @@ public class Events {
 				Date endDate = rs.getDate("end");
 				Time endTime = rs.getTime("end");
 				String location = rs.getString("location");
+				String note = rs.getString ("note");
 				
 				String stringActivityID = String.valueOf(activityID);
 				String stringEventID = String.valueOf(eventID);
@@ -66,7 +67,7 @@ public class Events {
 				alEnd.add(stringEndDate + "" + stringEndTime);
 				
 				
-				events.add(new Event(ID,stringActivityID, stringEventID, stringType, stringTitle, stringDescribtion, alStart, alEnd, stringLocation));
+				events.add(new Event(ID,stringActivityID, stringEventID, stringType, stringTitle, stringDescribtion, alStart, alEnd, stringLocation,note));
 				
 			}
 			

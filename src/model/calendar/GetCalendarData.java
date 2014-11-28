@@ -94,7 +94,7 @@ public class GetCalendarData extends Model {
        Events events = gson.fromJson(json2, Events.class);
        QueryBuilder queryBuilder = new QueryBuilder();
 
-       String[] fields = {"ID", "activityID", "eventID", "type", "title", "description", "start", "end", "location"};
+       String[] fields = {"ID", "activityID", "eventID", "type", "title", "description", "start", "end", "location", "note"};
        
   
        for (int i = 0; i <events.getEvents().size() ; i++) {
@@ -115,6 +115,7 @@ public class GetCalendarData extends Model {
                            events.getEvents().get(i).getEnd().get(4) + ":00";
         
            int ID = 1;
+           String note = "";
            String[] values = {
            		Integer.toString(ID),
                    events.getEvents().get(i).getActivityid(),
@@ -124,7 +125,8 @@ public class GetCalendarData extends Model {
                    events.getEvents().get(i).getDescription(),
                    start.toString(),
                    end.toString(),
-                   events.getEvents().get(i).getLocation()
+                   events.getEvents().get(i).getLocation(),
+                   note
            };
        queryBuilder.insertInto("events", fields).values(values).Execute();
        }

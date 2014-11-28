@@ -239,6 +239,7 @@ public class GUILogic {
 				String eventID = "1";
 				String activityID = "1";
 				String calendarName =  screen.getAddEventGUI().getTextField_CalendarName().getText();
+				String note = screen.getAddEventGUI().getTextField_Text().getText();
 				
 				Object startYear = screen.getAddEventGUI().getComboBox_StartYear().getSelectedItem();
 				Object startMonth = screen.getAddEventGUI().getComboBox_StartMonth().getSelectedItem();
@@ -266,8 +267,8 @@ public class GUILogic {
 				String end = endYear.toString()+ "-"+ endMonth.toString()+ "-"+ endDay.toString()+ " "+endHour.toString()+":"+endMinutes+":00";
 				        
 				String EventID = "1";
-				
-				CreateEvent CE = new CreateEvent("createEvent", 0,activityID,EventID , type, title, description, start, end, location, calendarName );
+				System.out.println("note: "+note);
+				CreateEvent CE = new CreateEvent("createEvent", 0,activityID,EventID , type, title, description, start, end, location,  calendarName ,note);
 							
 				Gson gson = new GsonBuilder().create();
 				String gsonString = gson.toJson(CE);

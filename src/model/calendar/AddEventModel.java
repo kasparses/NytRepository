@@ -41,9 +41,11 @@ Answer A = new Answer();
 			String start,
 			String end,
 			String location,
+			String note,
 			String calendarName)	{
 			
 			String Id = String.valueOf(ID);
+			System.out.println(" AddEventModel note: "+note);
 			
 			try {
 				resultSet = qb.selectFrom("Calendar").where("Name", "=", calendarName).ExecuteQuery();
@@ -62,8 +64,8 @@ Answer A = new Answer();
 				
 				e1.printStackTrace();
 			}
-			String[] fields = {"ID", "activityID","eventID", "type", "title", "description", "start", "end", "location"};
-			String[] values = {Integer.toString(calendarID),  activityID,EventID, type, title, description, start, end, location};			try {
+			String[] fields = {"ID", "activityID","eventID", "type", "title", "description", "start", "end", "location", "note"};
+			String[] values = {Integer.toString(calendarID),  activityID,EventID, type, title, description, start, end, location, note};			try {
 				qb.insertInto("events", fields).values(values).Execute();
 				A.setAnswer("The event has been succesfully created!!");
 //				stringToBeReturned = "The event has been succesfully created!!";

@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS Forecast
 	date varchar(114) NOT NULL,
 	celcius varchar(255) NOT NULL,
 	description varchar(234) not null,
-	count varchar (10) not null,
+	count varchar (10) not null unique,
 	PRIMARY KEY (ForecastID)
 );
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS dailyupdate
 	qotd varchar(300) NOT NULL,
 	author varchar(100) not null ,
 	topic varchar(80) not null ,
-	msg_type varchar (100) NOT NULL COMMENT 'Hvad er dette?',
+	msg_type varchar (100) NOT NULL unique COMMENT 'Hvad er dette?',
 	LastUpdateTime Bigint(50),
 	PRIMARY KEY (date)
 );
@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS events
 	start datetime NOT NULL,
 	end datetime NOT NULL,
 	location varchar(500) NOT NULL,	
+	note varchar(200),
 	superID int not null AUTO_INCREMENT,
 	--name varchar(30) NOT NULL UNIQUE,
 	--text text NOT NULL,

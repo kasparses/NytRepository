@@ -185,10 +185,15 @@ public class Execute extends Model {
                     x = i;
                     sqlStatement.setString(x+1, getValues().getValues()[i]);
                 }
-
+                return sqlStatement.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
+            }finally{
+            	getConn().close();
             }
+            
+            
+          
         }
 
         
