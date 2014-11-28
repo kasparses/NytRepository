@@ -26,6 +26,7 @@ public class BlockUser extends JPanel {
 	private final JButton btnBlockUser = new JButton("Block User");
 	private final JLabel label = new JLabel("");
 	private final JLabel label_1 = new JLabel("");
+	private final JButton btnUnblockUser = new JButton("Unblock User");
 
 	/**
 	 * Create the panel.
@@ -102,6 +103,12 @@ public class BlockUser extends JPanel {
 		label.setBounds(0, 709, 250, 59);
 		
 		add(label);
+		btnUnblockUser.setForeground(Color.WHITE);
+		btnUnblockUser.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnUnblockUser.setContentAreaFilled(false);
+		btnUnblockUser.setBounds(558, 450, 250, 59);
+		
+		add(btnUnblockUser);
 		label_1.setIcon(new ImageIcon(BlockUser.class.getResource("/Images/MetalBackground.jpg")));
 		label_1.setBounds(0, 0, 1366, 768);
 		
@@ -117,7 +124,12 @@ public class BlockUser extends JPanel {
 		btnUserList.addActionListener(l);
 		btnUserInfo.addActionListener(l);
 		btnBlockUser.addActionListener(l);
+		btnUnblockUser.addActionListener(l);
 }
+	
+	public JButton getBtnUnblockUser() {
+		return btnUnblockUser;
+	}
 	public JButton getBtnMainMenu() {
 		return btnMainMenu;
 	}

@@ -117,10 +117,11 @@ public class GiantSwitch {
 			break;
 			
 		case "blockUser":
+			
 			System.out.println("Recieved establishUser");
 			BlockUser BU = (BlockUser)gson.fromJson(jsonString, BlockUser.class);
 			BU = (BlockUser)gson.fromJson(jsonString, BlockUser.class);
-			answer = SW.blockUser(BU.getEmail());
+			answer = SW.blockUser(BU.getEmail(), BU.isBlocked());
 		
 			break;
 

@@ -144,27 +144,36 @@ public class SwitchMethods extends Model
 		return gsonString;
 		
 	}
-	public String blockUser (String userName) throws SQLException
+	public Object blockUser (String userName, boolean blocked) throws SQLException
 	{
 //		String stringToBeReturend = "";
 		String userExists = "";
-		System.out.println(userName);
+		String[] values = {""};
 		resultSet = qb.selectFrom("users").where("email", "=", userName).ExecuteQuery();
-				System.out.println("YOLO");
 		while(resultSet.next())
 		{
-			System.out.println("YOLO2");
 			userExists = resultSet.toString();
 		}
 		if(!userExists.equals(""))
 		{
-
-			System.out.println("Det burde virke");
 			
 				String [] keys = {"Active"};
-				String [] values = {"2"};
+				if(blocked == true ){
+					values [0] = "2";
+				}
+				else if(blocked == false){
+					 values [0] = "1";
+				}
+				
 				qb.update("users", keys, values).where("email", "=", userName).Execute();
-				BU.setAnswer("The user has been set inactive"); 
+				
+				if(blocked == true ){
+					BU.setAnswer("The user has been set inactive"); 
+
+				}
+				else if(blocked == false){
+					BU.setAnswer("The user has been set active"); 
+				}
 			
 
 		}

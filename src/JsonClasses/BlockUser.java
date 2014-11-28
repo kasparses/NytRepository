@@ -8,6 +8,7 @@ public class BlockUser implements java.io.Serializable
 	private String password;
 	private String CPR;
 	private String answer = "";
+	private boolean blocked;
 	
 	
 	//Getters and setters for everything, bitch
@@ -40,6 +41,12 @@ public class BlockUser implements java.io.Serializable
 	}
 	public void setAnswer(String answer) {
 		this.answer = answer;
+	}
+	public boolean isBlocked() {
+		return blocked;
+	}
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
 	}
 	
 	
