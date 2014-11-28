@@ -10,14 +10,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionEvent;
 
 public class DeleteCalendar extends JPanel {
 	private final JLabel lblDeleteCalendar = new JLabel("Delete Calendar");
-	private final JLabel lblEnterYourUsername = new JLabel("Enter your username:");
-	private final JTextField textField_Username = new JTextField();
 	private final JLabel lblEnterThe = new JLabel("Enter the calendar name:");
 	private final JTextField textField_CalendarName = new JTextField();
-	private final JButton btnDelete = new JButton("Delete");
+	private final JButton btnSetInactive = new JButton("Set Inactive");
 	private final JLabel label = new JLabel("");
 	private final JButton btnMainMenu = new JButton("Main Menu");
 	private final JButton btnLogOut = new JButton("Log Out");
@@ -27,41 +26,37 @@ public class DeleteCalendar extends JPanel {
 	private final JButton btnCalendarList = new JButton("Calendar List");
 	private final JLabel label_1 = new JLabel("");
 	private final JButton btnUserInfo = new JButton("User Info");
+	private final JButton btnSetActive = new JButton("Set Active");
 
 	/**
 	 * Create the panel.
 	 */
 	public DeleteCalendar() {
-		textField_CalendarName.setBounds(609, 280, 271, 25);
+		textField_CalendarName.setBounds(674, 281, 271, 25);
 		textField_CalendarName.setColumns(10);
-		textField_Username.setBounds(609, 218, 271, 25);
-		textField_Username.setColumns(10);
 		setLayout(null);
 		lblDeleteCalendar.setForeground(Color.WHITE);
 		lblDeleteCalendar.setFont(new Font("Tahoma", Font.BOLD, 78));
-		lblDeleteCalendar.setBounds(370, 11, 641, 95);
+		lblDeleteCalendar.setBounds(362, 11, 641, 95);
 		
 		add(lblDeleteCalendar);
-		lblEnterYourUsername.setForeground(Color.WHITE);
-		lblEnterYourUsername.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblEnterYourUsername.setBounds(338, 218, 243, 25);
-		
-		add(lblEnterYourUsername);
-		
-		add(textField_Username);
 		lblEnterThe.setForeground(Color.WHITE);
 		lblEnterThe.setFont(new Font("Tahoma", Font.BOLD, 20));
-		lblEnterThe.setBounds(338, 280, 263, 25);
+		lblEnterThe.setBounds(403, 281, 263, 25);
 		
 		add(lblEnterThe);
 		
 		add(textField_CalendarName);
-		btnDelete.setContentAreaFilled(false);
-		btnDelete.setForeground(Color.WHITE);
-		btnDelete.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnDelete.setBounds(566, 435, 233, 50);
+		btnSetInactive.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnSetInactive.setContentAreaFilled(false);
+		btnSetInactive.setForeground(Color.WHITE);
+		btnSetInactive.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnSetInactive.setBounds(566, 435, 233, 50);
 		
-		add(btnDelete);
+		add(btnSetInactive);
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
@@ -108,6 +103,12 @@ public class DeleteCalendar extends JPanel {
 		btnUserInfo.setBounds(46, 435, 225, 45);
 		
 		add(btnUserInfo);
+		btnSetActive.setForeground(Color.WHITE);
+		btnSetActive.setFont(new Font("Tahoma", Font.BOLD, 30));
+		btnSetActive.setContentAreaFilled(false);
+		btnSetActive.setBounds(566, 501, 233, 50);
+		
+		add(btnSetActive);
 		label.setIcon(new ImageIcon(DeleteCalendar.class.getResource("/Images/MetalBackground.jpg")));
 		label.setBounds(0, 0, 1366, 768);
 		
@@ -119,7 +120,8 @@ public class DeleteCalendar extends JPanel {
 		btnLogOut.addActionListener(l);
 		btnCalendarList.addActionListener(l);
 		btnMainMenu.addActionListener(l);
-		btnDelete.addActionListener(l);
+		btnSetInactive.addActionListener(l);
+		btnSetActive.addActionListener(l);
 		btnEventList.addActionListener(l);
 		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
@@ -127,6 +129,10 @@ public class DeleteCalendar extends JPanel {
 
 }
 	
+
+	public JButton getBtnSetActive() {
+		return btnSetActive;
+	}
 
 	public JButton getBtnUserInfo() {
 		return btnUserInfo;
@@ -144,16 +150,12 @@ public class DeleteCalendar extends JPanel {
 		return btnEventList;
 	}
 
-	public JTextField getTextField_Username() {
-		return textField_Username;
-	}
-
 	public JTextField getTextField_CalendarName() {
 		return textField_CalendarName;
 	}
 
-	public JButton getBtnDelete() {
-		return btnDelete;
+	public JButton getBtnSetInactive() {
+		return btnSetInactive;
 	}
 
 	public JButton getBtnCalendarList() {
