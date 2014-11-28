@@ -31,7 +31,7 @@ public class UserList extends JPanel {
 	private static final ActionListener ActionListener = null;
 	private boolean DEBUG = false;
 	private JButton btnAdd;
-	private JButton btnDelete;
+	private JButton btnBlock;
 	private ResultSet rs;
 	private QueryBuilder qb;
 	private final JLabel lblUserlist = new JLabel("User List");
@@ -122,12 +122,12 @@ public class UserList extends JPanel {
         btnAdd.setBounds(1221, 171, 118, 29);
         add(btnAdd);
         
-        btnDelete = new JButton("Delete");
-        btnDelete.setOpaque(true);
-        btnDelete.setForeground(new Color(0, 0, 205));
-        btnDelete.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
-        btnDelete.setBounds(1221, 211, 118, 29);
-        add(btnDelete);
+        btnBlock = new JButton("Block");
+        btnBlock.setOpaque(true);
+        btnBlock.setForeground(new Color(0, 0, 205));
+        btnBlock.setBorder(new MatteBorder(1, 1, 1, 1, (Color) new Color(0, 0, 255)));
+        btnBlock.setBounds(1221, 211, 118, 29);
+        add(btnBlock);
         lblUserlist.setForeground(Color.WHITE);
         lblUserlist.setFont(new Font("Arial", Font.BOLD, 78));
         lblUserlist.setBounds(516, 11, 333, 90);
@@ -212,7 +212,7 @@ public class UserList extends JPanel {
 //    }
     
     public void addActionListener(ActionListener l) {
-		btnDelete.addActionListener(l);
+		btnBlock.addActionListener(l);
 		btnAdd.addActionListener(l);
 		btnLogout.addActionListener(l);
 		btnMainMenu.addActionListener(l);
@@ -227,8 +227,8 @@ public class UserList extends JPanel {
 		return btnAdd;
 	}
 
-	public JButton getBtnDelete() {
-		return btnDelete;
+	public JButton getBtnBlock() {
+		return btnBlock;
 	}
 
 	public JButton getBtnMainMenu() {

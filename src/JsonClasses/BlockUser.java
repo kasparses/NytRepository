@@ -1,9 +1,9 @@
 package JsonClasses;
 
-public class AuthUserJson implements java.io.Serializable
+public class BlockUser implements java.io.Serializable
 {
 	private  final long serialVersionUID = 2L;
-	private String overallID = "logIn";
+	private String overallID = "blockUser";
 	private String email;
 	private String password;
 	private String CPR;

@@ -7,6 +7,8 @@ import com.google.gson.GsonBuilder;
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
+import JsonClasses.AuthUserJson;
+import JsonClasses.BlockUser;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
 
@@ -18,7 +20,8 @@ public class SwitchMethods extends Model
 	CreateCalendar CC = new CreateCalendar();
 	Gson gson = new GsonBuilder().create();
 	DeleteCalendar DE = new DeleteCalendar();
-
+	AuthUserJson AU = new AuthUserJson();
+	BlockUser BU = new BlockUser();
 	
 
 	
@@ -136,6 +139,39 @@ public class SwitchMethods extends Model
 		}
 		
 		String gsonString = gson.toJson(DC);
+		return gsonString;
+		
+	}
+	public String blockUser (String userName) throws SQLException
+	{
+//		String stringToBeReturend = "";
+		String userExists = "";
+		System.out.println(userName);
+		resultSet = qb.selectFrom("users").where("email", "=", userName).ExecuteQuery();
+				System.out.println("YOLO");
+		while(resultSet.next())
+		{
+			System.out.println("YOLO2");
+			userExists = resultSet.toString();
+		}
+		if(!userExists.equals(""))
+		{
+
+			System.out.println("Det burde virke");
+			
+				String [] keys = {"Active"};
+				String [] values = {"2"};
+				qb.update("users", keys, values).where("email", "=", userName).Execute();
+				BU.setAnswer("The user has been set inactive"); 
+			
+
+		}
+		else
+		{
+			BU.setAnswer("The user you are trying to block, does not exists.");
+		}
+		
+		String gsonString = gson.toJson(BU);
 		return gsonString;
 		
 	}

@@ -10,10 +10,11 @@ public class EstablishUser implements java.io.Serializable
 	private String type;
 	private String password;
 	private String CPR;
+	private String UpdatedCbsEvents;
 //	private String LastUpdateTime;
 	
 	public EstablishUser(String overallID, String email, int Active, String created,
-			String type, String password, String CPR){
+			String type, String password, String CPR, String UpdatedCbsEvents){
 		setOverallID(overallID);
 		setEmail(email);
 		setActive(Active);
@@ -21,6 +22,7 @@ public class EstablishUser implements java.io.Serializable
 		setType(type);
 		setPassword(password);
 		setCPR(CPR);
+		setUpdatedCbsEvents(UpdatedCbsEvents);
 //		setLastUpdateTime(LastUpdateTime);
 		
 	}
@@ -93,6 +95,15 @@ public class EstablishUser implements java.io.Serializable
 
 	public long getSerialVersionUID() {
 		return serialVersionUID;
+	}
+
+	public String getUpdatedCbsEvents() {
+		return UpdatedCbsEvents;
+	}
+
+	public void setUpdatedCbsEvents(String updatedCbsEvents) {
+		UpdatedCbsEvents = updatedCbsEvents;
 	}		
+	
 
 }

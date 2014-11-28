@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import model.QOTD.QOTDModel;
 import model.note.*;
 import model.user.*;
+import JsonClasses.BlockUser;
 import JsonClasses.CreateEvent;
 import JsonClasses.ForgotLogin;
 import JsonClasses.GetEvent;
@@ -110,7 +111,15 @@ public class GiantSwitch {
 			System.out.println("Recieved establishUser");
 			EstablishUser EU = (EstablishUser)gson.fromJson(jsonString, EstablishUser.class);
 			answer = EUM.EstablishUser(EU.getEmail(),EU.getActive(),EU.getCreated(),EU.getType(),
-					EU.getPassword(),EU.getCPR());
+					EU.getPassword(),EU.getCPR(),EU.getUpdatedCbsEvents());
+		
+			break;
+			
+		case "blockUser":
+			System.out.println("Recieved establishUser");
+			BlockUser BU = (BlockUser)gson.fromJson(jsonString, BlockUser.class);
+			BU = (BlockUser)gson.fromJson(jsonString, BlockUser.class);
+			answer = SW.blockUser(BU.getEmail());
 		
 			break;
 
@@ -291,6 +300,8 @@ public class GiantSwitch {
 			return "establishUser";
 		} else if (ID.contains("forgotLogin")) {
 			return "forgotLogin";
+		} else if (ID.contains("blockUser")) {
+			return "blockUser";
 		}
 
 		else
