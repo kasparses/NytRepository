@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -12,15 +13,20 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
+
 import java.awt.Color;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+
 import javax.swing.border.MatteBorder;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-import com.mysql.jdbc.ResultSetMetaData;
+
 import model.QueryBuild.*;
  
 public class UserList extends JPanel {

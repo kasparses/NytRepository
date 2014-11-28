@@ -27,11 +27,10 @@ import javax.swing.JTextPane;
 
 import model.QueryBuild.QueryBuilder;
 
-import com.mysql.jdbc.ResultSetMetaData;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 
