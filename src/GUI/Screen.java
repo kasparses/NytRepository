@@ -26,10 +26,10 @@ public class Screen extends JFrame {
 	public static final String DELETECALENDAR = "name_496088936866551";
 	public static final String CREATECALENDAR = "name_508229372553648";
 	public static final String DELETEEVENT = "name_519922165417969";
+	public static final String BLOCKUSER = "name_755445244821977";
 
 
 	private JPanel contentPane;
-	private final AddCourse addCourse = new AddCourse();
 	private final AddEventGUI addEventGUI = new AddEventGUI();
 	private final AddUser addUser = new AddUser();
 	private final EventList eventList = new EventList();
@@ -45,6 +45,7 @@ public class Screen extends JFrame {
 	private final DeleteCalendar deleteCalendar = new DeleteCalendar();
 	private final CreateCalendar createCalendar = new CreateCalendar();
 	private final DeleteEvent deleteEvent = new DeleteEvent();
+	private final BlockUser blockUser = new BlockUser();
 
 
 
@@ -76,6 +77,8 @@ public class Screen extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new CardLayout(0, 0));
 		
+		contentPane.add(blockUser, "name_755445244821977");
+		
 		contentPane.add(deleteEvent, "name_519922165417969");
 		
 		contentPane.add(calendarList, "name_493897513062219");
@@ -103,8 +106,6 @@ public class Screen extends JFrame {
 		contentPane.add(addUser, "name_362200721529567");
 		
 		contentPane.add(addEventGUI, "name_362181513611519");
-		
-		contentPane.add(addCourse, "name_362036683693928");
 
 		c = (CardLayout) getContentPane().getLayout();
 		
@@ -168,6 +169,10 @@ public class Screen extends JFrame {
 
 	public DeleteEvent getDeleteEvent() {
 		return deleteEvent;
+	}
+
+	public BlockUser getBlockUser() {
+		return blockUser;
 	}
 	
 }

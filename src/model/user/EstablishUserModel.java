@@ -19,14 +19,14 @@ public class EstablishUserModel {
 			String created,
 			String type,
 			String password,
-			String CPR){
-//			String LastUpdateTime)	{
+			String CPR,
+			String UpdatedCbsEvents){
 			
 			String ac = String.valueOf(Active);
 
 			
-			String[] keys = { "email", "Active", "created", "type", "password", "CPR"};
-			String[] values = { email, ac, created, type, password, CPR};
+			String[] keys = { "email", "Active", "created", "type", "password", "CPR", "UpdatedCbsEvents"};
+			String[] values = { email, ac, created, type, password, CPR, UpdatedCbsEvents};
 			try {
 				qb.insertInto("users", keys).values(values).Execute();
 				

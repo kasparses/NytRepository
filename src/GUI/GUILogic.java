@@ -18,6 +18,7 @@ import com.google.gson.GsonBuilder;
 
 import GUI.Screen;
 import JsonClasses.AuthUserJson;
+import JsonClasses.BlockUser;
 import JsonClasses.CreateCalendar;
 import JsonClasses.CreateEvent;
 import JsonClasses.DeleteCalendar;
@@ -41,6 +42,7 @@ public class GUILogic {
 	CreateCalendar CC = new CreateCalendar();
 	JsonClasses.Login L = new Login();
 	DeleteEvent DE = new DeleteEvent();
+	BlockUser BU = new BlockUser();
 
 
 
@@ -68,6 +70,7 @@ public class GUILogic {
 		screen.getDeleteEvent().addActionListener(new DeleteEventActionListener());
 		screen.getDeleteCalendar().addActionListener(new DeleteCalendarActionListener());
 		screen.getCreateCalendar().addActionListener(new CreateCalendarActionListener());
+		screen.getBlockUser().addActionListener(new BlockUserActionListener());
 
 
 		
@@ -327,7 +330,7 @@ public class GUILogic {
 				String CPR = screen.getAddUser().getTextField_CPR().getText();
 				int Active = 1;
 				String created = "2014-11-11 11:00:00";
-				
+				String UpdatedCbsEvents = "notUpdated";
 				boolean adminOrUser = false;
 				String adMinOrUserValue = "";
 				
@@ -358,13 +361,13 @@ public class GUILogic {
 				}
 				else
 				{
-					EstablishUser EU = new EstablishUser("establishUser", Email , Active, created, adMinOrUserValue, Password, CPR );
+					EstablishUser EU = new EstablishUser("establishUser", Email , Active, created, adMinOrUserValue, Password, CPR, UpdatedCbsEvents );
 					
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(EU);
 					
 					try {
-						Object hejhej22 = GS.GiantSwitchMethod(gsonString);
+						Object establishUser = GS.GiantSwitchMethod(gsonString);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
@@ -432,8 +435,9 @@ public class GUILogic {
 				screen.show(Screen.ADDUSER);
 			
 			}
-			if (e.getSource() == screen.getUserList().getBtnDelete()){
-				
+			if (e.getSource() == screen.getUserList().getBtnBlock()){
+				screen.show(Screen.BLOCKUSER);
+
 			}
 
 		}
@@ -733,6 +737,53 @@ public class GUILogic {
 				
 				
 				
+			}
+
+		}
+	}
+	private class BlockUserActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == screen.getBlockUser().getBtnLogOut()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getBlockUser().getBtnUserList()){
+				screen.show(Screen.USERLIST);
+			}
+			if (e.getSource() == screen.getBlockUser().getBtnNoteList()){
+				screen.show(Screen.NOTELIST);
+			}
+			if (e.getSource() == screen.getBlockUser().getBtnEventList()){
+				screen.show(Screen.EVENTLIST);
+			}
+			if (e.getSource() == screen.getBlockUser().getBtnCalendarList()){
+				screen.show(Screen.CALENDARLIST);
+			}
+			if (e.getSource() == screen.getBlockUser().getBtnUserInfo()){
+				screen.show(Screen.USERINFO);
+			}
+			if (e.getSource() == screen.getBlockUser().getBtnBlockUser()){
+				
+				try {
+					System.out.println("dtfjgkuh");
+					String userName = screen.getBlockUser().getTextField_Username().getText();
+					System.out.println(userName);
+					BU.setEmail(userName);
+					System.out.println(BU.getEmail());
+					Gson gson = new GsonBuilder().create();
+					String gsonString = gson.toJson(BU);
+					String BlockUser = (String)GS.GiantSwitchMethod(gsonString);
+					BU = gson.fromJson(BlockUser, BlockUser.class);
+
+					System.out.println(BU.getAnswer());
+					
+					JOptionPane.showMessageDialog(null, "The user has now been blocked."
+							, "Return message",JOptionPane.PLAIN_MESSAGE);
+					
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				
+			
 			}
 
 		}
