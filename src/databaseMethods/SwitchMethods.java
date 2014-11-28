@@ -1,5 +1,9 @@
 package databaseMethods;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Date;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -7,6 +11,7 @@ import com.google.gson.GsonBuilder;
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
+import model.calendar.Event;
 import JsonClasses.AuthUserJson;
 import JsonClasses.BlockUser;
 import JsonClasses.CreateCalendar;
@@ -24,6 +29,8 @@ public class SwitchMethods extends Model
 	AuthUserJson AU = new AuthUserJson();
 	BlockUser BU = new BlockUser();
 	SaveNote SN = new SaveNote();
+
+    ArrayList<CalendarData> calendarData = new ArrayList<CalendarData>();
 	
 
 	
@@ -226,13 +233,37 @@ public class SwitchMethods extends Model
 		
 	}
 	
-	public String getCalendar (int type, String newCalendarName, int Active, String userName, int publicOrPrivate) throws SQLException
+	public String getCalendar () throws SQLException
 	{
-		String stringToBeReturend = "";
-		qb.selectFrom("Calendar").all().Execute();
+		System.out.println("test");
+//		qb.selectFrom("Calendar").all().Execute();
+		System.out.println("test2");
+		resultSet = qb.selectFrom("calendar").all().ExecuteQuery();
+				
+		while(resultSet.next()){
+			System.out.println("test3");
+			
+		int CalendarID = resultSet.getInt("CalendarID");
+		System.out.println("test4");
+		int type = resultSet.getInt("type");
+		System.out.println("test5");
+		String Name = resultSet.getString("Name");
+		System.out.println("test6");
+		int Active = resultSet.getInt("Active");
+		System.out.println("test7");
+		String CreatedBy = resultSet.getString("CreatedBy");
+		System.out.println("test8");
+		int PrivateOrPublic = resultSet.getInt("PrivatePublic");
+		System.out.println("test9");
 		
-		return stringToBeReturend;
-
+		calendarData.add(new CalendarData(CalendarID,type, Name, Active, CreatedBy, PrivateOrPublic));
+		System.out.println("test10");
+			
+		}
+				
+		String gsonString = gson.toJson(DE);
+		return gsonString;
+		
 	
 	}
 	public String getEvents (String userName, String calendarName) throws SQLException

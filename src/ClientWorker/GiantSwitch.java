@@ -151,9 +151,10 @@ public class GiantSwitch {
 			
 		case "getCalendar":
 			System.out.println("Recieved getCalendar");
-			CalendarInfo CI = (CalendarInfo)gson.fromJson(jsonString, CalendarInfo.class);
-			answer = SW.getCalendar(CI.getType(), CI.getCalenderName(), CI.getActive(), CI.getUserName(), CI.getPublicOrPrivate());
-			System.out.println("Recieved getCalendar");
+//			CalendarInfo CI = (CalendarInfo)gson.fromJson(jsonString, CalendarInfo.class);
+//			answer = SW.getCalendar(CI.getType(), CI.getCalenderName(), CI.getActive(), CI.getUserName(), CI.getPublicOrPrivate());
+			answer = SW.getCalendar();
+			
 			break;
 
 		case "getEvents":
