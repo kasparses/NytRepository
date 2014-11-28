@@ -48,6 +48,7 @@ public class GiantSwitch {
 		model.calendar.GetCalendarData GCD = new model.calendar.GetCalendarData();
 		DeleteEvent DE = new DeleteEvent();
 		ForecastTest FT = new ForecastTest();
+		AuthUserJson AU = new AuthUserJson();
 		
 		Object answer = "";	
 
@@ -73,7 +74,7 @@ public class GiantSwitch {
 		
 		case "logIn":
 			System.out.println("Recieved Login");
-			AuthUserJson AU = (AuthUserJson)gson.fromJson(jsonString, AuthUserJson.class);
+			AU = (AuthUserJson)gson.fromJson(jsonString, AuthUserJson.class);
 			System.out.println("Recieved logIn");
 			try {
 				answer =a.authenticate(AU.getEmail(), AU.getPassword());
@@ -137,7 +138,7 @@ public class GiantSwitch {
 			System.out.println("Recieved deleteCalendar");
 			DeleteCalendar DC = (DeleteCalendar)gson.fromJson(jsonString, DeleteCalendar.class);
 //			answer = AE.DeleteCalendar(DC.getActive());
-			answer = SW.removeCalendar(DC.getUserName(), DC.getCalendarName());
+			answer = SW.removeCalendar(DC.getUserName(), DC.getCalendarName(), DC.isActive());
 //			if(answer.equals(DC.getUserName()) && answer.equals(DC.getCalendarName())){
 //			qb.deleteFrom(DC.getCalendarName());
 //			}

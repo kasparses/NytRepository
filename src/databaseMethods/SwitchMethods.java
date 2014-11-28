@@ -1,6 +1,8 @@
 package databaseMethods;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -96,20 +98,21 @@ public class SwitchMethods extends Model
 	 * @param calenderName
 	 * @return
 	 */
-	public String deleteCalendar (String userName, String calendarName) throws SQLException
+	public String deleteCalendar (String userName, String calendarName, boolean active) throws SQLException
 	{
 		String stringToBeReturned ="";
 		testConnection();
-		stringToBeReturned = removeCalendar(userName, calendarName);
+		stringToBeReturned = removeCalendar(userName, calendarName, active);
 
 		return stringToBeReturned;
 	}
 	
-	public String removeCalendar (String userName, String calendarName) throws SQLException
+	public String removeCalendar (String userName, String calendarName, boolean active) throws SQLException
 	{
 //		String stringToBeReturend = "";
 		String usernameOfCreator ="";
 		String calendarExists = "";
+		String[] values = {""};
 		resultSet = qb.selectFrom("Calendar").where("Name", "=", calendarName).ExecuteQuery();
 				
 		while(resultSet.next())
@@ -123,19 +126,35 @@ public class SwitchMethods extends Model
 			if(!usernameOfCreator.equals(userName))
 			{
 				DC.setAnswer("Only the creator of the calendar is able to delete it.");
+
+				
 			}
-			else
+			else if(usernameOfCreator.equals(userName))
 			{
+				
 				String [] keys = {"Active"};
-				String [] values = {"2"};
+				if(active == true ){
+					values [0] = "1";
+				}
+				else if(active == false){
+					 values [0] = "2";
+				}
 				qb.update("Calendar", keys, values).where("Name", "=", calendarName).Execute();
-				DC.setAnswer("Calendar has been set inactive"); 
+
+				if(active == true ){
+					DC.setAnswer("The calendar has been set active"); 
+
+				}
+				else if(active == false){
+					DC.setAnswer("The calendar has been set inactive"); 
+				}
 			}
 
 		}
 		else
 		{
 			DC.setAnswer("The calendar you are trying to delete, does not exists.");
+			
 		}
 		
 		String gsonString = gson.toJson(DC);

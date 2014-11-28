@@ -570,9 +570,10 @@ public class GUILogic {
 
 				screen.show(Screen.USERINFO);
 			}
-			if (e.getSource() == screen.getDeleteCalendar().getBtnDelete()){
+			if (e.getSource() == screen.getDeleteCalendar().getBtnSetInactive()){
 				try {
-				String userName = screen.getDeleteCalendar().getTextField_Username().getText();
+				DC.setActive(false);
+				String userName = AU.getEmail();
 				String calendarName = screen.getDeleteCalendar().getTextField_CalendarName().getText();
 
 				DC.setUserName(userName);
@@ -582,8 +583,31 @@ public class GUILogic {
 				String gsonString = gson.toJson(DC);
 				String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
 				DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
+				
+				JOptionPane.showMessageDialog(null, "\n"+DC.getAnswer()
+						, "Error message",JOptionPane.PLAIN_MESSAGE);
+				
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+			}
+			if (e.getSource() == screen.getDeleteCalendar().getBtnSetActive()){
+				try {
+				DC.setActive(true);
+				String userName = AU.getEmail();
+				System.out.println(userName);
+				String calendarName = screen.getDeleteCalendar().getTextField_CalendarName().getText();
 
-				System.out.println(DC.getAnswer());
+				DC.setUserName(userName);
+				DC.setCalendarName(calendarName);
+				
+				Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(DC);
+				String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
+				DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
+				
+				JOptionPane.showMessageDialog(null, "\n"+DC.getAnswer()
+						, "Error message",JOptionPane.PLAIN_MESSAGE);
 				
 				} catch (SQLException e1) {
 					e1.printStackTrace();
