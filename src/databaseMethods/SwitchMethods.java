@@ -118,7 +118,7 @@ public class SwitchMethods extends Model
 	
 	public String removeCalendar (String userName, String calendarName, boolean active) throws SQLException
 	{
-//		String stringToBeReturend = "";
+		String stringToBeReturend = "";
 		String usernameOfCreator ="";
 		String calendarExists = "";
 		String[] values = {""};

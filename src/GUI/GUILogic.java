@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import GUI.Screen;
+import JsonClasses.Answer;
 import JsonClasses.AuthUserJson;
 import JsonClasses.BlockUser;
 import JsonClasses.CreateCalendar;
@@ -43,6 +44,7 @@ public class GUILogic {
 	JsonClasses.Login L = new Login();
 	DeleteEvent DE = new DeleteEvent();
 	BlockUser BU = new BlockUser();
+	Answer A = new Answer();
 
 
 
@@ -83,6 +85,16 @@ public class GUILogic {
 	
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			
+			if (e.getSource() == screen.getLogin().getBtnForgotLogIn()){
+				
+				screen.show(Screen.FORGOT);
+							
+			}
+			if (e.getSource() == screen.getLogin().getBtnLogIn()){
+				
+							
+			
 			try{
 				
 //			String email = screen.getLogin().getTextFieldUsername().getText();
@@ -124,19 +136,17 @@ public class GUILogic {
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 				}
-			if (e.getSource() == screen.getLogin().getBtnForgotLogIn()){
-				
-				screen.show(Screen.FORGOT);
-							
+			
 			}
-			}	
+			
 			catch(Exception e3){
+			}
 			}
 		}	
 	}
 	
 	private class ForgotActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) {			
 			if (e.getSource() == screen.getForgotLogin().getBtnLogin()){
 				screen.show(Screen.LOGIN);
 			}
@@ -167,8 +177,8 @@ public class GUILogic {
 					JOptionPane.showMessageDialog(null, "\nYour username is: "+FL.getEmail()+"\nYour password is: "+FL.getPassword()
 							, "Message",JOptionPane.PLAIN_MESSAGE);
 				}
-				else if(FL.getAnswer().equals("notCorrect")){
-					JOptionPane.showMessageDialog(null, "\nIt did not work!...."
+				else if(!FL.getAnswer().equals("correct")){
+					JOptionPane.showMessageDialog(null, "\nPlease enter a valid security number."
 							, "Error",JOptionPane.PLAIN_MESSAGE);
 				}
 				
@@ -176,7 +186,7 @@ public class GUILogic {
 					e1.printStackTrace();
 				}
 			}
-				
+			
 		}
 			
 	}
@@ -230,7 +240,6 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
 				 
-			
 		
 				String description = screen.getAddEventGUI().getTextField_Description().getText();
 				
@@ -276,7 +285,10 @@ public class GUILogic {
 				Gson gson = new GsonBuilder().create();
 				String gsonString = gson.toJson(CE);
 				
+			
 				try {
+
+				
 					Object hejhej = GS.GiantSwitchMethod(gsonString);
 					
 					JOptionPane.showMessageDialog(null, hejhej
