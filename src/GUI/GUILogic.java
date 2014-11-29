@@ -342,6 +342,10 @@ public class GUILogic {
 
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(EU);
+					
+					JOptionPane.showMessageDialog(null, "\nThe user has now been established."
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+					
 
 					try {
 						Object establishUser = GS.GiantSwitchMethod(gsonString);
