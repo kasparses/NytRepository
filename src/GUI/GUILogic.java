@@ -32,8 +32,6 @@ import JsonClasses.LoginAnswer;
 
 public class GUILogic {
 	private Screen screen;
-	private String u3;
-	private AuthenticateUser u4;
 	AuthUserJson AU = new AuthUserJson();
 	ForgotLogin FL = new ForgotLogin();
 	DeleteCalendar DC = new DeleteCalendar();
@@ -48,9 +46,9 @@ public class GUILogic {
 
 
 
-	
+
 	GiantSwitch GS = new GiantSwitch();
-	
+
 	model.user.AuthenticateUser a = new model.user.AuthenticateUser();
 	model.note.Note n = new model.note.Note();
 
@@ -75,76 +73,58 @@ public class GUILogic {
 		screen.getBlockUser().addActionListener(new BlockUserActionListener());
 
 
-		
+
 	}
 	public void run() {
 
 		screen.show(Screen.LOGIN);
 		screen.setVisible(true);
 	}
-	
+
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
+
 			if (e.getSource() == screen.getLogin().getBtnForgotLogIn()){
-				
+
 				screen.show(Screen.FORGOT);
-							
+
 			}
 			if (e.getSource() == screen.getLogin().getBtnLogIn()){
-				
-							
-			
-			try{
-				
-//			String email = screen.getLogin().getTextFieldUsername().getText();
-//			String password = screen.getLogin().getTextFieldPassword().getText();
-//			u3 = "correct";
-//					
-//					//a.authenticate(email, password);
-//			
-//			if (e.getSource() == screen.getLogin().getBtnLogIn()){
-//				System.out.println(u3);
-//				if(u3.equals("notCorrect")){
-//					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
-//							, "Error message",JOptionPane.PLAIN_MESSAGE);
-//			}
-//
-//			if	(u3.equals("correct"))
-//					{
-//						screen.show(Screen.MAINMENU);
-//					}
-//				
-//			}
-				String email = screen.getLogin().getTextFieldUsername().getText();
-				String password = screen.getLogin().getTextFieldPassword().getText();
-				
-				AU.setEmail(email);
-				AU.setPassword(password);
 
 
-				Gson gson = new GsonBuilder().create();
-				String gsonString = gson.toJson(AU);
-				String hejhej33 = (String)GS.GiantSwitchMethod(gsonString);
-				LoginAnswer LA = gson.fromJson(hejhej33, LoginAnswer.class);  
+
+				try{
 
 
-				if (LA.getAnswer().equals("correct")){
-					screen.show(Screen.MAINMENU);
+					String email = screen.getLogin().getTextFieldUsername().getText();
+					String password = screen.getLogin().getTextFieldPassword().getText();
+
+					AU.setEmail(email);
+					AU.setPassword(password);
+
+
+					Gson gson = new GsonBuilder().create();
+					String gsonString = gson.toJson(AU);
+					String hejhej33 = (String)GS.GiantSwitchMethod(gsonString);
+					LoginAnswer LA = gson.fromJson(hejhej33, LoginAnswer.class);  
+
+
+					if (LA.getAnswer().equals("correct")){
+						screen.show(Screen.MAINMENU);
+					}
+					if(!LA.getAnswer().equals("correct")){
+						JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
+								, "Error message",JOptionPane.PLAIN_MESSAGE);
+					}
+
 				}
-				if(!LA.getAnswer().equals("correct")){
-					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
-							, "Error message",JOptionPane.PLAIN_MESSAGE);
+
+				catch(Exception e3){
 				}
-			
-			}
-			
-			catch(Exception e3){
-			}
 			}
 		}	
 	}
-	
+
 	private class ForgotActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {			
 			if (e.getSource() == screen.getForgotLogin().getBtnLogin()){
@@ -152,45 +132,36 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getForgotLogin().getBtnGetLogin()){
 				try {
-//				String CPR = screen.getForgotLogin().getTextField_CPR().getText();
-//				String answer = "";
-//
-////				CPR = AU.getCPR();
-//
-//				if (answer.equals("correct")){
-////					String cpr = null;
-//					JOptionPane.showMessageDialog(null, "\nYour username is: "+AU.getEmail()
-//							, "Message",JOptionPane.PLAIN_MESSAGE);
-//				}
-				String cPR = screen.getForgotLogin().getTextField_CPR().getText();
-				
-				FL.setCPR(cPR);
-				
-				
-				Gson gson = new GsonBuilder().create();
-				String gsonString = gson.toJson(FL);
-				String hejhej35 = (String)GS.GiantSwitchMethod(gsonString);
-				ForgotLogin FL = gson.fromJson(hejhej35, ForgotLogin.class);
+
+					String cPR = screen.getForgotLogin().getTextField_CPR().getText();
+
+					FL.setCPR(cPR);
 
 
-				if (FL.getAnswer().equals("correct")){
-					JOptionPane.showMessageDialog(null, "\nYour username is: "+FL.getEmail()+"\nYour password is: "+FL.getPassword()
-							, "Message",JOptionPane.PLAIN_MESSAGE);
-				}
-				else if(!FL.getAnswer().equals("correct")){
-					JOptionPane.showMessageDialog(null, "\nPlease enter a valid security number."
-							, "Error",JOptionPane.PLAIN_MESSAGE);
-				}
-				
+					Gson gson = new GsonBuilder().create();
+					String gsonString = gson.toJson(FL);
+					String hejhej35 = (String)GS.GiantSwitchMethod(gsonString);
+					ForgotLogin FL = gson.fromJson(hejhej35, ForgotLogin.class);
+
+
+					if (FL.getAnswer().equals("correct")){
+						JOptionPane.showMessageDialog(null, "\nYour username is: "+FL.getEmail()+"\nYour password is: "+FL.getPassword()
+								, "Message",JOptionPane.PLAIN_MESSAGE);
+					}
+					else if(!FL.getAnswer().equals("correct")){
+						JOptionPane.showMessageDialog(null, "\nPlease enter a valid security number."
+								, "Error",JOptionPane.PLAIN_MESSAGE);
+					}
+
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 			}
-			
+
 		}
-			
+
 	}
-	
+
 	private class MainMenuActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getMainMenu().getBtnLogOut()){
@@ -211,7 +182,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getBtnUserInfo()){
 				screen.show(Screen.USERINFO);
 			}
-			
+
 
 		}
 	}
@@ -239,75 +210,71 @@ public class GUILogic {
 				screen.show(Screen.USERINFO);
 			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
-				 
-		
+
+
 				String description = screen.getAddEventGUI().getTextField_Description().getText();
-				
+
 				String location = screen.getAddEventGUI().getTextField_Location().getText();
-				
+
 				String title = screen.getAddEventGUI().getTextField_Title().getText();
 				String type = screen.getAddEventGUI().getTextField_Type().getText();
-				
+
 				String eventID = "1";
 				String activityID = "1";
 				String calendarName =  screen.getAddEventGUI().getTextField_CalendarName().getText();
 				String note = screen.getAddEventGUI().getTextField_Text().getText();
-				
+
 				Object startYear = screen.getAddEventGUI().getComboBox_StartYear().getSelectedItem();
 				Object startMonth = screen.getAddEventGUI().getComboBox_StartMonth().getSelectedItem();
 				Object startDay = screen.getAddEventGUI().getComboBox_StartDay().getSelectedItem();
 				Object startHour = screen.getAddEventGUI().getComboBox_StartHour().getSelectedItem();
 				Object startMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
-				
-				
-				
+
+
+
 				if(startMinutes.equals("0")){
 					startMinutes = "00";
 				}
-				
+
 				Object endYear = screen.getAddEventGUI().getComboBox_EndYear().getSelectedItem();
 				Object endMonth = screen.getAddEventGUI().getComboBox_EndMonth().getSelectedItem();
 				Object endDay = screen.getAddEventGUI().getComboBox_EndDay().getSelectedItem();
 				Object endHour = screen.getAddEventGUI().getComboBox_EndHour().getSelectedItem();
 				Object endMinutes = screen.getAddEventGUI().getComboBox_EndMinutes().getSelectedItem();
-				
+
 				if(endMinutes.equals("0")){
 					endMinutes = "00";
 				}
-			
+
 				String start = startYear.toString()+ "-"+ startMonth.toString()+ "-"+ startDay.toString()+ " "+startHour.toString()+":"+startMinutes+":00";
 				String end = endYear.toString()+ "-"+ endMonth.toString()+ "-"+ endDay.toString()+ " "+endHour.toString()+":"+endMinutes+":00";
-				        
+
 				String EventID = "1";
 				System.out.println("note: "+note);
 				CreateEvent CE = new CreateEvent("createEvent", 0,activityID,EventID , type, title, description, start, end, location,  calendarName ,note);
-							
+
 				Gson gson = new GsonBuilder().create();
 				String gsonString = gson.toJson(CE);
-				
-			
-				try {
 
-				
-					Object hejhej = GS.GiantSwitchMethod(gsonString);
-					
-					JOptionPane.showMessageDialog(null, hejhej
-							, "Return message",JOptionPane.PLAIN_MESSAGE);
-				} catch (SQLException e1) {
-					e1.printStackTrace();
+				if (location.equals("")|| description.equals("")|| title.equals("")||type.equals("") || calendarName.equals(""))
+				{
+					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
 				}
-							
-				
-//
-////				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
-////				{
-////					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
-////							, "Error message",JOptionPane.PLAIN_MESSAGE);
-////				}
-////				else
-////				{
-			
-	
+				else{
+
+					try {
+
+
+						Object hejhej = GS.GiantSwitchMethod(gsonString);
+
+						JOptionPane.showMessageDialog(null, hejhej
+								, "Return message",JOptionPane.PLAIN_MESSAGE);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+
+				}
 			}
 		}
 	}
@@ -323,7 +290,7 @@ public class GUILogic {
 				screen.show(Screen.CALENDARLIST);
 			}
 			if (e.getSource() == screen.getAddUser().getBtnEventList()){
-			
+
 				screen.show(Screen.EVENTLIST);
 			}
 			if (e.getSource() == screen.getAddUser().getBtnNoteList()){
@@ -336,8 +303,8 @@ public class GUILogic {
 				screen.show(Screen.USERINFO);
 			}
 			if (e.getSource() == screen.getAddUser().getBtnCreateUser()){
-				
-				
+
+
 				String Email = screen.getAddUser().getTextField_Email().getText();
 				String Password = screen.getAddUser().getTextField_Password().getText();
 				String CPR = screen.getAddUser().getTextField_CPR().getText();
@@ -346,7 +313,7 @@ public class GUILogic {
 				String UpdatedCbsEvents = "notUpdated";
 				boolean adminOrUser = false;
 				String adMinOrUserValue = "";
-				
+
 
 				if (screen.getAddUser().getRdbtnAdmin().isSelected())
 				{
@@ -359,14 +326,11 @@ public class GUILogic {
 					adminOrUser = true;
 				}
 
-
 				if( adminOrUser == false){
 					JOptionPane.showMessageDialog(null, "Please select whether the account is an admin or a user"
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
-
 				}
-				
-				
+
 				if (Email.equals("")|| Password.equals("") || CPR.equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields."
@@ -375,16 +339,16 @@ public class GUILogic {
 				else
 				{
 					EstablishUser EU = new EstablishUser("establishUser", Email , Active, created, adMinOrUserValue, Password, CPR, UpdatedCbsEvents );
-					
+
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(EU);
-					
+
 					try {
 						Object establishUser = GS.GiantSwitchMethod(gsonString);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
-					
+
 				}
 
 			}
@@ -419,7 +383,7 @@ public class GUILogic {
 			}
 		}
 	}
-	
+
 	private class NoteListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -434,10 +398,10 @@ public class GUILogic {
 			}
 		}
 	}
-	
+
 	private class UserListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
+
 			if (e.getSource() == screen.getUserList().getBtnMainMenu()){
 				screen.show(Screen.MAINMENU);
 			}
@@ -446,7 +410,7 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getUserList().getBtnAdd()){
 				screen.show(Screen.ADDUSER);
-			
+
 			}
 			if (e.getSource() == screen.getUserList().getBtnBlock()){
 				screen.show(Screen.BLOCKUSER);
@@ -455,7 +419,7 @@ public class GUILogic {
 
 		}
 	}
-	
+
 	private class EventListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -473,7 +437,7 @@ public class GUILogic {
 			}
 		}
 	}
-	
+
 	private class AddNoteActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -499,56 +463,41 @@ public class GUILogic {
 				screen.show(Screen.USERINFO);
 			}
 			if (e.getSource() == screen.getAddNote().getBtnAddNote()){
-				
+
 				String text = screen.getAddNote().getTextField_text().getText();
 				String createdBy = screen.getAddNote().getTextField_Createdby().getText();
 				int noteID = screen.getAddNote().getTextField_NoteID().getX();
 				int eventID = screen.getAddNote().getTextField_EventID().getX();
 				String dateTime = screen.getAddNote().getTextField_Date().getText();
-//				int isActive = screen.getAddNote().getTextField_Active().getX();
 				n.CreateNote(noteID, text, dateTime, createdBy, eventID);
-				
+
 				if (text.equals("")|| createdBy.equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 				}
-//				else
-//				{
-//				QueryBuilder qb = new QueryBuilder();
-//				
-//				String[] kolonner = { "text", "createdby"};
-//				String[] Values = { text, createdby};
-//				
-//				try {
-//					qb.insertInto("notes", kolonner ).values(Values).ExecuteQuery();
-//				} catch (SQLException e1) {
-//					// TODO Auto-generated catch block
-//					e1.printStackTrace();
-//				}
-					
-//				}
-				
+
+
 			}
 		}
 	}
-	
+
 	private class CalendarListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getCalendarList().getBtnMainMenu()){
 				screen.show(Screen.MAINMENU);
 			}
 			if (e.getSource() == screen.getCalendarList().getBtnLogOut()){
-				
+
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getCalendarList().getBtnAdd()){
-				
+
 				screen.show(Screen.CREATECALENDAR);
-				
+
 			}
 			if (e.getSource() == screen.getCalendarList().getBtnDelete()){
-				
+
 				screen.show(Screen.DELETECALENDAR);
 			}
 		}
@@ -559,11 +508,11 @@ public class GUILogic {
 				screen.show(Screen.MAINMENU);
 			}
 			if (e.getSource() == screen.getDeleteCalendar().getBtnLogOut()){
-				
+
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getDeleteCalendar().getBtnCalendarList()){
-				
+
 				screen.show(Screen.CALENDARLIST);
 			}
 			if (e.getSource() == screen.getDeleteCalendar().getBtnEventList()){
@@ -584,43 +533,54 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getDeleteCalendar().getBtnSetInactive()){
 				try {
-				DC.setActive(false);
-				String userName = AU.getEmail();
-				String calendarName = screen.getDeleteCalendar().getTextField_CalendarName().getText();
+					DC.setActive(false);
+					String userName = AU.getEmail();
+					String calendarName = screen.getDeleteCalendar().getTextField_CalendarName().getText();
 
-				DC.setUserName(userName);
-				DC.setCalendarName(calendarName);
-				
-				Gson gson = new GsonBuilder().create();
-				String gsonString = gson.toJson(DC);
-				String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
-				DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
-				
-				JOptionPane.showMessageDialog(null, "\n"+DC.getAnswer()
-						, "Error message",JOptionPane.PLAIN_MESSAGE);
-				
+					DC.setUserName(userName);
+					DC.setCalendarName(calendarName);
+
+					Gson gson = new GsonBuilder().create();
+					String gsonString = gson.toJson(DC);
+					String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
+					DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
+
+					if (calendarName.equals(""))
+					{
+						JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields."
+								, "Error message",JOptionPane.PLAIN_MESSAGE);
+					}
+
+					JOptionPane.showMessageDialog(null, "\n"+DC.getAnswer()
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
 			}
 			if (e.getSource() == screen.getDeleteCalendar().getBtnSetActive()){
 				try {
-				DC.setActive(true);
-				String userName = AU.getEmail();
-				System.out.println(userName);
-				String calendarName = screen.getDeleteCalendar().getTextField_CalendarName().getText();
+					DC.setActive(true);
+					String userName = AU.getEmail();
+					String calendarName = screen.getDeleteCalendar().getTextField_CalendarName().getText();
 
-				DC.setUserName(userName);
-				DC.setCalendarName(calendarName);
-				
-				Gson gson = new GsonBuilder().create();
-				String gsonString = gson.toJson(DC);
-				String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
-				DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
-				
-				JOptionPane.showMessageDialog(null, "\n"+DC.getAnswer()
-						, "Error message",JOptionPane.PLAIN_MESSAGE);
-				
+					DC.setUserName(userName);
+					DC.setCalendarName(calendarName);
+
+					Gson gson = new GsonBuilder().create();
+					String gsonString = gson.toJson(DC);
+					String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
+					DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
+
+					if (calendarName.equals(""))
+					{
+						JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields."
+								, "Error message",JOptionPane.PLAIN_MESSAGE);
+					}
+
+					JOptionPane.showMessageDialog(null, "\n"+DC.getAnswer()
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -629,7 +589,7 @@ public class GUILogic {
 	}
 	private class CreateCalendarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
+
 			if (e.getSource() == screen.getCreateCalendar().getBtnMainMenu()){
 				screen.show(Screen.MAINMENU);
 			}
@@ -668,7 +628,7 @@ public class GUILogic {
 				String CreatedBy = AU.getEmail();
 				int type = 2; //2 betyder er det er en brugerskabt kalender og ikke den som er hentet fra CBS.
 				int active = 1; // 1 betyder at den er aktiv. 2 betyder at den ikke er aktiv.
-				
+
 				if( name.equals("")) {
 
 					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
@@ -678,7 +638,7 @@ public class GUILogic {
 
 				boolean PrivateOrPublic = false;
 				int PrivateOrPublicValue = 0;
-				
+
 
 				if (screen.getCreateCalendar().getRdbtnPrivateCalendar().isSelected())
 				{
@@ -691,41 +651,39 @@ public class GUILogic {
 					PrivateOrPublic = true;
 				}
 
-
 				if( PrivateOrPublic == false){
-					JOptionPane.showMessageDialog(null, "Please select whether your database is a public or a private database"
+					JOptionPane.showMessageDialog(null, "Please select whether your calendar is a public or a private calendar."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
-
 				}
-				
+
 				if (empty == false && PrivateOrPublic == true){
 					CC.setCalendarName(name);
 					CC.setPublicOrPrivate(PrivateOrPublicValue);
 					CC.setType(type);
 					CC.setActive(active);
 					CC.setUserName(CreatedBy);
-					
+
 					try {
 						Gson gson = new GsonBuilder().create();
 						String gsonString = gson.toJson(CC);
 						String CreateCalendar = (String)GS.GiantSwitchMethod(gsonString);
 						DC = gson.fromJson(CreateCalendar, DeleteCalendar.class);
-						
-						JOptionPane.showMessageDialog(null, "It worked!"
+
+						JOptionPane.showMessageDialog(null, "Your calendar is now created.!"
 								, "Return message",JOptionPane.PLAIN_MESSAGE);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
-										
+
 				}
-				
+
 			}
 		}
 
 	}
 	private class DeleteEventActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
+
 			if (e.getSource() == screen.getDeleteEvent().getBtnMainMenu()){
 				screen.show(Screen.MAINMENU);
 			}
@@ -734,46 +692,48 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnEventList()){
 				screen.show(Screen.EVENTLIST);
-			
+
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnCalendarList()){
 				screen.show(Screen.CALENDARLIST);
-			
+
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnNoteList()){
 				screen.show(Screen.NOTELIST);
-			
+
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnUserList()){
 				screen.show(Screen.USERLIST);
-			
+
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnUserInfo()){
 				screen.show(Screen.USERINFO);
-			
+
 			}
 			if (e.getSource() == screen.getDeleteEvent().getBtnDelete()){
-				
+
 				try {
 					String eventID = screen.getDeleteEvent().getTextField_EventID().getText();
 					String title = screen.getDeleteEvent().getTextField_Title().getText();
 
 					DE.setEventID(eventID);
 					DE.setTitle(title);
-					
+
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(DE);
 					String DeleteEvent = (String)GS.GiantSwitchMethod(gsonString);
 					DC = gson.fromJson(DeleteEvent, DeleteCalendar.class);
 
-					System.out.println(DE.getAnswer());
-					
-					} catch (SQLException e1) {
-						e1.printStackTrace();
+					if (eventID.equals("")|| title.equals("") )
+					{
+						JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields."
+								, "Error message",JOptionPane.PLAIN_MESSAGE);
 					}
-				
-				
-				
+					JOptionPane.showMessageDialog(null, ""+DE.getAnswer()
+							, "Error message",JOptionPane.PLAIN_MESSAGE);					
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 
 		}
@@ -799,7 +759,7 @@ public class GUILogic {
 				screen.show(Screen.USERINFO);
 			}
 			if (e.getSource() == screen.getBlockUser().getBtnBlockUser()){
-				
+
 				try {
 					BU.setBlocked(true);
 					String userName = screen.getBlockUser().getTextField_Username().getText();
@@ -810,18 +770,24 @@ public class GUILogic {
 					BU = gson.fromJson(BlockUser, BlockUser.class);
 
 					System.out.println(BU.getAnswer());
-					
-					JOptionPane.showMessageDialog(null, "The user has now been blocked."
-							, "Return message",JOptionPane.PLAIN_MESSAGE);
-					
-					} catch (SQLException e1) {
-						e1.printStackTrace();
+
+					if (userName.equals("") )
+					{
+						JOptionPane.showMessageDialog(null, "\nPlease fill out the field."
+								, "Error message",JOptionPane.PLAIN_MESSAGE);
 					}
-				
-			
+
+					JOptionPane.showMessageDialog(null, BU.getAnswer()
+							, "Return message",JOptionPane.PLAIN_MESSAGE);
+
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
+
+
 			}
 			if (e.getSource() == screen.getBlockUser().getBtnUnblockUser()){
-				
+
 				try {
 					BU.setBlocked(false);
 					String userName = screen.getBlockUser().getTextField_Username().getText();
@@ -832,18 +798,22 @@ public class GUILogic {
 					BU = gson.fromJson(BlockUser, BlockUser.class);
 
 					System.out.println(BU.getAnswer());
-					
-					JOptionPane.showMessageDialog(null, "The user has now been unblocked."
-							, "Return message",JOptionPane.PLAIN_MESSAGE);
-					
-					} catch (SQLException e1) {
-						e1.printStackTrace();
+
+					if (userName.equals("") )
+					{
+						JOptionPane.showMessageDialog(null, "\nPlease fill out the field."
+								, "Error message",JOptionPane.PLAIN_MESSAGE);
 					}
-				
-			
+
+					JOptionPane.showMessageDialog(null, BU.getAnswer()
+							, "Return message",JOptionPane.PLAIN_MESSAGE);
+
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 
 		}
 	}
-	
+
 }
