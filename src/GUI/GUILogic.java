@@ -465,13 +465,13 @@ public class GUILogic {
 			if (e.getSource() == screen.getAddNote().getBtnAddNote()){
 
 				String text = screen.getAddNote().getTextField_text().getText();
-				String createdBy = screen.getAddNote().getTextField_Createdby().getText();
-				int noteID = screen.getAddNote().getTextField_NoteID().getX();
+				String createdBy = AU.getEmail();
+				int noteID = 0;
 				int eventID = screen.getAddNote().getTextField_EventID().getX();
 				String dateTime = screen.getAddNote().getTextField_Date().getText();
 				n.CreateNote(noteID, text, dateTime, createdBy, eventID);
 
-				if (text.equals("")|| createdBy.equals(""))
+				if (text.equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
