@@ -35,8 +35,9 @@ public class Events {
 			ResultSet rs = qb.selectFrom("events").all().ExecuteQuery();
 			while (rs.next())
 			{
-				//String values from SQL database (must be created)
-				int ID = 1;
+				
+				int ID = rs.getInt("ID");
+				System.out.println("ID: "+ID);
 				String activityID = rs.getString("activityID");
 				String eventID = rs.getString("eventID");
 				String type = rs.getString("type");

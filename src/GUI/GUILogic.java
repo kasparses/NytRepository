@@ -152,6 +152,7 @@ public class GUILogic {
 //					JOptionPane.showMessageDialog(null, "\nYour username is: "+AU.getEmail()
 //							, "Message",JOptionPane.PLAIN_MESSAGE);
 //				}
+					
 				String cPR = screen.getForgotLogin().getTextField_CPR().getText();
 				
 				FL.setCPR(cPR);

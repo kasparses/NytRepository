@@ -89,7 +89,7 @@ public class GetCalendarData extends Model {
 		try {
 			json2 = readUrl("http://calendar.cbs.dk/events.php/" + userName + "/" +key + ".json");
 			
-       System.out.println(json2);
+//       System.out.println(json2);
        Gson gson = new Gson();
        Events events = gson.fromJson(json2, Events.class);
        QueryBuilder queryBuilder = new QueryBuilder();

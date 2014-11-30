@@ -4,12 +4,9 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
-
 import javax.swing.JOptionPane;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
@@ -19,6 +16,7 @@ import JsonClasses.BlockUser;
 import JsonClasses.CreateCalendar;
 import JsonClasses.DeleteCalendar;
 import JsonClasses.SaveNote;
+import databaseMethods.CalendarData;
 
 public class SwitchMethods extends Model
 {
@@ -112,7 +110,7 @@ public class SwitchMethods extends Model
 		String stringToBeReturned ="";
 		testConnection();
 		stringToBeReturned = removeCalendar(userName, calendarName, active);
-
+		
 		return stringToBeReturned;
 	}
 	
@@ -254,34 +252,32 @@ public class SwitchMethods extends Model
 	
 	public String getCalendar () throws SQLException
 	{
-		System.out.println("test");
 //		qb.selectFrom("Calendar").all().Execute();
-		System.out.println("test2");
+		
 		resultSet = qb.selectFrom("calendar").all().ExecuteQuery();
 				
 		while(resultSet.next()){
-			System.out.println("test3");
-			
+					
 		int CalendarID = resultSet.getInt("CalendarID");
-		System.out.println("test4");
+
 		int type = resultSet.getInt("type");
-		System.out.println("test5");
+		
 		String Name = resultSet.getString("Name");
-		System.out.println("test6");
+		
 		int Active = resultSet.getInt("Active");
-		System.out.println("test7");
+		
 		String CreatedBy = resultSet.getString("CreatedBy");
-		System.out.println("test8");
+		
 		int PrivateOrPublic = resultSet.getInt("PrivatePublic");
-		System.out.println("test9");
+		
 		
 		calendarData.add(new CalendarData(CalendarID,type, Name, Active, CreatedBy, PrivateOrPublic));
-		System.out.println("test10");
-			
+		
+			System.out.println(CalendarID);
 		}
-				
-		String gsonString = gson.toJson(DE);
-		return gsonString;
+		System.out.println("test");		
+		String gsonString5 = gson.toJson(calendarData);
+		return gsonString5;
 		
 	
 	}
