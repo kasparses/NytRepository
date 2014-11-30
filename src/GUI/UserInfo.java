@@ -42,7 +42,7 @@ public class UserInfo extends JPanel {
 		
 		lblCBSlogo = new JLabel("");
 		lblCBSlogo.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/CBSLogo3.png")));
-		lblCBSlogo.setBounds(10, 698, 250, 59);
+		lblCBSlogo.setBounds(0, 709, 250, 59);
 		add(lblCBSlogo);
 
 		txtField_UserID = new JTextField();

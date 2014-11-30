@@ -19,7 +19,7 @@ import model.note.NoteModel;
 import model.calendar.*;
 import JsonClasses.DeleteCalendar;
 
-public class AddEventModel extends Model {
+public class AddEventModel extends Model  {
 	
 //	Event event = new Event(0, null, null, null, 0);
 	QueryBuilder qb = new QueryBuilder(); 
@@ -27,11 +27,11 @@ public class AddEventModel extends Model {
 	private DeleteCalendar DC = new DeleteCalendar();
 	Gson gson = new GsonBuilder().create();
 	ResultSet rs;
-Answer A = new Answer();
+	Answer A = new Answer();
 	
 	QOTDModel qm = new QOTDModel();
 
-	public String CreateEvent(
+	public String CreateEvent (
 			int ID,
 			String activityID,
 			String EventID,
@@ -49,32 +49,26 @@ Answer A = new Answer();
 			
 			try {
 				resultSet = qb.selectFrom("Calendar").where("Name", "=", calendarName).ExecuteQuery();
-			} catch (SQLException e1) {
-				
-				e1.printStackTrace();
-			}
+			
 			int calendarID = 0;
-			try {
+//			try {
 				while(resultSet.next())
 				{
 					 calendarID = resultSet.getInt("CalendarID");
 					
 				}
-			} catch (SQLException e1) {
-				
-				e1.printStackTrace();
-			}
+//			} catch (SQLException e1) {
+//				
+//				e1.printStackTrace();
+//			}
 			String[] fields = {"ID", "activityID","eventID", "type", "title", "description", "start", "end", "location", "note"};
-			String[] values = {Integer.toString(calendarID),  activityID,EventID, type, title, description, start, end, location, note};			try {
+			String[] values = {Integer.toString(calendarID),  activityID,EventID, type, title, description, start, end, location, note};			
+//			try {
 				qb.insertInto("events", fields).values(values).Execute();
-				A.setAnswer("The event has been succesfully created!!");
-//				stringToBeReturned = "The event has been succesfully created!!";
+				A.setAnswer("The event has been succesfully created.");
 				
 			} catch (SQLException e) {
-				A.setAnswer("The event has NOT been created!!");
-//				stringToBeReturned = "The event has NOT been created!!";
-
-				// TODO Auto-generated catch block
+				A.setAnswer("The event has NOT been created.");
 				e.printStackTrace();
 			}
 			String gsonString = gson.toJson(A);

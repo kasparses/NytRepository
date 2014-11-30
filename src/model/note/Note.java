@@ -34,7 +34,6 @@ public class Note extends Model{
 				
 			} catch (SQLException e) {
 				stringToBeReturned = "The note could NOT be created!!! (Does not work)";
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			return stringToBeReturned;

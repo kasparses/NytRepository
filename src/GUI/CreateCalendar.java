@@ -20,7 +20,6 @@ public class CreateCalendar extends JPanel {
 	private final JRadioButton rdbtnPrivateCalendar = new JRadioButton("Private Calendar");
 	private final JRadioButton rdbtnPublicCalendar = new JRadioButton("Public Calendar");
 	private final JButton btnCreateCalendar = new JButton("Create Calendar");
-	private final JLabel label = new JLabel("");
 	private final JButton btnNoteList = new JButton("Note List");
 	private final JButton btnUserList = new JButton("User List");
 	private final JButton btnEventList = new JButton("Event List");
@@ -29,6 +28,7 @@ public class CreateCalendar extends JPanel {
 	private final JButton btnLogOut = new JButton("Log Out");
 	private final JLabel label_1 = new JLabel("");
 	private final JButton btnUserInfo = new JButton("User Info");
+	private final JLabel label = new JLabel("");
 
 	/**
 	 * Create the panel.
@@ -181,6 +181,4 @@ public class CreateCalendar extends JPanel {
 	public JButton getBtnLogOut() {
 		return btnLogOut;
 	}
-	
-	
 }
