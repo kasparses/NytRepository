@@ -22,14 +22,6 @@ import model.calendar.*;
 import model.DailyUpdate.*;
 import databaseMethods.SwitchMethods;
 import model.Forecast.ForecastTest;
-
-/**
- * The purpose of this class is to be a connection point that all other methods are called through. 
- * For example when the clients login information is to be checked with the database the client sends
- * a JsonString containing an ID called logIn to the server, who then calls the GiantSwitchMethod in this class.
- * The GiantSwitchMethod then runs the case in the switch called logIn. The case then calls the method to authenticate the login information. 
- * 
- */
 public class GiantSwitch {
 	
 	model.user.AuthenticateUser a = new model.user.AuthenticateUser();
@@ -60,12 +52,7 @@ public class GiantSwitch {
 		 ** COURSES **
 		 ************/
 
-		case "importCalendar":
-			
-			
-			
-			break;
-
+		
 			
 		/**********
 		 ** LOGIN **
@@ -132,9 +119,7 @@ public class GiantSwitch {
 
 			break;
 		
-		case "saveImportedCalendar":
-			
-			break;
+		
 			
 		case "getCalendar":
 			answer = SW.getCalendar();
@@ -152,8 +137,6 @@ public class GiantSwitch {
 					CE.getDescription(), CE.getStart(), CE.getEnd(), CE.getLocation(),CE.getNote(), CE.getCalendarName());
 			break;
 
-		case "getEventInfo":
-			break;
 			
 		case "deleteEvent":
 			DE = (DeleteEvent)gson.fromJson(jsonString, DeleteEvent.class);
