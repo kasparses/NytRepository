@@ -92,11 +92,11 @@ public class AddEventGUI extends JPanel {
 		textField_Location.setBounds(755, 126, 120, 34);
 		add(textField_Location);
 
-		JLabel lblEmail = new JLabel("Location");
-		lblEmail.setForeground(Color.WHITE);
-		lblEmail.setFont(new Font("Arial", Font.BOLD, 26));
-		lblEmail.setBounds(483, 126, 160, 30);
-		add(lblEmail);
+		JLabel lblLocation = new JLabel("Location");
+		lblLocation.setForeground(Color.WHITE);
+		lblLocation.setFont(new Font("Arial", Font.BOLD, 26));
+		lblLocation.setBounds(483, 126, 160, 30);
+		add(lblLocation);
 
 		JLabel lblCreateddate = new JLabel("Start");
 		lblCreateddate.setForeground(Color.WHITE);
