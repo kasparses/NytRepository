@@ -13,6 +13,13 @@ import JsonClasses.DeleteCalendar;
 import JsonClasses.SaveNote;
 import databaseMethods.CalendarData;
 
+/**
+ * The methods in this class are all called from the GiantSwitch class and they are primarily used in connection with the database.
+ * The methods are for example used to update, insert or extract information from the database. 
+ * The methods all return a JsonObject containing the information that are to be sent back to the user or superAdmin. 
+ * 
+ *
+ */
 public class SwitchMethods extends Model
 {
 	QueryBuilder qb = new QueryBuilder();
@@ -53,7 +60,16 @@ public class SwitchMethods extends Model
 
 	}
 
-
+	/**
+	 * Allows the user or superAdmin to create a new calendar.
+	 * @param type, decides whether the calendar is a user created calendar or a standard CBS calendar that cannot be deleted.
+	 * @param newcalendarName, the name of the calendar to be created.
+	 * @param Active, whether the calendar is to be active or to be inactive.
+	 * @param userName, the user name of the user who is currently logged in. This is used to set who created the calendar. 
+	 * @param privatePublic, decides whether the calendar is a private calendar or a public calendar. 
+	 * @return gsonString, A JsonString created from an object of the class CreateCalendar.
+	 * @throws SQLException
+	 */
 	public String createNewCalendar (int type, String newcalendarName, int Active, String userName, int privatePublic) throws SQLException
 	{
 
@@ -85,7 +101,16 @@ public class SwitchMethods extends Model
 		}
 		return authenticate;
 	}
-
+	/**
+	 * This method is called from the method createNewCalendar in this class and inserts the variables in the specified columns. 
+	 * The parameters are the same as described in the documentation for the method createNewCalendar.
+	 * @param type
+	 * @param newCalendarName
+	 * @param Active
+	 * @param userName
+	 * @param publicOrPrivate
+	 * @throws SQLException
+	 */
 	public void addNewCalendar (int type, String newCalendarName, int Active, String userName, int publicOrPrivate) throws SQLException
 	{
 		String [] keys = {"type","Name","Active","CreatedBy","PrivatePublic"};
@@ -95,10 +120,11 @@ public class SwitchMethods extends Model
 
 	}
 	/**
-	 * Allows the client to delete a calendar
-	 * @param userName
-	 * @param calenderName
-	 * @return
+	 * Allows the user or superAdmin to delete a calendar
+	 * @param userName, the username of the user who is currently logged in. This is used to check whether the username of the person logged
+	 * in matches the username of the person who created the calendar as a user can only delete calendars that he created himself. 
+	 * @param calenderName, the name of the calendar to be deleted.
+	 * @return gsonString, A JsonString created from an object of the class DeleteCalendar.
 	 */
 	public String deleteCalendar (String userName, String calendarName, boolean active) throws SQLException
 	{
@@ -108,7 +134,15 @@ public class SwitchMethods extends Model
 
 		return stringToBeReturned;
 	}
-
+	/**
+	 * This method is called from the method deleteCalendar and is used to set the selected calendar to inactive. 
+	 * The parameters are the same as described in the documentation for the method deleteCalendar. 
+	 * @param userName
+	 * @param calendarName
+	 * @param active
+	 * @return gsonString, A JsonString created from an object of the class DeleteCalendar.
+	 * @throws SQLException
+	 */
 	public String removeCalendar (String userName, String calendarName, boolean active) throws SQLException
 	{
 
@@ -163,6 +197,13 @@ public class SwitchMethods extends Model
 		return gsonString;
 
 	}
+	/**
+	 * Allows the superAdmin to block or unblock a user.
+	 * @param userName, the name of the user who is to be blocked or unblocked. 
+	 * @param blocked, a boolean variable to decide whether the user is to be blocked or unblocked. 
+	 * @return gsonString, A JsonString created from an object of the class BlockUser.
+	 * @throws SQLException
+	 */
 	public Object blockUser (String userName, boolean blocked) throws SQLException
 	{
 
@@ -205,7 +246,13 @@ public class SwitchMethods extends Model
 		return gsonString;
 
 	}
-
+	/**
+	 * This method allows the user to remove an event 
+	 * @param eventID
+	 * @param title
+	 * @return
+	 * @throws SQLException
+	 */
 	public String removeEvent (String eventID, String title) throws SQLException
 	{
 
@@ -244,7 +291,12 @@ public class SwitchMethods extends Model
 		return gsonString;
 
 	}
-
+	/**
+	 * This method extracts all information about the different calendars from the database and inserts the information into an
+	 * ArrayList of the class CalendarData. 
+	 * @return gsonString, A JsonString created from an object of the array calendarData.
+	 * @throws SQLException
+	 */
 	public String getCalendar () throws SQLException
 	{
 
@@ -281,6 +333,13 @@ public class SwitchMethods extends Model
 
 	}
 
+	/**
+	 * This method allows the user to add or update a note for a selected event. 
+	 * @param superID, an ID that specifies which row in the events table is to be updated. 
+	 * @param note, a String containing the note that is to be the new note. 
+	 * @return gsonString, A JsonString created from an object of the class SaveNote.
+	 * @throws SQLException
+	 */
 	public String AddNote (String superID, String note) throws SQLException
 	{
 
