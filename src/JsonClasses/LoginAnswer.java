@@ -5,9 +5,9 @@ public class LoginAnswer implements java.io.Serializable
 	private String answer = "";
 	private String userAdmin = "";
 	private String active = "";
-	
-	//Getters and setters for everything, bitch
-	
+
+	//Getters and setters for everything
+
 	public String getAnswer() {
 		return answer;
 	}
@@ -26,6 +26,5 @@ public class LoginAnswer implements java.io.Serializable
 	public void setActive(String active) {
 		this.active = active;
 	}
-	
 
 }

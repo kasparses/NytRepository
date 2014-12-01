@@ -1,23 +1,15 @@
 package model.user;
 
 import java.sql.ResultSet;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import model.QueryBuild.QueryBuilder;
 import JsonClasses.LoginAnswer;
 import JsonClasses.ForgotLogin;
 public class AuthenticateUser {
 	Gson gson = new GsonBuilder().create();
-
-	
-
-	private ResultSet rs;
-
 	private QueryBuilder qb;
 
-	
 	/**
 	 * Allows the client to log in
 	 * @param email
@@ -41,12 +33,9 @@ private ForgotLogin FL = new ForgotLogin();
 			rs = qb.selectFrom(keys, "users").where("email", "=", email).ExecuteQuery();
 			while(rs.next())
 			{
-				int userid = rs.getInt("userID");
-				String emailAddress = rs.getString("email");
 				String ty = rs.getString("type");
 				String pass = rs.getString("password");
-				
-				
+
 				if(pass.equals(password)){
 					String answer = "correct";
 					LA.setAnswer(answer);
@@ -95,19 +84,12 @@ private ForgotLogin FL = new ForgotLogin();
 				String email = rs.getString("email");
 				String password = rs.getString("password");
 
-				
-				
-				
-				
 				if(cpr.equals(CPR)){
 					String answer = "correct";
 					FL.setAnswer(answer);
 					FL.setEmail(email);
 					FL.setPassword(password);
 				}				
-
-				
-					
 
 			}
 		}
@@ -117,7 +99,7 @@ private ForgotLogin FL = new ForgotLogin();
 		}
 		String gsonString = gson.toJson(FL);
 		return gsonString;
-//		return answer;
+
 	}
 	
 }

@@ -9,9 +9,9 @@ public class DeleteCalendar implements java.io.Serializable
 	private int Active = 1;
 	private String answer = "";
 	private boolean active;
-	
+
 	//Getters and setters for everything
-	
+
 	public String getOverallID() {
 		return overallID;
 	}
@@ -24,7 +24,7 @@ public class DeleteCalendar implements java.io.Serializable
 	public void setOverallID(String overallID) {
 		this.overallID = overallID;
 	}
-	
+
 	public String getCalendarName() {
 		return calendarName;
 	}
@@ -49,6 +49,6 @@ public class DeleteCalendar implements java.io.Serializable
 	public void setActive(int active) {
 		Active = active;
 	}
-	
+
 
 }

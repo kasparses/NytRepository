@@ -1,34 +1,19 @@
 	package GUI;
 
-	import javax.swing.JPanel;
-
-	import java.awt.Dimension;
-
-	import javax.swing.JLabel;
+import javax.swing.JPanel;
+import java.awt.Dimension;
+import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-
-	import java.awt.Font;
-
-	import javax.swing.SwingConstants;
+import java.awt.Font;
 import javax.swing.JButton;
-
-	import java.awt.Color;
-
-	import javax.swing.JScrollPane;
-
-	import java.awt.Component;
-
-	import javax.swing.border.CompoundBorder;
+import java.awt.Color;
+import javax.swing.JScrollPane;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
-import javax.swing.JTextPane;
-
 import model.QueryBuild.QueryBuilder;
-
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;

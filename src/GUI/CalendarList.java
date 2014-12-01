@@ -2,27 +2,20 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-
 import javax.swing.JButton;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
-
 import model.QueryBuild.QueryBuilder;
-
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-
-import java.awt.Component;
 import java.awt.event.ActionListener;
-
 import javax.swing.border.MatteBorder;
 
 public class CalendarList extends JPanel {

@@ -8,9 +8,7 @@ public class SaveNote implements java.io.Serializable
 	private String note;
 	private String answer;
 	
-	
-	
-	//Getters and setters for everything, bitch
+	//Getters and setters for everything
 	public String getOverallID() {
 		return overallID;
 	}
@@ -35,7 +33,5 @@ public class SaveNote implements java.io.Serializable
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	
-	
 
 }

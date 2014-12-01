@@ -5,22 +5,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
-
 import java.awt.Font;
 import java.awt.Color;
-
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
-
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.BevelBorder;
-
-import java.awt.Cursor;
-import java.awt.event.KeyEvent;
 import java.awt.SystemColor;
 
 public class AddUser extends JPanel {

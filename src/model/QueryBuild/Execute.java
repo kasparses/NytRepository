@@ -1,9 +1,7 @@
 package model.QueryBuild;
 
 import model.Model;
-
 import org.apache.commons.lang.StringEscapeUtils;
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -12,194 +10,168 @@ import java.sql.SQLException;
  */
 public class Execute extends Model {
 
-    private final String SELECT = "SELECT ";
-    private final String FROM = " FROM ";
-    private final String WHERE = " WHERE ";
-    private final String INSERTINTO = "INSERT INTO ";
-    private final String UPDATE = "UPDATE ";
-    private final String VALUES = " VALUES ";
-    private final String DELETE = " DELETE ";
+	private final String SELECT = "SELECT ";
+	private final String FROM = " FROM ";
+	private final String WHERE = " WHERE ";
+	private final String INSERTINTO = "INSERT INTO ";
+	private final String UPDATE = "UPDATE ";
+	private final String VALUES = " VALUES ";
+	private final String DELETE = " DELETE ";
 
-    private QueryBuilder queryBuilder;
-    private Where where;
-    private Values values;
-    private boolean getAll = false;
+	private QueryBuilder queryBuilder;
+	private Where where;
+	private Values values;
+	private boolean getAll = false;
 
-    protected QueryBuilder getQueryBuilder() {
-        return queryBuilder;
-    }
+	protected QueryBuilder getQueryBuilder() {
+		return queryBuilder;
+	}
 
-    protected Where getWhere() {
-        return where;
-    }
+	protected Where getWhere() {
+		return where;
+	}
 
-    protected Values getValues() {
-        return values;
-    }
+	protected Values getValues() {
+		return values;
+	}
 
-    protected boolean isGetAll() {
-        return getAll;
-    }
+	protected boolean isGetAll() {
+		return getAll;
+	}
 
-    public Execute(QueryBuilder queryBuilder, boolean getAll) {
-        this.queryBuilder = queryBuilder;
-        this.getAll = getAll;
-    }
+	public Execute(QueryBuilder queryBuilder, boolean getAll) {
+		this.queryBuilder = queryBuilder;
+		this.getAll = getAll;
+	}
 
-    public Execute(QueryBuilder queryBuilder, Where where) {
-        this.queryBuilder = queryBuilder;
-        this.where = where;
-    }
+	public Execute(QueryBuilder queryBuilder, Where where) {
+		this.queryBuilder = queryBuilder;
+		this.where = where;
+	}
 
-    public Execute(QueryBuilder queryBuilder, Values values) {
-        this.queryBuilder = queryBuilder;
-        this.values = values;
-    }
+	public Execute(QueryBuilder queryBuilder, Values values) {
+		this.queryBuilder = queryBuilder;
+		this.values = values;
+	}
 
-    /**
-     * Execute SQL and returns ResultSet.
-     * @return ResultSet
-     * @throws SQLException
-     */
-    public ResultSet ExecuteQuery() throws SQLException {
-        String sql = "";
-        if (isGetAll()) {
-            sql = SELECT + getQueryBuilder().getSelectValue() + FROM + getQueryBuilder().getTableName() + ";";
-            try {
-                getConnection(false);
-                getConn();
-                String cleanSql = StringEscapeUtils.escapeSql(sql);
-                sqlStatement = getConn().prepareStatement(cleanSql);
+	/**
+	 * Execute SQL and returns ResultSet.
+	 * @return ResultSet
+	 * @throws SQLException
+	 */
+	public ResultSet ExecuteQuery() throws SQLException {
+		String sql = "";
+		if (isGetAll()) {
+			sql = SELECT + getQueryBuilder().getSelectValue() + FROM + getQueryBuilder().getTableName() + ";";
+			try {
+				getConnection(false);
+				getConn();
+				String cleanSql = StringEscapeUtils.escapeSql(sql);
+				sqlStatement = getConn().prepareStatement(cleanSql);
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } else {
-        	
-            try {
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} else {
+
+			try {
 				sql = SELECT + getQueryBuilder().getSelectValue() +
-				        FROM + getQueryBuilder().getTableName() +
-				        WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
-				  
-				
-				
+						FROM + getQueryBuilder().getTableName() +
+						WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
+
+
+
 			} catch (Exception e1) {
-				 
+
 				e1.printStackTrace();
 			}
-          
-            try {
-                getConnection(false);
-                getConn();
-                String cleanSql = StringEscapeUtils.escapeSql(sql);
-                sqlStatement = getConn().prepareStatement(cleanSql);
-                sqlStatement.setString(1, getWhere().getWhereValue());
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        
-        return sqlStatement.executeQuery();
-        
-    }
+			try {
+				getConnection(false);
+				getConn();
+				String cleanSql = StringEscapeUtils.escapeSql(sql);
+				sqlStatement = getConn().prepareStatement(cleanSql);
+				sqlStatement.setString(1, getWhere().getWhereValue());
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return sqlStatement.executeQuery();
+
+	}
 
 
-    /**
-     * Execute SQL Query. <strong>OBS nothing returns.</strong>
-     * @return
-     * @throws SQLException
-     */
-    public boolean Execute() throws SQLException {
-        String sql = "";
+	/**
+	 * Execute SQL Query. <strong>OBS nothing returns.</strong>
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean Execute() throws SQLException {
+		String sql = "";
 
-//        if (getQueryBuilder().isSoftDelete()) {
-//            sql = UPDATE + getQueryBuilder().getTableName() + " SET active = 0" +
-//                    WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " " + getWhere().getWhereValue() + ";  ";
-//            try {
-//                getConnection(false);
-//                getConn();
-//                String cleanSql = StringEscapeUtils.escapeSql(sql);
-//                sqlStatement = getConn().prepareStatement(cleanSql);
-//
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
+		if(getQueryBuilder().isUpdate()) {
+			sql = UPDATE + getQueryBuilder().getTableName() + " SET " + getQueryBuilder().getFields() + "" + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + "'"+ getWhere().getWhereValue()+"'"+ " ;";
 
-//        }  else
-        if(getQueryBuilder().isUpdate()) {
-            sql = UPDATE + getQueryBuilder().getTableName() + " SET " + getQueryBuilder().getFields() + "" + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + "'"+ getWhere().getWhereValue()+"'"+ " ;";
-            
-            try {
-                getConnection(false);
-                getConn();
-                // escape sql hjælper med at klargøre java koden til sql brug. for eksempel med '' og ""
-//                String cleanSql = StringEscapeUtils.escapeSql(sql); 
+			try {
+				getConnection(false);
+				getConn();
 
-//                sqlStatement = getConn().prepareStatement(cleanSql);
-                sqlStatement = getConn().prepareStatement(sql);
-//                sqlStatement.setString(0, getWhere().getWhereValue());
+				sqlStatement = getConn().prepareStatement(sql);
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } 
-        else if(getQueryBuilder().isSoftDelete()) {
-        	
-            sql = DELETE + FROM + getQueryBuilder().getTableName() + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
-            		//getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + "'"+ getWhere().getWhereValue()+"'"+ " ;";
-            System.out.println("sql: "+sql);
-            try {
-                getConnection(false);
-                getConn();
-                // escape sql hjælper med at klargøre java koden til sql brug. for eksempel med '' og ""
-//                String cleanSql = StringEscapeUtils.escapeSql(sql); 
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		} 
+		else if(getQueryBuilder().isSoftDelete()) {
 
-//                sqlStatement = getConn().prepareStatement(cleanSql);
-                sqlStatement = getConn().prepareStatement(sql);
-                sqlStatement.setString(1, getWhere().getWhereValue());
+			sql = DELETE + FROM + getQueryBuilder().getTableName() + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
+			System.out.println("sql: "+sql);
+			try {
+				getConnection(false);
+				getConn();
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-            
-            
-            sql = INSERTINTO + getQueryBuilder().getTableName() + " (" + getQueryBuilder().getFields() + ")" + VALUES + "(";
-            StringBuilder sb = new StringBuilder();
-            for (String n : getValues().getValues()) {
-                if (sb.length() > 0) sb.append(',');
-                sb.append(" ?");
-            }
-            sql += sb.toString();
-            sql += " );";
-           
-            try {
-                getConnection(false);
-                getConn();
-                String cleanSql = StringEscapeUtils.escapeSql(sql);
-                sqlStatement = getConn().prepareStatement(cleanSql);
-                int x = 0;
-                for (int i = 0; i < getValues().getValues().length; i++) {
-                    x = i;
-                    sqlStatement.setString(x+1, getValues().getValues()[i]);
-                }
-                return sqlStatement.execute();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }finally{
-            	getConn().close();
-            }
-            
-            
-          
-        }
+				sqlStatement = getConn().prepareStatement(sql);
+				sqlStatement.setString(1, getWhere().getWhereValue());
 
-        
-        return sqlStatement.execute();
-        
-    }
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		else {
 
+
+			sql = INSERTINTO + getQueryBuilder().getTableName() + " (" + getQueryBuilder().getFields() + ")" + VALUES + "(";
+			StringBuilder sb = new StringBuilder();
+			for (String n : getValues().getValues()) {
+				if (sb.length() > 0) sb.append(',');
+				sb.append(" ?");
+			}
+			sql += sb.toString();
+			sql += " );";
+
+			try {
+				getConnection(false);
+				getConn();
+				String cleanSql = StringEscapeUtils.escapeSql(sql);
+				sqlStatement = getConn().prepareStatement(cleanSql);
+				int x = 0;
+				for (int i = 0; i < getValues().getValues().length; i++) {
+					x = i;
+					sqlStatement.setString(x+1, getValues().getValues()[i]);
+				}
+				return sqlStatement.execute();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally{
+				getConn().close();
+			}
+
+		}
+
+		return sqlStatement.execute();
+
+	}
 
 }

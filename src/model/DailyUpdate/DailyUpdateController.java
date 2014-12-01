@@ -4,10 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import JsonClasses.DailyUpdate;
 import model.Forecast.Forecast;
 import model.Forecast.ForecastModel;

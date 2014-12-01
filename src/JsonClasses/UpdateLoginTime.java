@@ -6,8 +6,8 @@ public class UpdateLoginTime implements java.io.Serializable
 	private String overallID = "LoginTime";
 	private long LoginTime = 0;
 	private String userName = "";
-	
-	//Getters and setters for everything, bitch
+
+	//Getters and setters for everything
 	public String getOverallID() {
 		return overallID;
 	}
@@ -26,5 +26,5 @@ public class UpdateLoginTime implements java.io.Serializable
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 }

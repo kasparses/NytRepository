@@ -9,9 +9,9 @@ public class BlockUser implements java.io.Serializable
 	private String CPR;
 	private String answer = "";
 	private boolean blocked;
-	
-	
-	//Getters and setters for everything, bitch
+
+
+	//Getters and setters for everything
 	public String getOverallID() {
 		return overallID;
 	}
@@ -48,7 +48,7 @@ public class BlockUser implements java.io.Serializable
 	public void setBlocked(boolean blocked) {
 		this.blocked = blocked;
 	}
-	
-	
+
+
 
 }

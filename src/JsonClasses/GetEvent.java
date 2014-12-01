@@ -13,24 +13,9 @@ public class GetEvent implements java.io.Serializable
 	private String start;
 	private String end;
 	private String location;
-	
-//	public GetEvent(String _overallID, int _ID, String _activityID, String _eventID, String _type, String _title, String _description, String _start, String _end, String _location){
-//		getOverallID(_overallID);
-//		getID(_ID);
-//		getActivityID(_activityID);
-//		getEventID(_eventID);
-//		getType(_type);
-//		getTitle(_title);
-//		getDescription(_description);
-//		getStart(_start);
-//		getEnd(_end);
-//		getLocation(_location);
-//		
-//	}
-	
-	 
-	
-	//Getters and setters for everything, bitch
+
+
+	//Getters and setters for everything
 
 	public String getOverallID() {
 		return overallID;

@@ -1,33 +1,12 @@
 package ClientWorker;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.Socket;
-import java.net.UnknownHostException;
-
-import JsonClasses.DeleteCalendar;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.json.simple.JSONObject;
-
-import JsonClasses.DeleteCalendar;
-import sun.font.CreatedFontTracker;
-
-
 
 public class ClientWorker implements  Runnable{
 	private Socket connectionSocketConected;
-//	private CalendarInfo CI = new CalendarInfo();
 	private GiantSwitch GS = new GiantSwitch();
 	private encryption cryp = new encryption();
-	private String incomingJson;
-		
 	
 	ClientWorker(Socket connectionSocket){
 		this.connectionSocketConected = connectionSocket;

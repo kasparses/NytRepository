@@ -42,12 +42,5 @@ public class Forecast {
         this.desc = desc;
     }
     
-    // Returnere vejrudsigten som en json tekststreng
-    public String toString() {
-        return "Forecast{" +
-                "date='" + date + '\'' +
-                ", celsius='" + celsius + '\'' +
-                ", desc='" + desc + '\'' +
-                '}';
-    }
+   
 }

@@ -9,80 +9,80 @@ import java.util.ArrayList;
 public class Event implements java.io.Serializable{
 	private  final long serialVersionUID = 1L;
 	private int ID;
-    private String activityid;
-    private String eventid;
-    private String type;
-    private String title;
-    private String description;
-    private ArrayList<String> start;
-    private ArrayList<String> end;
-    private String location;
-    private String note;
+	private String activityid;
+	private String eventid;
+	private String type;
+	private String title;
+	private String description;
+	private ArrayList<String> start;
+	private ArrayList<String> end;
+	private String location;
+	private String note;
 
-    // Settere og gettere for Event objektet 
-    public void setActivityid(String activityid){
-        this.activityid = activityid;
-    }
-    public String getActivityid(){
-        return activityid;
-    }
+	// Settere og gettere for Event objektet 
+	public void setActivityid(String activityid){
+		this.activityid = activityid;
+	}
+	public String getActivityid(){
+		return activityid;
+	}
 
-    public void setEventid(String eventid){
-        this.eventid = eventid;
-    }
-    public String getEventid(){
-        return eventid;
-    }
+	public void setEventid(String eventid){
+		this.eventid = eventid;
+	}
+	public String getEventid(){
+		return eventid;
+	}
 
-    public void setType(String type){
-        this.type = type;
-    }
-    public String getType(){
-        return type;
-    }
+	public void setType(String type){
+		this.type = type;
+	}
+	public String getType(){
+		return type;
+	}
 
-    public void setTitle(String title){
-        this.title = title;
-    }
-    public String getTitle(){
-        return title;
-    }
+	public void setTitle(String title){
+		this.title = title;
+	}
+	public String getTitle(){
+		return title;
+	}
 
-    public void setDescription(String description){
-        this.description = description;
-    }
-    public String getDescription(){
-        return description;
-    }
+	public void setDescription(String description){
+		this.description = description;
+	}
+	public String getDescription(){
+		return description;
+	}
 
-    public void setLocation(String location){
-        this.location = location;
-    }
-    public String getLocation(){
-        return location;
-    }
-    
-    public void setStart(ArrayList<String> start){
-        this.start = start;
-    }
-    public ArrayList<String> getStart(){
-        return start;
-    }
+	public void setLocation(String location){
+		this.location = location;
+	}
+	public String getLocation(){
+		return location;
+	}
 
-    public void setEnd(ArrayList<String> end){
-        this.end = end;
-    }
-    public ArrayList<String> getEnd(){
-        return end;
-    }
-    
+	public void setStart(ArrayList<String> start){
+		this.start = start;
+	}
+	public ArrayList<String> getStart(){
+		return start;
+	}
+
+	public void setEnd(ArrayList<String> end){
+		this.end = end;
+	}
+	public ArrayList<String> getEnd(){
+		return end;
+	}
+
 	public int getID() {
 		return ID;
 	}
 	public void setID(int iD) {
 		ID = iD;
 	}
-	
+
 	public String getNote() {
 		return note;
 	}
@@ -104,7 +104,7 @@ public class Event implements java.io.Serializable{
 		this.location = location;
 		this.note = Note;
 	}
-    
-    
+
+
 
 }

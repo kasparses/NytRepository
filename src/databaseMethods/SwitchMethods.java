@@ -1,16 +1,11 @@
 package databaseMethods;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ArrayList;
-import java.util.Date;
-import javax.swing.JOptionPane;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.Model;
 import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
-import model.calendar.Event;
 import JsonClasses.AuthUserJson;
 import JsonClasses.BlockUser;
 import JsonClasses.CreateCalendar;
@@ -30,10 +25,10 @@ public class SwitchMethods extends Model
 	BlockUser BU = new BlockUser();
 	SaveNote SN = new SaveNote();
 
-    ArrayList<CalendarData> calendarData = new ArrayList<CalendarData>();
-	
+	ArrayList<CalendarData> calendarData = new ArrayList<CalendarData>();
 
-	
+
+
 	/**
 	 * Allows the client to create a new calendar
 	 * @param userName
@@ -48,20 +43,20 @@ public class SwitchMethods extends Model
 		String noReturn = "";
 		String[] keys = {"LastUpdateTime" };
 		String[] keys2 = {Long.toString(LoginTime) };
-		
+
 		try {
 			qb.update("users", keys, keys2).where("email", "=", userName).Execute();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return noReturn;
-		
+
 	}
-	
-	
+
+
 	public String createNewCalendar (int type, String newcalendarName, int Active, String userName, int privatePublic) throws SQLException
 	{
-		String stringToBeReturned = "";
+
 		testConnection();
 		if(authenticateNewCalendar(newcalendarName) == false)
 		{
@@ -72,31 +67,31 @@ public class SwitchMethods extends Model
 		{
 			CC.setAnswer("The new calender has not been created!");
 		}
-		
-		
+
+
 		String gsonString = gson.toJson(CC);
 		return gsonString;	}
-	
+
 	public boolean authenticateNewCalendar(String newCalendarName) throws SQLException
 	{
 		getConn();
 		boolean authenticate = false;
-		
+
 		resultSet= qb.selectFrom("Calendar").where("name", "=", newCalendarName).ExecuteQuery();
-				
+
 		while(resultSet.next())
 		{
 			authenticate = true;
 		}
 		return authenticate;
 	}
-	
+
 	public void addNewCalendar (int type, String newCalendarName, int Active, String userName, int publicOrPrivate) throws SQLException
 	{
 		String [] keys = {"type","Name","Active","CreatedBy","PrivatePublic"};
 		String [] values = {Integer.toString(type),newCalendarName,Integer.toString(Active),userName, Integer.toString(publicOrPrivate)};
 		qb.insertInto("Calendar", keys).values(values).Execute();
-		
+
 
 	}
 	/**
@@ -110,18 +105,18 @@ public class SwitchMethods extends Model
 		String stringToBeReturned ="";
 		testConnection();
 		stringToBeReturned = removeCalendar(userName, calendarName, active);
-		
+
 		return stringToBeReturned;
 	}
-	
+
 	public String removeCalendar (String userName, String calendarName, boolean active) throws SQLException
 	{
-		String stringToBeReturend = "";
+
 		String usernameOfCreator ="";
 		String calendarExists = "";
 		String[] values = {""};
 		resultSet = qb.selectFrom("Calendar").where("Name", "=", calendarName).ExecuteQuery();
-				
+
 		while(resultSet.next())
 		{
 			calendarExists = resultSet.toString();
@@ -134,17 +129,17 @@ public class SwitchMethods extends Model
 			{
 				DC.setAnswer("Only the creator of the calendar is able to delete it.");
 
-				
+
 			}
 			else if(usernameOfCreator.equals(userName))
 			{
-				
+
 				String [] keys = {"Active"};
 				if(active == true ){
 					values [0] = "1";
 				}
 				else if(active == false){
-					 values [0] = "2";
+					values [0] = "2";
 				}
 				qb.update("Calendar", keys, values).where("Name", "=", calendarName).Execute();
 
@@ -161,16 +156,16 @@ public class SwitchMethods extends Model
 		else
 		{
 			DC.setAnswer("The calendar you are trying to delete, does not exists.");
-			
+
 		}
-		
+
 		String gsonString = gson.toJson(DC);
 		return gsonString;
-		
+
 	}
 	public Object blockUser (String userName, boolean blocked) throws SQLException
 	{
-//		String stringToBeReturend = "";
+
 		String userExists = "";
 		String[] values = {""};
 		resultSet = qb.selectFrom("users").where("email", "=", userName).ExecuteQuery();
@@ -180,44 +175,44 @@ public class SwitchMethods extends Model
 		}
 		if(!userExists.equals(""))
 		{
-			
-				String [] keys = {"Active"};
-				if(blocked == true ){
-					values [0] = "2";
-				}
-				else if(blocked == false){
-					 values [0] = "1";
-				}
-				
-				qb.update("users", keys, values).where("email", "=", userName).Execute();
-				
-				if(blocked == true ){
-					BU.setAnswer("The user has been set inactive"); 
 
-				}
-				else if(blocked == false){
-					BU.setAnswer("The user has been set active"); 
-				}
-			
+			String [] keys = {"Active"};
+			if(blocked == true ){
+				values [0] = "2";
+			}
+			else if(blocked == false){
+				values [0] = "1";
+			}
+
+			qb.update("users", keys, values).where("email", "=", userName).Execute();
+
+			if(blocked == true ){
+				BU.setAnswer("The user has been set inactive"); 
+
+			}
+			else if(blocked == false){
+				BU.setAnswer("The user has been set active"); 
+			}
+
 
 		}
 		else
 		{
 			BU.setAnswer("The user you are trying to block, does not exists.");
 		}
-		
+
 		String gsonString = gson.toJson(BU);
 		return gsonString;
-		
+
 	}
-	
+
 	public String removeEvent (String eventID, String title) throws SQLException
 	{
-//		String stringToBeReturend = "";
+
 		String eventIDOfCreator ="";
 		String eventExists = "";
 		resultSet = qb.selectFrom("events").where("title", "=", title).ExecuteQuery();
-				
+
 		while(resultSet.next())
 		{
 			eventExists = resultSet.toString();
@@ -233,8 +228,8 @@ public class SwitchMethods extends Model
 			else
 			{
 
-//				String [] keys = {"superID"};
-//				String [] values = {"2"};
+				//				String [] keys = {"superID"};
+				//				String [] values = {"2"};
 				qb.deleteFrom("events").where("title", "=", title).Execute();
 				DE.setAnswer("Event has been set inactive"); 
 			}
@@ -244,82 +239,69 @@ public class SwitchMethods extends Model
 		{
 			DE.setAnswer("The event you are trying to delete, does not exists.");
 		}
-		
+
 		String gsonString = gson.toJson(DE);
 		return gsonString;
-		
+
 	}
-	
+
 	public String getCalendar () throws SQLException
 	{
-//		qb.selectFrom("Calendar").all().Execute();
-		
-		resultSet = qb.selectFrom("calendar").all().ExecuteQuery();
-				
-		while(resultSet.next()){
-					
-		int CalendarID = resultSet.getInt("CalendarID");
 
-		int type = resultSet.getInt("type");
-		
-		String Name = resultSet.getString("Name");
-		
-		int Active = resultSet.getInt("Active");
-		
-		String CreatedBy = resultSet.getString("CreatedBy");
-		
-		int PrivateOrPublic = resultSet.getInt("PrivatePublic");
-		
-		
-		calendarData.add(new CalendarData(CalendarID,type, Name, Active, CreatedBy, PrivateOrPublic));
-		
-			System.out.println(CalendarID);
+
+		resultSet = qb.selectFrom("calendar").all().ExecuteQuery();
+
+		while(resultSet.next()){
+
+			int CalendarID = resultSet.getInt("CalendarID");
+			int type = resultSet.getInt("type");		
+			String Name = resultSet.getString("Name");		
+			int Active = resultSet.getInt("Active");	
+			String CreatedBy = resultSet.getString("CreatedBy");		
+			int PrivateOrPublic = resultSet.getInt("PrivatePublic");
+
+
+			calendarData.add(new CalendarData(CalendarID,type, Name, Active, CreatedBy, PrivateOrPublic));
+
+
 		}
-		System.out.println("test");		
+
 		String gsonString5 = gson.toJson(calendarData);
 		return gsonString5;
-		
-	
+
+
 	}
 	public String getEvents (String userName, String calendarName) throws SQLException
 	{
 		String stringToBeReturend = "";
 		qb.selectFrom("events").all().Execute();
-		
+
 		return stringToBeReturend;
 
-	
+
 	}
-	
+
 	public String AddNote (String superID, String note) throws SQLException
 	{
-			
-			System.out.println("hejhejhejhej");
-				try {
-					String [] keys = {"note"};
-					String [] values = {note};
-					qb.update("events", keys, values).where("superID", "=", superID).Execute();
-					SN.setAnswer("The Note has been added");
-					
-				} catch (Exception e) {
-					SN.setAnswer("The Note has Not been added");
-					
-					e.printStackTrace();
-				}
-				
-		System.out.println(SN.getAnswer());
+
+
+		try {
+			String [] keys = {"note"};
+			String [] values = {note};
+			qb.update("events", keys, values).where("superID", "=", superID).Execute();
+			SN.setAnswer("The Note has been added");
+
+		} catch (Exception e) {
+			SN.setAnswer("The Note has Not been added");
+
+			e.printStackTrace();
+		}
+
+
 		String gsonString = gson.toJson(SN);
 		return gsonString;
-		
+
 	}
-	
-		/**
-	 * Allows the client to log in
-	 * @param email
-	 * @param password
-	 * @param isAdmin
-	 * @return
-	 * @throws Exception
-	 */
+
 
 }

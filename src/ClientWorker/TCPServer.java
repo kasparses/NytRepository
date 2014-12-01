@@ -2,14 +2,9 @@ package ClientWorker;
 import java.io.*;
 import java.net.*;
 import java.sql.SQLException;
-
 import model.Model;
-import model.database.DatabaseInit;
 import GUI.OpenAdmin;
-import JsonClasses.CalendarInfo;
 import ClientWorker.ClientWorker;
-
-import com.google.gson.stream.JsonReader;
 
 class TCPServer extends Model{    
 	

@@ -11,8 +11,8 @@ public class EstablishUser implements java.io.Serializable
 	private String password;
 	private String CPR;
 	private String UpdatedCbsEvents;
-//	private String LastUpdateTime;
-	
+
+
 	public EstablishUser(String overallID, String email, int Active, String created,
 			String type, String password, String CPR, String UpdatedCbsEvents){
 		setOverallID(overallID);
@@ -23,11 +23,11 @@ public class EstablishUser implements java.io.Serializable
 		setPassword(password);
 		setCPR(CPR);
 		setUpdatedCbsEvents(UpdatedCbsEvents);
-//		setLastUpdateTime(LastUpdateTime);
-		
+
+
 	}
 
-	//Getters and setters for everything, bitch
+	//Getters and setters for everything
 
 	public String getOverallID() {
 		return overallID;
@@ -85,14 +85,6 @@ public class EstablishUser implements java.io.Serializable
 		CPR = cPR;
 	}
 
-//	public String getLastUpdateTime() {
-//		return LastUpdateTime;
-//	}
-//
-//	public void setLastUpdateTime(String lastUpdateTime) {
-//		LastUpdateTime = lastUpdateTime;
-//	}
-
 	public long getSerialVersionUID() {
 		return serialVersionUID;
 	}
@@ -104,6 +96,6 @@ public class EstablishUser implements java.io.Serializable
 	public void setUpdatedCbsEvents(String updatedCbsEvents) {
 		UpdatedCbsEvents = updatedCbsEvents;
 	}		
-	
+
 
 }

@@ -1,8 +1,5 @@
 package databaseMethods;
 
-import java.util.ArrayList;
-
-
 public class CalendarData implements java.io.Serializable{
 	private  final long serialVersionUID = 1L;
 	private int CalendarID;
