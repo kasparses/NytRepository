@@ -2,14 +2,9 @@ package ClientWorker;
 import java.io.*;
 import java.net.*;
 import java.sql.SQLException;
-
 import model.Model;
-import model.database.DatabaseInit;
 import GUI.OpenAdmin;
-import JsonClasses.CalendarInfo;
 import ClientWorker.ClientWorker;
-
-import com.google.gson.stream.JsonReader;
 
 class TCPServer extends Model{    
 	
@@ -18,6 +13,12 @@ class TCPServer extends Model{
         new TCPServer().go();
 	}
 	
+	/**
+	 * This method firstly runs the createDBscript to create the database. 
+	 * Afterwards it opens a socket to communicate with the client through. 
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void go() throws SQLException, IOException {
 	
 

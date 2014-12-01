@@ -6,16 +6,14 @@ public class GetCbsCalendar implements java.io.Serializable
 	private String overallID = "GetCbsCalendar";
 	private String userName = "kabj13ab";
 
-	
-	
-	//Getters and setters for everything, bitch
+	//Getters and setters for everything
 	public String getOverallID() {
 		return overallID;
 	}
 	public void setOverallID(String overallID) {
 		this.overallID = overallID;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}

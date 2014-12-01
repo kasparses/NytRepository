@@ -1,18 +1,12 @@
 package model.calendar;
  
 import com.google.gson.Gson;
-
 import model.Model;
 import model.QueryBuild.QueryBuilder;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
  
 /**
  * Created by jesperbruun on 13/10/14.
@@ -39,10 +33,6 @@ public class GetCalendarData extends Model {
                 reader.close();
         }
     }
-    //Nu har vi alle data liggende i en string (JSON). 
-    //Saa bruger vi Google's udviklede library Json string. den kan lave det om til java objekter
-    //Events laver en arraylist af Event
- 
     /**
      * Allows client to retrieve CBS's calendar and then access it.
      *
@@ -89,7 +79,6 @@ public class GetCalendarData extends Model {
 		try {
 			json2 = readUrl("http://calendar.cbs.dk/events.php/" + userName + "/" +key + ".json");
 			
-//       System.out.println(json2);
        Gson gson = new Gson();
        Events events = gson.fromJson(json2, Events.class);
        QueryBuilder queryBuilder = new QueryBuilder();
@@ -99,15 +88,12 @@ public class GetCalendarData extends Model {
   
        for (int i = 0; i <events.getEvents().size() ; i++) {
        	
-       	
            int monthStart = Integer.parseInt(events.getEvents().get(i).getStart().get(1)) + 1; //0 = år, 1 = måned, 2 = dag, 3 = timer, 4 = minutter
            String start = events.getEvents().get(i).getStart().get(0) + "-" +  monthStart + "-" +
                            events.getEvents().get(i).getStart().get(2) + " " +
                            events.getEvents().get(i).getStart().get(3) + ":" +
                            events.getEvents().get(i).getStart().get(4) + ":00";
            
-          
-
            int monthEnd = Integer.parseInt(events.getEvents().get(i).getEnd().get(1)) + 1;
            String end = events.getEvents().get(i).getEnd().get(0) + "-" + monthEnd + "-" +
                            events.getEvents().get(i).getEnd().get(2) + " " +
@@ -131,18 +117,14 @@ public class GetCalendarData extends Model {
        queryBuilder.insertInto("events", fields).values(values).Execute();
        }
 		} catch (Exception e) {
-			System.out.println(e);
-
-       
+			
     }
-		
 
 		}
 		
 		Events events = new Events();
     	String returnEvents = events.EventOutput();
     	return returnEvents;
-    }
-		
+    }	
  
 }

@@ -1,28 +1,21 @@
 package GUI;
 
 import javax.swing.JPanel;
-
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-
 import javax.swing.JButton;
 import javax.swing.border.MatteBorder;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.BevelBorder;
-
 import model.QueryBuild.QueryBuilder;
 
 public class NoteList extends JPanel {
@@ -33,7 +26,6 @@ public class NoteList extends JPanel {
 	private JButton btnAdd;
 	private JLabel label;
 	private ResultSet rs;
-	private QueryBuilder qb;
 	private final JButton btnMainMenu = new JButton("Main Menu");
 	private final JButton btnLogout = new JButton("Log Out");
 	

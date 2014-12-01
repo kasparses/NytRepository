@@ -12,8 +12,8 @@ public class DailyUpdate implements java.io.Serializable
 	private String topic = "";
 	private String msg_type = "";
 	private String update_timestamp = "";
-	
-	//Getters and setters for everything, bitch
+
+	//Getters and setters for everything
 	public String getOverallID() {
 		return overallID;
 	}
@@ -69,6 +69,6 @@ public class DailyUpdate implements java.io.Serializable
 		this.update_timestamp = update_timestamp;
 	}
 
-	
+
 
 }

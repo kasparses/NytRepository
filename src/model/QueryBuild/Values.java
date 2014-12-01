@@ -5,31 +5,31 @@ package model.QueryBuild;
  */
 public class Values {
 
-    private QueryBuilder queryBuilder;
-    private String[] values;
+	private QueryBuilder queryBuilder;
+	private String[] values;
 
-    private void setValues(String[] values){
-        this.values = values;
-    }
-    protected String[] getValues(){
-        return values;
-    }
+	private void setValues(String[] values){
+		this.values = values;
+	}
+	protected String[] getValues(){
+		return values;
+	}
 
-    protected QueryBuilder getQueryBuilder(){
-        return this.queryBuilder;
-    }
+	protected QueryBuilder getQueryBuilder(){
+		return this.queryBuilder;
+	}
 
-    public Values(QueryBuilder queryBuilder){
-        this.queryBuilder = queryBuilder;
-    }
-    private Values(){
+	public Values(QueryBuilder queryBuilder){
+		this.queryBuilder = queryBuilder;
+	}
+	private Values(){
 
-    }
+	}
 
-    public Execute values(String[] values){
-        Values v = new Values();
-        v.setValues(values);
-        return new Execute(getQueryBuilder(), v);
-    }
+	public Execute values(String[] values){
+		Values v = new Values();
+		v.setValues(values);
+		return new Execute(getQueryBuilder(), v);
+	}
 
 }

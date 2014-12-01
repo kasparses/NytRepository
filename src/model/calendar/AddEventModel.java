@@ -2,26 +2,15 @@ package model.calendar;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
 import model.Model;
 import JsonClasses.Answer;
-import java.sql.SQLException;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import model.Model;
-import model.QueryBuild.*;
-import model.note.NoteModel;
-import model.calendar.*;
 import JsonClasses.DeleteCalendar;
 
 public class AddEventModel extends Model  {
 	
-//	Event event = new Event(0, null, null, null, 0);
 	QueryBuilder qb = new QueryBuilder(); 
 	String stringToBeReturned = "";
 	private DeleteCalendar DC = new DeleteCalendar();
@@ -29,7 +18,7 @@ public class AddEventModel extends Model  {
 	ResultSet rs;
 	Answer A = new Answer();
 	
-	QOTDModel qm = new QOTDModel();
+	
 
 	public String CreateEvent (
 			int ID,

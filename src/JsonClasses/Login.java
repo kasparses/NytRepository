@@ -6,15 +6,14 @@ public class Login implements java.io.Serializable
 	private String overallID = "logIn";
 	private String email = "";
 	private String password = "";
-	
-	//Getters and setters for everything, bitch
+
+	//Getters and setters for everything
 	public String getOverallID() {
 		return overallID;
 	}
 	public void setOverallID(String overallID) {
 		this.overallID = overallID;
 	}
-	
 	public String getEmail() {
 		return email;
 	}
@@ -27,6 +26,6 @@ public class Login implements java.io.Serializable
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 
 }

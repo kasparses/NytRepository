@@ -5,8 +5,8 @@ public class Update implements java.io.Serializable
 	private  final long serialVersionUID = 1L;
 	private String overallID = "UpdateInfo";
 	private String userName = "";
-	
-	//Getters and setters for everything, bitch
+
+	//Getters and setters for everything
 	public String getOverallID() {
 		return overallID;
 	}
@@ -19,5 +19,5 @@ public class Update implements java.io.Serializable
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 }

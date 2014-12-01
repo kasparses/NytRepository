@@ -2,13 +2,9 @@ package GUI;
 
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.BevelBorder;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JTextField;

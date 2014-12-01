@@ -6,13 +6,8 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
-
-
-
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import model.QueryBuild.QueryBuilder;
 
 /**
@@ -21,21 +16,19 @@ import model.QueryBuild.QueryBuilder;
  */
 public class Events {
 	Gson gson = new GsonBuilder().create();
-    ArrayList<Event> events = new ArrayList<Event>();
+	ArrayList<Event> events = new ArrayList<Event>();
 
-    public ArrayList<Event> getEvents() {
-    	
-    	
-    	return events;
-    }
-    
-    public String EventOutput(){
-    	QueryBuilder qb = new QueryBuilder();
-    	try {
+	public ArrayList<Event> getEvents() {
+		return events;
+	}
+
+	public String EventOutput(){
+		QueryBuilder qb = new QueryBuilder();
+		try {
 			ResultSet rs = qb.selectFrom("events").all().ExecuteQuery();
 			while (rs.next())
 			{
-				
+
 				int ID = rs.getInt("ID");
 				System.out.println("ID: "+ID);
 				String activityID = rs.getString("activityID");
@@ -49,7 +42,7 @@ public class Events {
 				Time endTime = rs.getTime("end");
 				String location = rs.getString("location");
 				String note = rs.getString ("note");
-				
+
 				String stringActivityID = String.valueOf(activityID);
 				String stringEventID = String.valueOf(eventID);
 				String stringType = String.valueOf(type);
@@ -60,39 +53,37 @@ public class Events {
 				String stringEndDate = String.valueOf(endDate);
 				String stringEndTime = String.valueOf(endTime);
 				String stringLocation = String.valueOf(location);
-				
+
 				ArrayList<String> alStart = new ArrayList<String>();
 				alStart.add(stringStartDate + "" + stringStartTime);
-				
+
 				ArrayList<String> alEnd = new ArrayList<String>();
 				alEnd.add(stringEndDate + "" + stringEndTime);
-				
-				
+
+
 				events.add(new Event(ID,stringActivityID, stringEventID, stringType, stringTitle, stringDescribtion, alStart, alEnd, stringLocation,note));
-				
+
 			}
-			
-			
-			
-			
+
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-    
-    	String gsonString = gson.toJson(events);
-    	
+
+		String gsonString = gson.toJson(events);
+
 		return gsonString;
-		
-    }
-    
-    public void setEvents(ArrayList<Event> event) {
-        this.events = event;
-    }
-    
-    
-    // Konverterer array events til en tekst streng
-    @Override
-    public String toString() {
-        return Arrays.toString(events.toArray());
-    }
+
+	}
+
+	public void setEvents(ArrayList<Event> event) {
+		this.events = event;
+	}
+
+
+	// Konverterer array events til en tekst streng
+	@Override
+	public String toString() {
+		return Arrays.toString(events.toArray());
+	}
 }

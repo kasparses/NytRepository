@@ -3,18 +3,12 @@ package GUI;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JRadioButton;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.BevelBorder;
-import java.awt.Cursor;
-import java.awt.event.KeyEvent;
 
 public class UserInfo extends JPanel {
 	private JTextField txtField_UserID;
@@ -112,7 +106,7 @@ public class UserInfo extends JPanel {
 		} else {
 			lblOnlineDot.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/Green.png")));
 		}
-//<<<<<<< HEAD
+
 		lblOnlineDot.setBounds(755, 433, 20, 20);
 		add(lblOnlineDot);
 				
@@ -170,9 +164,7 @@ public class UserInfo extends JPanel {
 								btnSubmit.setContentAreaFilled(false);
 								btnSubmit.setBounds(542, 524, 282, 52);
 								add(btnSubmit);
-								//=======
 								
-								//>>>>>>> FETCH_HEAD
 										
 										JLabel lblBackground = new JLabel("");
 										lblBackground.setSize(new Dimension(1366, 768));

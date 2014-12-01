@@ -1,38 +1,22 @@
 package ClientWorker;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.Socket;
-import java.net.UnknownHostException;
-
-import JsonClasses.DeleteCalendar;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.json.simple.JSONObject;
-
-import JsonClasses.DeleteCalendar;
-import sun.font.CreatedFontTracker;
-
-
 
 public class ClientWorker implements  Runnable{
 	private Socket connectionSocketConected;
-//	private CalendarInfo CI = new CalendarInfo();
 	private GiantSwitch GS = new GiantSwitch();
 	private encryption cryp = new encryption();
-	private String incomingJson;
-		
 	
 	ClientWorker(Socket connectionSocket){
 		this.connectionSocketConected = connectionSocket;
 	}
-	
+	/**
+	 * This method receives a Json object from the client through the socket. First the object received is decrypted and thereafter
+	 * the giantSwitchMethod method in the giantSwitch class is called with the now decrypted object.
+	 * What is returned from the giantSwitchMethod method is now encrypted and sent back to the client.
+	 * 
+	 */
 	public void run(){
 		try{
 			
@@ -44,9 +28,6 @@ public class ClientWorker implements  Runnable{
 			String ny = cryp.decrypt(b);
 		
 			String returnSvar = (String) GS.GiantSwitchMethod(ny);
-			
-//			Gson gson = new GsonBuilder().create();
-//			String gsonString = gson.toJson(returnSvar);
 			
 			DataOutputStream outToClient = new DataOutputStream(connectionSocketConected.getOutputStream());
 
