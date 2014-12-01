@@ -40,7 +40,6 @@ public class GUILogic {
 	GiantSwitch GS = new GiantSwitch();
 
 	model.user.AuthenticateUser a = new model.user.AuthenticateUser();
-	model.note.Note n = new model.note.Note();
 
 	public GUILogic(){
 		screen = new Screen();
@@ -447,34 +446,6 @@ public class GUILogic {
 				screen.show(Screen.USERINFO);
 			}
 			if (e.getSource() == screen.getAddNote().getBtnAddNote()){
-
-				String text = screen.getAddNote().getTextField_text().getText();
-				String createdBy = screen.getAddNote().getTextField_Createdby().getText();
-				int noteID = screen.getAddNote().getTextField_NoteID().getX();
-				int eventID = screen.getAddNote().getTextField_EventID().getX();
-				String dateTime = screen.getAddNote().getTextField_Date().getText();
-				n.CreateNote(noteID, text, dateTime, createdBy, eventID);
-
-				if (text.equals("")|| createdBy.equals(""))
-				{
-					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
-							, "Error message",JOptionPane.PLAIN_MESSAGE);
-				}
-				//				else
-				//				{
-				//				QueryBuilder qb = new QueryBuilder();
-				//				
-				//				String[] kolonner = { "text", "createdby"};
-				//				String[] Values = { text, createdby};
-				//				
-				//				try {
-				//					qb.insertInto("notes", kolonner ).values(Values).ExecuteQuery();
-				//				} catch (SQLException e1) {
-				//					// TODO Auto-generated catch block
-				//					e1.printStackTrace();
-				//				}
-
-				//				}
 
 			}
 		}

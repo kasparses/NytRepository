@@ -1,8 +1,6 @@
 package ClientWorker;
 
 import java.sql.SQLException;
-import model.QOTD.QOTDModel;
-import model.note.*;
 import model.user.*;
 import JsonClasses.BlockUser;
 import JsonClasses.CreateEvent;
@@ -30,7 +28,7 @@ public class GiantSwitch {
 
 		QOTDModel QOTDKlasse = new QOTDModel();
 		SwitchMethods SW = new SwitchMethods();	
-		Note N = new Note();
+		
 		AddEventModel AE = new AddEventModel();
 		EstablishUserModel EUM = new EstablishUserModel();
 		Gson gson = new GsonBuilder().create();
@@ -174,10 +172,7 @@ public class GiantSwitch {
 		/**********
 		 ** QUOTE **
 		 **********/
-		case "getQuote":
-			answer = QOTDKlasse.getQuote();
-			
-			break;
+	
 		                                                                                                                                              
 		case "LoginTime":
 			UpdateLoginTime ULT = (UpdateLoginTime)gson.fromJson(jsonString, UpdateLoginTime.class);

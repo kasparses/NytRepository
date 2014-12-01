@@ -11,7 +11,12 @@ public class ClientWorker implements  Runnable{
 	ClientWorker(Socket connectionSocket){
 		this.connectionSocketConected = connectionSocket;
 	}
-	
+	/**
+	 * This method receives a Json object from the client through the socket. First the object received is decrypted and thereafter
+	 * the giantSwitchMethod method in the giantSwitch class is called with the now decrypted object.
+	 * What is returned from the giantSwitchMethod method is now encrypted and sent back to the client.
+	 * 
+	 */
 	public void run(){
 		try{
 			
@@ -23,9 +28,6 @@ public class ClientWorker implements  Runnable{
 			String ny = cryp.decrypt(b);
 		
 			String returnSvar = (String) GS.GiantSwitchMethod(ny);
-			
-//			Gson gson = new GsonBuilder().create();
-//			String gsonString = gson.toJson(returnSvar);
 			
 			DataOutputStream outToClient = new DataOutputStream(connectionSocketConected.getOutputStream());
 

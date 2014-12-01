@@ -13,6 +13,12 @@ class TCPServer extends Model{
         new TCPServer().go();
 	}
 	
+	/**
+	 * This method firstly runs the createDBscript to create the database. 
+	 * Afterwards it opens a socket to communicate with the client through. 
+	 * @throws SQLException
+	 * @throws IOException
+	 */
 	public void go() throws SQLException, IOException {
 	
 

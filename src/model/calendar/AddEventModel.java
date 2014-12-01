@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
 import model.Model;
 import JsonClasses.Answer;
@@ -19,7 +18,7 @@ public class AddEventModel extends Model  {
 	ResultSet rs;
 	Answer A = new Answer();
 	
-	QOTDModel qm = new QOTDModel();
+	
 
 	public String CreateEvent (
 			int ID,

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.Model;
-import model.QOTD.QOTDModel;
 import model.QueryBuild.QueryBuilder;
 import JsonClasses.AuthUserJson;
 import JsonClasses.BlockUser;
@@ -23,7 +22,7 @@ import databaseMethods.CalendarData;
 public class SwitchMethods extends Model
 {
 	QueryBuilder qb = new QueryBuilder();
-	QOTDModel qm = new QOTDModel();
+	
 	DeleteCalendar DC = new DeleteCalendar();
 	CreateCalendar CC = new CreateCalendar();
 	Gson gson = new GsonBuilder().create();

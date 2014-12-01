@@ -46,26 +46,7 @@ Gson gson = new GsonBuilder().create();
 	     	
 	     		// return fresh weather data
 	     		QOTDModel qotdModel = new QOTDModel();		
-	     		ForecastModel fm = new ForecastModel();   
 	     		
-	             ArrayList<Forecast> forecastList = fm.requestForecast();
-
-	             			int i = 0; 
-	                      String forecastDate =  forecastList.get(i).getDate();
-	                      String forecastCelsius =  forecastList.get(i).getCelsius();
-	                      String forecastDesc =  forecastList.get(i).getDesc();
-	                         
-	                    String[] keys = {"date", ",apparentTemperature", ",summary" };
-	          			String[] keys2 = {forecastDate, forecastCelsius, forecastDesc,};
-	          			
-	          			try {
-							qb.update("dailyupdate", keys, keys2).where("msg_type", "=", "hej").Execute();
-						} catch (SQLException e) {
-							
-							e.printStackTrace();
-						}
-	              
-
 	     		qotdModel.saveQuote(lastUpdateTime, days);	
 	     	}
 	     	String answer = returnDailyUpdate();
@@ -82,15 +63,13 @@ Gson gson = new GsonBuilder().create();
   		try {
   			resultSet = qb.selectFrom("dailyupdate").all().ExecuteQuery();
 			while(resultSet.next()) {
-				date = resultSet.getString("date");
-				apparentTemperature = resultSet.getString("apparentTemperature");
+				
+				
 				summary = resultSet.getString("summary");
 				qotd = resultSet.getString("qotd");
 				author = resultSet.getString("author");
 				topic = resultSet.getString("topic");
 				
-				DU.setDate(date);
-				DU.setApparentTemperature(apparentTemperature);
 				DU.setSummary(summary);
 				DU.setQotd(qotd);
 				DU.setTopic(topic);

@@ -54,9 +54,6 @@ public class QOTDModel {
     			String quote = (String) jsonObject.get("quote");
     			String author = (String) jsonObject.get("author");
     			String topic = (String) jsonObject.get("topic");
-    			System.out.println("quote:"+quote);
-    			System.out.println("author:"+author);
-    			System.out.println("topic:"+topic);
 
     			String[] keys = {"qotd", ",author", ",topic", ",LastUpdateTime" };
     			String[] keys2 = {quote, author, topic, Long.toString(newUpdateTime)};
@@ -68,30 +65,5 @@ public class QOTDModel {
 			}			
     }
      
-    /**
-     * Retrieve Quote from a website and put it into a String, 
-     * Afterwards we will make it into a json object so it can be printed out to the client.
-     */
-  	public Object getQuote(){
-  		String qotd = "";
-  		String author = "";
-  		String topic = "";	
-  		try {
-  			resultSet = qb.selectFrom("dailyupdate").all().ExecuteQuery();
-			while(resultSet.next()) {
-				qotd = resultSet.getString("qotd");
-				author = resultSet.getString("author");
-				topic = resultSet.getString("topic");
-				
-				DU.setQotd(qotd);
-				DU.setTopic(topic);
-				DU.setAuthor(author);
-				
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return DU;
-  	}
-  	
+   
 }

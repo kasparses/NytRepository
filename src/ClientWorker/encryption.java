@@ -4,6 +4,11 @@ import config.Configurations;
 
 public class encryption {
 	//	Decryption path
+	/**
+	 * This method decrypts the messages that is sent from the client to the server. 
+	 * @param b
+	 * @return String encrypted, an encrypted string of the data that is to be sent to the client.
+	 */
 	public String decrypt(byte[] b)
 	{
 		Configurations CF = new Configurations();
