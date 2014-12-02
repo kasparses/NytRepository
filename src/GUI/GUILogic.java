@@ -191,15 +191,16 @@ public class GUILogic {
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
 
 
-
+				boolean empty = false;
 				String description = screen.getAddEventGUI().getTextField_Description().getText();
 
 				String location = screen.getAddEventGUI().getTextField_Location().getText();
 
 				String title = screen.getAddEventGUI().getTextField_Title().getText();
-				String type = screen.getAddEventGUI().getTextField_Type().getText();
-
+				String type = "1";
+				String EventID = "1";
 				String activityID = "1";
+				
 				String calendarName =  screen.getAddEventGUI().getTextField_CalendarName().getText();
 				String note = screen.getAddEventGUI().getTextField_Text().getText();
 
@@ -228,8 +229,15 @@ public class GUILogic {
 				String start = startYear.toString()+ "-"+ startMonth.toString()+ "-"+ startDay.toString()+ " "+startHour.toString()+":"+startMinutes+":00";
 				String end = endYear.toString()+ "-"+ endMonth.toString()+ "-"+ endDay.toString()+ " "+endHour.toString()+":"+endMinutes+":00";
 
-				String EventID = "1";
-				System.out.println("note: "+note);
+				
+				if (title.equals("")||location.equals("")|| calendarName.equals("")|| description.equals(""))
+				{
+					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+					empty = true;
+				}
+				
+				if (empty == false){
 				CreateEvent CE = new CreateEvent("createEvent", 0,activityID,EventID , type, title, description, start, end, location,  calendarName ,note);
 
 				Gson gson = new GsonBuilder().create();
@@ -240,21 +248,11 @@ public class GUILogic {
 
 					JOptionPane.showMessageDialog(null, hejhej
 							, "Return message",JOptionPane.PLAIN_MESSAGE);
+					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-
-
-				//
-				////				if (Location.equals("")|| Createdby.equals("")|| start.equals("")|| end.equals("")|| name.equals("")|| text.equals(""))
-				////				{
-				////					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
-				////							, "Error message",JOptionPane.PLAIN_MESSAGE);
-				////				}
-				////				else
-				////				{
-
-
+				}
 			}
 		}
 	}

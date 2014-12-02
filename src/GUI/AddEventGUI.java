@@ -21,8 +21,6 @@ public class AddEventGUI extends JPanel {
 	private JLabel lblText;
 	private JTextField textField_Title;
 	private JTextField textField_Text;
-	private final JLabel lblType = new JLabel("Type");
-	private final JTextField textField_Type = new JTextField();
 	private final JLabel lblDescription = new JLabel("Description");
 	private final JTextField textField_Description = new JTextField();
 	private JButton btnSubmit;
@@ -124,24 +122,14 @@ public class AddEventGUI extends JPanel {
 		textField_Text.setColumns(10);
 		textField_Text.setBounds(755, 306, 392, 95);
 		add(textField_Text);
-		lblType.setForeground(Color.WHITE);
-		lblType.setFont(new Font("Arial", Font.BOLD, 26));
-		lblType.setBounds(483, 412, 160, 30);
-
-		add(lblType);
-		textField_Type.setForeground(SystemColor.controlDkShadow);
-		textField_Type.setColumns(10);
-		textField_Type.setBounds(755, 412, 120, 34);
-
-		add(textField_Type);
 		lblDescription.setForeground(Color.WHITE);
 		lblDescription.setFont(new Font("Arial", Font.BOLD, 26));
-		lblDescription.setBounds(483, 457, 160, 30);
+		lblDescription.setBounds(483, 412, 160, 30);
 		
 		add(lblDescription);
 		textField_Description.setForeground(SystemColor.controlDkShadow);
 		textField_Description.setColumns(10);
-		textField_Description.setBounds(755, 457, 120, 34);
+		textField_Description.setBounds(755, 412, 120, 34);
 		
 		add(textField_Description);
 		
@@ -169,11 +157,11 @@ public class AddEventGUI extends JPanel {
 		lblNewLabel = new JLabel("Calendar Name");
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 26));
-		lblNewLabel.setBounds(483, 502, 201, 30);
+		lblNewLabel.setBounds(483, 457, 201, 30);
 		add(lblNewLabel);
 		
 		textField_CalendarName = new JTextField();
-		textField_CalendarName.setBounds(755, 502, 120, 34);
+		textField_CalendarName.setBounds(755, 457, 120, 34);
 		add(textField_CalendarName);
 		textField_CalendarName.setColumns(10);
 		
@@ -454,10 +442,6 @@ public class AddEventGUI extends JPanel {
 
 	public JTextField getTextField_Text() {
 		return textField_Text;
-	}
-
-	public JTextField getTextField_Type() {
-		return textField_Type;
 	}
 
 	public JTextField getTextField_Description() {

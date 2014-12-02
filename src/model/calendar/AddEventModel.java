@@ -2,8 +2,12 @@ package model.calendar;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import JsonClasses.CreateEvent;
 import model.QueryBuild.QueryBuilder;
 import model.Model;
 import JsonClasses.Answer;
@@ -17,6 +21,7 @@ public class AddEventModel extends Model  {
 	Gson gson = new GsonBuilder().create();
 	ResultSet rs;
 	Answer A = new Answer();
+	CreateEvent CE = new JsonClasses.CreateEvent(stringToBeReturned, 0, stringToBeReturned, stringToBeReturned, stringToBeReturned, stringToBeReturned, stringToBeReturned, stringToBeReturned, stringToBeReturned, stringToBeReturned, stringToBeReturned, stringToBeReturned);
 	
 	
 
@@ -37,30 +42,36 @@ public class AddEventModel extends Model  {
 			System.out.println(" AddEventModel note: "+note);
 			
 			try {
+
 				resultSet = qb.selectFrom("Calendar").where("Name", "=", calendarName).ExecuteQuery();
-			
+			String calendarExists = "";
 			int calendarID = 0;
-//			try {
 				while(resultSet.next())
 				{
-					 calendarID = resultSet.getInt("CalendarID");
-					
+					calendarExists = resultSet.toString();
+					calendarID = resultSet.getInt("CalendarID");
+					 
 				}
-//			} catch (SQLException e1) {
-//				
-//				e1.printStackTrace();
-//			}
+			if (!calendarExists.equals("")){
+			
+			
+				
 			String[] fields = {"ID", "activityID","eventID", "type", "title", "description", "start", "end", "location", "note"};
 			String[] values = {Integer.toString(calendarID),  activityID,EventID, type, title, description, start, end, location, note};			
-//			try {
 				qb.insertInto("events", fields).values(values).Execute();
-				A.setAnswer("The event has been succesfully created.");
+				CE.setAnswer("The event has been succesfully created.");
+		
 				
+			
+			}else{
+				CE.setAnswer("The name of the Calendar does not exist.");
+			
+			}
 			} catch (SQLException e) {
-				A.setAnswer("The event has NOT been created.");
+				CE.setAnswer("The event has NOT been created.");
 				e.printStackTrace();
 			}
-			String gsonString = gson.toJson(A);
+			String gsonString = gson.toJson(CE);
 			return gsonString;
 			
 		}
