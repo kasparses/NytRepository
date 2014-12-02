@@ -78,9 +78,10 @@ public class SwitchMethods extends Model
 			addNewCalendar(type, newcalendarName, Active, userName, privatePublic);
 			CC.setAnswer("The new calender has been created!");
 		}
+		
 		else
 		{
-			CC.setAnswer("The new calender has not been created!");
+			CC.setAnswer("The name of the calendar has already been used. Please try again.");
 		}
 
 

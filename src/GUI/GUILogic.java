@@ -625,9 +625,9 @@ public class GUILogic {
 						Gson gson = new GsonBuilder().create();
 						String gsonString = gson.toJson(CC);
 						String CreateCalendar = (String)GS.GiantSwitchMethod(gsonString);
-						DC = gson.fromJson(CreateCalendar, DeleteCalendar.class);
+						CC = gson.fromJson(CreateCalendar, CreateCalendar.class);
 
-						JOptionPane.showMessageDialog(null, "It worked!"
+						JOptionPane.showMessageDialog(null, CC.getAnswer()
 								, "Return message",JOptionPane.PLAIN_MESSAGE);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
