@@ -3,15 +3,11 @@ package GUI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
-
 import ClientWorker.GiantSwitch;
 import model.user.AuthenticateUser;
-
 import javax.swing.JOptionPane;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import GUI.Screen;
 import JsonClasses.AuthUserJson;
 import JsonClasses.BlockUser;
@@ -51,6 +47,7 @@ public class GUILogic {
 
 		screen.getLogin().addActionListener(new LoginActionListener());
 		screen.getMainMenu().addActionListener(new MainMenuActionListener());
+		screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
 		screen.getUserList().addActionListener(new UserListActionListener());
 		screen.getEventlist().addActionListener(new EventListActionListener());
@@ -75,8 +72,6 @@ public class GUILogic {
 
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
-			if (e.getSource() == screen.getLogin().getBtnLogIn()){
 			try{
 
 				String email = screen.getLogin().getTextFieldUsername().getText();
@@ -99,16 +94,14 @@ public class GUILogic {
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 				}
-			}	
-			catch(Exception e3){
-			}
-			}
 				if (e.getSource() == screen.getLogin().getBtnForgotLogIn()){
 
 					screen.show(Screen.FORGOT);
 
 				}
-			
+			}	
+			catch(Exception e3){
+			}
 		}	
 	}
 
@@ -129,17 +122,13 @@ public class GUILogic {
 					String hejhej35 = (String)GS.GiantSwitchMethod(gsonString);
 					ForgotLogin FL = gson.fromJson(hejhej35, ForgotLogin.class);
 
-					if (cPR.equals("")){
-						JOptionPane.showMessageDialog(null, "\nPlease enter a security number."
-								, "Error",JOptionPane.PLAIN_MESSAGE);
-					}
 
 					if (FL.getAnswer().equals("correct")){
 						JOptionPane.showMessageDialog(null, "\nYour username is: "+FL.getEmail()+"\nYour password is: "+FL.getPassword()
 								, "Message",JOptionPane.PLAIN_MESSAGE);
 					}
-					else if(!FL.getAnswer().equals("correct")){
-						JOptionPane.showMessageDialog(null, "\nPlease enter a valid security number."
+					else if(FL.getAnswer().equals("notCorrect")){
+						JOptionPane.showMessageDialog(null, "\nIt did not work!...."
 								, "Error",JOptionPane.PLAIN_MESSAGE);
 					}
 
@@ -255,12 +244,11 @@ public class GUILogic {
 				String gsonString = gson.toJson(CE);
 
 				try {
-					String CreateEvent = (String) GS.GiantSwitchMethod(gsonString);
-					CreateEvent CEanswer = (CreateEvent)gson.fromJson(CreateEvent, CreateEvent.class);
+					Object hejhej = GS.GiantSwitchMethod(gsonString);
 
-					JOptionPane.showMessageDialog(null, CEanswer.getAnswer()
+					JOptionPane.showMessageDialog(null, hejhej
 							, "Return message",JOptionPane.PLAIN_MESSAGE);
-										
+					
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -299,6 +287,7 @@ public class GUILogic {
 				String Password = screen.getAddUser().getTextField_Password().getText();
 				String CPR = screen.getAddUser().getTextField_CPR().getText();
 				int Active = 1;
+				String created = "2014-11-11 11:00:00";
 				String UpdatedCbsEvents = "notUpdated";
 				boolean adminOrUser = false;
 				String adMinOrUserValue = "";
@@ -330,18 +319,13 @@ public class GUILogic {
 				}
 				else
 				{
-					EstablishUser EU = new EstablishUser("establishUser", Email , Active, adMinOrUserValue, Password, CPR, UpdatedCbsEvents );
+					EstablishUser EU = new EstablishUser("establishUser", Email , Active, created, adMinOrUserValue, Password, CPR, UpdatedCbsEvents );
 
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(EU);
 
 					try {
-						String establishUser = (String)GS.GiantSwitchMethod(gsonString);
-						EstablishUser EUanswer = (EstablishUser)gson.fromJson(establishUser, EstablishUser.class);
-
-						JOptionPane.showMessageDialog(null, EUanswer.getAnswer()
-								, "Return message",JOptionPane.PLAIN_MESSAGE);
-						
+						Object establishUser = GS.GiantSwitchMethod(gsonString);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
@@ -351,7 +335,35 @@ public class GUILogic {
 			}
 		}
 	}
-	
+	private class UserInfoActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == screen.getUserInfo().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
+			}
+			if (e.getSource() == screen.getUserInfo().getBtnLogout()){
+				screen.show(Screen.LOGIN);
+			}
+			if (e.getSource() == screen.getUserInfo().getBtnCalendarList()){
+				screen.show(Screen.CALENDARLIST);
+
+			}
+			if (e.getSource() == screen.getUserInfo().getBtnEventList()){
+				screen.show(Screen.EVENTLIST);
+
+			}
+			if (e.getSource() == screen.getUserInfo().getBtnNoteList()){
+				screen.show(Screen.NOTELIST);
+
+			}
+			if (e.getSource() == screen.getUserInfo().getBtnUserList()){
+				screen.show(Screen.USERLIST);
+
+			}
+			if (e.getSource() == screen.getUserInfo().getBtnSubmit()){
+
+			}
+		}
+	}
 
 	private class NoteListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {

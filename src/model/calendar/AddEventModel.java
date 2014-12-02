@@ -64,7 +64,7 @@ public class AddEventModel extends Model  {
 				
 			
 			}else{
-				CE.setAnswer("The name of the calendar does not exist.");
+				CE.setAnswer("The name of the Calendar does not exist.");
 			
 			}
 			} catch (SQLException e) {

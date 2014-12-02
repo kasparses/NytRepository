@@ -1,7 +1,7 @@
 --drop DATABASE IF EXISTS cbscalendar;
 CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
---select * from users;
+select * from events;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Create Tables */
@@ -74,11 +74,22 @@ CREATE TABLE IF NOT EXISTS locationdata
 	PRIMARY KEY (locationdataid)
 );
 
+CREATE TABLE IF NOT EXISTS notes
+(
+	noteID int NOT NULL AUTO_INCREMENT,
+	eventID int NOT NULL,
+	createdBy varchar(255) NOT NULL,
+	text text,
+	dateTime datetime NOT NULL,
+	PRIMARY KEY (noteID)
+);
+
 CREATE TABLE IF NOT EXISTS users
 (
 	userID int NOT NULL AUTO_INCREMENT,
 	email varchar(40) NOT NULL,
 	Active tinyint, 
+	created varchar(30) NOT NULL COMMENT '--TIMESTAMP DEFAULT CURRENT_TIMESTAMP,',
 	type varchar(20) not null COMMENT '1 = admin 2 = bruger',
 	password varchar(30) NOT NULL,
 	CPR varchar(11) not null,
@@ -92,8 +103,8 @@ values ('2014-11-11 16:55:00', 1, 'hje', 'afa', 'fa', 'faf', 'hej', 141635161453
 
 
 use cbscalendar;
-insert into users (userID, email, Active, type, password, CPR, UpdatedCbsEvents)
-values (2, 'kabj13ab', 1, 1, 'hej', '111111-1111', 'notUpdated');
+insert into users (userID, email, Active, created, type, password, CPR, UpdatedCbsEvents)
+values (2, 'kabj13ab', 1,'2014-11-11  10:37:00', 1, 'hej', '111111-1111', 'notUpdated');
 
 
 
