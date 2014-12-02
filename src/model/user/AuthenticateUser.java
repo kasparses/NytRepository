@@ -10,18 +10,16 @@ public class AuthenticateUser {
 	Gson gson = new GsonBuilder().create();
 	private QueryBuilder qb;
 
+
+	private LoginAnswer LA = new LoginAnswer();
+	private ForgotLogin FL = new ForgotLogin();
+
 	/**
-	 * Allows the client to log in
-	 * @param email
-	 * @param password
-	 * @param isAdmin
-	 * @return
-	 * @throws Exception
+	 * This method authenticates the login information sent from the user or the superAdmin. 
+	 * @param email, a String with the email/username that the user has typed in the user interface. 
+	 * @param password, a String with the password that the user has typed in the user interface. 
+	 * @return gsonString, a JsonString of an object from the class LoginAnswer.
 	 */
-private LoginAnswer LA = new LoginAnswer();
-private ForgotLogin FL = new ForgotLogin();
-
-
 	public String authenticate(String email, String password)
 	{
 		ResultSet rs;
@@ -38,8 +36,7 @@ private ForgotLogin FL = new ForgotLogin();
 
 				if(pass.equals(password)){
 					String answer = "correct";
-					LA.setAnswer(answer);
-					
+					LA.setAnswer(answer);	
 				}
 				else if (!pass.equals(password)){
 					String answer = "notCorrect";
@@ -55,9 +52,9 @@ private ForgotLogin FL = new ForgotLogin();
 				}
 
 			}
-			
+
 		}
-		
+
 		catch(Exception ex)
 		{
 			ex.printStackTrace();
@@ -66,11 +63,15 @@ private ForgotLogin FL = new ForgotLogin();
 		return gsonString;
 	}
 	
+	/**
+	 * This method lets the user type in his CPR number and receive his login information in case that he has forgotten them. 
+	 * @param CPR, a String containing the CPR that the user has typed in the user interface. 
+	 * @return gsonString, a JsonString of an object from the class ForgotLogin.
+	 */
 	public String getLogin(String CPR)
 	{
 		ResultSet rs;
-		User u4 = null;
-		
+
 		try
 		{
 
@@ -79,7 +80,7 @@ private ForgotLogin FL = new ForgotLogin();
 			rs = qb.selectFrom(keys, "users").where("CPR", "=", CPR).ExecuteQuery();
 			while(rs.next())
 			{
-				
+
 				String cpr = rs.getString("CPR");
 				String email = rs.getString("email");
 				String password = rs.getString("password");
@@ -101,5 +102,5 @@ private ForgotLogin FL = new ForgotLogin();
 		return gsonString;
 
 	}
-	
+
 }

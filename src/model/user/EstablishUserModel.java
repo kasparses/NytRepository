@@ -3,12 +3,24 @@ package model.user;
 import java.sql.SQLException;
 import model.QueryBuild.*;
 
+
 public class EstablishUserModel {
 	
 
 	QueryBuilder qb = new QueryBuilder(); 
 	String stringToBeReturned = "";
 
+	/**
+	 * This method allows the user or superAdmin to create a new user. 
+	 * @param email, a String with the email that the user has typed in the user interface. 
+	 * @param Active, an Integer that decides whether the created user is to be active or not. 
+	 * @param created, a String with the time that the user is created. 
+	 * @param type,
+	 * @param password, a String with the email that the user has typed in the user interface. 
+	 * @param CPR, a String with the email that the user has typed in the user interface. 
+	 * @param UpdatedCbsEvents, a String with the email that the user has typed in the user interface. 
+	 * @return
+	 */
 	public String EstablishUser(
 			String email,
 			int Active,

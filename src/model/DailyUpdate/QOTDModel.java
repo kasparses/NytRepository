@@ -34,7 +34,11 @@ public class QOTDModel {
         }
  
     }
-    
+    	/**
+    	 * This method updates the quote of the day and how long time it has been since the quote of the day has been updated. 
+    	 * @param lastUpdateTime, the time of the last update. 
+    	 * @param days, how many full days it has been since the last update. 
+    	 */
      	public void saveQuote(long lastUpdateTime, int days) {
     	
     	QueryBuilder qb = new QueryBuilder();

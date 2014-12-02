@@ -20,7 +20,11 @@ public class Forecasts {
 
 		return forecasts;
 	}
-
+	
+	/**
+	 * This method extracts the forecast information from the database and adds it to an the ArrayList forecasts of the class Forecast.
+	 * @return forecasts, the ArrayList containing the forecast information
+	 */
 	public String ForecastOutput(){
 		QueryBuilder qb = new QueryBuilder();
 		try {

@@ -1,8 +1,7 @@
 package model.Forecast;
 
 /**
- * Created by danielfranch on 16/10/14.
- * Constructor til ForecastModel Arraylist
+ * 
  */
 public class Forecast {
 

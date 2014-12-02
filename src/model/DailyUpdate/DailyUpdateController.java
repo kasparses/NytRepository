@@ -2,13 +2,10 @@ package model.DailyUpdate;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Date;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import JsonClasses.DailyUpdate;
-import model.Forecast.Forecast;
-import model.Forecast.ForecastModel;
 import model.QueryBuild.QueryBuilder;
 
 
@@ -19,6 +16,11 @@ Gson gson = new GsonBuilder().create();
     
     private ResultSet resultSet;
     
+    /**
+     * This method checks how long time it has been since the dailyupdate table, which contains the quote of the day, has been updated. 
+     * if it has been more than one day since the quote of the day has been updated then the method saveQuote is called to update the quote of the day. 
+     * @return
+     */
     public String dailyUpdate(){
  		 long lastUpdateTime = 0;
  		try {
@@ -36,11 +38,8 @@ Gson gson = new GsonBuilder().create();
 	     	
 	     ;
 	     	//86400000 milliseconds on a day
-	     	System.out.println("timeSinceUpdate: "+timeSinceUpdate);
-	     	double daysPassed = timeSinceUpdate / 86400000;
-	     	System.out.println("daysPassed: "+daysPassed);
-	     	int days = (int)daysPassed;
-	     	System.out.println("days: "+days);     	
+	     	double daysPassed = timeSinceUpdate / 86400000;	     
+	     	int days = (int)daysPassed;	     	     	
 	     	// if more than 1 hour ago, do update
 	     	if(days >= 1){
 	     	
@@ -53,10 +52,11 @@ Gson gson = new GsonBuilder().create();
 			return answer; 
 	     }
     
+    /**
+     * This method gets the quote of the day from the database.
+     * @return gsonString, a Json object created from the DailyUpdate class. 
+     */
     public String returnDailyUpdate(){
-    	String date = "";
-    	String apparentTemperature = "";
-    	String summary = "";
   		String qotd = "";
   		String author = "";
   		String topic = "";	
@@ -65,12 +65,12 @@ Gson gson = new GsonBuilder().create();
 			while(resultSet.next()) {
 				
 				
-				summary = resultSet.getString("summary");
+				
 				qotd = resultSet.getString("qotd");
 				author = resultSet.getString("author");
 				topic = resultSet.getString("topic");
 				
-				DU.setSummary(summary);
+			
 				DU.setQotd(qotd);
 				DU.setTopic(topic);
 				DU.setAuthor(author);
