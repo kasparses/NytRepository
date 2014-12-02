@@ -1,14 +1,23 @@
 package model.user;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import model.Model;
 import model.QueryBuild.*;
 
 
-public class EstablishUserModel {
+public class EstablishUserModel extends Model {
 	
 
 	QueryBuilder qb = new QueryBuilder(); 
 	String stringToBeReturned = "";
+	Gson gson = new GsonBuilder().create();
+	ResultSet rs;
+	JsonClasses.EstablishUser EU = new JsonClasses.EstablishUser(stringToBeReturned, stringToBeReturned, 0, stringToBeReturned, stringToBeReturned, stringToBeReturned, stringToBeReturned);
 
 	/**
 	 * This method allows the user or superAdmin to create a new user. 
@@ -24,28 +33,42 @@ public class EstablishUserModel {
 	public String EstablishUser(
 			String email,
 			int Active,
-			String created,
 			String type,
 			String password,
 			String CPR,
 			String UpdatedCbsEvents){
 			
 			String ac = String.valueOf(Active);
-
-			
-			String[] keys = { "email", "Active", "created", "type", "password", "CPR", "UpdatedCbsEvents"};
-			String[] values = { email, ac, created, type, password, CPR, UpdatedCbsEvents};
 			try {
+			resultSet = qb.selectFrom("users").where("email", "=", email).ExecuteQuery();
+			String userExists = "";
+			int userID = 0;
+				while(resultSet.next())
+				{
+					userExists = resultSet.toString();
+					userID = resultSet.getInt("userID");
+					 
+				}
+			if (userExists.equals("")){
+			String[] keys = { "email", "Active", "type", "password", "CPR", "UpdatedCbsEvents"};
+			String[] values = { email, ac, type, password, CPR, UpdatedCbsEvents};
+			
 				qb.insertInto("users", keys).values(values).Execute();
 				
 				
-				stringToBeReturned = "The user has been succesfully established!!";
-				
+				EU.setAnswer("The user has been succesfully established!");
+			}
+			else{
+				EU.setAnswer("The name of the user has already been taken.");
+			
+			}
 			} catch (SQLException e) {
-				stringToBeReturned = "The user has NOT been established!!";
-				
+			
 				e.printStackTrace();
 			}
-			return stringToBeReturned;
-		}
+				
+			
+			String gsonString = gson.toJson(EU);
+			return gsonString;	
+}
 }
