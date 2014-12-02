@@ -229,12 +229,7 @@ public class GUILogic {
 				String end = endYear.toString()+ "-"+ endMonth.toString()+ "-"+ endDay.toString()+ " "+endHour.toString()+":"+endMinutes+":00";
 
 				String EventID = "1";
-
-				if (location.equals("")|| description.equals("")|| title.equals("")||type.equals("") || calendarName.equals(""))
-				{
-					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
-							, "Error message",JOptionPane.PLAIN_MESSAGE);
-				
+				System.out.println("note: "+note);
 				CreateEvent CE = new CreateEvent("createEvent", 0,activityID,EventID , type, title, description, start, end, location,  calendarName ,note);
 
 				Gson gson = new GsonBuilder().create();

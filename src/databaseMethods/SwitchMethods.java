@@ -71,6 +71,7 @@ public class SwitchMethods extends Model
 	 */
 	public String createNewCalendar (int type, String newcalendarName, int Active, String userName, int privatePublic) throws SQLException
 	{
+
 		testConnection();
 		if(authenticateNewCalendar(newcalendarName) == false)
 		{
