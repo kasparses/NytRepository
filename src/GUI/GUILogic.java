@@ -8,9 +8,6 @@ import ClientWorker.GiantSwitch;
 import model.user.AuthenticateUser;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
-import javax.swing.event.TableModelEvent;
-import javax.swing.table.TableModel;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,8 +23,8 @@ import JsonClasses.EstablishUser;
 import JsonClasses.ForgotLogin;
 import JsonClasses.Login;
 import JsonClasses.LoginAnswer;
-import JsonClasses.Update;
-import GUI.EventList;
+import JsonClasses.SaveNote;
+
 
 public class GUILogic {
 	private Screen screen;
@@ -41,6 +38,8 @@ public class GUILogic {
 	JsonClasses.Login L = new Login();
 	DeleteEvent DE = new DeleteEvent();
 	BlockUser BU = new BlockUser();
+	NoteList N = new NoteList();
+	SaveNote SN = new SaveNote();
 
 
 
@@ -119,9 +118,9 @@ public class GUILogic {
 				try {
 
 					String cPR = screen.getForgotLogin().getTextField_CPR().getText();
-
+					
 					FL.setCPR(cPR);
-
+					
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(FL);
 					String hejhej35 = (String)GS.GiantSwitchMethod(gsonString);
@@ -178,6 +177,7 @@ public class GUILogic {
 				screen.show(Screen.CALENDARLIST);
 			}
 			if (e.getSource() == screen.getAddEventGUI().getBtnEventList()){
+				
 				screen.show(Screen.EVENTLIST);
 			}
 			
@@ -186,9 +186,11 @@ public class GUILogic {
 			}
 		
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
-
+				
+				
 
 				boolean empty = false;
+				boolean timeError = false;
 				String description = screen.getAddEventGUI().getTextField_Description().getText();
 
 				String location = screen.getAddEventGUI().getTextField_Location().getText();
@@ -207,17 +209,63 @@ public class GUILogic {
 				Object startHour = screen.getAddEventGUI().getComboBox_StartHour().getSelectedItem();
 				Object startMinutes = screen.getAddEventGUI().getComboBox_StartMinutes().getSelectedItem();
 
-
-
-				if(startMinutes.equals("0")){
-					startMinutes = "00";
-				}
-
 				Object endYear = screen.getAddEventGUI().getComboBox_EndYear().getSelectedItem();
 				Object endMonth = screen.getAddEventGUI().getComboBox_EndMonth().getSelectedItem();
 				Object endDay = screen.getAddEventGUI().getComboBox_EndDay().getSelectedItem();
 				Object endHour = screen.getAddEventGUI().getComboBox_EndHour().getSelectedItem();
 				Object endMinutes = screen.getAddEventGUI().getComboBox_EndMinutes().getSelectedItem();
+
+				String endHourString = endHour.toString();
+				String endMinutesString = endMinutes.toString();
+				String endDayString = endDay.toString();
+				String endMonthString = endMonth.toString();
+				String endYearString = endYear.toString();
+				
+				String startHourString = startHour.toString();
+				String startMinutesString = startMinutes.toString();
+				String startDayString = startDay.toString();
+				String startMonthString = startMonth.toString();
+				String startYearString = startYear.toString();
+				
+				int endHourInt = Integer.parseInt(endHourString);
+				int endMinutesInt = Integer.parseInt(endMinutesString);
+				int endDayInt = Integer.parseInt(endDayString);
+				int endMonthInt = Integer.parseInt(endMonthString);
+				int endYearInt = Integer.parseInt(endYearString);
+				
+				int startHourInt = Integer.parseInt(startHourString);
+				int startMinutesInt = Integer.parseInt(startMinutesString);
+				int startDayInt = Integer.parseInt(startDayString);
+				int startMonthInt = Integer.parseInt(startMonthString);
+				int startYearInt = Integer.parseInt(startYearString);
+				
+				
+				if(startHourInt> endHourInt){
+					timeError = true;
+				}
+				if (startHourInt == endHourInt && startMinutesInt> endMinutesInt){
+					timeError = true;
+				}
+				if (startDayInt > endDayInt){
+					timeError = true;
+				}
+				if (startMonthInt > endMonthInt){
+					timeError = true;
+				}
+				if(startYearInt> endYearInt){
+					timeError = true;
+				}
+				
+				
+
+				if (timeError == true){
+					JOptionPane.showMessageDialog(null, "\nYou cannot create an event that ends before it starts. "
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+				}
+				
+				if(startMinutes.equals("0")){
+					startMinutes = "00";
+				}
 
 				if(endMinutes.equals("0")){
 					endMinutes = "00";
@@ -234,7 +282,7 @@ public class GUILogic {
 					empty = true;
 				}
 				
-				if (empty == false){
+				if (empty == false && timeError == false ){
 				CreateEvent CE = new CreateEvent("createEvent", 0,activityID,EventID , type, title, description, start, end, location,  calendarName ,note);
 
 				Gson gson = new GsonBuilder().create();
@@ -367,6 +415,84 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getEventlist().getBtnDelete()){
 				screen.show(Screen.DELETEEVENT);
+			}
+			
+			
+			if (e.getSource() == screen.getEventlist().getBtnAddNote()){
+				
+				Object superID = screen.getEventList().getComboBox().getSelectedItem();
+				String superIDString = superID.toString();	
+				int superIDint = Integer.parseInt(superIDString);
+				
+	            String note = screen.getEventList().getTextField().getText();
+
+	            SN.setSuperID(superIDint);
+	            SN.setNote(note);
+	            
+	            Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(SN);
+
+				
+					try {
+						Object addNote = GS.GiantSwitchMethod(gsonString);
+						
+						JOptionPane.showMessageDialog(null, addNote
+								, "Note",JOptionPane.PLAIN_MESSAGE);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+
+				
+			}
+			if (e.getSource() == screen.getEventlist().getBtnDeleteNote()){
+				
+				Object superID = screen.getEventList().getComboBox().getSelectedItem();
+				String superIDString = superID.toString();	
+				int superIDint = Integer.parseInt(superIDString);
+				
+	            String note = "";
+
+	            SN.setSuperID(superIDint);
+	            SN.setNote(note);
+	            
+	            Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(SN);
+
+				
+					try {
+						Object deleteNote = GS.GiantSwitchMethod(gsonString);
+						
+						JOptionPane.showMessageDialog(null, "The note has been deleted!"
+								, "Note",JOptionPane.PLAIN_MESSAGE);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				
+				
+			}
+			if (e.getSource() == screen.getEventlist().getBtnUpdateNote()){
+				
+				Object superID = screen.getEventList().getComboBox().getSelectedItem();
+				String superIDString = superID.toString();	
+				int superIDint = Integer.parseInt(superIDString);
+				
+	            String note = screen.getEventList().getTextField().getText();
+
+	            SN.setSuperID(superIDint);
+	            SN.setNote(note);
+	            
+	            Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(SN);
+
+				
+					try {
+						Object addNote = GS.GiantSwitchMethod(gsonString);
+						
+						JOptionPane.showMessageDialog(null, addNote
+								, "Note",JOptionPane.PLAIN_MESSAGE);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 			}
 		}
 	}
