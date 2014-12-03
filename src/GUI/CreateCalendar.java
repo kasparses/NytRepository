@@ -25,7 +25,6 @@ public class CreateCalendar extends JPanel {
 	private final JButton btnMainMenu = new JButton("Main Menu");
 	private final JButton btnLogOut = new JButton("Log Out");
 	private final JLabel label_1 = new JLabel("");
-	private final JButton btnUserInfo = new JButton("User Info");
 	private final JLabel label = new JLabel("");
 
 	/**
@@ -96,25 +95,19 @@ public class CreateCalendar extends JPanel {
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBounds(45, 515, 225, 45);
+		btnMainMenu.setBounds(45, 443, 225, 45);
 		
 		add(btnMainMenu);
 		btnLogOut.setForeground(Color.WHITE);
 		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogOut.setContentAreaFilled(false);
-		btnLogOut.setBounds(45, 590, 225, 45);
+		btnLogOut.setBounds(45, 518, 225, 45);
 		
 		add(btnLogOut);
 		label_1.setIcon(new ImageIcon(CreateCalendar.class.getResource("/Images/CBSLogo3.png")));
 		label_1.setBounds(0, 709, 250, 59);
 		
 		add(label_1);
-		btnUserInfo.setForeground(Color.WHITE);
-		btnUserInfo.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnUserInfo.setContentAreaFilled(false);
-		btnUserInfo.setBounds(45, 444, 225, 45);
-		
-		add(btnUserInfo);
 		label.setIcon(new ImageIcon(CreateCalendar.class.getResource("/Images/MetalBackground.jpg")));
 		label.setBounds(0, 0, 1366, 768);
 		
@@ -131,14 +124,10 @@ public class CreateCalendar extends JPanel {
 		btnEventList.addActionListener(l);
 		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
-		btnUserInfo.addActionListener(l);
 
 }
 	
 
-	public JButton getBtnUserInfo() {
-		return btnUserInfo;
-	}
 
 	public JButton getBtnNoteList() {
 		return btnNoteList;

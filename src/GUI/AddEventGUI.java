@@ -50,7 +50,6 @@ public class AddEventGUI extends JPanel {
 	private final JLabel lblTime_1 = new JLabel("Time:");
 	private final JLabel label_1 = new JLabel(":");
 	private final JLabel label_2 = new JLabel(":");
-	private JButton btnNoteList;
 	private JButton btnUserList;
 	private JButton btnEventList;
 	private JButton btnCalendarList;
@@ -267,13 +266,6 @@ public class AddEventGUI extends JPanel {
 		
 		add(label_2);
 		
-		btnNoteList = new JButton("Note List");
-		btnNoteList.setForeground(Color.WHITE);
-		btnNoteList.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnNoteList.setContentAreaFilled(false);
-		btnNoteList.setBounds(47, 132, 225, 45);
-		add(btnNoteList);
-		
 		btnUserList = new JButton("User List");
 		btnUserList.setForeground(Color.WHITE);
 		btnUserList.setFont(new Font("Tahoma", Font.BOLD, 30));
@@ -357,7 +349,6 @@ public class AddEventGUI extends JPanel {
 		comboBox_EndDay.addActionListener(l);
 		btnCalendarList.addActionListener(l);
 		btnEventList.addActionListener(l);
-		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
 	}
 	
@@ -432,14 +423,6 @@ public class AddEventGUI extends JPanel {
 
 	public JTextField getTextField_Description() {
 		return textField_Description;
-	}
-
-	public JButton getBtnNoteList() {
-		return btnNoteList;
-	}
-
-	public void setBtnNoteList(JButton btnNoteList) {
-		this.btnNoteList = btnNoteList;
 	}
 
 	public JButton getBtnUserList() {

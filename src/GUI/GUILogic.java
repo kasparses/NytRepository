@@ -3,11 +3,18 @@ package GUI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+
 import ClientWorker.GiantSwitch;
 import model.user.AuthenticateUser;
+
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.table.TableModel;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import GUI.Screen;
 import JsonClasses.AuthUserJson;
 import JsonClasses.BlockUser;
@@ -19,7 +26,8 @@ import JsonClasses.EstablishUser;
 import JsonClasses.ForgotLogin;
 import JsonClasses.Login;
 import JsonClasses.LoginAnswer;
-
+import JsonClasses.Update;
+import GUI.EventList;
 
 public class GUILogic {
 	private Screen screen;
@@ -47,7 +55,6 @@ public class GUILogic {
 
 		screen.getLogin().addActionListener(new LoginActionListener());
 		screen.getMainMenu().addActionListener(new MainMenuActionListener());
-		screen.getNoteList().addActionListener(new NoteListActionListener());
 		screen.getUserList().addActionListener(new UserListActionListener());
 		screen.getEventlist().addActionListener(new EventListActionListener());
 		screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
@@ -147,9 +154,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getBtnUserlist()){
 				screen.show(Screen.USERLIST);
 			}
-			if (e.getSource() == screen.getMainMenu().getBtnNotelist()){
-				screen.show(Screen.NOTELIST);
-			}
+			
 			if (e.getSource() == screen.getMainMenu().getBtnEventlist()){
 				screen.show(Screen.EVENTLIST);
 			}
@@ -175,9 +180,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getAddEventGUI().getBtnEventList()){
 				screen.show(Screen.EVENTLIST);
 			}
-			if (e.getSource() == screen.getAddEventGUI().getBtnNoteList()){
-				screen.show(Screen.NOTELIST);
-			}
+			
 			if (e.getSource() == screen.getAddEventGUI().getBtnUserList()){
 				screen.show(Screen.USERLIST);
 			}
@@ -265,9 +268,7 @@ public class GUILogic {
 
 				screen.show(Screen.EVENTLIST);
 			}
-			if (e.getSource() == screen.getAddUser().getBtnNoteList()){
-				screen.show(Screen.NOTELIST);
-			}
+			
 			if (e.getSource() == screen.getAddUser().getBtnUserList()){
 				screen.show(Screen.USERLIST);
 			}
@@ -327,21 +328,7 @@ public class GUILogic {
 		}
 	}
 	
-	private class NoteListActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-
-			if (e.getSource() == screen.getNoteList().getBtnMainMenu()){
-				screen.show(Screen.MAINMENU);
-			}
-			if (e.getSource() == screen.getNoteList().getBtnLogout()){
-				screen.show(Screen.LOGIN);
-			}
-			if (e.getSource() == screen.getNoteList().getBtnAdd()){
-
-				
-			}
-		}
-	}
+	
 
 	private class UserListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
@@ -419,10 +406,7 @@ public class GUILogic {
 
 				screen.show(Screen.EVENTLIST);
 			}
-			if (e.getSource() == screen.getDeleteCalendar().getBtnNoteList()){
-
-				screen.show(Screen.NOTELIST);
-			}
+			
 			if (e.getSource() == screen.getDeleteCalendar().getBtnUserList()){
 
 				screen.show(Screen.USERLIST);
@@ -493,11 +477,7 @@ public class GUILogic {
 				screen.show(Screen.EVENTLIST);
 
 			}
-			if (e.getSource() == screen.getCreateCalendar().getBtnNoteList()){
-
-				screen.show(Screen.NOTELIST);
-
-			}
+			
 			if (e.getSource() == screen.getCreateCalendar().getBtnUserList()){
 
 				screen.show(Screen.USERLIST);
@@ -582,10 +562,7 @@ public class GUILogic {
 				screen.show(Screen.CALENDARLIST);
 
 			}
-			if (e.getSource() == screen.getDeleteEvent().getBtnNoteList()){
-				screen.show(Screen.NOTELIST);
-
-			}
+			
 			if (e.getSource() == screen.getDeleteEvent().getBtnUserList()){
 				screen.show(Screen.USERLIST);
 
@@ -625,9 +602,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getBlockUser().getBtnUserList()){
 				screen.show(Screen.USERLIST);
 			}
-			if (e.getSource() == screen.getBlockUser().getBtnNoteList()){
-				screen.show(Screen.NOTELIST);
-			}
+			
 			if (e.getSource() == screen.getBlockUser().getBtnEventList()){
 				screen.show(Screen.EVENTLIST);
 			}
