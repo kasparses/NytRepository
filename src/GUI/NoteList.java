@@ -165,4 +165,9 @@ public class NoteList extends JPanel {
 	public JButton getBtnLogout() {
 		return btnLogout;
 	}
+
+	public JTable getTable() {
+		return table;
+	}
+	
 }

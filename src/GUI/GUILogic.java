@@ -3,11 +3,15 @@ package GUI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
+
 import ClientWorker.GiantSwitch;
 import model.user.AuthenticateUser;
+
 import javax.swing.JOptionPane;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
 import GUI.Screen;
 import JsonClasses.AuthUserJson;
 import JsonClasses.BlockUser;
@@ -19,6 +23,7 @@ import JsonClasses.EstablishUser;
 import JsonClasses.ForgotLogin;
 import JsonClasses.Login;
 import JsonClasses.LoginAnswer;
+import JsonClasses.SaveNote;
 
 
 public class GUILogic {
@@ -33,6 +38,8 @@ public class GUILogic {
 	JsonClasses.Login L = new Login();
 	DeleteEvent DE = new DeleteEvent();
 	BlockUser BU = new BlockUser();
+	NoteList N = new NoteList();
+	SaveNote SN = new SaveNote();
 
 
 
@@ -338,7 +345,11 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getNoteList().getBtnAdd()){
 
+				NoteList N = new NoteList();
+				int rowIndex = N.getTable().getSelectedRow();
 				
+				System.out.println("rowIndex: "+rowIndex);
+	             
 			}
 		}
 	}
@@ -378,6 +389,84 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getEventlist().getBtnDelete()){
 				screen.show(Screen.DELETEEVENT);
+			}
+			
+			
+			if (e.getSource() == screen.getEventlist().getBtnAddNote()){
+				
+				Object superID = screen.getEventList().getComboBox().getSelectedItem();
+				String superIDString = superID.toString();	
+				int superIDint = Integer.parseInt(superIDString);
+				
+	            String note = screen.getEventList().getTextField().getText();
+
+	            SN.setSuperID(superIDint);
+	            SN.setNote(note);
+	            
+	            Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(SN);
+
+				
+					try {
+						Object addNote = GS.GiantSwitchMethod(gsonString);
+						
+						JOptionPane.showMessageDialog(null, addNote
+								, "Note",JOptionPane.PLAIN_MESSAGE);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+
+				
+			}
+			if (e.getSource() == screen.getEventlist().getBtnDeleteNote()){
+				
+				Object superID = screen.getEventList().getComboBox().getSelectedItem();
+				String superIDString = superID.toString();	
+				int superIDint = Integer.parseInt(superIDString);
+				
+	            String note = "";
+
+	            SN.setSuperID(superIDint);
+	            SN.setNote(note);
+	            
+	            Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(SN);
+
+				
+					try {
+						Object deleteNote = GS.GiantSwitchMethod(gsonString);
+						
+						JOptionPane.showMessageDialog(null, "The note has been deleted!"
+								, "Note",JOptionPane.PLAIN_MESSAGE);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
+				
+				
+			}
+			if (e.getSource() == screen.getEventlist().getBtnUpdateNote()){
+				
+				Object superID = screen.getEventList().getComboBox().getSelectedItem();
+				String superIDString = superID.toString();	
+				int superIDint = Integer.parseInt(superIDString);
+				
+	            String note = screen.getEventList().getTextField().getText();
+
+	            SN.setSuperID(superIDint);
+	            SN.setNote(note);
+	            
+	            Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(SN);
+
+				
+					try {
+						Object addNote = GS.GiantSwitchMethod(gsonString);
+						
+						JOptionPane.showMessageDialog(null, addNote
+								, "Note",JOptionPane.PLAIN_MESSAGE);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 			}
 		}
 	}
