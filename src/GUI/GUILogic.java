@@ -129,11 +129,11 @@ public class GUILogic {
 
 
 					if (FL.getAnswer().equals("correct")){
-						JOptionPane.showMessageDialog(null, "\nYour username is: "+FL.getEmail()+"\nYour password is: "+FL.getPassword()
+						JOptionPane.showMessageDialog(null, "Your username is: "+FL.getEmail()+"\nYour password is: "+FL.getPassword()
 								, "Message",JOptionPane.PLAIN_MESSAGE);
 					}
-					else if(FL.getAnswer().equals("notCorrect")){
-						JOptionPane.showMessageDialog(null, "\nIt did not work!...."
+					else if(!FL.getAnswer().equals("correct")){
+						JOptionPane.showMessageDialog(null, "Please enter a valid security number."
 								, "Error",JOptionPane.PLAIN_MESSAGE);
 					}
 
@@ -241,9 +241,11 @@ public class GUILogic {
 				String gsonString = gson.toJson(CE);
 
 				try {
-					Object hejhej = GS.GiantSwitchMethod(gsonString);
+					String CreateEvent = (String)GS.GiantSwitchMethod(gsonString);
+					
+					CreateEvent CEanswer = (CreateEvent)gson.fromJson(CreateEvent, CreateEvent.class);
 
-					JOptionPane.showMessageDialog(null, hejhej
+					JOptionPane.showMessageDialog(null, CEanswer.getAnswer()
 							, "Return message",JOptionPane.PLAIN_MESSAGE);
 					
 				} catch (SQLException e1) {
@@ -306,7 +308,7 @@ public class GUILogic {
 
 				if (Email.equals("")|| Password.equals("") || CPR.equals(""))
 				{
-					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields."
+					JOptionPane.showMessageDialog(null, "Please fill out all the fields."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 				}
 				else
@@ -448,7 +450,7 @@ public class GUILogic {
 					String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
 					DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
 
-					JOptionPane.showMessageDialog(null, "\n"+DC.getAnswer()
+					JOptionPane.showMessageDialog(null, DC.getAnswer()
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 
 				} catch (SQLException e1) {
@@ -582,7 +584,8 @@ public class GUILogic {
 					String DeleteEvent = (String)GS.GiantSwitchMethod(gsonString);
 					DC = gson.fromJson(DeleteEvent, DeleteCalendar.class);
 
-					System.out.println(DE.getAnswer());
+					JOptionPane.showMessageDialog(null, DC.getAnswer()
+							, "Return message",JOptionPane.PLAIN_MESSAGE);
 
 				} catch (SQLException e1) {
 					e1.printStackTrace();
@@ -621,9 +624,8 @@ public class GUILogic {
 					String BlockUser = (String)GS.GiantSwitchMethod(gsonString);
 					BU = gson.fromJson(BlockUser, BlockUser.class);
 
-					System.out.println(BU.getAnswer());
 
-					JOptionPane.showMessageDialog(null, "The user has now been blocked."
+					JOptionPane.showMessageDialog(null, BU.getAnswer()
 							, "Return message",JOptionPane.PLAIN_MESSAGE);
 
 				} catch (SQLException e1) {
@@ -643,9 +645,8 @@ public class GUILogic {
 					String BlockUser = (String)GS.GiantSwitchMethod(gsonString);
 					BU = gson.fromJson(BlockUser, BlockUser.class);
 
-					System.out.println(BU.getAnswer());
 
-					JOptionPane.showMessageDialog(null, "The user has now been unblocked."
+					JOptionPane.showMessageDialog(null, BU.getAnswer()
 							, "Return message",JOptionPane.PLAIN_MESSAGE);
 
 				} catch (SQLException e1) {
