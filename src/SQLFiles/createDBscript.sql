@@ -1,7 +1,7 @@
 --drop DATABASE IF EXISTS cbscalendar;
 CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
-select * from users;
+--select * from users;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Create Tables */
@@ -72,16 +72,6 @@ CREATE TABLE IF NOT EXISTS locationdata
 	longitude int NOT NULL,
 	latitude int Not null,
 	PRIMARY KEY (locationdataid)
-);
-
-CREATE TABLE IF NOT EXISTS notes
-(
-	noteID int NOT NULL AUTO_INCREMENT,
-	eventID int NOT NULL,
-	createdBy varchar(255) NOT NULL,
-	text text,
-	dateTime datetime NOT NULL,
-	PRIMARY KEY (noteID)
 );
 
 CREATE TABLE IF NOT EXISTS users
