@@ -17,7 +17,6 @@ public class Screen extends JFrame {
 	public static final String USERINFO = "name_362280744832869";
 	public static final String ADDUSER = "name_362200721529567";
 	public static final String USERLIST = "name_480079376033151";
-	public static final String ADDNOTE = "name_738191050387273";
 	public static final String FORGOT = "name_921186008853499";
 	public static final String CALENDARLIST = "name_493897513062219";
 	public static final String DELETECALENDAR = "name_496088936866551";
@@ -33,10 +32,8 @@ public class Screen extends JFrame {
 	private final Login login = new Login();
 	private final MainMenu mainMenu = new MainMenu();
 	private final NoteList noteList = new NoteList();
-	private final UserInfo userInfo = new UserInfo();
 	private final UserList userList = new UserList();
 	CardLayout c;
-	private final AddNote addNote = new AddNote();
 	private final ForgotLogin forgotLogin = new ForgotLogin();
 	private final CalendarList calendarList = new CalendarList();
 	private final DeleteCalendar deleteCalendar = new DeleteCalendar();
@@ -83,11 +80,7 @@ public class Screen extends JFrame {
 		contentPane.add(forgotLogin, "name_921186008853499");
 		
 		contentPane.add(userList, "name_480079376033151");
-		
-		contentPane.add(userInfo, "name_362280744832869");
-		
-		contentPane.add(addNote, "name_738191050387273");
-		
+				
 		contentPane.add(noteList, "name_362271144977704");
 		
 		contentPane.add(createCalendar, "name_508229372553648");
@@ -115,10 +108,7 @@ public class Screen extends JFrame {
 	public MainMenu getMainMenu() {
 		return mainMenu;
 	}
-	public UserInfo getUserInfo() {
-		return userInfo;
-	}
-	
+
 	public NoteList getNoteList() {
 		return noteList;
 	}
@@ -142,10 +132,6 @@ public class Screen extends JFrame {
 
 	public UserList getUserList() {
 		return userList;
-	}
-	
-	public AddNote getAddNote() {
-		return addNote;
 	}
 
 	public ForgotLogin getForgotLogin() {

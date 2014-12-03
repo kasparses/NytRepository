@@ -47,13 +47,11 @@ public class GUILogic {
 
 		screen.getLogin().addActionListener(new LoginActionListener());
 		screen.getMainMenu().addActionListener(new MainMenuActionListener());
-		screen.getUserInfo().addActionListener(new UserInfoActionListener());
 		screen.getNoteList().addActionListener(new NoteListActionListener());
 		screen.getUserList().addActionListener(new UserListActionListener());
 		screen.getEventlist().addActionListener(new EventListActionListener());
 		screen.getAddEventGUI().addActionListener(new AddEventGUIActionListener());
 		screen.getAddUser().addActionListener(new AddUserActionListener());
-		screen.getAddNote().addActionListener(new AddNoteActionListener());
 		screen.getForgotLogin().addActionListener(new ForgotActionListener());
 		screen.getCalendarList().addActionListener(new CalendarListActionListener());
 		screen.getDeleteEvent().addActionListener(new DeleteEventActionListener());
@@ -339,7 +337,8 @@ public class GUILogic {
 				screen.show(Screen.LOGIN);
 			}
 			if (e.getSource() == screen.getNoteList().getBtnAdd()){
-				screen.show(Screen.ADDNOTE);
+
+				
 			}
 		}
 	}
@@ -379,34 +378,6 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getEventlist().getBtnDelete()){
 				screen.show(Screen.DELETEEVENT);
-			}
-		}
-	}
-
-	private class AddNoteActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-
-			if (e.getSource() == screen.getAddNote().getBtnMainMenu()){
-				screen.show(Screen.MAINMENU);
-			}
-			if (e.getSource() == screen.getAddNote().getBtnLogout()){
-				screen.show(Screen.LOGIN);
-			}
-			if (e.getSource() == screen.getAddNote().getBtnCalendarList()){
-				screen.show(Screen.CALENDARLIST);
-			}
-			if (e.getSource() == screen.getAddNote().getBtnEventList()){
-				screen.show(Screen.EVENTLIST);
-			}
-			if (e.getSource() == screen.getAddNote().getBtnNoteList()){
-				screen.show(Screen.NOTELIST);
-			}
-			if (e.getSource() == screen.getAddNote().getBtnUserList()){
-				screen.show(Screen.USERLIST);
-			}
-		
-			if (e.getSource() == screen.getAddNote().getBtnAddNote()){
-
 			}
 		}
 	}
