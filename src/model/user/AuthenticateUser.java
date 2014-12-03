@@ -26,7 +26,7 @@ public class AuthenticateUser {
 		try
 		{
 
-			String[] keys = {"userID", "email", "Active", "created", "type", "password", "CPR"};
+			String[] keys = {"userID", "email", "Active", "type", "password", "CPR"};
 			qb = new QueryBuilder();
 			rs = qb.selectFrom(keys, "users").where("email", "=", email).ExecuteQuery();
 			while(rs.next())
@@ -46,6 +46,7 @@ public class AuthenticateUser {
 				if(acti.equals("1")){
 					String active = "active";
 					LA.setActive(active);
+					System.out.println(LA.getActive());
 				}
 				else if (acti.equals("2")){
 					String active = "inactive";
