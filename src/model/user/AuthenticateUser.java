@@ -33,6 +33,7 @@ public class AuthenticateUser {
 			{
 				String ty = rs.getString("type");
 				String pass = rs.getString("password");
+				String acti = rs.getString("Active");
 
 				if(pass.equals(password)){
 					String answer = "correct";
@@ -42,15 +43,14 @@ public class AuthenticateUser {
 					String answer = "notCorrect";
 					LA.setAnswer(answer);
 				}
-				if (ty.equals("user")){
-					String userAdmin = "user";
-					LA.setUserAdmin(userAdmin);
+				if(acti.equals("1")){
+					String active = "active";
+					LA.setActive(active);
 				}
-				else if (ty.equals("admin")){
-					String userAdmin = "admin";
-					LA.setAnswer(userAdmin);
+				else if (acti.equals("2")){
+					String active = "inactive";
+					LA.setActive(active);
 				}
-
 			}
 
 		}

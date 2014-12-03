@@ -11,9 +11,11 @@ public class AuthUserJson implements java.io.Serializable
 
 
 	//Getters and setters for everything
+	
 	public String getOverallID() {
 		return overallID;
 	}
+
 	public void setOverallID(String overallID) {
 		this.overallID = overallID;
 	}

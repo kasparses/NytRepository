@@ -98,6 +98,16 @@ public class GUILogic {
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 				}
+				if(LA.getActive().equals("active")){
+					screen.show(Screen.MAINMENU);
+
+				}
+				if(!LA.getActive().equals("active")){
+					JOptionPane.showMessageDialog(null, "Your account has been set inactive.\nPlease contact us via this email:\n"
+							+ "help@cbs.dk"
+							, "Error message",JOptionPane.PLAIN_MESSAGE);
+					
+				}
 				if (e.getSource() == screen.getLogin().getBtnForgotLogIn()){
 
 					screen.show(Screen.FORGOT);
@@ -292,7 +302,7 @@ public class GUILogic {
 					String CreateEvent = (String)GS.GiantSwitchMethod(gsonString);
 					
 					CreateEvent CEanswer = (CreateEvent)gson.fromJson(CreateEvent, CreateEvent.class);
-
+					
 					JOptionPane.showMessageDialog(null, CEanswer.getAnswer()
 							, "Return message",JOptionPane.PLAIN_MESSAGE);
 					

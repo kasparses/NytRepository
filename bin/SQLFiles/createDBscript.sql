@@ -1,7 +1,7 @@
 --drop DATABASE IF EXISTS cbscalendar;
 CREATE DATABASE IF NOT EXISTS cbscalendar;
 use cbscalendar;
-select * from events;
+--select * from users;
 SET SESSION FOREIGN_KEY_CHECKS=0;
 
 /* Create Tables */

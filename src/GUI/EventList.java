@@ -31,6 +31,7 @@ import javax.swing.JTextField;
 import javax.swing.JComboBox;
 
 
+
 	public class EventList extends JPanel {
 
 		/**
@@ -52,7 +53,7 @@ import javax.swing.JComboBox;
 		private JComboBox comboBox;
 		private JLabel lblPleaseSelectThe;
 		
-		
+			
 		
 		public EventList() {
 			setSize(new Dimension(1366, 768));
@@ -263,5 +264,8 @@ import javax.swing.JComboBox;
 		public JTextField getTextField() {
 			return textField;
 		}
+		
+		
+		
 	}
 
