@@ -14,11 +14,9 @@ public class BlockUser extends JPanel {
 	private final JLabel lblBlockUser = new JLabel("Block User");
 	private final JButton btnMainMenu = new JButton("Main Menu");
 	private final JButton btnLogOut = new JButton("Log Out");
-	private final JButton btnNoteList = new JButton("Note List");
 	private final JButton btnUserList = new JButton("User List");
 	private final JButton btnEventList = new JButton("Event List");
 	private final JButton btnCalendarList = new JButton("Calendar List");
-	private final JButton btnUserInfo = new JButton("User Info");
 	private final JTextField textField_Username = new JTextField();
 	private final JLabel lblEnterTheUsers = new JLabel("Enter the users username:");
 	private final JButton btnBlockUser = new JButton("Block User");
@@ -41,21 +39,15 @@ public class BlockUser extends JPanel {
 		btnMainMenu.setForeground(Color.WHITE);
 		btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnMainMenu.setContentAreaFilled(false);
-		btnMainMenu.setBounds(49, 508, 225, 45);
+		btnMainMenu.setBounds(49, 433, 225, 45);
 		
 		add(btnMainMenu);
 		btnLogOut.setForeground(Color.WHITE);
 		btnLogOut.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnLogOut.setContentAreaFilled(false);
-		btnLogOut.setBounds(49, 583, 225, 45);
+		btnLogOut.setBounds(49, 508, 225, 45);
 		
 		add(btnLogOut);
-		btnNoteList.setForeground(Color.WHITE);
-		btnNoteList.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnNoteList.setContentAreaFilled(false);
-		btnNoteList.setBounds(49, 131, 225, 45);
-		
-		add(btnNoteList);
 		btnUserList.setForeground(Color.WHITE);
 		btnUserList.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnUserList.setContentAreaFilled(false);
@@ -74,12 +66,6 @@ public class BlockUser extends JPanel {
 		btnCalendarList.setBounds(49, 356, 234, 45);
 		
 		add(btnCalendarList);
-		btnUserInfo.setForeground(Color.WHITE);
-		btnUserInfo.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnUserInfo.setContentAreaFilled(false);
-		btnUserInfo.setBounds(51, 431, 225, 45);
-		
-		add(btnUserInfo);
 		
 		add(textField_Username);
 		lblEnterTheUsers.setForeground(Color.WHITE);
@@ -118,9 +104,7 @@ public class BlockUser extends JPanel {
 		btnMainMenu.addActionListener(l);
 		btnCalendarList.addActionListener(l);
 		btnEventList.addActionListener(l);
-		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
-		btnUserInfo.addActionListener(l);
 		btnBlockUser.addActionListener(l);
 		btnUnblockUser.addActionListener(l);
 }
@@ -134,9 +118,7 @@ public class BlockUser extends JPanel {
 	public JButton getBtnLogOut() {
 		return btnLogOut;
 	}
-	public JButton getBtnNoteList() {
-		return btnNoteList;
-	}
+
 	public JButton getBtnUserList() {
 		return btnUserList;
 	}
@@ -146,9 +128,7 @@ public class BlockUser extends JPanel {
 	public JButton getBtnCalendarList() {
 		return btnCalendarList;
 	}
-	public JButton getBtnUserInfo() {
-		return btnUserInfo;
-	}
+
 	public JTextField getTextField_Username() {
 		return textField_Username;
 	}

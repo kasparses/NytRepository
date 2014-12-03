@@ -13,7 +13,6 @@ public class Screen extends JFrame {
 	public static final String ADDCOURSE = "name_362036683693928";
 	public static final String ADDEVENT = "name_362181513611519";
 	public static final String EVENTLIST = "name_362220577395912";
-	public static final String NOTELIST = "name_362271144977704";
 	public static final String USERINFO = "name_362280744832869";
 	public static final String ADDUSER = "name_362200721529567";
 	public static final String USERLIST = "name_480079376033151";
@@ -31,7 +30,6 @@ public class Screen extends JFrame {
 	private final EventList eventList = new EventList();
 	private final Login login = new Login();
 	private final MainMenu mainMenu = new MainMenu();
-	private final NoteList noteList = new NoteList();
 	private final UserList userList = new UserList();
 	CardLayout c;
 	private final ForgotLogin forgotLogin = new ForgotLogin();
@@ -80,9 +78,7 @@ public class Screen extends JFrame {
 		contentPane.add(forgotLogin, "name_921186008853499");
 		
 		contentPane.add(userList, "name_480079376033151");
-				
-		contentPane.add(noteList, "name_362271144977704");
-		
+						
 		contentPane.add(createCalendar, "name_508229372553648");
 		
 		contentPane.add(deleteCalendar, "name_496088936866551");
@@ -109,10 +105,6 @@ public class Screen extends JFrame {
 		return mainMenu;
 	}
 
-	public NoteList getNoteList() {
-		return noteList;
-	}
-	
 	public EventList getEventlist() {
 		return eventList;
 	}

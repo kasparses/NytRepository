@@ -27,7 +27,6 @@ public class AddUser extends JPanel {
 	private JLabel label;
 	private JButton btnMainMenu;
 	private JButton btnLogout;
-	private JButton btnNoteList;
 	private JButton btnUserList;
 	private JButton btnEventList;
 	private JButton btnCalendarList;
@@ -128,13 +127,6 @@ public class AddUser extends JPanel {
 				btnLogout.setBounds(47, 516, 225, 45);
 				add(btnLogout);
 				
-				btnNoteList = new JButton("Note List");
-				btnNoteList.setForeground(Color.WHITE);
-				btnNoteList.setFont(new Font("Tahoma", Font.BOLD, 30));
-				btnNoteList.setContentAreaFilled(false);
-				btnNoteList.setBounds(47, 138, 225, 45);
-				add(btnNoteList);
-				
 				btnUserList = new JButton("User List");
 				btnUserList.setForeground(Color.WHITE);
 				btnUserList.setFont(new Font("Tahoma", Font.BOLD, 30));
@@ -170,14 +162,9 @@ public class AddUser extends JPanel {
 		btnMainMenu.addActionListener(l);
 		btnCalendarList.addActionListener(l);
 		btnEventList.addActionListener(l);
-		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
 		btnCreateUser.addActionListener(l);
 
-	}
-	
-	public JButton getBtnNoteList() {
-		return btnNoteList;
 	}
 
 	public JButton getBtnUserList() {
