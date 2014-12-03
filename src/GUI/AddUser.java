@@ -31,7 +31,6 @@ public class AddUser extends JPanel {
 	private JButton btnUserList;
 	private JButton btnEventList;
 	private JButton btnCalendarList;
-	private JButton btnUserInfo;
 
 	/**
 	 * Create the panel.
@@ -42,7 +41,6 @@ public class AddUser extends JPanel {
 		setLayout(null);
 		
 		lblCBSlogo = new JLabel("");
-		lblCBSlogo.setIcon(new ImageIcon(UserInfo.class.getResource("/Images/CBSLogo3.png")));
 		lblCBSlogo.setBounds(10, 698, 250, 59);
 		add(lblCBSlogo);
 
@@ -120,14 +118,14 @@ public class AddUser extends JPanel {
 				btnMainMenu.setForeground(Color.WHITE);
 				btnMainMenu.setFont(new Font("Tahoma", Font.BOLD, 30));
 				btnMainMenu.setContentAreaFilled(false);
-				btnMainMenu.setBounds(47, 513, 225, 45);
+				btnMainMenu.setBounds(47, 441, 225, 45);
 				add(btnMainMenu);
 				
 				btnLogout = new JButton("Log Out");
 				btnLogout.setForeground(Color.WHITE);
 				btnLogout.setFont(new Font("Tahoma", Font.BOLD, 30));
 				btnLogout.setContentAreaFilled(false);
-				btnLogout.setBounds(47, 588, 225, 45);
+				btnLogout.setBounds(47, 516, 225, 45);
 				add(btnLogout);
 				
 				btnNoteList = new JButton("Note List");
@@ -158,13 +156,6 @@ public class AddUser extends JPanel {
 				btnCalendarList.setBounds(47, 363, 234, 45);
 				add(btnCalendarList);
 				
-				btnUserInfo = new JButton("User Info");
-				btnUserInfo.setForeground(Color.WHITE);
-				btnUserInfo.setFont(new Font("Tahoma", Font.BOLD, 30));
-				btnUserInfo.setContentAreaFilled(false);
-				btnUserInfo.setBounds(47, 437, 225, 45);
-				add(btnUserInfo);
-				
 				label = new JLabel("");
 				label.setIcon(new ImageIcon(AddUser.class.getResource("/Images/MetalBackground.jpg")));
 				label.setBounds(0, 0, 1366, 770);
@@ -182,20 +173,12 @@ public class AddUser extends JPanel {
 		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
 		btnCreateUser.addActionListener(l);
-		btnUserInfo.addActionListener(l);
 
 	}
-
 	
-
-	public JButton getBtnUserInfo() {
-		return btnUserInfo;
-	}
-
 	public JButton getBtnNoteList() {
 		return btnNoteList;
 	}
-
 
 	public JButton getBtnUserList() {
 		return btnUserList;

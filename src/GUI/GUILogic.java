@@ -158,9 +158,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getMainMenu().getBtnCalendarList()){
 				screen.show(Screen.CALENDARLIST);
 			}
-			if (e.getSource() == screen.getMainMenu().getBtnUserInfo()){
-				screen.show(Screen.USERINFO);
-			}
+			
 
 
 		}
@@ -185,9 +183,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getAddEventGUI().getBtnUserList()){
 				screen.show(Screen.USERLIST);
 			}
-			if (e.getSource() == screen.getAddEventGUI().getBtnUserInfo()){
-				screen.show(Screen.USERINFO);
-			}
+		
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
 
 
@@ -277,9 +273,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getAddUser().getBtnUserList()){
 				screen.show(Screen.USERLIST);
 			}
-			if (e.getSource() == screen.getAddUser().getBtnUserInfo()){
-				screen.show(Screen.USERINFO);
-			}
+		
 			if (e.getSource() == screen.getAddUser().getBtnCreateUser()){
 
 
@@ -287,7 +281,6 @@ public class GUILogic {
 				String Password = screen.getAddUser().getTextField_Password().getText();
 				String CPR = screen.getAddUser().getTextField_CPR().getText();
 				int Active = 1;
-				String created = "2014-11-11 11:00:00";
 				String UpdatedCbsEvents = "notUpdated";
 				boolean adminOrUser = false;
 				String adMinOrUserValue = "";
@@ -319,7 +312,7 @@ public class GUILogic {
 				}
 				else
 				{
-					EstablishUser EU = new EstablishUser("establishUser", Email , Active, created, adMinOrUserValue, Password, CPR, UpdatedCbsEvents );
+					EstablishUser EU = new EstablishUser("establishUser", Email , Active, adMinOrUserValue, Password, CPR, UpdatedCbsEvents );
 
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(EU);
@@ -335,36 +328,7 @@ public class GUILogic {
 			}
 		}
 	}
-	private class UserInfoActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			if (e.getSource() == screen.getUserInfo().getBtnMainMenu()){
-				screen.show(Screen.MAINMENU);
-			}
-			if (e.getSource() == screen.getUserInfo().getBtnLogout()){
-				screen.show(Screen.LOGIN);
-			}
-			if (e.getSource() == screen.getUserInfo().getBtnCalendarList()){
-				screen.show(Screen.CALENDARLIST);
-
-			}
-			if (e.getSource() == screen.getUserInfo().getBtnEventList()){
-				screen.show(Screen.EVENTLIST);
-
-			}
-			if (e.getSource() == screen.getUserInfo().getBtnNoteList()){
-				screen.show(Screen.NOTELIST);
-
-			}
-			if (e.getSource() == screen.getUserInfo().getBtnUserList()){
-				screen.show(Screen.USERLIST);
-
-			}
-			if (e.getSource() == screen.getUserInfo().getBtnSubmit()){
-
-			}
-		}
-	}
-
+	
 	private class NoteListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -440,9 +404,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getAddNote().getBtnUserList()){
 				screen.show(Screen.USERLIST);
 			}
-			if (e.getSource() == screen.getAddNote().getBtnUserInfo()){
-				screen.show(Screen.USERINFO);
-			}
+		
 			if (e.getSource() == screen.getAddNote().getBtnAddNote()){
 
 			}
@@ -494,10 +456,7 @@ public class GUILogic {
 
 				screen.show(Screen.USERLIST);
 			}
-			if (e.getSource() == screen.getDeleteCalendar().getBtnUserInfo()){
-
-				screen.show(Screen.USERINFO);
-			}
+			
 			if (e.getSource() == screen.getDeleteCalendar().getBtnSetInactive()){
 				try {
 					DC.setActive(false);
@@ -573,11 +532,7 @@ public class GUILogic {
 				screen.show(Screen.USERLIST);
 
 			}
-			if (e.getSource() == screen.getCreateCalendar().getBtnUserInfo()){
-
-				screen.show(Screen.USERINFO);
-
-			}
+			
 			if (e.getSource() == screen.getCreateCalendar().getBtnCreateCalendar()){
 				boolean empty = false;
 				String name = screen.getCreateCalendar().getTextField_Name().getText();
@@ -664,10 +619,7 @@ public class GUILogic {
 				screen.show(Screen.USERLIST);
 
 			}
-			if (e.getSource() == screen.getDeleteEvent().getBtnUserInfo()){
-				screen.show(Screen.USERINFO);
-
-			}
+			
 			if (e.getSource() == screen.getDeleteEvent().getBtnDelete()){
 
 				try {
@@ -711,9 +663,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getBlockUser().getBtnCalendarList()){
 				screen.show(Screen.CALENDARLIST);
 			}
-			if (e.getSource() == screen.getBlockUser().getBtnUserInfo()){
-				screen.show(Screen.USERINFO);
-			}
+		
 			if (e.getSource() == screen.getBlockUser().getBtnBlockUser()){
 
 				try {
