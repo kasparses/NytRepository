@@ -46,12 +46,7 @@ public class GiantSwitch {
 		switch (Determine(jsonString)) {
 		//If the Json String contains one of the keywords below, run the relevant method.
 
-		/************
-		 ** COURSES **
-		 ************/
 
-		
-			
 		/**********
 		 ** LOGIN **
 		 **********/
