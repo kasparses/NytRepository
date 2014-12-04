@@ -423,10 +423,12 @@ public class GUILogic {
 
 				
 					try {
-						Object addNote = GS.GiantSwitchMethod(gsonString);
+						String addNote = (String) GS.GiantSwitchMethod(gsonString);
+						SN = gson.fromJson(addNote, SaveNote.class);
+
+						JOptionPane.showMessageDialog(null, SN.getAnswer()
+								, "Return message",JOptionPane.PLAIN_MESSAGE);
 						
-						JOptionPane.showMessageDialog(null, addNote
-								, "Note",JOptionPane.PLAIN_MESSAGE);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
@@ -449,10 +451,12 @@ public class GUILogic {
 
 				
 					try {
-						Object deleteNote = GS.GiantSwitchMethod(gsonString);
+						String deleteNote = (String) GS.GiantSwitchMethod(gsonString);
+						SN = gson.fromJson(deleteNote, SaveNote.class);
+
+						JOptionPane.showMessageDialog(null, SN.getAnswer()
+								, "Return message",JOptionPane.PLAIN_MESSAGE);
 						
-						JOptionPane.showMessageDialog(null, "The note has been deleted!"
-								, "Note",JOptionPane.PLAIN_MESSAGE);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
@@ -475,10 +479,12 @@ public class GUILogic {
 
 				
 					try {
-						Object addNote = GS.GiantSwitchMethod(gsonString);
+						String addNote = (String) GS.GiantSwitchMethod(gsonString);
+						SN = gson.fromJson(addNote, SaveNote.class);
+
+						JOptionPane.showMessageDialog(null, SN.getAnswer()
+								, "Return message",JOptionPane.PLAIN_MESSAGE);
 						
-						JOptionPane.showMessageDialog(null, addNote
-								, "Note",JOptionPane.PLAIN_MESSAGE);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}

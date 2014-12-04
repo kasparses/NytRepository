@@ -351,7 +351,6 @@ public class SwitchMethods extends Model
 			SN.setAnswer("The Note has been added");
 
 		} catch (Exception e) {
-			SN.setAnswer("The Note has Not been added");
 
 			e.printStackTrace();
 		}
