@@ -20,8 +20,6 @@ public class AddUser extends JPanel {
 	private JLabel lblUserInfo;
 	private JLabel lblCpr;
 	private JTextField textField_CPR;
-	private JRadioButton rdbtnAdmin;
-	private JRadioButton rdbtnUser;
 	private JButton btnCreateUser;
 	private JButton btnSubmit;
 	private JLabel label;
@@ -56,22 +54,16 @@ public class AddUser extends JPanel {
 		lblUserID.setBounds(483, 211, 104, 30);
 		add(lblUserID);
 
-		JLabel lblEmail = new JLabel("Type");
-		lblEmail.setForeground(new Color(255, 255, 255));
-		lblEmail.setFont(new Font("Arial", Font.BOLD, 20));
-		lblEmail.setBounds(483, 257, 47, 24);
-		add(lblEmail);
-
 		textField_Password = new JTextField();
 		textField_Password.setForeground(new Color(105, 105, 105));
 		textField_Password.setColumns(10);
-		textField_Password.setBounds(755, 305, 174, 34);
+		textField_Password.setBounds(755, 284, 174, 34);
 		add(textField_Password);
 
 		JLabel lblTeam = new JLabel("Password");
 		lblTeam.setFont(new Font("Arial", Font.BOLD, 20));
 		lblTeam.setForeground(new Color(255, 255, 255));
-		lblTeam.setBounds(483, 303, 127, 30);
+		lblTeam.setBounds(483, 282, 127, 30);
 		add(lblTeam);
 				
 				lblUserInfo = new JLabel("Create User");
@@ -91,20 +83,6 @@ public class AddUser extends JPanel {
 				textField_CPR.setColumns(10);
 				textField_CPR.setBounds(755, 350, 174, 34);
 				add(textField_CPR);
-				
-				rdbtnUser = new JRadioButton("User");
-				rdbtnUser.setContentAreaFilled(false);
-				rdbtnUser.setBounds(783, 261, 109, 23);
-				add(rdbtnUser);
-				
-				rdbtnAdmin = new JRadioButton("Admin");
-				rdbtnAdmin.setContentAreaFilled(false);
-				rdbtnAdmin.setBounds(622, 261, 109, 23);
-				add(rdbtnAdmin);
-				
-				ButtonGroup group = new ButtonGroup();
-				group.add(getRdbtnAdmin());
-				group.add(getRdbtnUser());
 				
 				btnCreateUser = new JButton("Create User");
 				btnCreateUser.setForeground(Color.WHITE);
@@ -182,14 +160,6 @@ public class AddUser extends JPanel {
 
 	public JTextField getTextField_Email() {
 		return textField_Email;
-	}
-
-	public JRadioButton getRdbtnAdmin() {
-		return rdbtnAdmin;
-	}
-
-	public JRadioButton getRdbtnUser() {
-		return rdbtnUser;
 	}
 
 	public JTextField getTextField_Password() {

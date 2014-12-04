@@ -6,18 +6,16 @@ public class EstablishUser implements java.io.Serializable
 	private String overallID = "establishUser";
 	private String email;
 	private int Active;
-	private String type;
 	private String password;
 	private String CPR;
 	private String UpdatedCbsEvents;
 	private String answer = "";
 
 	public EstablishUser(String overallID, String email, int Active,
-			String type, String password, String CPR, String UpdatedCbsEvents){
+			String password, String CPR, String UpdatedCbsEvents){
 		setOverallID(overallID);
 		setEmail(email);
 		setActive(Active);
-		setType(type);
 		setPassword(password);
 		setCPR(CPR);
 		setUpdatedCbsEvents(UpdatedCbsEvents);
@@ -49,14 +47,6 @@ public class EstablishUser implements java.io.Serializable
 
 	public void setActive(int active) {
 		Active = active;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
 	}
 
 	public String getPassword() {

@@ -59,8 +59,7 @@ CREATE TABLE IF NOT EXISTS users
 (
 	userID int NOT NULL AUTO_INCREMENT,
 	email varchar(40) NOT NULL,
-	Active tinyint, 
-	type varchar(20) not null COMMENT '1 = admin 2 = bruger',
+	Active tinyint,
 	password varchar(30) NOT NULL,
 	CPR varchar(11) not null,
 	UpdatedCbsEvents varchar(24) not null comment 'Updated, notUpdated.', 
@@ -73,8 +72,8 @@ values ('afa', 'fa', 'faf', 'hej', 1416351614539);
 
 
 use cbscalendar;
-insert into users (userID, email, Active, type, password, CPR, UpdatedCbsEvents)
-values (2, 'kabj13ab', 1, 1, 'hej', '111111-1111', 'notUpdated');
+insert into users (userID, email, Active, password, CPR, UpdatedCbsEvents)
+values (2, 'kabj13ab', 1, 'hej', '111111-1111', 'notUpdated');
 
 
 

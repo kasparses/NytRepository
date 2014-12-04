@@ -90,7 +90,7 @@ public class GiantSwitch {
 			
 		case "establishUser":
 			EstablishUser EU = (EstablishUser)gson.fromJson(jsonString, EstablishUser.class);
-			answer = EUM.EstablishUser(EU.getEmail(),EU.getActive(),EU.getType(),
+			answer = EUM.EstablishUser(EU.getEmail(),EU.getActive(),
 					EU.getPassword(),EU.getCPR(),EU.getUpdatedCbsEvents());
 		
 			break;

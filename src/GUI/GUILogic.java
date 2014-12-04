@@ -341,27 +341,6 @@ public class GUILogic {
 				String CPR = screen.getAddUser().getTextField_CPR().getText();
 				int Active = 1;
 				String UpdatedCbsEvents = "notUpdated";
-				boolean adminOrUser = false;
-				String adMinOrUserValue = "";
-
-
-				if (screen.getAddUser().getRdbtnAdmin().isSelected())
-				{
-					adMinOrUserValue = "1"; 
-					adminOrUser = true;
-				}
-				if (screen.getAddUser().getRdbtnUser().isSelected())
-				{
-					adMinOrUserValue = "2"; 
-					adminOrUser = true;
-				}
-
-
-				if( adminOrUser == false){
-					JOptionPane.showMessageDialog(null, "Please select whether the account is an admin or a user"
-							, "Error message",JOptionPane.PLAIN_MESSAGE);
-
-				}
 
 
 				if (Email.equals("")|| Password.equals("") || CPR.equals(""))
@@ -371,7 +350,7 @@ public class GUILogic {
 				}
 				else
 				{
-					EstablishUser EU = new EstablishUser("establishUser", Email , Active, adMinOrUserValue, Password, CPR, UpdatedCbsEvents );
+					EstablishUser EU = new EstablishUser("establishUser", Email , Active, Password, CPR, UpdatedCbsEvents );
 
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(EU);
