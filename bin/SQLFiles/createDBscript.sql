@@ -13,8 +13,6 @@ CREATE TABLE IF NOT EXISTS Calendar
 	Name varchar(255) NOT NULL UNIQUE,
 	Active tinyint not null comment '1 = active 2 = notActive' ,
 	CreatedBy varchar(255) NOT NULL,
-	-- 1 = public
-	-- 2 = private
 	PrivatePublic tinyint NOT NULL COMMENT '1 = public 2 = private',
 	PRIMARY KEY (CalendarID)
 );
@@ -32,15 +30,12 @@ CREATE TABLE IF NOT EXISTS Forecast
 
 CREATE TABLE IF NOT EXISTS dailyupdate
 (
-	date varchar(50) NOT NULL UNIQUE,
-	apparentTemperature double,
-	summary text,
 	qotd varchar(300) NOT NULL,
 	author varchar(100) not null ,
 	topic varchar(80) not null ,
-	msg_type varchar (100) NOT NULL unique COMMENT 'Hvad er dette?',
+	msg_type varchar (100) NOT NULL unique,
 	LastUpdateTime Bigint(50),
-	PRIMARY KEY (date)
+	PRIMARY KEY (qotd)
 );
 
 
@@ -57,21 +52,7 @@ CREATE TABLE IF NOT EXISTS events
 	location varchar(500) NOT NULL,	
 	note varchar(200),
 	superID int not null AUTO_INCREMENT,
-	--name varchar(30) NOT NULL UNIQUE,
-	--text text NOT NULL,
-	--calendarID int Not Null,
-	-- Decides wether the event is an import-event or user created
-	-- 
 	PRIMARY KEY (superID)
-);
-
-
-CREATE TABLE IF NOT EXISTS locationdata
-(
-	locationdataID int NOT NULL AUTO_INCREMENT,
-	longitude int NOT NULL,
-	latitude int Not null,
-	PRIMARY KEY (locationdataid)
 );
 
 CREATE TABLE IF NOT EXISTS users
@@ -87,8 +68,8 @@ CREATE TABLE IF NOT EXISTS users
 	PRIMARY KEY (userID)
 );
 use cbscalendar;
-insert into dailyupdate (date, apparentTemperature, summary, qotd, author, topic, msg_type, LastUpdateTime)
-values ('2014-11-11 16:55:00', 1, 'hje', 'afa', 'fa', 'faf', 'hej', 1416351614539);
+insert into dailyupdate (qotd, author, topic, msg_type, LastUpdateTime)
+values ('afa', 'fa', 'faf', 'hej', 1416351614539);
 
 
 use cbscalendar;
@@ -106,15 +87,3 @@ values ('2014-11-11 14:20:00', '1', '1','0'),
 ('2014-11-11 14:20:00', '1', '1','4'),
 ('2014-11-11 14:20:00', '1', '1','5'),
 ('2014-11-11 14:20:00', '1', '1','6');
-
---ALTER TABLE events
-	--ADD FOREIGN KEY (ID)
-	--REFERENCES Calendar (CalendarID)
-	--ON UPDATE RESTRICT
---;
-
---ALTER TABLE notes
---	ADD FOREIGN KEY (noteID)
---	REFERENCES events (superID)
---	ON UPDATE RESTRICT
---;
