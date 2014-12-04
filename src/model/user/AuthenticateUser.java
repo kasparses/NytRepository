@@ -26,12 +26,11 @@ public class AuthenticateUser {
 		try
 		{
 
-			String[] keys = {"userID", "email", "Active", "type", "password", "CPR"};
+			String[] keys = {"userID", "email", "Active", "password", "CPR"};
 			qb = new QueryBuilder();
 			rs = qb.selectFrom(keys, "users").where("email", "=", email).ExecuteQuery();
 			while(rs.next())
 			{
-				String ty = rs.getString("type");
 				String pass = rs.getString("password");
 				String acti = rs.getString("Active");
 
@@ -76,7 +75,7 @@ public class AuthenticateUser {
 		try
 		{
 
-			String[] keys = {"userid", "email", "Active", "created", "type", "password", "CPR"};
+			String[] keys = {"userid", "email", "Active", "password", "CPR"};
 			qb = new QueryBuilder();
 			rs = qb.selectFrom(keys, "users").where("CPR", "=", CPR).ExecuteQuery();
 			while(rs.next())
