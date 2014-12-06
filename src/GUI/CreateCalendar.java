@@ -18,7 +18,6 @@ public class CreateCalendar extends JPanel {
 	private final JRadioButton rdbtnPrivateCalendar = new JRadioButton("Private Calendar");
 	private final JRadioButton rdbtnPublicCalendar = new JRadioButton("Public Calendar");
 	private final JButton btnCreateCalendar = new JButton("Create Calendar");
-	private final JButton btnNoteList = new JButton("Note List");
 	private final JButton btnUserList = new JButton("User List");
 	private final JButton btnEventList = new JButton("Event List");
 	private final JButton btnCalendarList = new JButton("Calendar List");
@@ -68,12 +67,6 @@ public class CreateCalendar extends JPanel {
 		ButtonGroup group = new ButtonGroup();
 		group.add(getRdbtnPrivateCalendar());
 		group.add(getRdbtnPublicCalendar());
-		btnNoteList.setForeground(Color.WHITE);
-		btnNoteList.setFont(new Font("Tahoma", Font.BOLD, 30));
-		btnNoteList.setContentAreaFilled(false);
-		btnNoteList.setBounds(45, 139, 225, 45);
-		
-		add(btnNoteList);
 		btnUserList.setForeground(Color.WHITE);
 		btnUserList.setFont(new Font("Tahoma", Font.BOLD, 30));
 		btnUserList.setContentAreaFilled(false);
@@ -122,16 +115,11 @@ public class CreateCalendar extends JPanel {
 		btnLogOut.addActionListener(l);
 		btnMainMenu.addActionListener(l);
 		btnEventList.addActionListener(l);
-		btnNoteList.addActionListener(l);
 		btnUserList.addActionListener(l);
 
 }
 	
 
-
-	public JButton getBtnNoteList() {
-		return btnNoteList;
-	}
 
 	public JButton getBtnUserList() {
 		return btnUserList;

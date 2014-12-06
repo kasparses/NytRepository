@@ -638,7 +638,7 @@ public class GUILogic {
 
 
 				if( PrivateOrPublic == false){
-					JOptionPane.showMessageDialog(null, "Please select whether your database is a public or a private database"
+					JOptionPane.showMessageDialog(null, "Please select whether your calendar is a public or a private calendar"
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 
 				}

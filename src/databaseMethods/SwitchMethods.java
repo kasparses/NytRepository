@@ -76,7 +76,7 @@ public class SwitchMethods extends Model
 		if(authenticateNewCalendar(newcalendarName) == false)
 		{
 			addNewCalendar(type, newcalendarName, Active, userName, privatePublic);
-			CC.setAnswer("The new calender has been created!");
+			CC.setAnswer("The new calendar has been created!");
 		}
 		
 		else
