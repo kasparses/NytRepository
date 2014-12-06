@@ -348,7 +348,7 @@ public class SwitchMethods extends Model
 			String [] keys = {"note"};
 			String [] values = {note};
 			qb.update("events", keys, values).where("superID", "=", superID).Execute();
-			SN.setAnswer("The Note has been added");
+			SN.setAnswer("The note has been updated!");
 
 		} catch (Exception e) {
 

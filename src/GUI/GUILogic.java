@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import ClientWorker.GiantSwitch;
 import model.user.AuthenticateUser;
+import model.user.EstablishUserModel;
 
 import javax.swing.JOptionPane;
 
@@ -25,7 +26,7 @@ import JsonClasses.Login;
 import JsonClasses.LoginAnswer;
 import JsonClasses.SaveNote;
 
-
+	//Creating an object for the classes
 public class GUILogic {
 	private Screen screen;
 	AuthUserJson AU = new AuthUserJson();
@@ -40,14 +41,10 @@ public class GUILogic {
 	BlockUser BU = new BlockUser();
 	NoteList N = new NoteList();
 	SaveNote SN = new SaveNote();
-
-
-
-
 	GiantSwitch GS = new GiantSwitch();
-
 	model.user.AuthenticateUser a = new model.user.AuthenticateUser();
 
+	//Adding the screen and the ActionListeners
 	public GUILogic(){
 		screen = new Screen();
 
@@ -68,29 +65,37 @@ public class GUILogic {
 
 
 	}
+	//Creating the run method so the logic class can be run
 	public void run() {
 
 		screen.show(Screen.LOGIN);
 		screen.setVisible(true);
 	}
 
+	/**
+	 * The purpose of this ActionListener is so the admin can login if they are active
+	 * @author Mathias
+	 *
+	 */
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			try{
 
+				//Initializes the inserted text from the admin to variables
 				String email = screen.getLogin().getTextFieldUsername().getText();
 				String password = screen.getLogin().getTextFieldPassword().getText();
 
+				//Setting the variables to the Json objects
 				AU.setEmail(email);
 				AU.setPassword(password);
 
-
+				//Converting the objects to Json and back again to Java after use of GiantSwitch
 				Gson gson = new GsonBuilder().create();
 				String gsonString = gson.toJson(AU);
 				String hejhej33 = (String)GS.GiantSwitchMethod(gsonString);
 				LoginAnswer LA = gson.fromJson(hejhej33, LoginAnswer.class);  
 
-
+				//If statements
 				if (LA.getAnswer().equals("correct")){
 					screen.show(Screen.MAINMENU);
 				}
@@ -119,6 +124,11 @@ public class GUILogic {
 		}	
 	}
 
+	/**
+	 * The purpose of this ActionListener is to give the admin the forgotten login via a correct inserted security number
+	 * @author Mathias
+	 *
+	 */
 	private class ForgotActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getForgotLogin().getBtnLogin()){
@@ -126,17 +136,20 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getForgotLogin().getBtnGetLogin()){
 				try {
-
+					
+					//Initializes the inserted text from the admin to variables
 					String cPR = screen.getForgotLogin().getTextField_CPR().getText();
 					
+					//Setting the variables to the Json objects
 					FL.setCPR(cPR);
 					
+					//Converting the objects to Json and back again to Java after use of GiantSwitch
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(FL);
 					String hejhej35 = (String)GS.GiantSwitchMethod(gsonString);
 					ForgotLogin FL = gson.fromJson(hejhej35, ForgotLogin.class);
 
-
+					//Else if statements
 					if (FL.getAnswer().equals("correct")){
 						JOptionPane.showMessageDialog(null, "Your username is: "+FL.getEmail()+"\nYour password is: "+FL.getPassword()
 								, "Message",JOptionPane.PLAIN_MESSAGE);
@@ -155,6 +168,12 @@ public class GUILogic {
 
 	}
 
+	/**
+	 * The purpose of this ActionListener is to show the admin the Main Menu
+	 * @author Mathias
+	 *
+	 */
+	 
 	private class MainMenuActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getMainMenu().getBtnLogOut()){
@@ -171,10 +190,14 @@ public class GUILogic {
 				screen.show(Screen.CALENDARLIST);
 			}
 			
-
-
 		}
 	}
+	
+	/**
+	 * The purpose of this ActionListener is to add a new event to a calendar
+	 * @author Mathias
+	 *
+	 */
 	private class AddEventGUIActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getAddEventGUI().getBtnLogout()){
@@ -197,19 +220,15 @@ public class GUILogic {
 		
 			if (e.getSource() == screen.getAddEventGUI().getBtnSubmit()){
 				
-				
-
+				//Initializes variables, booleans and objects
 				boolean empty = false;
 				boolean timeError = false;
 				String description = screen.getAddEventGUI().getTextField_Description().getText();
-
 				String location = screen.getAddEventGUI().getTextField_Location().getText();
-
 				String title = screen.getAddEventGUI().getTextField_Title().getText();
 				String type = "1";
 				String EventID = "1";
 				String activityID = "1";
-				
 				String calendarName =  screen.getAddEventGUI().getTextField_CalendarName().getText();
 				String note = screen.getAddEventGUI().getTextField_Text().getText();
 
@@ -249,7 +268,7 @@ public class GUILogic {
 				int startMonthInt = Integer.parseInt(startMonthString);
 				int startYearInt = Integer.parseInt(startYearString);
 				
-				
+				//If statements
 				if(startHourInt> endHourInt){
 					timeError = true;
 				}
@@ -281,10 +300,11 @@ public class GUILogic {
 					endMinutes = "00";
 				}
 
+				//Creating the start and end time
 				String start = startYear.toString()+ "-"+ startMonth.toString()+ "-"+ startDay.toString()+ " "+startHour.toString()+":"+startMinutes+":00";
 				String end = endYear.toString()+ "-"+ endMonth.toString()+ "-"+ endDay.toString()+ " "+endHour.toString()+":"+endMinutes+":00";
 
-				
+				//If statements
 				if (title.equals("")||location.equals("")|| calendarName.equals("")|| description.equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "\nPlease fill out all the fields"
@@ -295,12 +315,15 @@ public class GUILogic {
 				if (empty == false && timeError == false ){
 				CreateEvent CE = new CreateEvent("createEvent", 0,activityID,EventID , type, title, description, start, end, location,  calendarName ,note);
 
+	            //Converting the objects to Json via gson
 				Gson gson = new GsonBuilder().create();
 				String gsonString = gson.toJson(CE);
 
 				try {
+					//Calls the GiantSwitchMethod with the gsonString
 					String CreateEvent = (String)GS.GiantSwitchMethod(gsonString);
 					
+					//Converting Json to Java via gson
 					CreateEvent CEanswer = (CreateEvent)gson.fromJson(CreateEvent, CreateEvent.class);
 					
 					JOptionPane.showMessageDialog(null, CEanswer.getAnswer()
@@ -313,6 +336,12 @@ public class GUILogic {
 			}
 		}
 	}
+	
+	/**
+	 * The purpose of this ActionListener is to add a new user
+	 * @author Mathias
+	 *
+	 */
 	private class AddUserActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getAddUser().getBtnLogout()){
@@ -335,14 +364,14 @@ public class GUILogic {
 		
 			if (e.getSource() == screen.getAddUser().getBtnCreateUser()){
 
-
+				//Initializes the inserted text to variables
 				String Email = screen.getAddUser().getTextField_Email().getText();
 				String Password = screen.getAddUser().getTextField_Password().getText();
 				String CPR = screen.getAddUser().getTextField_CPR().getText();
 				int Active = 1;
 				String UpdatedCbsEvents = "notUpdated";
 
-
+				//If else statement
 				if (Email.equals("")|| Password.equals("") || CPR.equals(""))
 				{
 					JOptionPane.showMessageDialog(null, "Please fill out all the fields."
@@ -350,13 +379,22 @@ public class GUILogic {
 				}
 				else
 				{
+					//Setting the variables to objects in the Json class EstablishUser
 					EstablishUser EU = new EstablishUser("establishUser", Email , Active, Password, CPR, UpdatedCbsEvents );
 
+		            //Converting the objects to Json via gson
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(EU);
 
 					try {
-						Object establishUser = GS.GiantSwitchMethod(gsonString);
+						//Calling the method from GiantSwitch class
+						String establishUser = (String) GS.GiantSwitchMethod(gsonString);
+						
+						//Converting the answer from Json to Java via gson
+						EstablishUser EUanswer = (EstablishUser)gson.fromJson(establishUser, EstablishUser.class);
+						
+						JOptionPane.showMessageDialog(null, EUanswer.getAnswer()
+								, "Message",JOptionPane.PLAIN_MESSAGE);
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
@@ -368,7 +406,11 @@ public class GUILogic {
 	}
 	
 	
-
+	/**
+	 * The purpose of this ActionListerner is to show admin the User list 
+	 * @author Mathias
+	 *
+	 */
 	private class UserListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -390,6 +432,12 @@ public class GUILogic {
 		}
 	}
 
+	/**
+	 * The purpose of this ActionListener is to show admin the Event list and to add, delete 
+	 * and update a note to a specific event
+	 * @author Mathias
+	 *
+	 */
 	private class EventListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -409,20 +457,23 @@ public class GUILogic {
 			
 			if (e.getSource() == screen.getEventlist().getBtnAddNote()){
 				
+				//Initializes the choice from the ComboBox and the inserted text to variables
 				Object superID = screen.getEventList().getComboBox().getSelectedItem();
 				String superIDString = superID.toString();	
 				int superIDint = Integer.parseInt(superIDString);
-				
 	            String note = screen.getEventList().getTextField().getText();
 
+	            //Setting the variables to objects in the Json class SaveNote
 	            SN.setSuperID(superIDint);
 	            SN.setNote(note);
 	            
+	            //Converting the objects to Json via gson
 	            Gson gson = new GsonBuilder().create();
 				String gsonString = gson.toJson(SN);
 
 				
 					try {
+						//Converting the object back to Java via gson
 						String addNote = (String) GS.GiantSwitchMethod(gsonString);
 						SN = gson.fromJson(addNote, SaveNote.class);
 
@@ -492,6 +543,11 @@ public class GUILogic {
 		}
 	}
 
+	/**
+	 * The purpose of this ActionListener is to show the admin the calendar list
+	 * @author Mathias
+	 *
+	 */
 	private class CalendarListActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getCalendarList().getBtnMainMenu()){
@@ -512,6 +568,11 @@ public class GUILogic {
 			}
 		}
 	}
+	/**
+	 * The purpose of this ActionListener is so the admin can set a calendar active or inactive in the database
+	 * @author Mathias
+	 *
+	 */
 	private class DeleteCalendarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getDeleteCalendar().getBtnMainMenu()){
@@ -537,20 +598,30 @@ public class GUILogic {
 			
 			if (e.getSource() == screen.getDeleteCalendar().getBtnSetInactive()){
 				try {
+					
+					//Initializes the boolean to be false because the button SetInactive was chosen
 					DC.setActive(false);
+					
+					//Initializes variables
 					String userName = AU.getEmail();
 					String calendarName = screen.getDeleteCalendar().getTextField_CalendarName().getText();
 
+					//Setting the variables to objects in the Json class DeleteCalendar
 					DC.setUserName(userName);
 					DC.setCalendarName(calendarName);
 
+		            //Converting the objects to Json via gson
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(DC);
+					
+					//Calls the method from GiantSwitch
 					String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
+					
+					//Converting the object back to Java from Json via gson
 					DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
 
-					JOptionPane.showMessageDialog(null, "\n"+DC.getAnswer()
-							, "Error message",JOptionPane.PLAIN_MESSAGE);
+					JOptionPane.showMessageDialog(null, DC.getAnswer()
+							, "Message",JOptionPane.PLAIN_MESSAGE);
 
 				} catch (SQLException e1) {
 					e1.printStackTrace();
@@ -559,6 +630,7 @@ public class GUILogic {
 			if (e.getSource() == screen.getDeleteCalendar().getBtnSetActive()){
 				try {
 					DC.setActive(true);
+					
 					String userName = AU.getEmail();
 					System.out.println(userName);
 					String calendarName = screen.getDeleteCalendar().getTextField_CalendarName().getText();
@@ -568,7 +640,9 @@ public class GUILogic {
 
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(DC);
+					
 					String DeleteCalendar = (String)GS.GiantSwitchMethod(gsonString);
+					
 					DC = gson.fromJson(DeleteCalendar, DeleteCalendar.class);
 
 					JOptionPane.showMessageDialog(null, DC.getAnswer()
@@ -580,6 +654,11 @@ public class GUILogic {
 			}
 		}
 	}
+	/**
+	 * The purpose of this ActionListener is so the admin can create a new calendar
+	 * @author Mathias
+	 *
+	 */
 	private class CreateCalendarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -611,8 +690,8 @@ public class GUILogic {
 				boolean empty = false;
 				String name = screen.getCreateCalendar().getTextField_Name().getText();
 				String CreatedBy = AU.getEmail();
-				int type = 2; //2 betyder er det er en brugerskabt kalender og ikke den som er hentet fra CBS.
-				int active = 1; // 1 betyder at den er aktiv. 2 betyder at den ikke er aktiv.
+				int type = 2; //2 means that the calendar is created by an user/admin and not uploaded from CBS
+				int active = 1; // 1 means that the calendar is active. 2 means that the calendar is inactive.
 
 				if( name.equals("")) {
 
@@ -627,12 +706,12 @@ public class GUILogic {
 
 				if (screen.getCreateCalendar().getRdbtnPrivateCalendar().isSelected())
 				{
-					PrivateOrPublicValue = 2; //2 er lig med private.
+					PrivateOrPublicValue = 2; //2 is equal a private calendar.
 					PrivateOrPublic = true;
 				}
 				if (screen.getCreateCalendar().getRdbtnPublicCalendar().isSelected())
 				{
-					PrivateOrPublicValue = 1; //1 er lig med public.
+					PrivateOrPublicValue = 1; //1 is equal a public calendar.
 					PrivateOrPublic = true;
 				}
 
@@ -668,6 +747,11 @@ public class GUILogic {
 		}
 
 	}
+	/**
+	 * The purpose of this ActionListener is to delete events from calendars. Only the creator can delete the specific event.
+	 * @author Mathias
+	 *
+	 */
 	private class DeleteEventActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 
@@ -718,6 +802,11 @@ public class GUILogic {
 
 		}
 	}
+	/**
+	 * The purpose of this ActionListener is to block and unblock users by setting them active and inactive.
+	 * @author Mathias
+	 *
+	 */
 	private class BlockUserActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getSource() == screen.getBlockUser().getBtnLogOut()){
@@ -738,11 +827,16 @@ public class GUILogic {
 
 				try {
 					BU.setBlocked(true);
+					
 					String userName = screen.getBlockUser().getTextField_Username().getText();
+					
 					BU.setEmail(userName);
+					
 					Gson gson = new GsonBuilder().create();
 					String gsonString = gson.toJson(BU);
+					
 					String BlockUser = (String)GS.GiantSwitchMethod(gsonString);
+					
 					BU = gson.fromJson(BlockUser, BlockUser.class);
 
 
@@ -773,11 +867,7 @@ public class GUILogic {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
-
-
 			}
-
 		}
 	}
-
 }

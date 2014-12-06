@@ -40,8 +40,8 @@ public class AddEventGUI extends JPanel {
 	private final JComboBox comboBox_EndYear = new JComboBox();
 	private final JLabel lblMonth = new JLabel("Month:");
 	private final JLabel lblMonth_1 = new JLabel("Month:");
-	private final JLabel lblDay = new JLabel("Day:");
-	private final JLabel lblDay_1 = new JLabel("Day:");
+	private final JLabel lblStartDay = new JLabel("Day:");
+	private final JLabel lblEndDay = new JLabel("Day:");
 	private final JComboBox comboBox_StartMonth = new JComboBox();
 	private final JComboBox comboBox_EndMonth = new JComboBox();
 	private final JComboBox comboBox_StartDay = new JComboBox();
@@ -162,24 +162,7 @@ public class AddEventGUI extends JPanel {
 		add(textField_CalendarName);
 		textField_CalendarName.setColumns(10);
 		
-		
-		
-//	     
-//	    
-//	      String[] str = {"top","left","bottom","right"};
-//	      int n = str.length;
-//	      setLayout(new GridLayout(n,2));
-//	      setBorder(new TitledBorder("Thickness"));
-//	      combos = new JComboBox[n];
-//	      for (int i=0;i<n;i++) {
-//	        combos[i] = new JComboBox(new Object[]{"0","1","2","3"});
-//	        add(new JLabel(str[i]));
-//	        add(combos[i]);
-//	      }
-//	    
-		
-		
-		
+
 		comboBox_StartMinutes = new JComboBox();
 		comboBox_StartMinutes.setBounds(1190, 179, 48, 20);
 		add(comboBox_StartMinutes);
@@ -223,16 +206,16 @@ public class AddEventGUI extends JPanel {
 		lblMonth_1.setBounds(783, 222, 67, 24);
 		
 		add(lblMonth_1);
-		lblDay.setForeground(Color.WHITE);
-		lblDay.setFont(new Font("Arial", Font.BOLD, 20));
-		lblDay.setBounds(940, 177, 43, 24);
+		lblStartDay.setForeground(Color.WHITE);
+		lblStartDay.setFont(new Font("Arial", Font.BOLD, 20));
+		lblStartDay.setBounds(940, 177, 43, 24);
 		
-		add(lblDay);
-		lblDay_1.setForeground(Color.WHITE);
-		lblDay_1.setFont(new Font("Arial", Font.BOLD, 20));
-		lblDay_1.setBounds(940, 222, 43, 24);
+		add(lblStartDay);
+		lblEndDay.setForeground(Color.WHITE);
+		lblEndDay.setFont(new Font("Arial", Font.BOLD, 20));
+		lblEndDay.setBounds(940, 222, 43, 24);
 		
-		add(lblDay_1);
+		add(lblEndDay);
 		comboBox_StartMonth.setBounds(869, 179, 48, 20);
 		
 		add(comboBox_StartMonth);
