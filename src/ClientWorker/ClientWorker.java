@@ -20,17 +20,19 @@ public class ClientWorker implements  Runnable{
 	public void run(){
 		try{
 
+			//Byte array where the byte stream from the inputstream gets read and saved into
 			byte[] b = new byte[500000];
 			int count = connectionSocketConected.getInputStream().read(b);
 
-			//Creates an object of the data which is to be send back to the client, via the connectionSocket
-
+			//Decryption of the inputstream
 			String ny = cryp.decrypt(b);
-
+			
+			//Creates an object of the data which is to be send back to the client, via the connectionSocket
 			String returnSvar = (String) GS.GiantSwitchMethod(ny);
 
 			DataOutputStream outToClient = new DataOutputStream(connectionSocketConected.getOutputStream());
 
+			//Encrypt the data before sending the return answer
 			byte[] input = returnSvar.getBytes();
 			byte key = (byte) 3.1470;
 			byte[] encrypted = input;

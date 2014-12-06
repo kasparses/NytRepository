@@ -26,6 +26,7 @@ public class GiantSwitch {
 	
 	public Object GiantSwitchMethod(String jsonString) throws SQLException {
 
+		//Initializes objects of different classes
 		QOTDModel QOTDKlasse = new QOTDModel();
 		SwitchMethods SW = new SwitchMethods();	
 		AddEventModel AE = new AddEventModel();
