@@ -28,7 +28,6 @@ public class GiantSwitch {
 
 		QOTDModel QOTDKlasse = new QOTDModel();
 		SwitchMethods SW = new SwitchMethods();	
-		
 		AddEventModel AE = new AddEventModel();
 		EstablishUserModel EUM = new EstablishUserModel();
 		Gson gson = new GsonBuilder().create();
@@ -168,11 +167,7 @@ public class GiantSwitch {
 		 ** QUOTE **
 		 **********/
 	
-		                                                                                                                                              
-		case "LoginTime":
-			UpdateLoginTime ULT = (UpdateLoginTime)gson.fromJson(jsonString, UpdateLoginTime.class);
-			answer = SW.UpdateLoginTime(ULT.getLoginTime(),ULT.getUserName());
-			break;
+		                                           
 			
 		case "DailyUpdate":
 			answer = DUC.dailyUpdate();
@@ -232,8 +227,6 @@ public class GiantSwitch {
 			return "deleteEvent"; 
 		} else if (ID.contains("createCalendar")) {
 			return "createCalendar";
-		} else if (ID.contains("LoginTime")) {
-			return "LoginTime";
 		} else if (ID.contains("DailyUpdate")) {
 			return "DailyUpdate";
 		} else if (ID.contains("GetCbsCalendar")) {

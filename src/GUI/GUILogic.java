@@ -39,7 +39,6 @@ public class GUILogic {
 	JsonClasses.Login L = new Login();
 	DeleteEvent DE = new DeleteEvent();
 	BlockUser BU = new BlockUser();
-	NoteList N = new NoteList();
 	SaveNote SN = new SaveNote();
 	GiantSwitch GS = new GiantSwitch();
 	model.user.AuthenticateUser a = new model.user.AuthenticateUser();

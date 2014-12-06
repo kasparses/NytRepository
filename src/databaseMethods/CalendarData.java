@@ -3,14 +3,12 @@ package databaseMethods;
 public class CalendarData implements java.io.Serializable{
 	private  final long serialVersionUID = 1L;
 	private int CalendarID;
-    private int type;
-    private String Name;
-    private int Active;
-    private String CreatedBy;   
-    private int PrivatePublic;
+	private int type;
+	private String Name;
+	private int Active;
+	private String CreatedBy;   
+	private int PrivatePublic;
 
-    // Settere og gettere for Event objektet 
-    
 	public CalendarData( int CalendarID, int type, String name, int Active, String CreatedBy, int PrivatePublic ) {
 		super();
 		this.CalendarID = CalendarID;
@@ -19,7 +17,7 @@ public class CalendarData implements java.io.Serializable{
 		this.Active = Active;
 		this.CreatedBy = CreatedBy;
 		this.PrivatePublic = PrivatePublic;
-		
+
 	}
 
 	public int getCalendarID() {
@@ -69,7 +67,4 @@ public class CalendarData implements java.io.Serializable{
 	public void setPrivatePublic(int privatePublic) {
 		PrivatePublic = privatePublic;
 	}
-    
-    
-
 }

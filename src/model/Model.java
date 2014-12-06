@@ -1,9 +1,6 @@
 package model;
 
 import com.ibatis.common.jdbc.ScriptRunner;
-
-import config.Configurations;
-
 import java.io.*;
 import java.sql.*;
 
@@ -16,12 +13,6 @@ public abstract class Model {
 	    private static String username = "root";
 	    private static String dbname = "cbscalendar";
 	    private static String password = "";
-
-	    // FFkey is used in Encryption.java
-	    private String ffcryptkey = "3.1470";
-	
-	
-	private static Configurations cf = new Configurations();
 	
 	private static String sqlUrl = "jdbc:mysql://" + host + ":" + port + "/";
 	private static String sqlUser = username;

@@ -22,7 +22,6 @@ import databaseMethods.CalendarData;
 public class SwitchMethods extends Model
 {
 	QueryBuilder qb = new QueryBuilder();
-	
 	DeleteCalendar DC = new DeleteCalendar();
 	CreateCalendar CC = new CreateCalendar();
 	Gson gson = new GsonBuilder().create();
@@ -31,33 +30,10 @@ public class SwitchMethods extends Model
 	BlockUser BU = new BlockUser();
 	SaveNote SN = new SaveNote();
 
-	ArrayList<CalendarData> calendarData = new ArrayList<CalendarData>();
-
-
-
 	/**
-	 * Allows the client to create a new calendar
-	 * @param userName
-	 * @param calenderName
-	 * @param privatePublic
-	 * @return
-	 * @throws SQLException
+	 * ArrayList of the class CalendarData
 	 */
-
-	public String UpdateLoginTime (long LoginTime, String userName){
-		System.out.println("LoginTime: "+LoginTime+ " UserName: "+userName);
-		String noReturn = "";
-		String[] keys = {"LastUpdateTime" };
-		String[] keys2 = {Long.toString(LoginTime) };
-
-		try {
-			qb.update("users", keys, keys2).where("email", "=", userName).Execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return noReturn;
-
-	}
+	ArrayList<CalendarData> calendarData = new ArrayList<CalendarData>();
 
 	/**
 	 * Allows the user or superAdmin to create a new calendar.
@@ -75,7 +51,7 @@ public class SwitchMethods extends Model
 		testConnection();
 		if(authenticateNewCalendar(newcalendarName) == false)
 		{
-			addNewCalendar(type, newcalendarName, Active, userName, privatePublic);
+			addNewCalendar(type, newcalendarName, Active, userName, privatePublic); // Runs the method addNewCalendar.
 			CC.setAnswer("The new calendar has been created!");
 		}
 		
@@ -85,8 +61,9 @@ public class SwitchMethods extends Model
 		}
 
 
-		String gsonString = gson.toJson(CC);
-		return gsonString;	}
+		String gsonString = gson.toJson(CC); // Creates a JSON string of the CreateCalendar Class. 
+		return gsonString;	// Returns the JSON string to the client. 
+		}
 
 	public boolean authenticateNewCalendar(String newCalendarName) throws SQLException
 	{
@@ -99,10 +76,10 @@ public class SwitchMethods extends Model
 		{
 			authenticate = true;
 		}
-		return authenticate;
+		return authenticate; 
 	}
 	/**
-	 * This method is called from the method createNewCalendar in this class and inserts the variables in the specified columns. 
+	 * This method is called from the method createNewCalendar in this class and inserts the variables in the specified columns in the database. 
 	 * The parameters are the same as described in the documentation for the method createNewCalendar.
 	 * @param type
 	 * @param newCalendarName
@@ -130,7 +107,7 @@ public class SwitchMethods extends Model
 	{
 		String stringToBeReturned ="";
 		testConnection();
-		stringToBeReturned = removeCalendar(userName, calendarName, active);
+		stringToBeReturned = removeCalendar(userName, calendarName, active); //Runs the method removeCalendar.
 
 		return stringToBeReturned;
 	}
@@ -193,8 +170,9 @@ public class SwitchMethods extends Model
 
 		}
 
-		String gsonString = gson.toJson(DC);
-		return gsonString;
+		String gsonString = gson.toJson(DC); // Creates a JSON string of the DeleteCalendar Class. 
+		return gsonString; // Returns the JSON string to the client. 
+			
 
 	}
 	/**
@@ -242,8 +220,8 @@ public class SwitchMethods extends Model
 			BU.setAnswer("The user you are trying to block, does not exists.");
 		}
 
-		String gsonString = gson.toJson(BU);
-		return gsonString;
+		String gsonString = gson.toJson(BU); // Creates a JSON string of the BlockUser Class.
+		return gsonString; // Returns the JSON string to the client. 
 
 	}
 	/**
@@ -275,8 +253,6 @@ public class SwitchMethods extends Model
 			else
 			{
 
-				//				String [] keys = {"superID"};
-				//				String [] values = {"2"};
 				qb.deleteFrom("events").where("title", "=", title).Execute();
 				DE.setAnswer("Event has been set inactive"); 
 			}
