@@ -10,10 +10,8 @@ public class Screen extends JFrame {
 
 	public static final String LOGIN = "name_362236793182581";
 	public static final String MAINMENU = "name_362262329408944";
-	public static final String ADDCOURSE = "name_362036683693928";
 	public static final String ADDEVENT = "name_362181513611519";
 	public static final String EVENTLIST = "name_362220577395912";
-	public static final String USERINFO = "name_362280744832869";
 	public static final String ADDUSER = "name_362200721529567";
 	public static final String USERLIST = "name_480079376033151";
 	public static final String FORGOT = "name_921186008853499";
