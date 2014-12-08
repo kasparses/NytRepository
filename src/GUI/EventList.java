@@ -59,10 +59,10 @@ import javax.swing.JComboBox;
 			setSize(new Dimension(1366, 768));
 			setLayout(null);
 
-			JLabel lblEvents = new JLabel("Eventlist");
+			JLabel lblEvents = new JLabel("Event List");
 			lblEvents.setForeground(Color.WHITE);
 			lblEvents.setFont(new Font("Arial", Font.BOLD, 78));
-			lblEvents.setBounds(521, 11, 333, 90);
+			lblEvents.setBounds(497, 11, 384, 90);
 			add(lblEvents);
 
 			
@@ -192,7 +192,7 @@ import javax.swing.JComboBox;
 									add(lblNotetext);
 									
 									comboBox = new JComboBox();
-									comboBox.setBounds(1288, 95, 51, 20);
+									comboBox.setBounds(1288, 93, 51, 20);
 									add(comboBox);
 									 for (int i=0; i<=rowSize; i++){
 										 comboBox.addItem(i);
@@ -200,7 +200,9 @@ import javax.swing.JComboBox;
 								        }
 									
 									lblPleaseSelectThe = new JLabel("Please select the superID of the note you want to affect:");
-									lblPleaseSelectThe.setBounds(972, 98, 307, 14);
+									lblPleaseSelectThe.setForeground(Color.WHITE);
+									lblPleaseSelectThe.setFont(new Font("Tahoma", Font.BOLD, 13));
+									lblPleaseSelectThe.setBounds(886, 96, 392, 16);
 									add(lblPleaseSelectThe);
 									
 									label_1 = new JLabel("");
