@@ -74,7 +74,10 @@ public class GUILogic {
 	 */
 	private class LoginActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+
 			try{
+				if(e.getSource() == screen.getLogin().getBtnLogIn()){
+
 
 				//Initializes the inserted text from the admin to variables
 				String email = screen.getLogin().getTextFieldUsername().getText();
@@ -108,6 +111,7 @@ public class GUILogic {
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 					
 				}
+			}
 				if (e.getSource() == screen.getLogin().getBtnForgotLogIn()){
 
 					screen.show(Screen.FORGOT);
