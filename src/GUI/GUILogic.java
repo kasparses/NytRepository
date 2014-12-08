@@ -52,7 +52,6 @@ public class GUILogic {
 		screen.getAddUser().addActionListener(new AddUserActionListener());
 		screen.getForgotLogin().addActionListener(new ForgotActionListener());
 		screen.getCalendarList().addActionListener(new CalendarListActionListener());
-		screen.getDeleteEvent().addActionListener(new DeleteEventActionListener());
 		screen.getDeleteCalendar().addActionListener(new DeleteCalendarActionListener());
 		screen.getCreateCalendar().addActionListener(new CreateCalendarActionListener());
 		screen.getBlockUser().addActionListener(new BlockUserActionListener());
@@ -94,18 +93,15 @@ public class GUILogic {
 				LoginAnswer LA = gson.fromJson(hejhej33, LoginAnswer.class);  
 
 				//If statements
-				if (LA.getAnswer().equals("correct")){
+				if (LA.getAnswer().equals("correct") && LA.getActive().equals("active")){
 					screen.show(Screen.MAINMENU);
 				}
 				if(!LA.getAnswer().equals("correct")){
 					JOptionPane.showMessageDialog(null, "\nPlease enter a valid username & password."
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
 				}
-				if(LA.getActive().equals("active")){
-					screen.show(Screen.MAINMENU);
-
-				}
-				if(!LA.getActive().equals("active")){
+				
+				if(!LA.getActive().equals("active") && LA.getAnswer().equals("correct")){
 					JOptionPane.showMessageDialog(null, "Your account has been set inactive.\nPlease contact us via this email:\n"
 							+ "help@cbs.dk"
 							, "Error message",JOptionPane.PLAIN_MESSAGE);
@@ -450,7 +446,32 @@ public class GUILogic {
 				screen.show(Screen.ADDEVENT);
 			}
 			if (e.getSource() == screen.getEventlist().getBtnDelete()){
-				screen.show(Screen.DELETEEVENT);
+				
+				Object superID = screen.getEventList().getComboBox().getSelectedItem();
+				String superIDString = superID.toString();	
+	           
+	            //Setting the variables to objects in the Json class DeleteEvent
+	            
+	         DE.setsuperID(superIDString);
+
+				Gson gson = new GsonBuilder().create();
+				String gsonString = gson.toJson(DE);
+				String DeleteEvent = "";
+				try {
+					DeleteEvent = (String)GS.GiantSwitchMethod(gsonString);
+				} catch (SQLException e2) {
+					// TODO Auto-generated catch block
+					e2.printStackTrace();
+				}
+				
+				
+				
+				
+				DE = gson.fromJson(DeleteEvent, DeleteEvent.class);
+
+				JOptionPane.showMessageDialog(null, DE.getAnswer()
+						, "Return message",JOptionPane.PLAIN_MESSAGE);
+				
 			}
 			
 			
@@ -745,61 +766,6 @@ public class GUILogic {
 			}
 		}
 
-	}
-	/**
-	 * The purpose of this ActionListener is to delete events from calendars. Only the creator can delete the specific event.
-	 * @author Mathias
-	 *
-	 */
-	private class DeleteEventActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-
-			if (e.getSource() == screen.getDeleteEvent().getBtnMainMenu()){
-				screen.show(Screen.MAINMENU);
-			}
-			if (e.getSource() == screen.getDeleteEvent().getBtnLogOut()){
-				screen.show(Screen.LOGIN);
-			}
-			if (e.getSource() == screen.getDeleteEvent().getBtnEventList()){
-				screen.show(Screen.EVENTLIST);
-
-			}
-			if (e.getSource() == screen.getDeleteEvent().getBtnCalendarList()){
-				screen.show(Screen.CALENDARLIST);
-
-			}
-			
-			if (e.getSource() == screen.getDeleteEvent().getBtnUserList()){
-				screen.show(Screen.USERLIST);
-
-			}
-			
-			if (e.getSource() == screen.getDeleteEvent().getBtnDelete()){
-
-				try {
-					String eventID = screen.getDeleteEvent().getTextField_EventID().getText();
-					String title = screen.getDeleteEvent().getTextField_Title().getText();
-
-					DE.setEventID(eventID);
-					DE.setTitle(title);
-
-					Gson gson = new GsonBuilder().create();
-					String gsonString = gson.toJson(DE);
-					String DeleteEvent = (String)GS.GiantSwitchMethod(gsonString);
-					DC = gson.fromJson(DeleteEvent, DeleteCalendar.class);
-
-					JOptionPane.showMessageDialog(null, DC.getAnswer()
-							, "Return message",JOptionPane.PLAIN_MESSAGE);
-
-				} catch (SQLException e1) {
-					e1.printStackTrace();
-				}
-
-
-
-			}
-
-		}
 	}
 	/**
 	 * The purpose of this ActionListener is to block and unblock users by setting them active and inactive.
