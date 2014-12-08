@@ -3,16 +3,12 @@ package GUI;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
-
 import ClientWorker.GiantSwitch;
 import model.user.AuthenticateUser;
 import model.user.EstablishUserModel;
-
 import javax.swing.JOptionPane;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import GUI.Screen;
 import JsonClasses.AuthUserJson;
 import JsonClasses.BlockUser;
@@ -820,6 +816,9 @@ public class GUILogic {
 			}
 			if (e.getSource() == screen.getBlockUser().getBtnCalendarList()){
 				screen.show(Screen.CALENDARLIST);
+			}
+			if (e.getSource() == screen.getBlockUser().getBtnMainMenu()){
+				screen.show(Screen.MAINMENU);
 			}
 		
 			if (e.getSource() == screen.getBlockUser().getBtnBlockUser()){

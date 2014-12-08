@@ -200,7 +200,7 @@ import javax.swing.JComboBox;
 								        }
 									
 									lblPleaseSelectThe = new JLabel("Please select the superID of the note you want to affect:");
-									lblPleaseSelectThe.setBounds(1003, 98, 276, 14);
+									lblPleaseSelectThe.setBounds(972, 98, 307, 14);
 									add(lblPleaseSelectThe);
 									
 									label_1 = new JLabel("");
