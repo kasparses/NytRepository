@@ -12,7 +12,7 @@ public abstract class Model {
 	    private static String port = "3306";
 	    private static String username = "root";
 	    private static String dbname = "cbscalendar";
-	    private static String password = "";
+	    private static String password = "tpg150219943363";
 	
 	private static String sqlUrl = "jdbc:mysql://" + host + ":" + port + "/";
 	private static String sqlUser = username;
