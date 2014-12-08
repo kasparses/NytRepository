@@ -57,7 +57,6 @@ public class GetCalendarData extends Model {
 			
 			e1.printStackTrace();
 		}
-		System.out.println("updatedCbsEvents: "+updatedCbsEvents);
 		if (updatedCbsEvents.equals("notUpdated")){
 			
 			String updated = "Updated";

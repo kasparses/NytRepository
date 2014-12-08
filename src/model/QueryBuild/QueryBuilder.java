@@ -1,8 +1,6 @@
 package model.QueryBuild;
 
-/**
- * Created by jesperbruun on 15/10/14.
- */
+
 public class QueryBuilder {
 
     private String selectValue;

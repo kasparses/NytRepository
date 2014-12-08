@@ -30,7 +30,7 @@ public class Events {
 			{
 
 				int ID = rs.getInt("ID");
-				System.out.println("ID: "+ID);
+				
 				String activityID = rs.getString("activityID");
 				String eventID = rs.getString("eventID");
 				String type = rs.getString("type");

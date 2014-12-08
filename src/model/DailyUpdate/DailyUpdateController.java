@@ -28,7 +28,6 @@ Gson gson = new GsonBuilder().create();
  			while (resultSet.next()){
  	  			lastUpdateTime = resultSet.getLong("LastUpdateTime");
  			}
- 			System.out.println("lastUpdateTime: "+lastUpdateTime);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

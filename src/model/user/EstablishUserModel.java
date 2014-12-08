@@ -2,12 +2,8 @@ package model.user;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import sun.text.normalizer.NormalizerBase.Mode;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import model.Model;
 import model.QueryBuild.*;
 

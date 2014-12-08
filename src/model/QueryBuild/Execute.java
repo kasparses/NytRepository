@@ -5,9 +5,6 @@ import org.apache.commons.lang.StringEscapeUtils;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by jesperbruun on 16/10/14.
- */
 public class Execute extends Model {
 
 	private final String SELECT = "SELECT ";
@@ -127,7 +124,6 @@ public class Execute extends Model {
 		else if(getQueryBuilder().isSoftDelete()) {
 
 			sql = DELETE + FROM + getQueryBuilder().getTableName() + WHERE + getWhere().getWhereKey() + " " + getWhere().getWhereOperator() + " ?;";
-			System.out.println("sql: "+sql);
 			try {
 				getConnection(false);
 				getConn();

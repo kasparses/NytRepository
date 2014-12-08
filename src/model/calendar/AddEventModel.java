@@ -39,7 +39,7 @@ public class AddEventModel extends Model  {
 			String calendarName)	{
 			
 			String Id = String.valueOf(ID);
-			System.out.println(" AddEventModel note: "+note);
+			
 			
 			try {
 

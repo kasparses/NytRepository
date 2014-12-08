@@ -45,7 +45,6 @@ public class AuthenticateUser {
 				if(acti.equals("1")){
 					String active = "active";
 					LA.setActive(active);
-					System.out.println(LA.getActive());
 				}
 				else if (acti.equals("2")){
 					String active = "inactive";
