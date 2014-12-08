@@ -29,6 +29,7 @@ public class AuthenticateUser {
 			String[] keys = {"userID", "email", "Active", "password", "CPR"};
 			qb = new QueryBuilder();
 			rs = qb.selectFrom(keys, "users").where("email", "=", email).ExecuteQuery();
+			LA.setAnswer("notCorrect");
 			while(rs.next())
 			{
 				String pass = rs.getString("password");

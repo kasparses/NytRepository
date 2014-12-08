@@ -231,30 +231,30 @@ public class SwitchMethods extends Model
 	 * @return
 	 * @throws SQLException
 	 */
-	public String removeEvent (String eventID, String title) throws SQLException
+	public String removeEvent (String superID) throws SQLException
 	{
 
 		String eventIDOfCreator ="";
 		String eventExists = "";
-		resultSet = qb.selectFrom("events").where("title", "=", title).ExecuteQuery();
+		resultSet = qb.selectFrom("events").where("superID", "=", superID).ExecuteQuery();
 
 		while(resultSet.next())
 		{
 			eventExists = resultSet.toString();
-			eventIDOfCreator = resultSet.getString("title");
+			eventIDOfCreator = resultSet.getString("superID");
 		}
 		if(!eventExists.equals(""))
 		{
 
-			if(!eventIDOfCreator.equals(title))
+			if(!eventIDOfCreator.equals(superID))
 			{
 				DE.setAnswer("Only the creator of the event is able to delete it.");
 			}
 			else
 			{
 
-				qb.deleteFrom("events").where("title", "=", title).Execute();
-				DE.setAnswer("Event has been set inactive"); 
+				qb.deleteFrom("events").where("superID", "=", superID).Execute();
+				DE.setAnswer("Event has been removed"); 
 			}
 
 		}

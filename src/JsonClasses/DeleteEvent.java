@@ -8,7 +8,7 @@ public class DeleteEvent implements java.io.Serializable
 	private String userName = "";
 	private int Active = 1;
 	private String answer = "";
-	private String eventID = "";
+	private String superID = "";
 
 	//Getters and setters for everything
 	public String getOverallID() {
@@ -41,11 +41,11 @@ public class DeleteEvent implements java.io.Serializable
 	public void setActive(int active) {
 		Active = active;
 	}
-	public String getEventID() {
-		return eventID;
+	public String getsuperID() {
+		return superID;
 	}
-	public void setEventID(String eventID) {
-		this.eventID = eventID;
+	public void setsuperID(String superID) {
+		this.superID = superID;
 	}
 
 

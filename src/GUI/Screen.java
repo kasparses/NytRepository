@@ -34,7 +34,6 @@ public class Screen extends JFrame {
 	private final CalendarList calendarList = new CalendarList();
 	private final DeleteCalendar deleteCalendar = new DeleteCalendar();
 	private final CreateCalendar createCalendar = new CreateCalendar();
-	private final DeleteEvent deleteEvent = new DeleteEvent();
 	private final BlockUser blockUser = new BlockUser();
 
 
@@ -69,7 +68,6 @@ public class Screen extends JFrame {
 		
 		contentPane.add(blockUser, "name_755445244821977");
 		
-		contentPane.add(deleteEvent, "name_519922165417969");
 		
 		contentPane.add(calendarList, "name_493897513062219");
 		
@@ -138,10 +136,6 @@ public class Screen extends JFrame {
 
 	public CreateCalendar getCreateCalendar() {
 		return createCalendar;
-	}
-
-	public DeleteEvent getDeleteEvent() {
-		return deleteEvent;
 	}
 
 	public BlockUser getBlockUser() {

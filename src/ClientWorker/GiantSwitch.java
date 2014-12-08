@@ -133,7 +133,7 @@ public class GiantSwitch {
 			
 		case "deleteEvent":
 			DE = (DeleteEvent)gson.fromJson(jsonString, DeleteEvent.class);
-			answer = SW.removeEvent(DE.getEventID(), DE.getTitle());
+			answer = SW.removeEvent(DE.getsuperID());
 			break;
 			
 		case "GetCbsCalendar":
